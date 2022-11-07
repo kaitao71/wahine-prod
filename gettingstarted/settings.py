@@ -45,13 +45,16 @@ if not IS_HEROKU:
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "hello",
+    "backend",
+    # 'compressor', 
 ]
 
 MIDDLEWARE = [
@@ -64,13 +67,13 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
+AUTH_USER_MODEL="backend.User"
 ROOT_URLCONF = "gettingstarted.urls"
 
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -162,3 +165,9 @@ if "CI" in os.environ:
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# COMPRESS_ROOT = BASE_DIR / 'static'
+
+# COMPRESS_ENABLED = True
+
+# STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)

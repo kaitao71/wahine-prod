@@ -1,0 +1,15 @@
+<h1>Assets</h1>
+<p>Please fill the form below to record your personal assets information. Feel free to add as much detail as needed.</p>
+<form method="post">
+    {% csrf_token %}
+{{form}}
+<input type="submit" value="OK">
+</form>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
