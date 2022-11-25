@@ -167,8 +167,17 @@ if "CI" in os.environ:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# COMPRESS_ROOT = BASE_DIR / 'static'
+# The URL to use when referring to static files (where they will be served from)
+STATIC_URL = '/static/'
 
-# COMPRESS_ENABLED = True
+# The absolute path to the directory where collectstatic will collect static files for deployment.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
