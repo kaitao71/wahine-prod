@@ -40,4 +40,8 @@ class JsonAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     pass
 
+@admin.register(Subscription)
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('user','plan','created_at',)
+
 admin.site.register(Item, JsonAdmin)

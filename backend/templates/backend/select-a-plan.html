@@ -1,0 +1,148 @@
+{% extends "backend/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+<style>
+	.custom-checkbox {
+	border:2px solid #000;
+	display:flex;
+	width:100px;
+	height:100px;
+	justify-content:center;
+	align-items:center;
+}
+.custom-checkbox input[type="checkbox"] {
+	width: 2.2em;
+	height: 2.2em;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	border: 2px solid #800080;
+	border-radius: 3px;
+	vertical-align: middle;
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='512px' height='512px' viewBox='0 0 512 512' style='enable-background:new 0 0 512 512;fill: %23800080' xml:space='preserve'%3e%3cpath d='M448,71.9c-17.3-13.4-41.5-9.3-54.1,9.1L214,344.2l-99.1-107.3c-14.6-16.6-39.1-17.4-54.7-1.8 c-15.6,15.5-16.4,41.6-1.7,58.1c0,0,120.4,133.6,137.7,147c17.3,13.4,41.5,9.3,54.1-9.1l206.3-301.7 C469.2,110.9,465.3,85.2,448,71.9z'/%3e%3c/svg%3e");
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-color:#eee;
+	background-position:50% 50%;
+	background-size:0 0;
+	transition:.3s ease;
+}
+.custom-checkbox input[type="checkbox"]:active {
+	background-color: #ddd;
+}
+.custom-checkbox input[type="checkbox"]:checked {
+	background-size:100% 100%;
+}
+/* highlight parent trick */
+.custom-checkbox {
+	position:relative;
+}
+.custom-control-label:before {
+	content:"";
+	transition:.5s ease;
+}
+.custom-checkbox input[type="checkbox"]:checked + .custom-control-label:before {
+	position:absolute;
+	left:-2px;
+	right:-2px;
+	bottom:-2px;
+	top:-2px;
+	border:5px solid red;
+	pointer-events:none;
+}
+</style>
+<head>
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+</head>
+
+<body>
+	<div class="wrapper container" style="padding-bottom:50px">
+		<form method="post">
+			<!-- SECTION 1 -->
+  {% csrf_token %}
+<section>
+				<div class="inner row">
+					<div class="col-lg-4 px-0 image-holder overflow-Hidden d-none d-lg-block">
+						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_SmilingGirl3.png" alt="">
+					</div>
+					<div class="col-lg-12 form-content">
+						<div class="form-header">
+							<h3>SELECT A PLAN</h3>
+						</div>
+						<p>Choose a Plan</p>
+							<div class="form-row">
+							<!-- inner column 1 -->
+							<div class="form-holder BG-Teal p-4 BR-25">
+								<h4 class="Color-Secondary fw-bold">Lite <input type="checkbox" name="plan" class="custom-control-input" value="lite"></h4>
+							
+								<h5 class=""><span class="fw-bold" style="color:#231D4F ;">RM19.90</span> /month</h5>
+								<br>
+								<h6 style="color:#231D4F ;">Includes:</h6>
+								<ul class="list-Items">
+									<li>Digital Vault</li>
+									<li>Bonds, stocks, shares certificates</li>
+									<li>ASNB, KWSP, Tabung Haji</li>
+									<li>Insurance Policies</li>
+									<li>Titles to moto vehicles, land</li>
+									<li>Cash accounts</li>
+									<li>Art collections and other precious items</li>
+									<li>Other tenancies, contracts, or arrangements
+										in deceased name</li>
+								</ul>
+								</p>
+							</div>
+							<!-- inner column 2 -->
+							<div class="form-holder BG-Teal p-4 BR-25 mx-1">
+								<h4 class="Color-Secondary fw-bold">Plus <input type="checkbox" name="plan" class="custom-control-input" value="plus"></h4>
+								<h5 class=""><span class="fw-bold" style="color:#231D4F ;">RM29.90</span> /month</h5>
+								<br>
+								<h6 style="color:#231D4F ;">Includes:</h6>
+								<ul class="list-Items">
+									<li>Digital Vault</li>
+									<li>Bonds, stocks, shares certificates</li>
+									<li>ASNB, KWSP, Tabung Haji</li>
+									<li>Insurance Policies</li>
+									<li>Titles to moto vehicles, land</li>
+									<li>Cash accounts</li>
+								</ul>
+								</p>
+							</div>
+						</div>
+						<div class="pb-2" style="float:right">
+		<button class="signup-next-button"type="submit">Start Free Trial</button>
+						</div>
+
+					</div>
+
+			</section>
+		</form>
+	</div>
+
+	<!-- JQUERY -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery-3.3.1.min.js"></script>
+
+	<!-- JQUERY STEP -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery.steps.js"></script>
+	<script src="https://wahine.s3.amazonaws.com/static/js/main.js"></script>
+	<!-- Template created and distributed by Colorlib -->
+
+	<script>
+		function clickNext() {
+			var a = document.querySelectorAll('[role="tab"]');
+			a.className = "testCurrent";
+		}
+
+		$('input[type=checkbox]').on('change', function (e) {
+    if ($('input[type=checkbox]:checked').length > 1) {
+        $(this).prop('checked', false);
+    }
+});
+	</script>
+
+</body>
+{% endblock %}

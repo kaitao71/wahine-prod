@@ -15,10 +15,17 @@ admin.autodiscover()
 
 urlpatterns = [
 	path("",index,name="index"),
-	path("joinnow",joinnow,name="joinnow"),
-	path("signup",signup,name="signup"),
-	path("bank/",bank_account_form,name="bank_account_form"),
-	path("epf/",epf_socso_form,name="epf_socso_form"),
-	path("insurance/",insurance_form,name="insurance_form"),
+	path("joinnow/",joinnow,name="joinnow"),
+	path("profile/",profile,name="profile"),
+	path("signup/",signup,name="signup"),
+	path("plan/",selectplan,name="plan"),
+	path("dashboard/",dashboard,name="dashboard"),
+	path("assets/bank",bank_account_form,name="bank_account_form"),
+	path("assets/epf",epf_socso_form,name="epf_socso_form"),
+	path("assets/insurance/",insurance_form,name="insurance_form"),
+	path("assets/investment/",investment_form,name="investment_form"),
+	path("assets/property/",property_form,name="property_form"),
+	path("assets/vehicles/",vehicles_form,name="vehicles_form"),
+	path("assets/others/",asset_others_form,name="asset_others_form"),
  	path("admin/", admin.site.urls),
 ]

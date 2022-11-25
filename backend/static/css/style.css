@@ -530,3 +530,18 @@ a {
     }
 
 }
+
+.next-button {
+    padding: 0;
+    border: none;
+    display: inline-flex;
+    height: 41px;
+    width: 135px;
+    align-items: center;
+    background: #e9e0cf;
+    font-family: "Muli-SemiBold";
+    color: #666;
+    cursor: pointer;
+    position: relative;
+    padding-left: 28px;
+}

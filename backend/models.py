@@ -48,7 +48,6 @@ class TimeStampedModel(models.Model):
     An abstract base class model that provides self-updating created and modified fields. 
     """
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='timestampuser',null=True)
     modified_at = models.DateTimeField(auto_now=True) 
 
     class Meta:
@@ -76,13 +75,17 @@ class User(AbstractUser):
 """Custom User Model End"""
 
 class Item(TimeStampedModel):
-	ITEM_TYPE_CHOICES = [
+    ITEM_TYPE_CHOICES = [
     ('Assets', 'Assets'),
     ('Liabilities', 'Liabilities'),
 ]
-	uuid = models.UUIDField(default=uuid.uuid4, editable=False)
-	user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_items')
-	data = models.JSONField()
-	item_type = models.CharField(choices=ITEM_TYPE_CHOICES,max_length=128)
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_items')
+    data = models.JSONField()
+    item_type = models.CharField(choices=ITEM_TYPE_CHOICES,max_length=128)
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
 
+class Subscription(TimeStampedModel):
+    plan = models.CharField(max_length=128)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_subscriptions')
 
