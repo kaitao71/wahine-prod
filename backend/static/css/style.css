@@ -1,0 +1,532 @@
+.font-Form {
+    font-size: 1rem !important;
+    font-family: 'Merriweather', serif;
+    font-weight: lighter;
+    line-height: 32px;
+}
+
+
+p,
+.banner p,
+.paragraph {
+    font-size: 1rem !important;
+    margin: 0 0 12px 0;
+    font-family: 'Merriweather', serif;
+    font-weight: lighter;
+    line-height: 32px;
+
+}
+
+h6,
+.banner h6 {
+    font-size: 1.2rem !important;
+    font-weight: 400;
+}
+
+h5,
+.banner h5 {
+    font-size: 1.333rem !important;
+    font-weight: 400;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+h4,
+.banner h4 {
+    font-size: 1.777rem !important;
+    font-weight: 400;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+h3,
+.banner h3 {
+    font-size: 2.369rem !important;
+    margin: 0;
+}
+
+h2,
+.banner h2 {
+    font-size: 3.157rem !important;
+    line-height: 1.2;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+h1,
+.banner h1 {
+    font-size: 4.209rem !important;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+h5 a,
+p a {
+    color: var(--primary-color);
+}
+
+
+/* font color */
+.Color-Primary {
+    color: #55BCB9;
+}
+
+.Color-Secondary {
+    color: #8f1346;
+}
+
+.Color-LightGray {
+    color: #999;
+}
+
+/* 
+p a:hover {
+    color: black;
+} */
+
+
+.Filter-White {
+    filter: brightness(0) invert(1);
+}
+
+
+/* .column {
+    float: left;
+    padding: 10px;
+    width: 50%;
+} */
+
+/* .left {
+    width: 25%;
+}
+
+.right {
+    width: 25%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+} */
+
+
+
+/* body {
+    margin: 0px;
+} */
+
+
+
+
+/* Nav Bar */
+.NavBar {
+    border: none;
+    box-shadow: none;
+    transition: background 0.7s ease-out;
+    background-color: transparent;
+    position: fixed;
+    z-index: 1030;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.NavMenu {
+    margin-left: auto;
+}
+
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    float: left;
+
+}
+
+
+a {
+    display: block;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Lato', sans-serif;
+    color: #747474;
+    transition: all ease 0.5s;
+    font-size: 16px;
+}
+
+/* a:hover {
+    background-color: gray;
+    color: white;
+} */
+
+
+/* Header Logo */
+.MainLogo {
+    max-width: 150px;
+    max-height: 50px;
+}
+
+.NavBar {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.TopHeader {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.Btn-Primary {
+    color: white;
+    background-color: #55BCB9;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin: auto;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .09);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+.Btn-Secondary {
+    color: white;
+    background-color: #8f1346;
+    border: none;
+    border-radius: 85px;
+    height: 52px;
+    width: 245px;
+    margin: auto;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .09);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    padding: 0.75rem;
+}
+
+.Btn-Secondary-2 {
+    color: white;
+    background-color: #8f1346;
+    border: none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    height: 52px;
+    margin: auto;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, .09);
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+}
+
+
+.HeroBanner {
+    background: url('http://wahine.wcapital.asia/wp-content/uploads/2022/10/Img_Banner3.png');
+    min-height: 100vh;
+    background-size: cover;
+
+
+}
+
+
+.Image-Centered {
+    margin-top: -320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Section2 {
+    background-color: #747474;
+    max-height: 300px;
+}
+
+.flex {
+    display: flex;
+}
+
+.Text-Center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.Width-50P {
+    width: 50%;
+}
+
+.Width-80P {
+    width: 80%;
+}
+
+
+.BG-Blue {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(217, 253, 255, 1) 100%);
+
+}
+
+.BG-Gray {
+    background-color: #EEF2FB;
+}
+
+/* Icon Boxes */
+.Icon-Boxes {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    justify-content: space-evenly;
+}
+
+.Icon-BoxesInner {
+    display: flex;
+    align-items: center;
+}
+
+.Icon-Boxes .Icon-BoxesInner img {
+    max-height: 50px;
+}
+
+.Icon-Boxes .Icon-BoxesInner h5 {
+    width: 70%;
+}
+
+/* Icon Boxes */
+
+/* Sginection 4 & 5 */
+/* .Section4,
+.Section5 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    margin-bottom: 40px;
+    margin-top: 60px;
+} */
+
+.margin-Right-Negative {
+    margin-right: -950px;
+}
+
+
+
+
+
+
+
+
+/* Section 6 Founders Profile Title*/
+.Section6 {
+    background-color: #1D3557;
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 180px;
+}
+
+/* Section 7 Founders Pictures */
+.Section7 {
+    background-color: #D9FDFF;
+    padding-bottom: 100px;
+
+}
+
+.Founders-Images,
+.Partners-Logos {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    justify-content: space-evenly;
+
+}
+
+.Founders-Images img {
+    max-height: 280px;
+    margin-top: -130px;
+}
+
+/* Section 8 Partners */
+
+.Section8 {
+    color: black;
+    padding-top: 80px;
+    padding-bottom: 180px;
+}
+
+.Testimonial {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Section 9 Pricing */
+.Section9 {
+    background-color: #1D3557;
+    color: white;
+
+}
+
+
+/* Join Now Page */
+
+.Bg-Gradient {
+    background: linear-gradient(180deg, #FFFFFF 0%, #D9FDFF 100%);
+}
+
+
+/* Image Div Parent Relative */
+.Relative-P {
+    position: relative;
+}
+
+.Img-Btm {
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+}
+
+.Img-Abv {
+    z-index: 3;
+    position: relative;
+}
+
+/* Pricing Table */
+.card1:hover {
+    background: #00ffb6;
+    border: 1px solid #00ffb6;
+}
+
+.card1:hover .list-group-item {
+    background: #00ffb6 !important
+}
+
+.card2:hover {
+    background: #00C9FF;
+    border: 1px solid #00C9FF;
+}
+
+.card2:hover .list-group-item {
+    background: #00C9FF !important
+}
+
+
+.card3:hover {
+    background: #ff95e9;
+    border: 1px solid #ff95e9;
+}
+
+.card3:hover .list-group-item {
+    background: #ff95e9 !important
+}
+
+
+.card:hover .btn-outline-dark {
+    color: white;
+    background: #212529;
+}
+
+
+
+
+
+/* Side Banner */
+#sideBanner {
+    background-image: url();
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+/* Desktop Only */
+@media screen and (min-width: 768px) {
+    .margin-RightN200 {
+        margin-right: -200px;
+    }
+
+
+
+}
+
+
+/* Mobile */
+@media screen and (max-width: 550px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    p,
+    .banner p {
+        font-size: 1rem !important;
+    }
+
+    h6,
+    .banner h6 {
+        font-size: 1.1rem !important;
+        font-weight: 700;
+    }
+
+    h5,
+    .banner h5 {
+        font-size: 1.2rem !important;
+        font-weight: 400 !important;
+        font-family: 'Playfair Display', serif;
+    }
+
+    h4,
+    .banner h4 {
+        font-size: 1.44rem !important;
+        font-weight: 400 !important;
+    }
+
+    h3,
+    .banner h3 {
+        font-size: 1.728rem !important;
+    }
+
+    h2,
+    .banner h2 {
+        font-size: 2.074rem !important;
+        line-height: .9;
+        margin: 0;
+    }
+
+    h1,
+    .banner h1 {
+        font-size: 2.488rem !important;
+        margin: 0;
+    }
+
+    .HeroBanner {
+        min-height: 80vh;
+    }
+
+    .Image-Centered {
+        margin-top: -280px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .margin-Right-Negative {
+        margin-right: 0px;
+    }
+
+    .margin-Left100 {
+        margin-left: 100px;
+    }
+
+}

@@ -1,0 +1,183 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<head>
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+</head>
+
+<body>
+	<div class="wrapper container">
+		<form action="" id="wizard">
+			<!-- SECTION 1 -->
+			<h2></h2>
+			<section>
+				<div class="inner row">
+					<div class="col-lg-4 px-0 image-holder overflow-Hidden d-none d-lg-block">
+						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_SmilingGirl3.png" alt="">
+					</div>
+					<div class="col-lg-8 form-content">
+						<div class="form-header">
+							<h3>Registration</h3>
+						</div>
+						<p>Please fill in your details</p>
+						<div class="form-row">
+							<div class="form-holder">
+								<input type="text" placeholder="First Name" class="form-control">
+							</div>
+							<div class="form-holder">
+								<input type="text" placeholder="Last Name" class="form-control">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+								<input type="text" placeholder="Your Email" class="form-control">
+							</div>
+							<div class="form-holder">
+								<input type="text" placeholder="Phone Number" class="form-control">
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+								<input type="text" placeholder="Age" class="form-control">
+							</div>
+							<div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
+								<div class="checkbox-tick">
+									<label class="male">
+										<input type="radio" name="gender" value="male" checked> Male<br>
+										<span class="checkmark"></span>
+									</label>
+									<label class="female">
+										<input type="radio" name="gender" value="female"> Female<br>
+										<span class="checkmark"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="checkbox-circle p-0">
+							<label>
+								<input type="checkbox" checked> Already have an account? Sign in here.
+							</label>
+							-->
+						</div>
+					</div>
+			</section>
+
+			<!-- SECTION 2 -->
+			<h2></h2>
+			<section>
+				<div class="inner row">
+					<div class="col-lg-4 px-0 image-holder d-none d-lg-block">
+						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_GirlDrinkingCoffee.png" alt=""
+							style="height:100%;object-fit:cover;">
+					</div>
+					<div class="form-content" style="padding-bottom:100px;">
+						<div class="form-header">
+							<h3>Select A Plan</h3>
+						</div>
+						<p>Choose a plan.</p>
+						<!-- inner form -->
+						<div class="form-row">
+							<!-- inner column 1 -->
+							<div class="form-holder BG-Teal p-4 BR-25">
+								<h4 class="Color-Secondary fw-bold">Lite</h4>
+								<h5 class=""><span class="fw-bold" style="color:#231D4F ;">RM19.90</span> /month</h5>
+								<br>
+								<h6 style="color:#231D4F ;">Includes:</h6>
+								<ul class="list-Items">
+									<li>Digital Vault</li>
+									<li>Bonds, stocks, shares certificates</li>
+									<li>ASNB, KWSP, Tabung Haji</li>
+									<li>Insurance Policies</li>
+									<li>Titles to moto vehicles, land</li>
+									<li>Cash accounts</li>
+									<li>Art collections and other precious items</li>
+									<li>Other tenancies, contracts, or arrangements
+										in deceased name</li>
+								</ul>
+								</p>
+							</div>
+							<!-- inner column 2 -->
+							<div class="form-holder BG-Teal p-4 BR-25 mx-1">
+								<h4 class="Color-Secondary fw-bold">Plus</h4>
+								<h5 class=""><span class="fw-bold" style="color:#231D4F ;">RM29.90</span> /month</h5>
+								<br>
+								<h6 style="color:#231D4F ;">Includes:</h6>
+								<ul class="list-Items">
+									<li>Digital Vault</li>
+									<li>Bonds, stocks, shares certificates</li>
+									<li>ASNB, KWSP, Tabung Haji</li>
+									<li>Insurance Policies</li>
+									<li>Titles to moto vehicles, land</li>
+									<li>Cash accounts</li>
+								</ul>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- SECTION 3 -->
+			<h2></h2>
+			<section>
+				<div class="inner row">
+					<div class="col-lg-4 px-0 image-holder d-none d-lg-block">
+						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_Interview.png" alt="">
+					</div>
+					<div class="col-lg-8 form-content">
+						<div class="form-header">
+							<h3>Your Plan</h3>
+						</div>
+						<p>Choose billing cycle</p>
+						<div class="form-row">
+							<div class="form-holder BG-Teal BR-25 p-3">
+								<h4 class="Color-Secondary fw-bold">Lite</h4>
+								<p class="text-start m-0"><small>Change Plan</small></p>
+								</ul>
+
+							</div>
+							<div class="form-holder BG-Teal BR-25 p-3 text-end mx-1">
+								<h4 class="Color-Secondary fw-bold">RM19.90</h4>
+								<p class="text-end m-0"><small>Per Month</p>
+
+								<!-- Billing Cycle Toggle -->
+								<div class="mt-2 text-center">
+									<div class="form-check form-switch flex-row d-flex align-items-center">
+										<label>Monthly</label>
+										<input class="form-check-input ms-2" type="checkbox"
+											id="flexSwitchCheckDefault">
+										<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Yearly</label>
+
+									</div>
+								</div>
+							</div>
+
+
+
+						</div>
+
+					</div>
+				</div>
+			</section>
+		</form>
+	</div>
+
+	<!-- JQUERY -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery-3.3.1.min.js"></script>
+
+	<!-- JQUERY STEP -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery.steps.js"></script>
+	<script src="https://wahine.s3.amazonaws.com/static/js/main.js"></script>
+	<!-- Template created and distributed by Colorlib -->
+
+	<script>
+		function clickNext() {
+			var a = document.querySelectorAll('[role="tab"]');
+			a.className = "testCurrent";
+		}</script>
+</body>
+{% endblock %}

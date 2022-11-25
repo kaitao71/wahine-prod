@@ -1,6 +1,243 @@
-
 {% extends "backend/base.html" %}
+{% load static %}
+
 
 {% block content %}
-  <h1 class="text-3xl text-green-800">Django + Tailwind CSS</h1>
-{% endblock content %}
+
+<body>
+  <div class="HeroBanner">
+    <div class="cont">
+      <div class="row flex w-75 mx-auto">
+        <div class="col-lg-6 col-sm-12">
+          <hr class="d-none d-lg-block" style="height:130pt; visibility:hidden;" />
+          <hr class="d-lg-none" style="height:50pt; visibility:hidden;" />
+          <h1>Wahine</h1>
+          <h4>(Wa-hee-neh)</h4>
+          <br>
+          <a class="btn Btn-Primary" href="/joinnow" role="button">Begin For Free</a>
+
+        </div>
+
+        <div class="col-lg-6 col-sm-12">
+          <!-- hide on small -->
+          <hr class="d-none d-lg-block" style="height: 130pt; visibility:hidden;" />
+          <!-- hide on large -->
+          <hr class="d-lg-none" style="height: 10pt; visibility:hidden;" />
+
+          <p>“Being Single - divorces, widowed, or never married hurts women financially more than men.” - Stanford
+            Centre</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="Section3" style="">
+    <div class="row">
+      <div class="BG-Blue flex">
+        {% load static %}
+        <img class="Image-Centered img-fluid" src="https://wahine.s3.amazonaws.com/static/FlatBrowser.png" alt="">
+      </div>
+      <div class="row">
+        <div class=" col-12 Text-Center mt-5 mt-lg-5 w-75">
+          <h5>Creating a future where women have the access & capabilities to secure a sound financial future for
+            themselves.</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 container">
+      <div class="row">
+        <div class="Icon-BoxesInner col-4">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <img class="img-fluid" src="https://wahine.s3.amazonaws.com/static/Icon_Purpose1.png" alt="">
+            </div>
+            <div class="col-8 text-center">
+              <h5>Our Purpose</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="Icon-BoxesInner col-4">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <img class="img-fluid" src="https://wahine.s3.amazonaws.com/static/Icon_Idea1.png" alt="">
+            </div>
+            <div class="col-8 text-center">
+              <h5>Our Story</h5>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="Icon-BoxesInner col-4 ">
+          <div class="row align-items-center">
+            <div class="col-4">
+              <img class="img-fluid" src="https://wahine.s3.amazonaws.com/static/Icon_Founder1.png" alt="">
+            </div>
+
+            <div class="col-8 text-center">
+              <h5>Our Founders</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+  <!-- Our Purpose -->
+  <div class="Section4 container mt-5 py-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <h4 class="mb-5">Our Purpose</h4>
+        <p>Wahine Capital envisions a future where women have access to acquire the confidence, capability and knowledge
+          to secure a sound financial future for themselves and their community. Women are now a Major Driving Force in
+          the
+          Economy But whilst women’s consumerism has increased, our participation and ownership in the economy is not on
+          par with men. </p><br>
+        <p>The labour workforce presents a multitude of challenges for women - unequal opportunities, the gender pay
+          gap,
+          tendency towards the informal labour sector, safety at the workplace and many more.</p>
+      </div>
+      <div class="SectionImage col-lg-4" style="">
+        <img class="" src="https://wahine.s3.amazonaws.com/static/Img_Brainstorm.png" alt="" style="max-height:400px; margin-left: 100px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- How Wahines Was Born -->
+  <div class="Section4 container mt-5">
+    <div class="row">
+      <div class="SectionImage col-lg-4" style="">
+        <img class="" src="https://wahine.s3.amazonaws.com/static/Img_TeamWork.png" alt="" style="max-height:400px;">
+      </div>
+      <div class="col-lg-8">
+        <h4 class="mb-5">How Wahine Was Born</h4>
+        <p>We are three friends, three women, combining our knowledge and experience in capital markets and NGO work to
+          bring about a better future for women and our community. We have come together to make women’s journey through
+          life, more secure one step at a time. </p><br>
+        <p>Wahine Capital was set up during the COVID lockdown with the vision to empower women by securing our
+          relationship with finance through knowledge and collaborative platforms. We hope to contribute to a future
+          where
+          women have easy access to acquire the confidence, capability and knowledge to secure a sound financial future
+          for themselves and the society. </p>
+      </div>
+
+    </div>
+  </div>
+
+  <br><br>
+
+  <!-- Founders Profile -->
+  <div class="Section6">
+    <div class="Text-Center Width-50P">
+      <h4>Founders Profiles</h4>
+      <p style="margin-top: 15px;">With over 25 years of experience, we are a team of passionalte finance professionals.
+      </p>
+    </div>
+  </div>
+
+  <!-- Founders Profile -->
+  <div class="Section7">
+    <div class="Founders-Images container">
+      <div class="row">
+
+        <div class="col">
+          <img src="https://wahine.s3.amazonaws.com/static/Img_Founder1.png" alt="">
+          <p>Regina Rahim</p>
+          <p>CEO</p>
+        </div>
+        <hr class="d-lg-none" style="height:150px; visibility:hidden;" />
+        <div class="col">
+          <img src="https://wahine.s3.amazonaws.com/static/Img_Founder1.png" alt="">
+          <p>Jasmine Ng</p>
+          <p>CEO</p>
+        </div>
+        <hr class="d-lg-none" style="height:150px; visibility:hidden;" />
+        <div class="col">
+          <img src="https://wahine.s3.amazonaws.com/static/Img_Founder1.png" alt="">
+          <p>Sherry</p>
+          <p>CEO</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="Section8">
+    <div class="Text-Center Width-50P">
+      <h4>Our Partners</h4>
+    </div>
+    <div class="Partners-Logos" style="margin-top:20px;margin-bottom: 80px;">
+      <img src="https://wahine.s3.amazonaws.com/static/Logo_Partner1.png" alt="">
+      <img src="https://wahine.s3.amazonaws.com/static/Logo_Partner1.png" alt="">
+      <img src="https://wahine.s3.amazonaws.com/static/Logo_Partner1.png" alt="">
+      <img src="https://wahine.s3.amazonaws.com/static/Logo_Partner1.png" alt="">
+      <img src="https://wahine.s3.amazonaws.com/static/Logo_Partner1.png" alt="">
+    </div>
+    <div class="Text-Center Width-50P">
+      <h4>Testimonials</h4>
+      <p style="margin-top:100px; margin-bottom: 50px ;">" The best decision that I ever made. I'd be lost without
+        Wahine when my husband past
+        away. The service was excellent. I have no regrets! "</p>
+      <div class="Testimonial">
+        <img src="https://wahine.s3.amazonaws.com/static/Img_Client1.png" alt="" style="max-width: 50px; max-height:50px;">
+        <div style="margin-left:20px;">
+          <p style="margin-bottom:0px ;">Tifanny Wong</p>
+          <p>45 Years Old</p>
+        </div>
+      </div>
+      <button class="Btn-Secondary">All Testimonial</button>
+    </div>
+
+
+  </div>
+
+  <!-- Pricing -->
+  <!-- Section 9 -->
+  <div class="container-fluid Section9 pt-5 pb-5" style="padding:0px 50px;">
+    <div class="row">
+      <div class="col-lg-7 offset-lg-1">
+        <h4 class="pb-3">Pricing</h4>
+        <p>W is a personalised digital depository to assist you in managing
+          and tracking your assets, simplifying the distribution process upon
+          the asset holder's demise.</p>
+      </div>
+      <hr class="d-lg-none" style="height:30px; visibility:hidden;" />
+      <div class="col-lg-4">
+        <p>30-Day Free Trial</p>
+        <h2 style="color:#F3CD03">RM 19.90</h2>
+        <p>per month per user</p>
+        <p>Cancel or change your plan anytime</p>
+        <a class="btn Btn-Primary" href="/joinnow" role="button">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 10 -->
+  <div class="container-fluid 
+   pt-5 pb-5" style="padding:0px 50px;">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-1">
+        <h5>We focus on Women for Women</h5>
+      </div>
+      <div class="col-lg-5">
+        <p>With Waris, you can minimise the stress of dealing with lawyers by having the necessary information
+          kept
+          securely and only released upon your choice of trigger events such as dementia, full body disability
+          or death.
+          Empower yourself today! </p>
+        <a class="btn Btn-Primary" href="/joinnow" role="button">Get Started</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+
+{% endblock %}

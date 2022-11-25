@@ -8,9 +8,17 @@ from django.contrib import messages
 ## IF data exist, show existing data/edit mode
 ## If fields can have multiple entry (eg policy), show no of policies
 
+def index(request):
+    return render(request,'backend/index.html')
+
+def joinnow(request):
+    return render(request,'backend/joinnow.html')
+
+def signup(request):
+    return render(request,'backend/signup.html')
 
 def bank_account_form(request):
-    form = BankAccountForm2()
+    form = BankAccountForm()
     if request.POST:
         form = BankAccountForm(request.POST)
         if form.is_valid():
@@ -51,6 +59,7 @@ def epf_socso_form(request):
                     'socso_nominee_name':socso_nominee_name,
                 }  ,
                 item_type='Assets',
+                item_name='EPF/SOCSO',
                 created_by=request.user
                 )
             messages.add_message(request, messages.INFO, 'EPF/Socso Done.')

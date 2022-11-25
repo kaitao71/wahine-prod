@@ -14,6 +14,9 @@ admin.autodiscover()
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
+	path("",index,name="index"),
+	path("joinnow",joinnow,name="joinnow"),
+	path("signup",signup,name="signup"),
 	path("bank/",bank_account_form,name="bank_account_form"),
 	path("epf/",epf_socso_form,name="epf_socso_form"),
 	path("insurance/",insurance_form,name="insurance_form"),
