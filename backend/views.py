@@ -22,7 +22,6 @@ def signup(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
-            login(request, user)
             return redirect('bank_account_form')
         else:
             print(form.errors)
@@ -156,9 +155,9 @@ def vehicles_form(request):
     if request.POST:
         form = VehicleForm(request.POST)
         if form.is_valid():
-            insurance_type = form.cleaned_data['insurance_type']
-            policy_no = form.cleaned_data['policy_no']
-            nominee_name = form.cleaned_data['nominee_name']
+            vehicle_type = form.cleaned_data['insurance_type']
+            make_model = form.cleaned_data['policy_no']
+            registration_no = form.cleaned_data['nominee_name']
             item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name},item_type='Assets',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
             return redirect('bank_account_form')
