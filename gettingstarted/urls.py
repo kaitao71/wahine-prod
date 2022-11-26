@@ -29,10 +29,4 @@ urlpatterns = [
 	path("assets/vehicles/",vehicles_form,name="vehicles_form"),
 	path("assets/others/",asset_others_form,name="asset_others_form"),
  	path("admin/", admin.site.urls),
-]
-
-
-
-urlpatterns = [
-    # ... the rest of your URLconf goes here ...
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
