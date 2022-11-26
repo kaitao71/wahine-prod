@@ -4,7 +4,8 @@ from django.contrib import admin
 from backend.views import *
 admin.autodiscover()
 
-
+from django.conf import settings
+from django.conf.urls.static import static
 # To add a new path, first import the app:
 # import blog
 #
@@ -29,3 +30,9 @@ urlpatterns = [
 	path("assets/others/",asset_others_form,name="asset_others_form"),
  	path("admin/", admin.site.urls),
 ]
+
+
+
+urlpatterns = [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

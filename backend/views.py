@@ -23,7 +23,7 @@ def signup(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('dashboard')
+            return redirect('bank_account_form')
         else:
             print(form.errors)
             print(form.cleaned_data)
