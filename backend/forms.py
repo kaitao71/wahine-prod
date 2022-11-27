@@ -127,3 +127,10 @@ class VehicleForm(forms.Form):
     residential_type = forms.CharField(required = False)
     address = forms.CharField(required = False)
     spa_price = forms.CharField(required = False)
+
+
+class AssetOthersForm(forms.Form):
+    vehicle_type = forms.CharField()
+    residential_type = forms.CharField(required = False)
+    address = forms.CharField(required = False)
+    spa_price = forms.CharField(required = False)

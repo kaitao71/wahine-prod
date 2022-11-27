@@ -1,192 +1,43 @@
-{% extends "backend/base.html" %}
-{% load static %}
+	{% extends "backend/base.html" %}
+	{% load static %}
 
+{% block extrahead %}
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+		<!-- Steps CSS and JS -->
+		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
 
-{% block content %}
-
-<head>
-	<!-- STYLE CSS -->
-	<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-	<!-- Steps CSS and JS -->
-	<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
-</head>
-
-<body>
-	<div class="wrapper BG-Blue pb-5">
-<form method="post" class="Assets">
-				<!-- SECTION 1 -->
-				<h2></h2>
-				{% csrf_token %}
-			<section>
-				<div class="inner col-12 col-lg-10 m-auto">
-					<!-- Column 1 -->
-					<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-						<div class="form-header">
-							<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-							<h2 class="mb-1 Color-Secondary">Assets</h2>
-							<p>Please fill the form below to record your personal assets information. Feel free to add
-								as much detail as needed. </p>
-						</div>
+	{% block content %}
+	<!-- Start Wrapper -->
+		<div class="wrapper BG-Blue pb-5">
+			<!-- Start Container -->
+					<div class="inner col-12 col-lg-10 m-auto">
+						<!-- Column 1 -->
+						<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+							<div class="form-header">
+								<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+								<h2 class="mb-1 Color-Secondary">Assets</h2>
+								<p>Please fill the form below to record your personal assets information. Feel free to add
+									as much detail as needed. </p>
+							</div>
 
 
 
-						<!-- Left Column Inner Column -->
-						<div class="inner pb-5">
-
-							<div class="form-content w-100 pb-3">
-								<!-- Flow Steps -->
-								<div class="d-none d-lg-block">
-									<!-- Form Steps / Progress Bar -->
-									<ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
-										<!-- Step 1 -->
-										<li class="form-stepper-active text-center form-stepper-list" step="1">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>1</span>
-												</span>
-												<div class="label">Bank Details</div>
-											</a>
-										</li>
-										<!-- Step 2 -->
-										<li class="form-stepper-active text-center form-stepper-list" step="2">
-											<a class="mx-2" href="assets-2-epf">
-												<span class="form-stepper-circle text-muted">
-													<span>2</span>
-												</span>
-												<div class="label text-muted">EPF/SOCSO</div>
-											</a>
-										</li>
-										<!-- Step 3 -->
-										<li class="form-stepper-active text-center form-stepper-list" step="3">
-											<a class="mx-2" href="assets-3-insurance">
-												<span class="form-stepper-circle text-muted">
-													<span>3</span>
-												</span>
-												<div class="label text-muted">Insurance</div>
-											</a>
-										</li>
-										<!-- Step 4 -->
-										<li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-											<a class="mx-2" href="assets-4-investment">
-												<span class="form-stepper-circle text-muted">
-													<span>4</span>
-												</span>
-												<div class="label text-muted">Investment</div>
-											</a>
-										</li>
-										<!-- Step 5 -->
-										<li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-											<a class="mx-2" href="assets-5-property">
-												<span class="form-stepper-circle text-muted">
-													<span>5</span>
-												</span>
-												<div class="label text-muted">Property</div>
-											</a>
-										</li>
-										<!-- Step 6 -->
-										<li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-											<a class="mx-2" href="assets-6-vehicles">
-												<span class="form-stepper-circle text-muted">
-													<span>6</span>
-												</span>
-												<div class="label text-muted">Vehicles</div>
-											</a>
-										</li>
-										<!-- Step 7 -->
-										<li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-											<a class="mx-2" href="assets-7-others">
-												<span class="form-stepper-circle text-muted">
-													<span>7</span>
-												</span>
-												<div class="label text-muted">Others</div>
-											</a>
-										</li>
-									</ul>
-								</div>
-
-								<!-- Flickity Steps Mobile -->
-								<div class="carousel Flickity d-lg-none mb-5"
-									data-flickity='{ "cellAlign": "left", "freeScroll": true,"initialIndex": ".is-initial-select", "contain": true, "prevNextButtons": false, "pageDots": false }'>
-									<div class="carousel-cell is-initial-select">
-										<div class="form-stepper-active form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>1</span>
-												</span>
-												<div class="label">Bank Details</div>
-											</a>
-										</div>
-									</div>
-
-									<div class="carousel-cell">
-										<div class="form-stepper-active form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>2</span>
-												</span>
-												<div class="label">EPF/SOCSO</div>
-											</a>
-										</div>
-									</div>
-									<div class="carousel-cell">
-										<div class="form-stepper-active	 form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>3</span>
-												</span>
-												<div class="label">Insurance</div>
-											</a>
-										</div>
-									</div>
-									<div class="carousel-cell">
-										<div class="form-stepper-unfinished form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>4</span>
-												</span>
-												<div class="label">Investment</div>
-											</a>
-										</div>
-									</div>
-									<div class="carousel-cell">
-										<div class="form-stepper-unfinished form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>5</span>
-												</span>
-												<div class="label">Property</div>
-											</a>
-										</div>
-									</div>
-									<div class="carousel-cell">
-										<div class="form-stepper-unfinished form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>6</span>
-												</span>
-												<div class="label">Vehicles</div>
-											</a>
-										</div>
-									</div>
-									<div class="carousel-cell">
-										<div class="form-stepper-unfinished form-stepper-list">
-											<a class="mx-2" href="assets">
-												<span class="form-stepper-circle">
-													<span>7</span>
-												</span>
-												<div class="label">Others</div>
-											</a>
-										</div>
-									</div>
-								</div>
-
-								<!-- Insurance -->
-								<DIV class="mb-5">
+							<!-- Left Column Inner Column -->
+							<div class="inner pb-5">
+								<!-- Form Div -->
+								<div class="form-content w-100 pb-3">
+								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
+								<!-- Form -->
+								<form method="post" class="Assets">
+									{% csrf_token %}
+									<!-- Start Insurance Div-->
+									<div class="mb-5">
 									<h4 class="text-black">Insurance Details</h4>
 									<p class="text-start">Fill in your insurance information.</p><br>
-									<!-- Information -->
-									<!-- Applicable Insurance #1 -->
-									<div>
+										<!-- Start Information -->
+										<div>
 										<h5>Applicable Insurance #1</h5><BR>
 										<div class="form-row Btn-Radio">
 											<div class="col-6 col-lg-6">
@@ -231,18 +82,6 @@
 													<h6>General</h6>
 												</label>
 											</div>
-											<div class="mx-2  col-6 col-lg-6">
-												<input type="radio" id="control_05" name="insurance1" value="Others">
-												<label for="control_05">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-gear-wide-connected"
-														viewBox="0 0 16 16">
-														<path
-															d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.984 4.984 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z" />
-													</svg>
-													<h6>Others</h6>
-												</label>
-											</div>
 										</div><br>
 										<br>
 
@@ -268,6 +107,12 @@
 
 										</div>
 									</div>
+										<!-- End Information -->
+									</div>
+									<!-- End Insurance Div-->
+
+									<!-- Second Insurance Div -->
+									<div class="mb-5">									
 									<!-- Billing Cycle Toggle -->
 									<div class="mt-4 pt-5 text-center">
 										<div class="form-check form-switch flex-row d-flex align-items-center">
@@ -278,185 +123,27 @@
 
 										</div>
 									</div>
-
-									<br><br>
-
-									<!-- Applicable Insurance #2 -->
-									<!-- <div>
-										<h5>Applicable Insurance #2</h5><BR>
-										<div class="form-row Btn-Radio">
-											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_01" name="insurance1" value="1" checked>
-												<label for="control_01">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-arrow-through-heart"
-														viewBox="0 0 16 16">
-														<path fill-rule="evenodd"
-															d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
-													</svg>
-													<h6>Life</h6>
-												</label>
-											</div>
-											<div class="mx-2 col-6 col-lg-6">
-												<input type="radio" id="control_03" name="insurance1" value="3">
-												<label for="control_03">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-prescription2"
-														viewBox="0 0 16 16">
-														<path d="M7 6h2v2h2v2H9v2H7v-2H5V8h2V6Z" />
-														<path fill-rule="evenodd"
-															d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v10.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 14.5V4a1 1 0 0 1-1-1V1Zm2 3h8v10.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5V4ZM3 3V1h10v2H3Z" />
-													</svg>
-													<h6>Medical</h6>
-												</label>
-											</div>
-										</div>
-										<div class="form-row Btn-Radio">
-											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_02" name="insurance1" value="2">
-												<label for="control_02">
-
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-house-heart"
-														viewBox="0 0 16 16">
-														<path
-															d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
-														<path
-															d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-													</svg>
-													<h6>General</h6>
-												</label>
-											</div>
-											<div class="mx-2  col-6 col-lg-6">
-												<input type="radio" id="control_05" name="insurance1" value="5">
-												<label for="control_05">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-gear-wide-connected"
-														viewBox="0 0 16 16">
-														<path
-															d="M7.068.727c.243-.97 1.62-.97 1.864 0l.071.286a.96.96 0 0 0 1.622.434l.205-.211c.695-.719 1.888-.03 1.613.931l-.08.284a.96.96 0 0 0 1.187 1.187l.283-.081c.96-.275 1.65.918.931 1.613l-.211.205a.96.96 0 0 0 .434 1.622l.286.071c.97.243.97 1.62 0 1.864l-.286.071a.96.96 0 0 0-.434 1.622l.211.205c.719.695.03 1.888-.931 1.613l-.284-.08a.96.96 0 0 0-1.187 1.187l.081.283c.275.96-.918 1.65-1.613.931l-.205-.211a.96.96 0 0 0-1.622.434l-.071.286c-.243.97-1.62.97-1.864 0l-.071-.286a.96.96 0 0 0-1.622-.434l-.205.211c-.695.719-1.888.03-1.613-.931l.08-.284a.96.96 0 0 0-1.186-1.187l-.284.081c-.96.275-1.65-.918-.931-1.613l.211-.205a.96.96 0 0 0-.434-1.622l-.286-.071c-.97-.243-.97-1.62 0-1.864l.286-.071a.96.96 0 0 0 .434-1.622l-.211-.205c-.719-.695-.03-1.888.931-1.613l.284.08a.96.96 0 0 0 1.187-1.186l-.081-.284c-.275-.96.918-1.65 1.613-.931l.205.211a.96.96 0 0 0 1.622-.434l.071-.286zM12.973 8.5H8.25l-2.834 3.779A4.998 4.998 0 0 0 12.973 8.5zm0-1a4.998 4.998 0 0 0-7.557-3.779l2.834 3.78h4.723zM5.048 3.967c-.03.021-.058.043-.087.065l.087-.065zm-.431.355A4.984 4.984 0 0 0 3.002 8c0 1.455.622 2.765 1.615 3.678L7.375 8 4.617 4.322zm.344 7.646.087.065-.087-.065z" />
-													</svg>
-													<h6>Others</h6>
-												</label>
-											</div>
-										</div><br>
-										<br>
-
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
-												<h5>Policy Number</h5><br>
-												<input type="text" name="PolicyNumber" id="" placeholder="A123456XX"
-													class="px-4">
-											</div>
-											<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
-												<h5>Nominee Details</h5><br>
-												<input type="text" name="NomineeDetails" id="" placeholder="Name"
-													class="px-4">
-											</div>
-										</div><br><br><br>
-										<div class="form-row Btn-Radio">
-
-											<div class="mx-1 col-lg-6 col-12">
-												<h5>Sum Insured</h5><br>
-												<input type="text" name="SumInsured" id="" placeholder="RM1,000,000"
-													class="px-4">
-											</div>
-
-										</div>
-									</div> -->
-									<!-- Billing Cycle Toggle -->
-									<!-- <div class="mt-4 pt-5 text-center">
-										<div class="form-check form-switch flex-row d-flex align-items-center">
-											<input class="form-check-input" type="checkbox" checked
-												id="flexSwitchCheckDefault">
-											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-												Insurance</label>
-
-										</div>
-									</div> -->
-
-									<br><br>
-
-								</DIV>
-
-
-
-
-								<!-- Button -->
-								<div class="mt-5">
-								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
 								</div>
-							</div>
+								<!-- End Second Insurance Div -->
 
+									<!-- Button -->
+									<div class="mt-5">
+										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
+										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
+									</div>
+								</form>
+								<!-- End Form -->
+								</div>
+								<!-- End Form Div-->
+							</div>
+							<!-- End Left Column Inner Column -->
 						</div>
-
-					</div>
-
-					<!-- Column 2 -->
-					<div class="BG-Gray col-lg-3 mx-0 container d-none d-lg-block" style="padding:65px 51px 65px 51px;">
-						<div class="row align-items-center">
-							<div class="col-3"><svg xmlns="http://www.w3.org/2000/svg" width="45" height="45"
-									fill="currentColor" class="bi bi-chat-heart" viewBox="0 0 16 16">
-									<path fill-rule="evenodd"
-										d="M2.965 12.695a1 1 0 0 0-.287-.801C1.618 10.83 1 9.468 1 8c0-3.192 3.004-6 7-6s7 2.808 7 6c0 3.193-3.004 6-7 6a8.06 8.06 0 0 1-2.088-.272 1 1 0 0 0-.711.074c-.387.196-1.24.57-2.634.893a10.97 10.97 0 0 0 .398-2Zm-.8 3.108.02-.004c1.83-.363 2.948-.842 3.468-1.105A9.06 9.06 0 0 0 8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6a10.437 10.437 0 0 1-.524 2.318l-.003.011a10.722 10.722 0 0 1-.244.637c-.079.186.074.394.273.362a21.673 21.673 0 0 0 .693-.125ZM8 5.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
-								</svg>
-							</div>
-							<div class="col-9 ps-4">
-								<h5 class="fw-bold text-black">Welcome, Regina</h5>
-							</div>
-							<br><br><br><br><br>
-							<div class="col-12 text-center mb-4 "><img
-									src="https://wahine.s3.amazonaws.com/static/Images/Icon_DashedCurve(Left).png" alt=""></div>
-							<div class="col-3 Color-Primary"><svg xmlns="http://www.w3.org/2000/svg" width="45"
-									height="45" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
-									<path
-										d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z" />
-								</svg>
-								</svg>
-							</div>
-							<div class="col-9 Color-Primary ps-4">
-								<h5 class="fw-bold">Assets</h5>
-								<small class="font-Merri"> Enter all your assets here to record.
-								</small>
-							</div><br><br><br><br><br>
-							<div class="col-12 text-center mb-4"><img
-									src="https://wahine.s3.amazonaws.com/static/Images/Icon_DashedCurve(Right).png" alt=""></div>
-							<div class="col-3 Color-LightGray"><svg xmlns="http://www.w3.org/2000/svg" width="45"
-									height="45" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
-									<path
-										d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
-									<path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
-								</svg>
-
-							</div>
-							<div class="col-9 ps-4">
-								<h5 class="fw-bold text-black">Liabilities</h5>
-
-							</div><br><br><br><br><br>
-							<div class="col-12 text-center mb-4"><img
-									src="https://wahine.s3.amazonaws.com/static/Images/Icon_DashedCurve(Left).png" alt=""></div>
-							<div class="col-3 Color-LightGray"><svg xmlns="http://www.w3.org/2000/svg" width="45"
-									height="45" fill="currentColor" class="bi bi-joystick" viewBox="0 0 16 16">
-									<path
-										d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2z" />
-									<path
-										d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23z" />
-								</svg>
-							</div>
-							<div class="col-9 ps-4">
-								<h5 class="fw-bold text-black">Trigger Events</h5>
-
-							</div><br><br><br><br><br>
-						</div>
-					</div>
-			</section>
-
-
-
-		</form>
-	</div>
-	<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-
-</body>
-{% endblock %}
+						<!-- End Column 1 -->
+						<!-- Start Column 2 -->
+						{% include 'backend/onboarding-assets-sidebar.html' %}
+		</div>
+		<!-- End Container -->
+		</div>
+		<!-- End Wrapper -->
+		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+	{% endblock %}

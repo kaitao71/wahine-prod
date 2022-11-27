@@ -102,6 +102,10 @@ def epf_socso_form(request):
                 )
             messages.add_message(request, messages.INFO, 'EPF/Socso Done.')
             return redirect('insurance_form')
+        else:
+            print(form.errors)
+            context = {'form':form}
+            return render(request,'backend/assets-2-epf.html',context)
     context = {'form':form}
     return render(request,'backend/assets-2-epf.html',context)
 
