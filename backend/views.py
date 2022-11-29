@@ -70,6 +70,9 @@ def bank_account_form(request):
                 )
             messages.add_message(request, messages.INFO, 'Model Form Done.')
             return redirect('epf_socso_form')
+        else:
+            context = {'form':form}
+            return render(request,'backend/assets.html',context)
     context = {'form':form}
     return render(request,'backend/assets.html',context)
 
@@ -173,10 +176,9 @@ def asset_others_form(request):
     if request.POST:
         form = AssetOthersForm(request.POST)
         if form.is_valid():
-            insurance_type = form.cleaned_data['insurance_type']
-            policy_no = form.cleaned_data['policy_no']
-            nominee_name = form.cleaned_data['nominee_name']
-            item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name},item_type='Assets',created_by=request.user)
+            asset_name = form.cleaned_data['asset_name']
+            asset_value = form.cleaned_data['asset_value']
+            item = Item.objects.create(user=request.user,data={'asset_name':asset_name,'asset_value':asset_value},item_type='Assets',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
             return redirect('bank_account_form')
     context = {'form':form}

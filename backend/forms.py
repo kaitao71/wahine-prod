@@ -45,16 +45,16 @@ BANK_TYPE_CHOICES = [
     ('Fixed Deposit','Fixed Deposit'),
 ]
 
-BANK_NAME_CHOICES = [
-    ('Affin Bank','Affin Bank'),
-    ('Alliance Bank','Alliance Bank'),
-    ('AmBank','AmBank'),
-    ('CIMB','CIMB'),
-    ('Hong Leong Bank','Hong Leong Bank'),
-    ('Maybank','Maybank'),
-    ('Public Bank','Public Bank'),
-    ('RHB Bank','RHB Bank'),
-]
+# BANK_NAME_CHOICES = [
+#     ('Affin Bank','Affin Bank'),
+#     ('Alliance Bank','Alliance Bank'),
+#     ('AmBank','AmBank'),
+#     ('CIMB','CIMB'),
+#     ('Hong Leong Bank','Hong Leong Bank'),
+#     ('Maybank','Maybank'),
+#     ('Public Bank','Public Bank'),
+#     ('RHB Bank','RHB Bank'),
+# ]
 
 INSURANCE_CHOICES = [
 ('Life','Life'),
@@ -79,58 +79,45 @@ BOOLEAN_CHOICES = [
 
 #vehicle - loan tenure instead of coverage
 class BankAccountForm(forms.Form):
-    account_type = forms.ChoiceField(choices = BANK_TYPE_CHOICES,widget=forms.RadioSelect())
-    bank_name = forms.ChoiceField(choices = BANK_NAME_CHOICES)
+    account_type = forms.CharField()
+    bank_name = forms.CharField()
     account_no = forms.CharField(required = False)
     account_value = forms.CharField(required = False)
 
 class EpfSocsoForm(forms.Form):
-    is_epf_member = forms.ChoiceField(choices = BOOLEAN_CHOICES,widget=forms.RadioSelect())
-    is_socso_member = forms.ChoiceField(choices = BOOLEAN_CHOICES,widget=forms.RadioSelect())
-    epf_member_no = forms.CharField(required = True)
+    is_epf_member = forms.CharField()
+    is_socso_member = forms.CharField()
+    epf_member_no = forms.CharField(required = False)
     socso_member_no = forms.CharField(required = False)
     epf_nominee_name = forms.CharField(required = False)
     socso_nominee_name = forms.CharField(required = False)
     epf_account_value = forms.CharField(required = False)
     socso_account_value = forms.CharField(required = False)
 
-class EpfForm(forms.Form):
-    is_member = forms.ChoiceField(choices = BOOLEAN_CHOICES,widget=forms.RadioSelect())
-    member_no = forms.CharField(required = False)
-    nominee_name = forms.CharField(required = False)
-
-class SocsoForm(forms.Form):
-    is_member = forms.ChoiceField(choices = BOOLEAN_CHOICES,widget=forms.RadioSelect())
-    member_no = forms.CharField(required = False)
-    nominee_name = forms.CharField(required = False)
-
 class InsuranceForm(forms.Form):
-    insurance_type = forms.ChoiceField(choices = INSURANCE_CHOICES,widget=forms.RadioSelect())
+    insurance_type = forms.CharField(required = False)
     policy_no = forms.CharField(required = False)
     nominee_name = forms.CharField(required = False)
     account_value = forms.CharField(required = False)
 
 class InvestmentForm(forms.Form):
-    investment_type = forms.CharField()
+    investment_type = forms.CharField(required = False)
     account_no = forms.CharField(required = False)
     fund_name = forms.CharField(required = False)
     account_value = forms.CharField(required = False)
 
 class PropertyForm(forms.Form):
-    property_type = forms.CharField()
+    property_type = forms.CharField(required = False)
     residential_type = forms.CharField(required = False)
     address = forms.CharField(required = False)
     spa_price = forms.CharField(required = False)
 
 class VehicleForm(forms.Form):
-    vehicle_type = forms.CharField()
+    vehicle_type = forms.CharField(required = False)
     residential_type = forms.CharField(required = False)
     address = forms.CharField(required = False)
     spa_price = forms.CharField(required = False)
-
 
 class AssetOthersForm(forms.Form):
-    vehicle_type = forms.CharField()
-    residential_type = forms.CharField(required = False)
-    address = forms.CharField(required = False)
-    spa_price = forms.CharField(required = False)
+    asset_name = forms.CharField(required = False)
+    asset_value = forms.CharField(required = False)

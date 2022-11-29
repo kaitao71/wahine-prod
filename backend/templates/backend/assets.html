@@ -30,7 +30,7 @@
 								<div class="form-content w-100 pb-3">
 								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
 								<!-- Form -->
-								<form method="post" class="Assets">
+								<form method="post" class="Assets needs-validation" novalidate>
 									{% csrf_token %}
 									<!-- Start EPF Div-->
 									<div class="" style="">
@@ -95,6 +95,7 @@
 										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="col-sm-6 col-12 mb-lg-0 mb-5">
 												<h5>Bank Name</h5><br>
+							
 												<select name="bank_name" id="bank_name" class="px-4">
 													<option value="SelectABank">Select A Bank</option>
 													<option value="Maybank">Maybank</option>
@@ -102,18 +103,22 @@
 													<option value="RHB">RHB</option>
 													<option value="UOB">UOB</option>
 												</select>
+			{% if form.errors %}
+        <div class="px-4" style="color:red">{{ form.bank_name.errors }}</div>
+{% endif %}
 											</div>
 											<div class="col-sm-6 col-12 mx-1 mt-lg-0 mt-5">
 												<h5>Account Number</h5><br>
 												<input type="text" name="account_no" id="" placeholder="12345XXX"
 													class="px-4">
+
 											</div>
 
 										</div>
 										<br><br><br>
 										<div class="form-row Btn-Radio">
 
-											<div class="mx-1 col-12 col-lg-6">
+											<div class="mx-1 col-12 col-lg-6 mt-5">
 												<h5>Account Value</h5><br>
 												<input type="text" name="account_value" id="" placeholder="RM1,000,000"
 													class="px-4">
@@ -126,65 +131,6 @@
 									<!-- End EPF Div-->
 
 
-									<!-- SOCSO -->
-									<div class="" style="margin-top: 7rem;">
-										<h4 class="text-black">SOCSO</h4>
-										<p class="text-start">Fill in your SOCSO information.</p><br>
-										<!-- Start Information -->
-										<div>
-											<h5>Are You A SOCSO Member?</h5><BR>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio">
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6">
-													<input type="radio" id="control_03" name="is_socso_member" value="Yes" checked>
-													<label for="control_03">
-														<h6>Yes</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-												<!-- Start Input -->
-												<div class="mx-1 col-lg-6 col-6">
-													<input type="radio" id="control_04" name="is_socso_member" value="No">
-													<label for="control_04">
-														<h6>No</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-											</div>
-											<!-- End Form Row -->
-											<br>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-												<div class="col-12 col-lg-6 mb-5 mb-lg-0">
-													<h5>Membership Number</h5><br>
-													<input type="text" name="socso_member_no" id=""
-														placeholder="950112-XX-XXXX" class="px-4">
-												</div>
-												<div class=" col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
-													<h5>Nominee Details</h5><br>
-													<input type="text" name="socso_nominee_name" id="" placeholder="Name"
-														class="px-4">
-												</div>
-											</div>
-											<!-- End Form Row -->
-											<br><br><br>
-
-											<!-- Start Form Row -->
-											<div class="form-row row Btn-Radio">
-
-												<div class="mx-1 col-lg-6 col-12">
-													<h5>Account Value</h5><br>
-													<input type="text" name="socso_account_value" id="" placeholder="RM1,000,000"
-														class="px-4">
-												</div>
-
-											</div>
-											<!-- End Form Row -->
-										</div>
-										<!-- End Information -->
-									</div>
-									<!-- End SOSCO Div-->
 
 									<!-- Button -->
 									<div class="mt-5">
