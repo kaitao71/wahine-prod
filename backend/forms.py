@@ -121,3 +121,37 @@ class VehicleForm(forms.Form):
 class AssetOthersForm(forms.Form):
     asset_name = forms.CharField(required = False)
     asset_value = forms.CharField(required = False)
+
+class CreditCardForm(forms.Form):
+    bnpl_service = forms.CharField(required = False)
+    bank_name = forms.CharField(required = False)
+    account_no = forms.CharField(required = False)
+    amount_outstanding = forms.CharField(required = False)
+
+class PersonalLoanForm(forms.Form):
+    bank_name = forms.CharField(required = False)
+    account_no = forms.CharField(required = False)
+    loan_amount = forms.CharField(required = False)
+    loan_tenure = forms.CharField(required = False)
+    loan_interest = forms.CharField(required = False)
+
+class PropertyLoanForm(forms.Form):
+    bank_name = forms.CharField(required = False)
+    account_no = forms.CharField(required = False)
+    loan_amount = forms.CharField(required = False)
+    loan_tenure = forms.CharField(required = False)
+    loan_interest = forms.CharField(required = False)
+
+class VehicleLoanForm(forms.Form):
+    bank_name = forms.CharField(required = False)
+    account_no = forms.CharField(required = False)
+    loan_amount = forms.CharField(required = False)
+    loan_tenure = forms.CharField(required = False)
+    loan_interest = forms.CharField(required = False)
+
+class LiabilitiesOthersForm(forms.Form):
+    bank_name = forms.CharField(required = False)
+    account_no = forms.CharField(required = False)
+    loan_amount = forms.CharField(required = False)
+    loan_tenure = forms.CharField(required = False)
+    loan_interest = forms.CharField(required = False)

@@ -2,6 +2,7 @@ from django.urls import path, include
 
 from django.contrib import admin
 from backend.views import *
+
 admin.autodiscover()
 
 from django.conf import settings
@@ -21,6 +22,9 @@ urlpatterns = [
 	path("signup/",signup,name="signup"),
 	path("plan/",selectplan,name="plan"),
 	path("dashboard/",dashboard,name="dashboard"),
+	
+	## Onboarding Assets 
+	
 	path("assets/bank",bank_account_form,name="bank_account_form"),
 	path("assets/epf",epf_socso_form,name="epf_socso_form"),
 	path("assets/insurance/",insurance_form,name="insurance_form"),
@@ -28,5 +32,15 @@ urlpatterns = [
 	path("assets/property/",property_form,name="property_form"),
 	path("assets/vehicles/",vehicles_form,name="vehicles_form"),
 	path("assets/others/",asset_others_form,name="asset_others_form"),
+	
+	## Onboarding Liabilities
+
+	path("liabilities/creditcard/",liability_credit_card_form,name="credit_card_form"),
+	path("liabilities/personal/",personal_loan_form,name="personal_loan_form"),
+	path("liabilities/vehicles/",vehicles_loan_form,name="vehicles_loan_form"),
+	path("liabilities/property/",property_loan_form,name="property_loan_form"),
+	path("liabilities/others/",liabilities_others_form,name="liabilities_others_form"),
+ 	
  	path("admin/", admin.site.urls),
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

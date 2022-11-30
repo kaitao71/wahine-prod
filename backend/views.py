@@ -72,9 +72,9 @@ def bank_account_form(request):
             return redirect('epf_socso_form')
         else:
             context = {'form':form}
-            return render(request,'backend/assets.html',context)
+            return render(request,'backend/assets-1-bank.html',context)
     context = {'form':form}
-    return render(request,'backend/assets.html',context)
+    return render(request,'backend/assets-1-bank.html',context)
 
 def epf_socso_form(request):
     form = EpfSocsoForm()
@@ -180,6 +180,87 @@ def asset_others_form(request):
             asset_value = form.cleaned_data['asset_value']
             item = Item.objects.create(user=request.user,data={'asset_name':asset_name,'asset_value':asset_value},item_type='Assets',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
-            return redirect('bank_account_form')
+            return redirect('credit_card_form')
     context = {'form':form}
     return render(request,'backend/assets-7-others.html',context)
+
+def liability_credit_card_form(request):
+    form = CreditCardForm()
+    if request.POST:
+        form = CreditCardForm(request.POST)
+        if form.is_valid():
+            bnpl_service = form.cleaned_data['bnpl_service']
+            bank_name = form.cleaned_data['bank_name']
+            account_no = form.cleaned_data['account_no']
+            amount_outstanding = form.cleaned_data['amount_outstanding']
+            item = Item.objects.create(user=request.user,data={'bnpl_service':bnpl_service,'bank_name':bank_name,'account_no':account_no,'amount_outstanding':amount_outstanding},item_type='Liabilities',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('personal_loan_form')
+    context = {'form':form}
+    return render(request,'backend/liabilities-1-credit-card.html',context)
+
+def personal_loan_form(request):
+    form = PersonalLoanForm()
+    if request.POST:
+        form = PersonalLoanForm(request.POST)
+        if form.is_valid():
+            loan_tenure = form.cleaned_data['loan_tenure']
+            loan_interest = form.cleaned_data['loan_interest']
+            bank_name = form.cleaned_data['bank_name']
+            account_no = form.cleaned_data['account_no']
+            loan_amount = form.cleaned_data['loan_amount']
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Liabilities',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('property_loan_form')
+    context = {'form':form}
+    return render(request,'backend/liabilities-2-personal-loan.html',context)
+
+def vehicles_loan_form(request):
+    form = VehicleLoanForm()
+    if request.POST:
+        form = VehicleLoanForm(request.POST)
+        if form.is_valid():
+            loan_tenure = form.cleaned_data['loan_tenure']
+            loan_interest = form.cleaned_data['loan_interest']
+            bank_name = form.cleaned_data['bank_name']
+            account_no = form.cleaned_data['account_no']
+            loan_amount = form.cleaned_data['loan_amount']
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Liabilities',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('vehicle_loan_form')
+    context = {'form':form}
+    return render(request,'backend/liabilities-3-vehicle-loan.html',context)
+
+
+def property_loan_form(request):
+    form = PropertyLoanForm()
+    if request.POST:
+        form = PropertyLoanForm(request.POST)
+        if form.is_valid():
+            loan_tenure = form.cleaned_data['loan_tenure']
+            loan_interest = form.cleaned_data['loan_interest']
+            bank_name = form.cleaned_data['bank_name']
+            account_no = form.cleaned_data['account_no']
+            loan_amount = form.cleaned_data['loan_amount']
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Liabilities',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('liabilities_others_form')
+    context = {'form':form}
+    return render(request,'backend/liabilities-4-property.html',context)
+
+def liabilities_others_form(request):
+    form = LiabilitiesOthersForm()
+    if request.POST:
+        form = LiabilitiesOthersForm(request.POST)
+        if form.is_valid():
+            loan_tenure = form.cleaned_data['loan_tenure']
+            loan_interest = form.cleaned_data['loan_interest']
+            bank_name = form.cleaned_data['bank_name']
+            account_no = form.cleaned_data['account_no']
+            loan_amount = form.cleaned_data['loan_amount']
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Liabilities',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('credit_card_form')
+    context = {'form':form}
+    return render(request,'backend/liabilities-5-others.html',context)
+
