@@ -34,14 +34,40 @@
 									{% csrf_token %}
 									<!-- Start Investment -->
 									<div class="mb-5">
+
 									<h4 class="text-black">Investment Details</h4>
 									<p class="text-start">Fill in your investment information.</p><br>
+											<h5>Do you have Public Investment?</h5>
+											<br>
+											<!-- Start Form Row -->
+											<div class="form-row Btn-Radio">
+												<!-- Start Input -->
+												<div class="col-6 col-lg-6">
+													<input class="unhide_answer"type="radio" name="yesno" id="control_01" value="yes" checked>
+													<label for="control_01">
+														<h6>Yes</h6>
+													</label>
+
+												</div>
+												<!-- End Input -->
+												<!-- Start Input -->
+												<div class="col-6 col-lg-6 mx-1">
+													<input class="hide_answer"type="radio" name="yesno" id="control_02" value="no">
+													<label for="control_02">
+														<h6>No</h6>
+													</label>
+												</div>
+												<!-- End Input -->
+											</div>
+											<!-- End Form Row -->
+											<br>
+
 									<!-- Information -->
 									<!-- Core Investment #1 -->
 									<div>
-										<div class="form-row Btn-Radio">
-											<div class="col-lg-6 col-12">
-												<h5 class="Color-Primary">Core Investment</h5><br>
+										<div class="answer form-row Btn-Radio">
+											<div class="answer col-lg-6 col-12">
+												<h5 class="Color-Primary">Public Investment</h5><br>
 												<select name="investment_type" id="" class="px-4">
 													<option value="TabungHaji">Tabung Haji</option>
 													<option value="Maybank">Maybank</option>
@@ -53,37 +79,62 @@
 										</div>
 										<br><br>
 										<br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="col-12 col-lg-6 mb-5 mb-lg-0">
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+											<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
 												<h5>Account Number</h5><br>
 												<input type="text" name="account_no" id="" placeholder="A123456XX"
 													class="px-4">
 											</div>
-											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+											<!-- <div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
 												<h5>Fund Name</h5><br>
 												<input type=" text" name="fund_name" id="" placeholder="Name"
 													class="px-4">
-											</div>
-										</div><br><br><br>
-										<div class="form-row row Btn-Radio">
+											</div> -->
+										</div><br>
+										<!-- <div class="form-row row Btn-Radio">
 											<div class="col-lg-6 col-12">
 												<h5>Investment Value</h5><br>
 												<input type="text" name="account_value" id="" placeholder="RM100,000"
 													class="px-4">
 											</div>
-										</div>
+										</div> -->
 									</div>
 									<!-- Billing Cycle Toggle -->
-									<div class="mt-4 pt-5 text-center">
-										<div class="form-check form-switch flex-row d-flex align-items-center">
+									<div class="answer mt-4 pt-5 text-center">
+										<div class="answer form-check form-switch flex-row d-flex align-items-center">
 											<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
 											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-												Core Investment
+												Public Investment
 											</label>
 
 										</div>
 									</div>
+									<br><br><br>
 
+			<h5>Do you have Private Investment?</h5>
+											<br>
+											<!-- Start Form Row -->
+											<div class="form-row Btn-Radio">
+												<!-- Start Input -->
+												<div class="col-6 col-lg-6">
+													<input type="radio" name="is_epf_member" id="control_06" value="Yes" checked>
+													<label for="control_06">
+														<h6>Yes</h6>
+													</label>
+
+												</div>
+												<!-- End Input -->
+												<!-- Start Input -->
+												<div class="col-6 col-lg-6 mx-1">
+													<input type="radio" name="is_epf_member" id="control_07" value="No">
+													<label for="control_07">
+														<h6>No</h6>
+													</label>
+												</div>
+												<!-- End Input -->
+											</div>
+											<!-- End Form Row -->
+											<br>
 
 
 									<!-- Unit Trust Investment -->
@@ -137,14 +188,7 @@
 										</div>
 									</div> -->
 									<!-- Billing Cycle Toggle -->
-									<div class="mt-4 pt-5 text-center">
-										<div class="form-check form-switch flex-row d-flex align-items-center">
-											<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-												Unit Trust Investment</label>
-
-										</div>
-									</div>
+								
 								</div>
 								<!-- End Investment -->
 

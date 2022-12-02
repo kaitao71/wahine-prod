@@ -75,7 +75,7 @@
         </ul>
       </div>
       {% if request.user.is_authenticated %}
-Welcome, {{request.user}}
+Welcome, {{request.user}} <a href="{% url 'bank_account_form' %}">Dashboard</a>
       {% else %}
       <a class="btn Btn-Primary" href="/joinnow" role="button" style="margin:0">Log In</a>
       {% endif %}
@@ -143,6 +143,35 @@ toastr.options = {
   </script>
   {% endfor %}
   {% endif %}
+      <script src=
+"https://code.jquery.com/jquery-1.12.4.min.js">
+    </script>
+     <script type="text/javascript">
+            $(document).ready(function() {
+                $('.hide_answer').click(function() {
+                    var inputValue = $(this).attr("value");
+                    if (inputValue = 'hide'){
+                       $('.answer').hide(200);
+                    }
+                    else
+                    {
+                       $('.answer').show(200);
+                    }
+  
+                });
+                $('.unhide_answer').click(function() {
+                    var inputValue = $(this).attr("value");
+                    if (inputValue = 'unhide'){
+                       $('.answer').show(200);
+                    }
+                    else
+                    {
+                       $('.answer').hide(200);
+                    }
+  
+                });
+            });
+        </script>
 </body>
 
 

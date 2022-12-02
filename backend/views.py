@@ -3,6 +3,7 @@ from backend.forms import *
 import uuid
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.forms import formset_factory
 
 from django.contrib.auth.forms import AuthenticationForm #add this
 # Create your views here.
@@ -74,8 +75,10 @@ def profile(request):
 
 def bank_account_form(request):
     form = BankAccountForm()
+    # formset = formset_factory(form)
     if request.POST:
         form = BankAccountForm(request.POST)
+        # formset = formset_factory(form)
         if form.is_valid():
             account_type = form.cleaned_data['account_type']
             bank_name = form.cleaned_data['bank_name']
@@ -142,8 +145,8 @@ def insurance_form(request):
             insurance_type = form.cleaned_data['insurance_type']
             policy_no = form.cleaned_data['policy_no']
             nominee_name = form.cleaned_data['nominee_name']
-            account_value = form.cleaned_data['account_value']
-            item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name,'account_value':account_value},item_type='Assets',created_by=request.user)
+            sum_insured = form.cleaned_data['sum_insured']
+            item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured},item_type='Assets',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
             return redirect('investment_form')
     context = {'form':form}
@@ -189,7 +192,7 @@ def vehicles_form(request):
             registration_no = form.cleaned_data['registration_no']
             item = Item.objects.create(user=request.user,data={'vehicle_type':vehicle_type,'make_model':make_model,'registration_no':registration_no},item_type='Assets',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
-            return redirect('bank_account_form')
+            return redirect('asset_others_form')
     context = {'form':form}
     return render(request,'backend/assets-6-vehicles.html',context)
 
@@ -233,7 +236,7 @@ def personal_loan_form(request):
             loan_amount = form.cleaned_data['loan_amount']
             item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Liabilities',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
-            return redirect('property_loan_form')
+            return redirect('vehicles_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-2-personal-loan.html',context)
 
@@ -249,7 +252,7 @@ def vehicles_loan_form(request):
             loan_amount = form.cleaned_data['loan_amount']
             item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Liabilities',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
-            return redirect('vehicle_loan_form')
+            return redirect('property_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-3-vehicle-loan.html',context)
 
@@ -259,6 +262,9 @@ def property_loan_form(request):
     if request.POST:
         form = PropertyLoanForm(request.POST)
         if form.is_valid():
+            if form.cleaned_data['yesno'] == 'no':
+                messages.add_message(request, messages.INFO, 'Skipped.')
+                return redirect('liabilities_others_form')
             loan_tenure = form.cleaned_data['loan_tenure']
             loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']

@@ -37,14 +37,14 @@
 										<h5>Do you have a vehicle loan?</h5><BR>
 										<div class="form-row Btn-Radio">
 											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_01" name="hide_answer" value="unhide">
+												<input class="unhide_answer"type="radio" id="control_01" name="yesno" value="yes">
 												<label for="control_01">
 													<h6>Yes</h6>
 												</label>
 
 											</div>
 											<div class="col-6 col-lg-6 mx-1">
-												<input class="hide_answer" type="radio" id="control_02" name="hide_answer" value="hide">
+												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
 												<label for="control_02">
 													</svg>
 													<h6>No</h6>
@@ -53,7 +53,7 @@
 										</div>
 										<br>
 										<br>
-										<h5 class="text-black">Vehicle Loan #1</h5>
+										<h5 class="answer text-black">Vehicle Loan #1</h5>
 										<br>
 										<br>
 										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
@@ -100,7 +100,7 @@
 										<br>
 										<br>
 										<!-- Billing Cycle Toggle -->
-										<div class="text-center ">
+										<div class="answer text-center ">
 											<div class="form-check form-switch flex-row d-flex align-items-center">
 												<input class="form-check-input" type="checkbox"
 													id="flexSwitchCheckDefault">
@@ -138,22 +138,5 @@
 		<!-- End Wrapper -->
 		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
 
-    <script src=
-"https://code.jquery.com/jquery-1.12.4.min.js">
-    </script>
-     <script type="text/javascript">
-            $(document).ready(function() {
-                $('.hide_answer').click(function() {
-                    var inputValue = $(this).attr("value");
-                    if (inputValue = 'hide'){
-                    	 $('.answer').hide(200);
-                    }
-                    else
-                    {
-                    	 $('.answer').show(200);
-                    }
-  
-                });
-            });
-        </script>
+
 	{% endblock %}

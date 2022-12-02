@@ -38,29 +38,29 @@
 										</div>
 										<div class="form-row Btn-Radio mb-5">
 											<div class="col-lg-6 col-6">
-												<input type="radio" id="control_01" name="yesno" value="1" checked>
+												<input class="unhide_answer" type="radio" id="control_01" name="yesno" value="yes" checked>
 												<label for="control_01">
 													<h6>Yes</h6>
 												</label>
 											</div>
 											<div class="mx-2 col-lg-6 col-6">
-												<input type="radio" id="control_02" name="yesno" value="2">
+												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
 												<label for="control_02">
 													<h6>No</h6>
 												</label>
 											</div>
 										</div>
-										<div class="form-row">
-											<h5 class="text-black">Do You Use BNPL Service?</h5><br>
+										<div class="answer form-row">
+											<h5 class="answer text-black">Do You Use BNPL Service?</h5><br>
 										</div>
-										<div class="form-row Btn-Radio mb-5">
+										<div class="answer form-row Btn-Radio mb-5">
 											<div class="col-lg-6 col-6">
 												<input type="radio" id="control_03" name="bnpl_service" value="1" checked>
 												<label for="control_03">
 													<h6>Yes</h6>
 												</label>
 											</div>
-											<div class="mx-2 col-lg-6 col-6">
+											<div class="answer mx-2 col-lg-6 col-6">
 												<input type="radio" id="control_04" name="bnpl_service" value="2">
 												<label for="control_04">
 													<h6>No</h6>
@@ -70,12 +70,12 @@
 
 										<!--Credit Card #1 -->
 										<div>
-											<h5 class="text-black">Credit Card #1</h5>
+											<h5 class="answer text-black">Credit Card #1</h5>
 											<br>
 											<br>
 
-											<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-												<div class="mb-5 mb-lg-0 col-lg-6 col-12">
+											<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+												<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
 													<h5>Bank Name</h5><br>
 													<select name="bank_name" id="BankName" class="px-4">
 														<option value="SelectABank">Select A Bank</option>
@@ -85,13 +85,13 @@
 														<option value="CitiBank">Citibank</option>
 													</select>
 												</div>
-												<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+												<div class="answer mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 													<h5>Account Number (*Optional)</h5><br>
 													<input type="text" name="account_no" id="" placeholder="Name"
 														class="px-4">
 												</div>
 											</div><br><br><br>
-											<div class="form-row Btn-Radio">
+											<div class="answer form-row Btn-Radio">
 												<div class="mx-1 col-lg-6 col-12">
 													<h5>Amount Outstanding</h5><br>
 													<input type="text" name="amount_outstanding" id=""
@@ -102,7 +102,7 @@
 											<br>
 											<br>
 											<!-- Billing Cycle Toggle -->
-											<div class="text-center ">
+											<div class="answer text-center ">
 												<div class="form-check form-switch flex-row d-flex align-items-center">
 													<input class="form-check-input" type="checkbox" checked
 														id="flexSwitchCheckDefault">

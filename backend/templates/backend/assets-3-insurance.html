@@ -35,12 +35,37 @@
 									<!-- Start Insurance Div-->
 									<div class="mb-5">
 									<h4 class="text-black">Insurance Details</h4>
-									<p class="text-start">Fill in your insurance information.</p><br>
+									<p class="text-start">Fill in your insurance information.</p>
+											<h5>Do you have Insurance?</h5>
+											<br>
+											<!-- Start Form Row -->
+											<div class="form-row Btn-Radio">
+												<!-- Start Input -->
+												<div class="col-6 col-lg-6">
+													<input class="unhide_answer" type="radio" name="yesno" id="yesno" value="yes" checked>
+													<label for="yesno">
+														<h6>Yes</h6>
+													</label>
+
+												</div>
+												<!-- End Input -->
+												<!-- Start Input -->
+												<div class="col-6 col-lg-6 mx-1">
+													<input class="hide_answer" type="radio" name="yesno" id="yesno2" value="no">
+													<label for="yesno2">
+														<h6>No</h6>
+													</label>
+												</div>
+												<!-- End Input -->
+											</div>
+											<!-- End Form Row -->
+											<br>
+
 										<!-- Start Information -->
-										<div>
+										<div class="">
 										<h5>Applicable Insurance #1</h5><BR>
-										<div class="form-row Btn-Radio">
-											<div class="col-6 col-lg-6">
+										<div class=" answer form-row Btn-Radio">
+											<div class=" answer col-6 col-lg-6">
 												<input type="radio" id="control_01" name="insurance_type" value="Life" checked>
 												<label for="control_01">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -52,7 +77,7 @@
 													<h6>Life</h6>
 												</label>
 											</div>
-											<div class="mx-2 col-6 col-lg-6">
+											<div class=" answer mx-2 col-6 col-lg-6">
 												<input type="radio" id="control_03" name="insurance_type" value="Medical">
 												<label for="control_03">
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -66,10 +91,10 @@
 												</label>
 											</div>
 										</div>
-										<div class="form-row Btn-Radio">
+										<div class="answer form-row Btn-Radio">
 											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_02" name="insurance_type" value="General">
-												<label for="control_02">
+												<input type="radio" id="control_05" name="insurance_type" value="General">
+												<label for="control_05">
 
 													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 														fill="currentColor" class="bi bi-house-heart"
@@ -85,7 +110,7 @@
 										</div><br>
 										<br>
 
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 												<h5>Policy Number</h5><br>
 												<input type="text" name="policy_no" id="" placeholder="A123456XX"
@@ -97,7 +122,7 @@
 													class="px-4">
 											</div>
 										</div><br><br><br>
-										<div class="form-row Btn-Radio">
+										<div class="answer form-row Btn-Radio">
 
 											<div class="mx-1 col-lg-6 col-12">
 												<h5>Sum Insured</h5><br>
@@ -112,7 +137,7 @@
 									<!-- End Insurance Div-->
 
 									<!-- Second Insurance Div -->
-									<div class="mb-5">									
+									<div class="answer mb-5">									
 									<!-- Billing Cycle Toggle -->
 									<div class="mt-4 pt-5 text-center">
 										<div class="form-check form-switch flex-row d-flex align-items-center">

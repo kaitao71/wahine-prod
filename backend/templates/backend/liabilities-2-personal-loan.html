@@ -35,14 +35,14 @@
 										<h5>Do you have a personal loan?</h5><BR>
 										<div class="form-row Btn-Radio">
 											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_01" name="epf" value="1" checked>
+												<input class="unhide_answer" type="radio" id="control_01" name="yesno" value="yes" checked>
 												<label for="control_01">
 													<h6>Yes</h6>
 												</label>
 
 											</div>
 											<div class="col-6 col-lg-6 mx-1">
-												<input type="radio" id="control_02" name="epf" value="2">
+												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
 												<label for="control_02">
 													</svg>
 													<h6>No</h6>
@@ -51,10 +51,10 @@
 										</div>
 										<br>
 										<br>
-										<h5 class="text-black">Personal Loan #1</h5>
+										<h5 class="answer text-black">Personal Loan #1</h5>
 										<br>
 										<br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 												<h5>Bank Name</h5><br>
 												<select name="bank_name" id="BankName" class="px-4">
@@ -72,7 +72,7 @@
 											</div>
 										</div>
 										<br><br><br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 												<h5>Loan Amount</h5><br>
 												<input type="text" name="loan_amount" id="" placeholder="RM1,000,000"
@@ -87,7 +87,7 @@
 										<br>
 										<br>
 										<br>
-										<div class="form-row Btn-Radio">
+										<div class="answer form-row Btn-Radio">
 											<div class="col-12 col-lg-6">
 												<h5>Loan Interest</h5><br>
 												<input type="text" name="loan_interest" id="" placeholder="4 %"
@@ -98,7 +98,7 @@
 										<br>
 										<br>
 										<!-- Billing Cycle Toggle -->
-										<div class="text-center ">
+										<div class="answer text-center ">
 											<div class="form-check form-switch flex-row d-flex align-items-center">
 												<input class="form-check-input" type="checkbox"
 													id="flexSwitchCheckDefault">
