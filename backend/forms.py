@@ -114,9 +114,8 @@ class PropertyForm(forms.Form):
 
 class VehicleForm(forms.Form):
     vehicle_type = forms.CharField(required = False)
-    residential_type = forms.CharField(required = False)
-    address = forms.CharField(required = False)
-    spa_price = forms.CharField(required = False)
+    make_model = forms.CharField(required = False)
+    registration_no = forms.CharField(required = False)
 
 class AssetOthersForm(forms.Form):
     asset_name = forms.CharField(required = False)

@@ -15,15 +15,7 @@
 					<div class="inner col-12 col-lg-10 m-auto">
 						<!-- Column 1 -->
 						<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-							<h2 class="Color-Secondary mb-2 d-lg-none">Step 3/4:</h2>
-							<h2 class="mb-1 Color-Secondary">Liabilities</h2>
-							<p>Please fill the form below to record your personal liabilities information. Feel free to
-								add
-								as much detail as needed. </p>
-						</div>
-
-
+							{% include 'backend/onboarding-liabilities-title.html' %}
 
 							<!-- Left Column Inner Column -->
 							<div class="inner pb-5">
@@ -33,10 +25,6 @@
 								<!-- Form -->
 								<form method="post" class="Assets needs-validation" novalidate>
 									{% csrf_token %}
-									<!-- Start EPF Div-->
-									<div class="" style="">
-									<h4 class="text-black">Credit Card Details</h4>
-									<p class="text-start">Fill in your credit card information.</p><br>
 									<!-- Information -->
 									<!-- Personal Loan -->
 								<div class="mb-5">
@@ -125,7 +113,6 @@
 								</div>
 
 
-								</div>
 									<!-- End EPF Div-->
 
 

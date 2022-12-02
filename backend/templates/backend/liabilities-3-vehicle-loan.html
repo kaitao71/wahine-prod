@@ -15,13 +15,7 @@
 					<div class="inner col-12 col-lg-10 m-auto">
 						<!-- Column 1 -->
 						<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-							<h2 class="Color-Secondary mb-2 d-lg-none">Step 3/4:</h2>
-							<h2 class="mb-1 Color-Secondary">Liabilities</h2>
-							<p>Please fill the form below to record your personal liabilities information. Feel free to
-								add
-								as much detail as needed. </p>
-						</div>
+							{% include 'backend/onboarding-liabilities-title.html' %}
 
 
 
@@ -34,11 +28,7 @@
 								<form method="post" class="Assets needs-validation" novalidate>
 									{% csrf_token %}
 									<!-- Start EPF Div-->
-									<div class="" style="">
-									<h4 class="text-black">Credit Card Details</h4>
-									<p class="text-start">Fill in your credit card information.</p><br>
-									<!-- Information -->
-							<!-- Vehicles Loan -->
+												<!-- Vehicles Loan -->
 								<DIV class="mb-5">
 									<h4 class="text-black">Vehicle Loan</h4>
 									<p class="text-start">Fill in your vehicle loan information.</p><br>
@@ -47,14 +37,14 @@
 										<h5>Do you have a vehicle loan?</h5><BR>
 										<div class="form-row Btn-Radio">
 											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_01" name="yesno" value="1" checked>
+												<input type="radio" id="control_01" name="hide_answer" value="unhide">
 												<label for="control_01">
 													<h6>Yes</h6>
 												</label>
 
 											</div>
 											<div class="col-6 col-lg-6 mx-1">
-												<input type="radio" id="control_02" name="yesno" value="2">
+												<input class="hide_answer" type="radio" id="control_02" name="hide_answer" value="hide">
 												<label for="control_02">
 													</svg>
 													<h6>No</h6>
@@ -66,7 +56,7 @@
 										<h5 class="text-black">Vehicle Loan #1</h5>
 										<br>
 										<br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 												<h5>Bank Name</h5><br>
 												<select name="BankName" id="BankName" class="px-4">
@@ -84,7 +74,7 @@
 											</div>
 										</div>
 										<br><br><br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 												<h5>Loan Amount</h5><br>
 												<input type="text" name="LoanAmount" id="" placeholder="RM1,000,000"
@@ -99,7 +89,7 @@
 										<br>
 										<br>
 										<br>
-										<div class="form-row Btn-Radio">
+										<div class="answer form-row Btn-Radio">
 											<div class="col-12 col-lg-6">
 												<h5>Loan Interest</h5><br>
 												<input type="text" name="LoanInterest" id="" placeholder="4 %"
@@ -127,7 +117,6 @@
 
 
 
-
 									<!-- Button -->
 									<div class="mt-5">
 										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}" role="button">Back</a>
@@ -148,4 +137,23 @@
 		</div>
 		<!-- End Wrapper -->
 		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+
+    <script src=
+"https://code.jquery.com/jquery-1.12.4.min.js">
+    </script>
+     <script type="text/javascript">
+            $(document).ready(function() {
+                $('.hide_answer').click(function() {
+                    var inputValue = $(this).attr("value");
+                    if (inputValue = 'hide'){
+                    	 $('.answer').hide(200);
+                    }
+                    else
+                    {
+                    	 $('.answer').show(200);
+                    }
+  
+                });
+            });
+        </script>
 	{% endblock %}

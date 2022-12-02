@@ -3,6 +3,8 @@ from backend.forms import *
 import uuid
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+
+from django.contrib.auth.forms import AuthenticationForm #add this
 # Create your views here.
 ## TODO
 ## IF data exist, show existing data/edit mode
@@ -29,6 +31,26 @@ def signup(request):
             return render(request,'backend/signup.html', {'form': form})
     form = SignUpForm()
     return render(request,'backend/signup.html', {'form': form})
+
+def login_view(request):
+    if request.POST:
+        form = AuthenticationForm(request,data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.info(request, f"You are now logged in as {username}.")
+                return redirect("bank_account_form")
+            return redirect('bank_account_form')
+        else:
+            print(form)
+            print(form.errors)
+            return render(request,'backend/login.html', {'form': form})
+    form = AuthenticationForm()
+    print(form)
+    return render(request,'backend/login.html', {'form': form})
 
 def selectplan(request):
     if request.POST:
@@ -68,7 +90,7 @@ def bank_account_form(request):
                 item_type='Assets',
                 created_by=request.user
                 )
-            messages.add_message(request, messages.INFO, 'Model Form Done.')
+            messages.add_message(request, messages.INFO, 'Bank data successfully updated.')
             return redirect('epf_socso_form')
         else:
             context = {'form':form}
@@ -103,7 +125,7 @@ def epf_socso_form(request):
                 item_type='Assets',
                 created_by=request.user
                 )
-            messages.add_message(request, messages.INFO, 'EPF/Socso Done.')
+            messages.add_message(request, messages.INFO, 'EPF/Socso successfully updated.')
             return redirect('insurance_form')
         else:
             print(form.errors)
@@ -122,7 +144,7 @@ def insurance_form(request):
             nominee_name = form.cleaned_data['nominee_name']
             account_value = form.cleaned_data['account_value']
             item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name,'account_value':account_value},item_type='Assets',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
             return redirect('investment_form')
     context = {'form':form}
     return render(request,'backend/assets-3-insurance.html',context)
@@ -137,7 +159,7 @@ def investment_form(request):
             fund_name = form.cleaned_data['fund_name']
             account_value = form.cleaned_data['account_value']
             item = Item.objects.create(user=request.user,data={'investment_type':investment_type,'account_no':account_no,'fund_name':fund_name,'account_value':account_value},item_type='Assets',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             return redirect('property_form')
     context = {'form':form}
     return render(request,'backend/assets-4-investment.html',context)
@@ -152,7 +174,7 @@ def property_form(request):
             address = form.cleaned_data['address']
             spa_price = form.cleaned_data['spa_price']
             item = Item.objects.create(user=request.user,data={'property_type':property_type,'residential_type':residential_type,'address':address,'spa_price':spa_price},item_type='Assets',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            messages.add_message(request, messages.INFO, 'Property data successfully updated.')
             return redirect('vehicles_form')
     context = {'form':form}
     return render(request,'backend/assets-5-property.html',context)
@@ -162,11 +184,11 @@ def vehicles_form(request):
     if request.POST:
         form = VehicleForm(request.POST)
         if form.is_valid():
-            vehicle_type = form.cleaned_data['insurance_type']
-            make_model = form.cleaned_data['policy_no']
-            registration_no = form.cleaned_data['nominee_name']
-            item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name},item_type='Assets',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            vehicle_type = form.cleaned_data['vehicle_type']
+            make_model = form.cleaned_data['make_model']
+            registration_no = form.cleaned_data['registration_no']
+            item = Item.objects.create(user=request.user,data={'vehicle_type':vehicle_type,'make_model':make_model,'registration_no':registration_no},item_type='Assets',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
             return redirect('bank_account_form')
     context = {'form':form}
     return render(request,'backend/assets-6-vehicles.html',context)
@@ -179,7 +201,7 @@ def asset_others_form(request):
             asset_name = form.cleaned_data['asset_name']
             asset_value = form.cleaned_data['asset_value']
             item = Item.objects.create(user=request.user,data={'asset_name':asset_name,'asset_value':asset_value},item_type='Assets',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            messages.add_message(request, messages.INFO, 'Assets successfully updated.')
             return redirect('credit_card_form')
     context = {'form':form}
     return render(request,'backend/assets-7-others.html',context)

@@ -20,6 +20,7 @@ urlpatterns = [
 	path("joinnow/",joinnow,name="joinnow"),
 	path("profile/",profile,name="profile"),
 	path("signup/",signup,name="signup"),
+	path("login/",login_view,name="login"),
 	path("plan/",selectplan,name="plan"),
 	path("dashboard/",dashboard,name="dashboard"),
 	
@@ -35,7 +36,7 @@ urlpatterns = [
 	
 	## Onboarding Liabilities
 
-	path("liabilities/creditcard/",liability_credit_card_form,name="credit_card_form"),
+	path("liabilities/card/",liability_credit_card_form,name="credit_card_form"),
 	path("liabilities/personal/",personal_loan_form,name="personal_loan_form"),
 	path("liabilities/vehicles/",vehicles_loan_form,name="vehicles_loan_form"),
 	path("liabilities/property/",property_loan_form,name="property_loan_form"),

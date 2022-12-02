@@ -34,17 +34,15 @@
 								<form method="post" class="Assets needs-validation" novalidate>
 									{% csrf_token %}
 									<!-- Start EPF Div-->
-									<div class="" style="">
-									<h4 class="text-black">Credit Card Details</h4>
-									<p class="text-start">Fill in your credit card information.</p><br>
 									<!-- Information -->
 							<!-- Vehicles Loan -->
+						<!-- Vehicles Loan -->
 								<DIV class="mb-5">
-									<h4 class="text-black">Vehicle Loan</h4>
-									<p class="text-start">Fill in your vehicle loan information.</p><br>
+									<h4 class="text-black">Property</h4>
+									<p class="text-start">Fill in your property information.</p><br>
 									<!-- Personal Loan #1 -->
 									<div>
-										<h5>Do you have a vehicle loan?</h5><BR>
+										<h5>Do you have a mortgage?</h5><BR>
 										<div class="form-row Btn-Radio">
 											<div class="col-6 col-lg-6">
 												<input type="radio" id="control_01" name="yesno" value="1" checked>
@@ -63,7 +61,7 @@
 										</div>
 										<br>
 										<br>
-										<h5 class="text-black">Vehicle Loan #1</h5>
+										<h5 class="text-black">Property Mortgage #1</h5>
 										<br>
 										<br>
 										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
@@ -92,7 +90,7 @@
 											</div>
 											<div class="mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
 												<h5>Loan Tenure</h5><br>
-												<input type="text" name="LoanTenure" id="" placeholder="3 Years"
+												<input type="text" name="LoanTenure" id="" placeholder="35 Years"
 													class="px-4">
 											</div>
 										</div>
@@ -122,7 +120,7 @@
 										</div>
 									</div>
 
-								</DIV>
+
 
 
 
@@ -141,6 +139,7 @@
 							<!-- End Left Column Inner Column -->
 						</div>
 						<!-- End Column 1 -->
+					</div>
 						<!-- Start Column 2 -->
 						{% include 'backend/onboarding-liabilities-sidebar.html' %}
 		</div>
