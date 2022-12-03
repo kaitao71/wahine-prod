@@ -42,6 +42,7 @@ urlpatterns = [
 	path("liabilities/property/",property_loan_form,name="property_loan_form"),
 	path("liabilities/others/",liabilities_others_form,name="liabilities_others_form"),
  	
+ 	path("dashboard/", dashboard,name="dashboard"),
  	path("admin/", admin.site.urls),
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

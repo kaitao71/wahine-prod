@@ -1,0 +1,265 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+		<!-- Steps CSS and JS -->
+		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+{% block content %}
+	<div class="wrapper bg-white pb-5">
+		<form action="" id="wizard" class="Assets">
+			<!-- SECTION 1 -->
+			<h2></h2>
+			<section>
+				<div class="m-auto">
+					<!-- Column 1 -->
+					<div class="form-content w-100 pb-5 mx-auto">
+						<!-- Left Column Inner Column -->
+						<div class="inner pb-5">
+							<div class="form-content w-100 pb-3">
+								<h4 class="text-black">Assets</h4>
+								<p class="text-start mb-0">Overview of all your logged assets.</p><br>
+								<!-- Pill Shape Filter Assets, Liabilities & All -->
+								<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+									<li class="nav-item" role="presentation">
+										<button class="nav-link shadow" id="pills-home-tab" data-bs-toggle="pill"
+											data-bs-target="#pills-home" type="button" role="tab"
+											aria-controls="pills-home" aria-selected="true">All</button>
+									</li>
+									<li class="nav-item mx-2" role="presentation">
+										<button class="nav-link shadow active" id="pills-profile-tab"
+											data-bs-toggle="pill" data-bs-target="#pills-profile" type="button"
+											role="tab" aria-controls="pills-profile"
+											aria-selected="false">Assets</button>
+									</li>
+									<li class="nav-item" role="presentation">
+										<button class="nav-link shadow" id="pills-contact-tab" data-bs-toggle="pill"
+											data-bs-target="#pills-contact" type="button" role="tab"
+											aria-controls="pills-contact" aria-selected="false">Liabilities</button>
+									</li>
+								</ul>
+								<div class="tab-content" id="pills-tabContent">
+									<div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+										aria-labelledby="pills-home-tab">All Content</div>
+									<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+										aria-labelledby="pills-profile-tab">Assets Content</div>
+									<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+										aria-labelledby="pills-contact-tab">Liabilities Content</div>
+								</div>
+
+
+
+								<!-- Pie Chart -->
+								<section class="pt-5">
+									<div class="container p-0">
+										<div class="row">
+											<div class="col-lg-12 mb-4">
+												<div class="card-body p-4">
+													<div class="row align-items-center">
+														<div class="col-lg-12">
+															<!-- Asset Chart -->
+															<canvas class="col-lg-6 col-12 mx-auto"
+																id="AssetChart"></canvas>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</section>
+
+
+
+
+
+
+
+								<!-- Information -->
+								<div>
+									<h5>Account Type</h5><BR>
+									<div class="form-row row Btn-Radio justify-content-be">
+
+										<div class="col-lg-4 col-6">
+											<input type="radio" id="control_01" name="select" value="1" checked>
+											<label for="control_01"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+													height="24" fill="currentColor" class="bi bi-bank2"
+													viewBox="0 0 16 16">
+													<path
+														d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z" />
+												</svg>
+												<h6>
+													Saving Account</h6>
+											</label>
+										</div>
+
+										<div class="col-lg-4 col-6">
+											<input type="radio" id="control_02" name="select" value="2">
+											<label for="control_02"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+													height="24" fill="currentColor" class="bi bi-cash-stack"
+													viewBox="0 0 16 16">
+													<path
+														d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+													<path
+														d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
+												</svg>
+												<h6>Current Account</h6>
+											</label>
+										</div>
+
+										<div class="col-lg-4 col-6 mt-4 mt-lg-0">
+											<input type="radio" id="control_03" name="select" value="3">
+											<label for="control_03"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+													height="24" fill="currentColor" class="bi bi-coin"
+													viewBox="0 0 16 16">
+													<path
+														d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+													<path
+														d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+													<path
+														d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+												</svg>
+												<h6>Fixed
+													Deposit</h6>
+											</label>
+										</div>
+									</div>
+									<br>
+
+								</div>
+								<!-- Button -->
+								<div class="mt-5 text-end">
+									<a class="btn Btn-Primary mt-5" href="/edits-assets-epf" role="button">Save</a>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+		</form>
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    var ctx1 = document.getElementById("AssetChart");
+    var AssetChart = new Chart(ctx1, {
+      type: 'doughnut',
+      options: {
+        cutoutPercentage: 75,
+        legend: {
+          position: 'left',
+          labels: {
+            boxWidth: 10,
+            fontStyle: 'italic',
+            fontColor: '#aaa',
+            usePointStyle: true,
+          }
+        },
+
+      },
+      data: {
+        labels: [
+          "Bank",
+          "EPF/Socso",
+          "Insurance",
+          "Investment",
+          "Property",
+          "Vehicles",
+          "Others"
+        ],
+        datasets: [
+          {
+            data: [250, 100, 100, 200, 300, 200, 100],
+            borderWidth: 0,
+            backgroundColor: [
+              '#e63a54',
+              '#d8f4ff',
+              "#110f48",
+              "#f8f8fa",
+              "#55BCB9",
+              "#8f1346",
+              "#ffba00"
+
+            ],
+            hoverBackgroundColor: [
+              '#e63a54',
+              '#d8f4ff',
+              "#110f48",
+              "#f8f8fa",
+              "#55BCB9",
+              "#8f1346",
+              "#ffba00"
+
+            ]
+          }]
+      }
+    });
+
+  </script>
+	<!-- Asset Pie Chart -->
+	<script>
+		var ctx1 = document.getElementById("AssetChart");
+		var AssetChart = new Chart(ctx1, {
+			type: 'line',
+			options: {
+				cutoutPercentage: 75,
+				legend: {
+					position: 'bottom',
+					labels: {
+						boxWidth: 10,
+						fontStyle: 'italic',
+						fontColor: '#aaa',
+						usePointStyle: true,
+					}
+				},
+
+			},
+			data: {
+				labels: [
+					"Bank",
+					"EPF/Socso",
+					"Insurance",
+					"Investment",
+					"Property",
+					"Vehicles",
+					"Others"
+				],
+				datasets: [
+					{
+						data: [50, 100, 100, 200, 300, 200, 100],
+						borderWidth: 0,
+						backgroundColor: [
+							'#e63a54',
+							'#d8f4ff',
+							"#110f48",
+							"#f8f8fa",
+							"#55BCB9",
+							"#8f1346",
+							"#ffba00"
+
+						],
+						hoverBackgroundColor: [
+							'#e63a54',
+							'#d8f4ff',
+							"#110f48",
+							"#f8f8fa",
+							"#55BCB9",
+							"#8f1346",
+							"#ffba00"
+
+						]
+					}]
+			}
+		});
+
+	</script>
+
+</body>
+{% endblock %}

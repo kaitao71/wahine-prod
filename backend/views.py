@@ -351,3 +351,6 @@ def liabilities_overview(request):
     context = {}
     return render(request,'backend/liabilities-overview.html',context)
 
+def dashboard(request):
+    context = {}
+    return render(request,'backend/dashboard.html',context)
