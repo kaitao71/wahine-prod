@@ -52,7 +52,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="http://127.0.0.1:8000/"><img class="MainLogo img-fluid"
+      <a class="navbar-brand" href="{% url 'index' %}"><img class="MainLogo img-fluid"
           src="https://wahine.s3.amazonaws.com/static/Images/Logo_Wahine.png" alt="WahineLogo"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -125,7 +125,7 @@ toastr.options = {
   "debug": false,
   "newestOnTop": false,
   "progressBar": false,
-  "positionClass": "toast-top-right",
+  "positionClass": "toast-bottom-right",
   "preventDuplicates": false,
   "onclick": null,
   "showDuration": "300",
