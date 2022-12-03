@@ -32,7 +32,8 @@ def signup(request):
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
                 return redirect("bank_account_form")
-            return redirect('bank_account_form')
+            messages.info(request, f"You can login now.")
+            return redirect('login')
         else:
             print(form.errors)
             print(form.cleaned_data)
