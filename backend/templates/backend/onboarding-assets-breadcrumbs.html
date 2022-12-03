@@ -71,7 +71,7 @@
 <div class="carousel Flickity d-lg-none mb-5"
 										data-flickity='{ "cellAlign": "left", "freeScroll": true,"initialIndex": ".is-initial-select", "contain": true, "prevNextButtons": false, "pageDots": false }'>
 										<div class="carousel-cell is-initial-select">
-											<div class="form-stepper-active form-stepper-list">
+											<div class="form-stepper-list {% if request.resolver_match.url_name == 'bank_account_form' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
 												<a class="mx-2" href="{% url 'bank_account_form' %}">
 													<span class="form-stepper-circle">
 														<span>1</span>
@@ -82,7 +82,7 @@
 										</div>
 
 										<div class="carousel-cell">
-											<div class="form-stepper-unfinished form-stepper-list {% if request.resolver_match.url_name == 'epf_socso_form' %} form-stepper-active {% endif %}">
+											<div class="form-stepper-list {% if request.resolver_match.url_name == 'epf_socso_form' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
 												<a class="mx-2" href="{% url 'epf_socso_form' %}">
 													<span class="form-stepper-circle">
 														<span>2</span>
@@ -92,7 +92,7 @@
 											</div>
 										</div>
 										<div class="carousel-cell">
-											<div class="form-stepper-unfinished	form-stepper-list {% if request.resolver_match.url_name == 'insurance_form' %} form-stepper-active {% endif %}">
+											<div class="form-stepper-list {% if request.resolver_match.url_name == 'insurance_form' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
 												<a class="mx-2" href="{% url 'insurance_form' %}">
 													<span class="form-stepper-circle">
 														<span>3</span>
@@ -102,7 +102,7 @@
 											</div>
 										</div>
 										<div class="carousel-cell">
-											<div class="form-stepper-unfinished form-stepper-list {% if request.resolver_match.url_name == 'investment_form' %} form-stepper-active {% endif %}">
+											<div class="form-stepper-list {% if request.resolver_match.url_name == 'investment_form' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
 												<a class="mx-2" href="{% url 'investment_form' %}">
 													<span class="form-stepper-circle">
 														<span>4</span>
@@ -112,7 +112,7 @@
 											</div>
 										</div>
 										<div class="carousel-cell">
-											<div class="form-stepper-unfinished form-stepper-list {% if request.resolver_match.url_name == 'property_form' %} form-stepper-active {% endif %}">
+											<div class="form-stepper-list {% if request.resolver_match.url_name == 'property_form' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
 												<a class="mx-2" href="{% url 'property_form' %}">
 													<span class="form-stepper-circle">
 														<span>5</span>

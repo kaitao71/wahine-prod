@@ -11,6 +11,9 @@ class SignUpForm(UserCreationForm):
         fields = [
             "last_name",
             "email",
+            "gender",
+            "age",
+            "referral_code",
             "password1",
         ]
 
@@ -83,18 +86,18 @@ class BankAccountForm(forms.Form):
     bank_name = forms.CharField()
     account_no = forms.CharField(required = False)
     account_value = forms.CharField(required = False)
-
+    yesno = forms.CharField(required = False)
 
 class EpfSocsoForm(forms.Form):
-    is_epf_member = forms.CharField()
-    is_socso_member = forms.CharField()
+    is_epf_member = forms.CharField(required = False)
+    is_socso_member = forms.CharField(required = False)
     epf_member_no = forms.CharField(required = False)
     socso_member_no = forms.CharField(required = False)
     epf_nominee_name = forms.CharField(required = False)
     socso_nominee_name = forms.CharField(required = False)
     epf_account_value = forms.CharField(required = False)
     socso_account_value = forms.CharField(required = False)
-    
+    yesno = forms.CharField(required = False)
 
 class InsuranceForm(forms.Form):
     insurance_type = forms.CharField(required = False)
@@ -160,9 +163,6 @@ class VehicleLoanForm(forms.Form):
     yesno = forms.CharField(required = False)
 
 class LiabilitiesOthersForm(forms.Form):
-    bank_name = forms.CharField(required = False)
-    account_no = forms.CharField(required = False)
-    loan_amount = forms.CharField(required = False)
-    loan_tenure = forms.CharField(required = False)
-    loan_interest = forms.CharField(required = False)
+    liability_name = forms.CharField(required = False)
+    liability_value = forms.CharField(required = False)
     yesno = forms.CharField(required = False)

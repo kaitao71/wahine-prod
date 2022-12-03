@@ -45,22 +45,22 @@
 										</div>
 										<div class="form-row Btn-Radio mb-5">
 											<div class="col-lg-6 col-6">
-												<input type="radio" id="control_01" name="yesno" value="1" checked>
+												<input class="unhide_answer" type="radio" id="control_01" name="yesno" value="yes" checked>
 												<label for="control_01">
 													<h6>Yes</h6>
 												</label>
 											</div>
 											<div class="mx-2 col-lg-6 col-6">
-												<input type="radio" id="control_02" name="yesno" value="2">
+												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
 												<label for="control_02">
 													<h6>No</h6>
 												</label>
 											</div>
 										</div>
-										<div class="form-row mt-3">
+										<div class="answer form-row mt-3">
 											<h5 class="text-black">Vehicle #1</h5><br>
 										</div>
-										<div class="form-row Btn-Radio">
+										<div class="answer form-row Btn-Radio">
 											<div class="col-lg-6 col-6">
 												<input type="radio" id="car" name="vehicle_type" value="car" checked>
 												<label for="car">
@@ -73,7 +73,7 @@
 													<h6>Car</h6>
 												</label>
 											</div>
-											<div class="mx-2 col-lg-6 col-6">
+											<div class="answer mx-2 col-lg-6 col-6">
 												<input type="radio" id="motor" name="vehicle_type" value="motor">
 												<label for="motor">
 
@@ -109,13 +109,13 @@
 												</label>
 											</div>
 										</div>
-										<div class="form-row Btn-Radio mt-5 flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer form-row Btn-Radio mt-5 flex-row flex-wrap flex-lg-nowrap">
 											<div class="col-12 col-lg-6 mb-5 mb-lg-0">
 												<h5>Vehicle Registration Number</h5><br>
 												<input type="text" name="registration_no" id=""
 													placeholder="A123456XX" class="px-4">
 											</div>
-											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+											<div class="answer mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
 												<h5>Vehicle Make & Model</h5><br>
 												<input type="text" name="make_model" id=""
 													placeholder="Honda Civic" class="px-4">
@@ -143,7 +143,11 @@
 
 
 									<!-- Billing Cycle Toggle -->
-									<div class="text-center">
+									
+								</div>
+								<br><br>
+								<!-- End Vehicles -->
+								<div class="answer text-center">
 										<div class="form-check form-switch flex-row d-flex align-items-center">
 											<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
 											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
@@ -151,8 +155,6 @@
 
 										</div>
 									</div>
-								</div>
-								<!-- End Vehicles -->
 
 
 

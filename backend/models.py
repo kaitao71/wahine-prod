@@ -65,8 +65,9 @@ class User(AbstractUser):
     state = models.CharField(max_length=512,null=True, blank=True)
     country = models.CharField(max_length=512,null=True, blank=True)
     gender = models.CharField(max_length=100, blank=True)
+    age = models.CharField(max_length=100, blank=True)
     marital = models.CharField(max_length=100, blank=True)
-    # groups = 
+    referral_code = models.CharField(max_length=100, blank=True)
     # user_permission +
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -75,14 +76,10 @@ class User(AbstractUser):
 """Custom User Model End"""
 
 class Item(TimeStampedModel):
-    ITEM_TYPE_CHOICES = [
-    ('Assets', 'Assets'),
-    ('Liabilities', 'Liabilities'),
-]
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_items')
     data = models.JSONField()
-    item_type = models.CharField(choices=ITEM_TYPE_CHOICES,max_length=128)
+    item_type = models.CharField(max_length=128)
     created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
 
 class Subscription(TimeStampedModel):

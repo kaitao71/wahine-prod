@@ -23,9 +23,9 @@ urlpatterns = [
 	path("login/",login_view,name="login"),
 	path("plan/",selectplan,name="plan"),
 	path("dashboard/",dashboard,name="dashboard"),
-	
+	path("logout/",logout_view,name="logout"),
 	## Onboarding Assets 
-	
+	path("assets/overview",assets_overview,name="assets_overview"),
 	path("assets/bank",bank_account_form,name="bank_account_form"),
 	path("assets/epf",epf_socso_form,name="epf_socso_form"),
 	path("assets/insurance/",insurance_form,name="insurance_form"),
@@ -35,7 +35,7 @@ urlpatterns = [
 	path("assets/others/",asset_others_form,name="asset_others_form"),
 	
 	## Onboarding Liabilities
-
+	path("liabilities/overview",liabilities_overview,name="liabilities_overview"),
 	path("liabilities/card/",liability_credit_card_form,name="credit_card_form"),
 	path("liabilities/personal/",personal_loan_form,name="personal_loan_form"),
 	path("liabilities/vehicles/",vehicles_loan_form,name="vehicles_loan_form"),

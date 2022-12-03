@@ -75,9 +75,9 @@
         </ul>
       </div>
       {% if request.user.is_authenticated %}
-Welcome, {{request.user}} <a href="{% url 'bank_account_form' %}">Dashboard</a>
+<a class="btn Btn-Primary" role="button" style="margin:0" href="{% url 'bank_account_form' %}">Dashboard</a> <a class="btn Btn-Primary" role="button" style="margin:0" href="{% url 'logout' %}">Log out</a>
       {% else %}
-      <a class="btn Btn-Primary" href="/joinnow" role="button" style="margin:0">Log In</a>
+      <a class="btn Btn-Primary" href="{% url 'login' %}" role="button" style="margin:0">Log In</a>
       {% endif %}
     </div>
   </nav>

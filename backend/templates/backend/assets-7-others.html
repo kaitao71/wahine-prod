@@ -4,7 +4,6 @@
 {% block extrahead %}
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
 		<!-- Steps CSS and JS -->
 		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
@@ -15,13 +14,14 @@
 			<!-- Start Container -->
 					<div class="inner col-12 col-lg-10 m-auto">
 						<!-- Column 1 -->
-						<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+						<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
 							<div class="form-header">
-								<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-								<h2 class="mb-1 Color-Secondary">Assets</h2>
-								<p>Please fill the form below to record your personal assets information. Feel free to add
-									as much detail as needed. </p>
-							</div>
+							<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+							<h2 class="mb-1 Color-Secondary">Assets</h2>
+							<p>Please fill the form below to record your personal assets information. Feel free to
+								add
+								as much detail as needed. </p>
+						</div>
 
 
 
@@ -31,52 +31,63 @@
 								<div class="form-content w-100 pb-3">
 								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
 								<!-- Form -->
-								<form method="post" class="Assets">
+								<form method="post" class="Assets needs-validation" novalidate>
 									{% csrf_token %}
-									<!-- Start Vehicle -->
-									<DIV class="mb-5">
+									<!-- Start EPF Div-->
+									<!-- Information -->
+							<!-- Vehicles Loan -->
+						<!-- Vehicles Loan -->
+								<DIV class="mb-5">
 									<h4 class="text-black">Other Assets</h4>
 									<p class="text-start">Fill in your other assets information.</p><br>
-									<!-- Information -->
-									<!-- Other Assets #1 -->
+									<!-- Personal Loan #1 -->
 									<div>
-										<div class="form-row">
-											<h5 class="text-black">Assets #1</h5><br>
-										</div>
+										<h5>Do you have other assets?</h5><BR>
+										<div class="form-row Btn-Radio">
+											<div class="col-6 col-lg-6">
+												<input class="unhide_answer" type="radio" id="control_01" name="yesno" value="yes" checked>
+												<label for="control_01">
+													<h6>Yes</h6>
+												</label>
 
-										<div class="form-row Btn-Radio mt-5 flex-row flex-wrap flex-lg-nowrap">
-											<div class="col-12 col-lg-6 mb-5 mb-lg-0">
-												<h5>Assets Name</h5><br>
-												<input type="text" name="asset_name" id="" placeholder="Bitcoin"
+											</div>
+											<div class="col-6 col-lg-6 mx-1">
+												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
+												<label for="control_02">
+													</svg>
+													<h6>No</h6>
+												</label>
+											</div>
+										</div>
+										<br>
+										<br>
+										<h5 class="answer text-black">Other Assets #1</h5>
+										<br>
+										<br>
+										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+											<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
+												<h5>Asset Name</h5><br>
+													<input type="text" name="asset_name" id="" placeholder="Name"
 													class="px-4">
 											</div>
-											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
-												<h5>Value</h5><br>
-												<input type="text" name="asset_value" id="" placeholder="RM100,000"
-													class=" px-4">
+											<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
+												<h5>Value (*Optional)</h5><br>
+												<input type="text" name="asset_value" id="" placeholder="RM1,000"
+													class="px-4">
 											</div>
 										</div>
-
-										<!-- Billing Cycle Toggle -->
-										<div class="mt-4 pt-4 text-center">
-											<div class="form-check form-switch flex-row d-flex align-items-center mt-5">
-												<input class="form-check-input" type="checkbox" checked
-													id="flexSwitchCheckDefault">
-												<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add
-													More
-													Assets</label>
-
-											</div>
-										</div>
+										<br><br><br>
 									</div>
-								</div>
-								<!-- End Others -->
+
+
+
+
 
 
 
 									<!-- Button -->
 									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
+										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}" role="button">Back</a>
 										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
 									</div>
 								</form>
@@ -87,6 +98,7 @@
 							<!-- End Left Column Inner Column -->
 						</div>
 						<!-- End Column 1 -->
+					</div>
 						<!-- Start Column 2 -->
 						{% include 'backend/onboarding-assets-sidebar.html' %}
 		</div>
