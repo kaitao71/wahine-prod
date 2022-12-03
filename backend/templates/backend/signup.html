@@ -31,9 +31,7 @@
 {% render_field form.last_name class+="form-control" placeholder="Full Name" %}
 {{form.last_name.errors}}
 							</div>
-						</div>
-						<div class="form-row">
-							<div class="form-holder">
+<div class="form-holder">
 								
 {% render_field form.email class+="form-control" placeholder="Email" %}
 {{form.email.errors}}
@@ -42,17 +40,33 @@
 						<div class="form-row">
 							<div class="form-holder">
 								
+{% render_field form.age class+="form-control" placeholder="Age" %}
+{{form.age.errors}}
+							</div>
+<div class="form-holder">
+								
+{% render_field form.gender class+="form-control" placeholder="Gender" %}
+{{form.gender.errors}}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+								
+{% render_field form.referral_code class+="form-control" placeholder="Referral Code" %}
+{{form.referral_code.errors}}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+								
 {% render_field form.password1 class+="form-control" placeholder="Password" %}
 {{form.password1.errors}}
 							</div>
-						</div>
-<div class="form-row">
-							<div class="form-holder">
+<div class="form-holder">
 								
 {% render_field form.password2 class+="form-control" placeholder="Confirm Password" %}
 {{form.password2.errors}}
 							</div>
-
 						</div>
 						<div class="checkbox-circle p-0">
 							<label>
