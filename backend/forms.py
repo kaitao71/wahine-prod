@@ -84,28 +84,29 @@ BOOLEAN_CHOICES = [
 class BankAccountForm(forms.Form):
     account_type = forms.CharField()
     bank_name = forms.CharField()
-    account_no = forms.CharField(required = False)
+    account_no = forms.CharField()
     account_value = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class EpfSocsoForm(forms.Form):
     is_epf_member = forms.CharField(required = False)
     is_socso_member = forms.CharField(required = False)
-    epf_member_no = forms.CharField(required = False)
-    socso_member_no = forms.CharField(required = False)
+    epf_member_no = forms.CharField()
+    socso_member_no = forms.CharField()
     epf_nominee_name = forms.CharField(required = False)
     socso_nominee_name = forms.CharField(required = False)
     epf_account_value = forms.CharField(required = False)
-    socso_account_value = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class InsuranceForm(forms.Form):
-    insurance_type = forms.CharField(required = False)
-    policy_no = forms.CharField(required = False)
+    insurance_type = forms.CharField()
+    provider_name = forms.CharField()
+    policy_no = forms.CharField()
     nominee_name = forms.CharField(required = False)
     sum_insured = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
+#Pending
 class InvestmentForm(forms.Form):
     investment_type = forms.CharField(required = False)
     account_no = forms.CharField(required = False)
@@ -113,17 +114,18 @@ class InvestmentForm(forms.Form):
     account_value = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
+
 class PropertyForm(forms.Form):
     property_type = forms.CharField(required = False)
     residential_type = forms.CharField(required = False)
     address = forms.CharField(required = False)
-    spa_price = forms.CharField(required = False)
+    ## Removed spa_price field  5/12/2022
     yesno = forms.CharField(required = False)
 
 class VehicleForm(forms.Form):
     vehicle_type = forms.CharField(required = False)
-    make_model = forms.CharField(required = False)
-    registration_no = forms.CharField(required = False)
+    make_model = forms.CharField()
+    registration_no = forms.CharField()
     yesno = forms.CharField(required = False)
 
 class AssetOthersForm(forms.Form):
@@ -132,37 +134,53 @@ class AssetOthersForm(forms.Form):
     yesno = forms.CharField(required = False)
 
 class CreditCardForm(forms.Form):
-    bnpl_service = forms.CharField(required = False)
-    bank_name = forms.CharField(required = False)
-    account_no = forms.CharField(required = False)
+    bank_name = forms.CharField()
+    account_no = forms.CharField()
     amount_outstanding = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class PersonalLoanForm(forms.Form):
-    bank_name = forms.CharField(required = False)
-    account_no = forms.CharField(required = False)
-    loan_amount = forms.CharField(required = False)
-    loan_tenure = forms.CharField(required = False)
+    bank_name = forms.CharField()
+    account_no = forms.CharField()
+    loan_amount = forms.CharField()
+    loan_tenure = forms.CharField()
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class PropertyLoanForm(forms.Form):
-    bank_name = forms.CharField(required = False)
-    account_no = forms.CharField(required = False)
-    loan_amount = forms.CharField(required = False)
-    loan_tenure = forms.CharField(required = False)
+    bank_name = forms.CharField()
+    account_no = forms.CharField()
+    loan_amount = forms.CharField()
+    loan_tenure = forms.CharField()
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class VehicleLoanForm(forms.Form):
-    bank_name = forms.CharField(required = False)
-    account_no = forms.CharField(required = False)
-    loan_amount = forms.CharField(required = False)
-    loan_tenure = forms.CharField(required = False)
+    bank_name = forms.CharField()
+    account_no = forms.CharField()
+    loan_amount = forms.CharField()
+    loan_tenure = forms.CharField()
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class LiabilitiesOthersForm(forms.Form):
     liability_name = forms.CharField(required = False)
     liability_value = forms.CharField(required = False)
+    yesno = forms.CharField(required = False)
+
+class NotifierForm(forms.Form):
+    notifier_name = forms.CharField(required = False)
+    notifier_email = forms.CharField(required = False)
+    notifier_ic = forms.CharField(required = False)
+    notifier_contactno = forms.CharField(required = False)
+    notifier_relationship = forms.CharField(required = False)
+    notifier_event = forms.CharField(required = False)
+    yesno = forms.CharField(required = False)
+
+class AccessListForm(forms.Form):
+    accesslist_name = forms.CharField(required = False)
+    accesslist_email = forms.CharField(required = False)
+    accesslist_ic = forms.CharField(required = False)
+    accesslist_contactno = forms.CharField(required = False)
+    accesslist_relationship = forms.CharField(required = False)
     yesno = forms.CharField(required = False)

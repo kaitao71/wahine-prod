@@ -54,8 +54,6 @@ def login_view(request):
                 return redirect("bank_account_form")
             return redirect('bank_account_form')
         else:
-            print(form)
-            print(form.errors)
             return render(request,'backend/login.html', {'form': form})
     form = AuthenticationForm()
     print(form)
@@ -179,7 +177,8 @@ def investment_form(request):
             fund_name = form.cleaned_data['fund_name']
             account_value = form.cleaned_data['account_value']
             item = Item.objects.create(user=request.user,data={'investment_type':investment_type,'account_no':account_no,'fund_name':fund_name,'account_value':account_value},item_type='Investment',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
+            if form.acount_value is none:
+                messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             return redirect('property_form')
     context = {'form':form}
     return render(request,'backend/assets-4-investment.html',context)
@@ -323,9 +322,48 @@ def liabilities_others_form(request):
             liability_value = form.cleaned_data['liability_value']
             item = Item.objects.create(user=request.user,data={'liability_value':liability_value,'liability_name':liability_name},item_type='Other Liabilities',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
-            return redirect('liabilities_overview')
+            return redirect('notifier_list_form')
     context = {'form':form}
     return render(request,'backend/liabilities-5-others.html',context)
+
+def notifier_list_form(request):
+    form = NotifierForm()
+    if request.POST:
+        form = NotifierForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['yesno'] == 'no':
+                messages.add_message(request, messages.INFO, 'Success.')
+                return redirect('notifier_list_form')
+            notifier_name = form.cleaned_data['notifier_name']
+            notifier_email = form.cleaned_data['notifier_email']
+            notifier_ic = form.cleaned_data['notifier_ic']
+            notifier_contactno = form.cleaned_data['notifier_contactno']
+            notifier_relationship = form.cleaned_data['notifier_relationship']
+            notifier_event = form.cleaned_data['notifier_event']
+            item = Item.objects.create(user=request.user,data={'notifier_name':notifier_name,'notifier_email':notifier_email,'notifier_relationship':notifier_relationship,'notifier_event':notifier_event,'notifier_contactno':notifier_contactno,'notifier_ic':notifier_ic},item_type='Notifier List',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('access_list_form')
+    context = {'form':form}
+    return render(request,'backend/notifier-list-form.html',context)
+
+def access_list_form(request):
+    form = AccessListForm()
+    if request.POST:
+        form = AccessListForm(request.POST)
+        if form.is_valid():
+            if form.cleaned_data['yesno'] == 'no':
+                messages.add_message(request, messages.INFO, 'Success.')
+                return redirect('access_list_form')
+            accesslist_name = form.cleaned_data['accesslist_name']
+            accesslist_email = form.cleaned_data['accesslist_email']
+            accesslist_ic = form.cleaned_data['accesslist_ic']
+            accesslist_contactno = form.cleaned_data['accesslist_contactno']
+            accesslist_relationship = form.cleaned_data['accesslist_relationship']
+            item = Item.objects.create(user=request.user,data={'accesslist_name':accesslist_name,'accesslist_email':accesslist_email,'accesslist_relationship':accesslist_relationship,'accesslist_contactno':accesslist_contactno,'accesslist_ic':accesslist_ic},item_type='Access List',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Done.')
+            return redirect('dashboard')
+    context = {'form':form}
+    return render(request,'backend/access-list-form.html',context)
 
 def assets_overview(request):
     user = request.user
@@ -337,13 +375,6 @@ def assets_overview(request):
     properties = items.filter(item_type='Property')
     vehicles = items.filter(item_type='Vehicles')
     others = items.filter(item_type='Other Assets')
-    print(banks)
-    print(epf_socso)
-    print(insurances)
-    print(investments)
-    print(properties)
-    print(vehicles)
-    print(others)
     context = {'items':items}
     return render(request,'backend/assets-overview.html',context)
 

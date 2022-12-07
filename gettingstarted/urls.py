@@ -41,6 +41,10 @@ urlpatterns = [
 	path("liabilities/vehicles/",vehicles_loan_form,name="vehicles_loan_form"),
 	path("liabilities/property/",property_loan_form,name="property_loan_form"),
 	path("liabilities/others/",liabilities_others_form,name="liabilities_others_form"),
+
+	## Onboarding Trigger Events
+	path("triggers/notifier/",notifier_list_form,name="notifier_list_form"),
+	path("triggers/accesslist/",access_list_form,name="access_list_form"),
  	
  	path("dashboard/", dashboard,name="dashboard"),
  	path("admin/", admin.site.urls),
