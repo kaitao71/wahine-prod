@@ -15,7 +15,7 @@
   <!-- Sign Up Form Template CSS -->
   <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style1.css">
+  <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -60,11 +60,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">About</a>
+          <li>
+          <a class="nav-link active" aria-current="page" href="{% url 'whoweare' %}">Who We Are</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'joinnow' %}">Join Now</a>
+            <a class="nav-link" href="{% url 'joinnow' %}">W.Vault</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Career</a>
@@ -174,7 +174,30 @@ toastr.options = {
         </script>
 </body>
 
+<footer>
+  <!-- Footer -->
+  <div class="container-fluid  
+pt-5 pb-5 bg-light" style="padding:0px 50px;">
+    <div class="row">
+      <div class="col-lg-4 offset-lg-1">
+        <h5>Contact</h5>
+        <p><span style="font-size: 85%;"><span style="font-weight: 400;">Suite B9-07, Plaza Mont Kiara,
+              <br /></span><span style="font-weight: 400;">2 </span><span style="font-weight: 400;">Jalan Kiara, Mont
+              Kiara, <br />50480 Kuala Lumpur, <br />Wilayah Persekutuan Kuala Lumpur</span></span></p>
+        <p><span style="font-size: 85%;">Phone Number: 0122181517</span><br /><span style="font-size: 85%;">Email:
+            hello@wcapital.asia</span></p>
+      </div>
+      <div class="col-lg-7">
+        <h5>Disclaimer</h5>
+        <p><span style="font-weight: 400; font-size: 85%;">Wahine Capital Sdn Bhd (hereafter “Wahine Capital”) is not in
+            any capacity associated with Wahine Capital Limited, which is a company incorporated in the British Virgin
+            Islands. The naming of the company is purely coincidental and Wahine Capital has no working relationship or
+            any other connection with Wahine Capital Limited.</span></p>
+      </div>
+    </div>
+  </div>
 
+</footer>
 
 
 </html>
