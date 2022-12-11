@@ -1,1 +1,95 @@
-https://wahine.s3.amazonaws.com/static/
+{% extends "backend/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="HeroBannerContact">
+    <div class="cont">
+        <div class="row text-center">
+            <div class="col-lg-12 col-sm-12">
+                <hr class="d-none d-lg-block" style="height:130pt; visibility:hidden;" />
+                <hr class="d-lg-none" style="height:50pt; visibility:hidden;" />
+                <h1>Contact</h1>
+                <p class="lead pt-3 text-center"><span style="font-size: 120%;">Send us a message</span></p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Contact -->
+<div class="container">
+    <div class="row margin-TopN220">
+        <!-- Inner Left Column -->
+        <div class="col-lg-6 col-12 bg-white pt-5 px-5">
+            <h2>Get In Touch</h2>
+            <!-- Address and Hours -->
+            <div class="row pt-5">
+                <div class="col-lg-6 col-sm-6">
+                    <img src="https://wahine.s3.amazonaws.com/static/Icon_Location_Primary.svg" alt="" style="max-height: 64px;"
+                        class="Color-Primary">
+                    <h4 class="uppercase pt-2"><strong>Address</strong></h4>
+                    <p class="mt-3">Suite B9-07, Plaza Mont Kiara<br />2 Jalan Kiara, Mont Kiara <br />50480 Kuala
+                        Lumpur</p>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <img src="https://wahine.s3.amazonaws.com/static/Icon_Hours_Primary.svg" alt="" style="max-height: 64px;">
+                    <h4 class="uppercase pt-2"><strong>Opening Hours</strong></h4>
+                    <p class="mt-3">Mon to Fri: 10am - 6pm<br />Saturday: 8am - 6pm<br />Sunday: 9am - 5pm</p>
+                </div>
+            </div>
+            <!-- Email and Phone -->
+            <div class="row pt-5">
+                <div class="col-lg-6 col-sm-6">
+                    <img src="https://wahine.s3.amazonaws.com/static/Icon_Mail_Primary.svg" alt="" style="max-width: 64px;">
+                    <h4 class="uppercase pt-2"><strong>E-mail</strong></h4>
+                    <p class="mt-3">hello@wcapital.asia</p>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <img src="https://wahine.s3.amazonaws.com/static/Icon_Phone_Primary.svg" alt="" style="max-width: 64px;">
+                    <h4 class="uppercase pt-2"><strong>phone</strong></h4>
+                    <p class="mt-3">0122181517</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- Inner Right Column -->
+        <div class="col-12 col-lg-6  bg-white pt-5 px-5">
+            <h2>Ask A Question</h2>
+            <div class="mb-3 mt-5 ">
+                <label for="FormControlInput1" class="form-label"><strong>First Name</strong></label>
+                <input type="email" class="form-control" id="FormControlInput1">
+            </div>
+            <div class="mb-3">
+                <label for="FormControlInput2" class="form-label"><strong>Last Name</strong> </label>
+                <input type="email" class="form-control" id="FormControlInput2">
+            </div>
+            <div class="mb-3">
+                <label for="FormControlInput2" class="form-label"><strong>Email address</strong></label>
+                <input type="email" class="form-control" id="FormControlInput3">
+            </div>
+            <div class="mb-3">
+                <label for="FormControlTextarea1" class="form-label"><strong>Your Message</strong></label>
+                <textarea class="form-control" id="FormControlTextarea1"></textarea>
+            </div>
+            <button class="Btn-Primary mt-3 px-5">Submit</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Google Map -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7967.459846686244!2d101.64320146977536!3d3.165685700000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87b783c5818efed7%3A0xfa5b51c991c1d246!2sPlaza%20Mont%20Kiara!5e0!3m2!1sen!2smy!4v1669875187215!5m2!1sen!2smy"
+                width="100%" height="600px  " style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
