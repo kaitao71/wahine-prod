@@ -14,6 +14,10 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
+
+def contactus(request):
+    return render(request,'backend/contact-us.html')
+
 def index(request):
     return render(request,'backend/index.html')
 
