@@ -111,6 +111,9 @@
 												<h5>Account Number</h5><br>
 												<input type="text" name="account_no" id="" placeholder="12345XXX"
 													class="px-4">
+			{% if form.errors %}
+        <div class="px-4" style="color:red">{{ form.account_no.errors }}</div>
+{% endif %}
 
 											</div>
 
