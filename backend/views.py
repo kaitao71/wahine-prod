@@ -118,18 +118,48 @@ def epf_socso_form(request):
     form = EpfSocsoForm()
     if request.POST:
         form = EpfSocsoForm(request.POST)
-        if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'Success.')
+            return redirect('insurance_form')
+        if form.data['is_socso_member'] == 'no':
+            # remember old state
+            _mutable = form.data._mutable
+
+            # set to mutable
+            form.data._mutable = True
+
+            # сhange the values you want
+            form.data['socso_member_no'] = 'n/a'
+            # set mutable flag back
+            form.data._mutable = _mutable
+            if form.is_valid():
+                is_epf_member = form.cleaned_data['is_epf_member']
+                epf_member_no = form.cleaned_data['epf_member_no']
+                epf_nominee_name = form.cleaned_data['epf_nominee_name']
+                is_socso_member = form.cleaned_data['is_socso_member']
+                socso_member_no = form.cleaned_data['socso_member_no']
+                epf_account_value = form.cleaned_data['epf_account_value']
+                item = Item.objects.create(
+                user=request.user,
+                data={'is_epf_member':is_epf_member,
+                    'is_socso_member':is_socso_member,
+                    'epf_member_no':epf_member_no,
+                    'socso_member_no':socso_member_no,
+                    'epf_nominee_name':epf_nominee_name,
+                    'epf_account_value':epf_account_value,
+                }  ,
+                item_type='EPF Socso',
+                created_by=request.user
+                )
+                messages.add_message(request, messages.INFO, 'EPF/Socso successfully updated.')
                 return redirect('insurance_form')
+        if form.is_valid():
             is_epf_member = form.cleaned_data['is_epf_member']
             epf_member_no = form.cleaned_data['epf_member_no']
             epf_nominee_name = form.cleaned_data['epf_nominee_name']
             is_socso_member = form.cleaned_data['is_socso_member']
-            socso_nominee_name = form.cleaned_data['socso_nominee_name']
             socso_member_no = form.cleaned_data['socso_member_no']
             epf_account_value = form.cleaned_data['epf_account_value']
-            socso_account_value = form.cleaned_data['socso_account_value']
             item = Item.objects.create(
                 user=request.user,
                 data={'is_epf_member':is_epf_member,
@@ -137,9 +167,7 @@ def epf_socso_form(request):
                     'epf_member_no':epf_member_no,
                     'socso_member_no':socso_member_no,
                     'epf_nominee_name':epf_nominee_name,
-                    'socso_nominee_name':socso_nominee_name,
                     'epf_account_value':epf_account_value,
-                    'socso_account_value':socso_account_value,
                 }  ,
                 item_type='EPF Socso',
                 created_by=request.user
@@ -155,17 +183,25 @@ def epf_socso_form(request):
 
 def insurance_form(request):
     form = InsuranceForm()
+    form2 = InsuranceForm()
+    # insuranceformset = formset_factory(InsuranceForm,extra=4)
+    # formset = insuranceformset()
     if request.POST:
         form = InsuranceForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'Success.')
+            return redirect('investment_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('investment_form')
             insurance_type = form.cleaned_data['insurance_type']
             policy_no = form.cleaned_data['policy_no']
             nominee_name = form.cleaned_data['nominee_name']
             sum_insured = form.cleaned_data['sum_insured']
             item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured},item_type='Insurance',created_by=request.user)
+            insurance_type_2 = form.cleaned_data['insurance_type_2']
+            policy_no_2 = form.cleaned_data['policy_no_2']
+            nominee_name_2 = form.cleaned_data['nominee_name_2']
+            sum_insured_2 = form.cleaned_data['sum_insured_2']
+            item2 = Item.objects.create(user=request.user,data={'insurance_type_2':insurance_type_2,'policy_no_2':policy_no_2,'nominee_name_2':nominee_name_2,'sum_insured_2':sum_insured_2},item_type='Insurance',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
             return redirect('investment_form')
     context = {'form':form}

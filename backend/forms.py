@@ -104,6 +104,11 @@ class InsuranceForm(forms.Form):
     policy_no = forms.CharField()
     nominee_name = forms.CharField(required = False)
     sum_insured = forms.CharField(required = False)
+    insurance_type_2 = forms.CharField(required=False)
+    provider_name_2 = forms.CharField(required=False)
+    policy_no_2 = forms.CharField(required=False)
+    nominee_name_2 = forms.CharField(required = False)
+    sum_insured_2 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 #Pending

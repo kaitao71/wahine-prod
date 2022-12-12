@@ -160,6 +160,14 @@
         }
 
       });
+$(".answer_2").hide();
+$(".hide_answer_2").click(function() {
+    if($(this).is(":checked")) {
+        $(".answer_2").show();
+    } else {
+        $(".answer_2").hide();
+    }
+});
     });
   </script>
 </body>

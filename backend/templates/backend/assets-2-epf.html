@@ -69,6 +69,9 @@
 													<h5>Membership Number</h5><br>
 													<input type="text" name="epf_member_no" id=""
 														placeholder="950112-XX-XXXX" class="px-4">
+																	{% if form.errors %}
+        <div class="px-4" style="color:red">{{ form.epf_member_no.errors }}</div>
+{% endif %}
 												</div>
 												<div class="mt-5 mt-lg-0 col-lg-6 mx-1">
 													<h5>Nominee Details</h5><br>
@@ -86,6 +89,7 @@
 													<h5>Account Value</h5><br>
 													<input type="text" name="epf_account_value" id="" placeholder="RM1,000,000"
 														class="px-4">
+
 												</div>
 
 											</div>
@@ -97,7 +101,7 @@
 
 
 									<!-- SOCSO -->
-									<div class="answer " style="margin-top: 7rem;">
+									<div class="" style="margin-top: 7rem;">
 										<h4 class="text-black">SOCSO</h4>
 										<p class="text-start">Fill in your SOCSO information.</p><br>
 										<!-- Start Information -->
@@ -107,16 +111,16 @@
 											<div class="form-row Btn-Radio">
 												<!-- Start Input -->
 												<div class="col-6 col-lg-6">
-													<input type="radio" id="control_03" name="is_socso_member" value="Yes" checked>
-													<label for="control_03">
+													<input class="unhide_answer_2" type="radio" id="control_05" name="is_socso_member" value="yes" checked>
+													<label for="control_05">
 														<h6>Yes</h6>
 													</label>
 												</div>
 												<!-- End Input -->
 												<!-- Start Input -->
 												<div class="mx-1 col-lg-6 col-6">
-													<input type="radio" id="control_04" name="is_socso_member" value="No">
-													<label for="control_04">
+													<input class="hide_answer_2" type="radio" id="control_06" name="is_socso_member" value="no">
+													<label for="control_06">
 														<h6>No</h6>
 													</label>
 												</div>
@@ -125,32 +129,23 @@
 											<!-- End Form Row -->
 											<br>
 											<!-- Start Form Row -->
-											<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+											<div class="answer_2 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 												<div class="col-12 col-lg-6 mb-5 mb-lg-0">
 													<h5>Membership Number</h5><br>
 													<input type="text" name="socso_member_no" id=""
 														placeholder="950112-XX-XXXX" class="px-4">
+												{% if form.errors %}
+        										<div class="px-4" style="color:red">{{ form.socso_member_no.errors }}</div>
+												{% endif %}
 												</div>
-												<div class=" col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
+												<!-- <div class=" col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
 													<h5>Nominee Details</h5><br>
 													<input type="text" name="socso_nominee_name" id="" placeholder="Name"
 														class="px-4">
-												</div>
+												</div> -->
 											</div>
 											<!-- End Form Row -->
 											<br><br><br>
-
-											<!-- Start Form Row -->
-											<div class="answer form-row row Btn-Radio">
-
-												<div class="mx-1 col-lg-6 col-12">
-													<h5>Account Value</h5><br>
-													<input type="text" name="socso_account_value" id="" placeholder="RM1,000,000"
-														class="px-4">
-												</div>
-
-											</div>
-											<!-- End Form Row -->
 										</div>
 										<!-- End Information -->
 									</div>

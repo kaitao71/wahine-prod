@@ -95,16 +95,37 @@
 										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 											<div class="col-sm-6 col-12 mb-lg-0 mb-5">
 												<h5>Bank Name</h5><br>
-							
 												<select name="bank_name" id="bank_name" class="px-4">
-													<option value="SelectABank">Select A Bank</option>
-													<option value="Maybank">Maybank</option>
-													<option value="CIMB">CIMB</option>
-													<option value="RHB">RHB</option>
-													<option value="UOB">UOB</option>
-												</select>
+											<option value="SelectABank">Select A Bank</option>
+											<option value="Affin Bank">Affin Bank</option>
+											<option value="Affin Islamic">Affin Islamic</option>
+											<option value="Agro Bank">Agro Bank</option>
+											<option value="Alliance Bank">Alliance Bank</option>
+											<option value="Alliance Islamic Bank">Alliance Islamic Bank</option>
+											<option value="AmBank">AmBank</option>
+											<option value="AmBank Islamic">AmBank Islamic</option>
+											<option value="Bank Islam">Bank Islam</option>
+											<option value="Bank Mualamat">Bank Mualamat</option>
+											<option value="CIMB Bank">CIMB Bank</option>
+											<option value="CIMB Islamic">CIMB Islamic</option>
+											<option value="HongLeong Bank">HongLeong Bank</option>
+											<option value="HongLeong Islamic Bank">HongLeong Islamic</option>
+											<option value="HSBC">HSBC</option>
+											<option value="HSBC Amanah">HSBC Amanah</option>
+											<option value="Maybank">Maybank</option>
+											<option value="Maybank Islamic">Maybank Islamic</option>
+											<option value="OCBC Bank">OCBC Bank</option>
+											<option value="OCBC Al-Amin">OCBC Al-Amin</option>
+											<option value="RHB Bank">RHB Bank</option>
+											<option value="RHB Islamic">RHB Islamic Bank</option>
+											<option value="Standard Chartered">Standard Chartered</option>
+											<option value="Standard Chartered Saadiq">Standard Chartered Saadiq</option>
+											<option value="Others">Others</option>
+										</select>
 			{% if form.errors %}
-        <div class="px-4" style="color:red">{{ form.bank_name.errors }}</div>
+    	<div class="px-4" style="color:red">
+    		{{ form.bank_name.errors }}
+		</div>
 {% endif %}
 											</div>
 											<div class="col-sm-6 col-12 mx-1 mt-lg-0 mt-5">

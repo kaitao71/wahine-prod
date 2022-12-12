@@ -1,174 +1,281 @@
-	{% extends "backend/base.html" %}
-	{% load static %}
+{% extends "backend/base.html" %}
+{% load static %}
 
 {% block extrahead %}
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<!-- Steps CSS and JS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 
-	{% block content %}
-	<!-- Start Wrapper -->
-		<div class="wrapper BG-Blue pb-5">
-			<!-- Start Container -->
-					<div class="inner col-12 col-lg-10 m-auto">
-						<!-- Column 1 -->
-						<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-								<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-								<h2 class="mb-1 Color-Secondary">Assets</h2>
-								<p>Please fill the form below to record your personal assets information. Feel free to add
-									as much detail as needed. </p>
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
+		{{formset}}
+
+
+
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					{% include 'backend/onboarding-assets-breadcrumbs.html' %}
+					<!-- Form -->
+					<form method="post" class="Assets">
+						{% csrf_token %}
+						<!-- Start Insurance Div-->
+						<div class="mb-5">
+							<h4 class="text-black">Insurance Details</h4>
+							<p class="text-start">Fill in your insurance information.</p>
+							<h5>Do you have Insurance?</h5>
+							<br>
+							<!-- Start Form Row -->
+							<div class="form-row Btn-Radio">
+								<!-- Start Input -->
+								<div class="col-6 col-lg-6">
+									<input class="unhide_answer" type="radio" name="yesno" id="yesno" value="yes"
+										checked>
+									<label for="yesno">
+										<h6>Yes</h6>
+									</label>
+
+								</div>
+								<!-- End Input -->
+								<!-- Start Input -->
+								<div class="col-6 col-lg-6 mx-1">
+									<input class="hide_answer" type="radio" name="yesno" id="yesno2" value="no">
+									<label for="yesno2">
+										<h6>No</h6>
+									</label>
+								</div>
+								<!-- End Input -->
 							</div>
+							<!-- End Form Row -->
+							<br>
 
-
-
-							<!-- Left Column Inner Column -->
-							<div class="inner pb-5">
-								<!-- Form Div -->
-								<div class="form-content w-100 pb-3">
-								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
-								<!-- Form -->
-								<form method="post" class="Assets">
-									{% csrf_token %}
-									<!-- Start Insurance Div-->
-									<div class="mb-5">
-									<h4 class="text-black">Insurance Details</h4>
-									<p class="text-start">Fill in your insurance information.</p>
-											<h5>Do you have Insurance?</h5>
-											<br>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio">
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6">
-													<input class="unhide_answer" type="radio" name="yesno" id="yesno" value="yes" checked>
-													<label for="yesno">
-														<h6>Yes</h6>
-													</label>
-
-												</div>
-												<!-- End Input -->
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6 mx-1">
-													<input class="hide_answer" type="radio" name="yesno" id="yesno2" value="no">
-													<label for="yesno2">
-														<h6>No</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-											</div>
-											<!-- End Form Row -->
-											<br>
-
-										<!-- Start Information -->
-										<div class="answer">
-										<h5>Applicable Insurance #1</h5><BR>
-										<div class=" answer form-row Btn-Radio">
-											<div class=" answer col-6 col-lg-6">
-												<input type="radio" id="control_01" name="insurance_type" value="Life" checked>
-												<label for="control_01">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-arrow-through-heart"
-														viewBox="0 0 16 16">
-														<path fill-rule="evenodd"
-															d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
-													</svg>
-													<h6>Life</h6>
-												</label>
-											</div>
-											<div class=" answer mx-2 col-6 col-lg-6">
-												<input type="radio" id="control_03" name="insurance_type" value="Medical">
-												<label for="control_03">
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-prescription2"
-														viewBox="0 0 16 16">
-														<path d="M7 6h2v2h2v2H9v2H7v-2H5V8h2V6Z" />
-														<path fill-rule="evenodd"
-															d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v10.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 14.5V4a1 1 0 0 1-1-1V1Zm2 3h8v10.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5V4ZM3 3V1h10v2H3Z" />
-													</svg>
-													<h6>Medical</h6>
-												</label>
-											</div>
-										</div>
-										<div class="answer form-row Btn-Radio">
-											<div class="col-6 col-lg-6">
-												<input type="radio" id="control_05" name="insurance_type" value="General">
-												<label for="control_05">
-
-													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-														fill="currentColor" class="bi bi-house-heart"
-														viewBox="0 0 16 16">
-														<path
-															d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
-														<path
-															d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
-													</svg>
-													<h6>General</h6>
-												</label>
-											</div>
-										</div><br>
-										<br>
-
-										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="mb-5 mb-lg-0 col-lg-6 col-12">
-												<h5>Policy Number</h5><br>
-												<input type="text" name="policy_no" id="" placeholder="A123456XX"
-													class="px-4">
-											</div>
-											<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
-												<h5>Nominee Details</h5><br>
-												<input type="text" name="nominee_name" id="" placeholder="Name"
-													class="px-4">
-											</div>
-										</div><br><br><br>
-										<div class="answer form-row Btn-Radio">
-
-											<div class="mx-1 col-lg-6 col-12">
-												<h5>Sum Insured</h5><br>
-												<input type="text" name="sum_insured" id="" placeholder="RM1,000,000"
-													class="px-4">
-											</div>
-
-										</div>
+							<!-- Start Information -->
+							<div class="answer">
+								<h5>Applicable Insurance #1</h5><BR>
+								<div class=" answer form-row Btn-Radio">
+									<div class=" answer col-6 col-lg-6">
+										<input type="radio" id="control_01" name="insurance_type" value="Life" checked>
+										<label for="control_01">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-arrow-through-heart"
+												viewBox="0 0 16 16">
+												<path fill-rule="evenodd"
+													d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
+											</svg>
+											<h6>Life</h6>
+										</label>
 									</div>
-										<!-- End Information -->
-									</div>
-									<!-- End Insurance Div-->
-
-									<!-- Second Insurance Div -->
-									<div class="answer mb-5">									
-									<!-- Billing Cycle Toggle -->
-									<div class="mt-4 pt-5 text-center">
-										<div class="form-check form-switch flex-row d-flex align-items-center">
-											<input class="form-check-input" type="checkbox"
-												id="flexSwitchCheckDefault">
-											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-												Insurance</label>
-
-										</div>
+									<div class=" answer mx-2 col-6 col-lg-6">
+										<input type="radio" id="control_03" name="insurance_type" value="Medical">
+										<label for="control_03">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-prescription2" viewBox="0 0 16 16">
+												<path d="M7 6h2v2h2v2H9v2H7v-2H5V8h2V6Z" />
+												<path fill-rule="evenodd"
+													d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v10.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 14.5V4a1 1 0 0 1-1-1V1Zm2 3h8v10.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5V4ZM3 3V1h10v2H3Z" />
+											</svg>
+											<h6>Medical</h6>
+										</label>
 									</div>
 								</div>
-								<!-- End Second Insurance Div -->
+								<div class="answer form-row Btn-Radio">
+									<div class="col-6 col-lg-6">
+										<input type="radio" id="control_05" name="insurance_type" value="General">
+										<label for="control_05">
 
-									<!-- Button -->
-									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
+												<path
+													d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
+												<path
+													d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+											</svg>
+											<h6>General</h6>
+										</label>
 									</div>
-								</form>
-								<!-- End Form -->
+								</div><br>
+								<br>
+
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-lg-6 col-12">
+										<h5>Insurance Provider</h5><br>
+										<select name="provider_name" id="provider_name" class="px-4">
+											<option value="">Select A Provider</option>
+
+											<option value="AIA">AIA</option>
+											<option value="AXA">AXA</option>
+											<option value="Etiqa">Etiqa</option>
+											<option value="GREATEASTERM">Geat Eastern</option>
+											<option value="HLA">Hong Leong Assurance</option>
+											<option value="MANULIFE">Manulife</option>
+											<option value="PRUDENTIAL">Prudential</option>
+											<option value="TOKIOMARINE">Tokio Marine</option>
+											<option value="Others">Others</option>
+										</select>
+											{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.provider_name.errors }}</div>
+										{% endif %}
+									</div>
+									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+										<h5>Policy Number</h5><br>
+										<input type="text" name="policy_no" id="" placeholder="A12345678" class="px-4">
+											{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.policy_no.errors }}</div>
+										{% endif %}
+									</div>
+								</div><br><br><br>
+								<div class="answer form-row Btn-Radio">
+									<div class="col-lg-6 col-12">
+										<h5>Nominee Details</h5><br>
+										<input type="text" name="nominee_name" id="" placeholder="Name" class="px-4">
+									</div>
+									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+										<h5>Sum Insured</h5><br>
+										<input type="text" name="sum_insured" id="" placeholder="RM1,000,000"
+											class="px-4">
+									</div>
+
 								</div>
-								<!-- End Form Div-->
 							</div>
-							<!-- End Left Column Inner Column -->
+							<!-- End Information -->
+							<div class="answer mb-5">
+							<!-- Billing Cycle Toggle -->
+							<div class="mt-4 pt-5 text-center">
+								<div class="form-check form-switch flex-row d-flex align-items-center">
+									<input class="hide_answer_2 form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+									<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
+										Insurance</label>
+
+								</div>
+							</div>
 						</div>
-						<!-- End Column 1 -->
-						<!-- Start Column 2 -->
-						{% include 'backend/onboarding-assets-sidebar.html' %}
+<br><br><br>
+							<!-- 2nd form -->
+<div class="answer answer_2">
+								<h5>Applicable Insurance #2</h5><BR>
+								<div class=" answer form-row Btn-Radio">
+									<div class=" answer col-6 col-lg-6">
+										<input type="radio" id="control_07" name="insurance_type_2" value="Life" checked>
+										<label for="control_07">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-arrow-through-heart"
+												viewBox="0 0 16 16">
+												<path fill-rule="evenodd"
+													d="M2.854 15.854A.5.5 0 0 1 2 15.5V14H.5a.5.5 0 0 1-.354-.854l1.5-1.5A.5.5 0 0 1 2 11.5h1.793l.53-.53c-.771-.802-1.328-1.58-1.704-2.32-.798-1.575-.775-2.996-.213-4.092C3.426 2.565 6.18 1.809 8 3.233c1.25-.98 2.944-.928 4.212-.152L13.292 2 12.147.854A.5.5 0 0 1 12.5 0h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.854.354L14 2.707l-1.006 1.006c.236.248.44.531.6.845.562 1.096.585 2.517-.213 4.092-.793 1.563-2.395 3.288-5.105 5.08L8 13.912l-.276-.182a21.86 21.86 0 0 1-2.685-2.062l-.539.54V14a.5.5 0 0 1-.146.354l-1.5 1.5Zm2.893-4.894A20.419 20.419 0 0 0 8 12.71c2.456-1.666 3.827-3.207 4.489-4.512.679-1.34.607-2.42.215-3.185-.817-1.595-3.087-2.054-4.346-.761L8 4.62l-.358-.368c-1.259-1.293-3.53-.834-4.346.761-.392.766-.464 1.845.215 3.185.323.636.815 1.33 1.519 2.065l1.866-1.867a.5.5 0 1 1 .708.708L5.747 10.96Z" />
+											</svg>
+											<h6>Life</h6>
+										</label>
+									</div>
+									<div class=" answer mx-2 col-6 col-lg-6">
+										<input type="radio" id="control_08" name="insurance_type" value="Medical">
+										<label for="control_08">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-prescription2" viewBox="0 0 16 16">
+												<path d="M7 6h2v2h2v2H9v2H7v-2H5V8h2V6Z" />
+												<path fill-rule="evenodd"
+													d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v10.5a1.5 1.5 0 0 1-1.5 1.5h-7A1.5 1.5 0 0 1 3 14.5V4a1 1 0 0 1-1-1V1Zm2 3h8v10.5a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5V4ZM3 3V1h10v2H3Z" />
+											</svg>
+											<h6>Medical</h6>
+										</label>
+									</div>
+								</div>
+								<div class="answer form-row Btn-Radio">
+									<div class="col-6 col-lg-6">
+										<input type="radio" id="control_09" name="insurance_type" value="General">
+										<label for="control_09">
+
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
+												<path
+													d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
+												<path
+													d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+											</svg>
+											<h6>General</h6>
+										</label>
+									</div>
+								</div><br>
+								<br>
+
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-lg-6 col-12">
+										<h5>Insurance Provider</h5><br>
+										<select name="provider_name_2" id="provider_name_2" class="px-4">
+											<option value="">Select A Provider</option>
+
+											<option value="AIA">AIA</option>
+											<option value="AXA">AXA</option>
+											<option value="Etiqa">Etiqa</option>
+											<option value="GREATEASTERM">Geat Eastern</option>
+											<option value="HLA">Hong Leong Assurance</option>
+											<option value="MANULIFE">Manulife</option>
+											<option value="PRUDENTIAL">Prudential</option>
+											<option value="TOKIOMARINE">Tokio Marine</option>
+											<option value="Others">Others</option>
+										</select>
+											{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.provider_name_2.errors }}</div>
+										{% endif %}
+									</div>
+									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+										<h5>Policy Number</h5><br>
+										<input type="text" name="policy_no_2" id="policy_no_2" placeholder="A12345678" class="px-4">
+											{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.policy_no_2.errors }}</div>
+										{% endif %}
+									</div>
+								</div><br><br><br>
+								<div class="answer form-row Btn-Radio">
+									<div class="col-lg-6 col-12">
+										<h5>Nominee Details</h5><br>
+										<input type="text" name="nominee_name_2" id="nominee_name_2" placeholder="Name" class="px-4">
+									</div>
+									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+										<h5>Sum Insured</h5><br>
+										<input type="text" name="sum_insured_2" id="sum_insured_2" placeholder="RM1,000,000"
+											class="px-4">
+									</div>
+
+								</div>
+							</div>
+							<!-- End 2nd form -->
+						</div>
+						<!-- End Insurance Div-->
+
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}"
+								role="button">Back</a>
+							<button class="btn Btn-Primary mt-5 float-end" type="submit">NEXT</button>
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
 		</div>
-		<!-- End Container -->
-		</div>
-		<!-- End Wrapper -->
-		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-	{% endblock %}
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}
