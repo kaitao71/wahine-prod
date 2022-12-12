@@ -4,8 +4,14 @@ from django.db import models
 from django.contrib.auth.forms import UserCreationForm
 # from dal import autocomplete
 from django.contrib.auth import get_user_model
-
+GENDER_CHOICES = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Prefer not to respond', 'Prefer not to respond'),
+    ]
 class SignUpForm(UserCreationForm):
+
+    gender = forms.ChoiceField(choices=GENDER_CHOICES)
     class Meta:
         model = User
         fields = [

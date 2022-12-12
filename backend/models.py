@@ -53,6 +53,11 @@ class TimeStampedModel(models.Model):
     class Meta:
         abstract = True
 
+GENDER_CHOICES = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Prefer not to respond', 'Prefer not to respond'),
+    ]
 class User(AbstractUser):
     """User model."""
     username = None
