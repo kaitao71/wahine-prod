@@ -148,11 +148,18 @@ class VehicleForm(forms.Form):
     vehicle_type = forms.CharField(required = False)
     make_model = forms.CharField()
     registration_no = forms.CharField()
+    vehicle_type_2 = forms.CharField(required = False)
+    make_model_2 = forms.CharField(required = False)
+    registration_no_2 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class AssetOthersForm(forms.Form):
     asset_name = forms.CharField(required = False)
     asset_value = forms.CharField(required = False)
+    asset_name_2 = forms.CharField(required = False)
+    asset_value_2 = forms.CharField(required = False)
+    asset_name_3 = forms.CharField(required = False)
+    asset_value_3 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class CreditCardForm(forms.Form):
