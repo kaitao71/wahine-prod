@@ -168,7 +168,28 @@ $(".hide_answer_2").click(function() {
         $(".answer_2").hide();
     }
 });
+      $('.hide_answer_3').click(function () {
+        var inputValue = $(this).attr("value");
+        if (inputValue = 'hide') {
+          $('.answer_3').hide(200);
+        }
+        else {
+          $('.answer_3').show(200);
+        }
+
+      });
+      $('.unhide_answer_3').click(function () {
+        var inputValue = $(this).attr("value");
+        if (inputValue = 'unhide') {
+          $('.answer_3').show(200);
+        }
+        else {
+          $('.answer_3').hide(200);
+        }
+
+      });
     });
+
   </script>
 </body>
 

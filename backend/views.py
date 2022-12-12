@@ -219,9 +219,18 @@ def investment_form(request):
             account_no = form.cleaned_data['account_no']
             fund_name = form.cleaned_data['fund_name']
             account_value = form.cleaned_data['account_value']
+            investment_type_2 = form.cleaned_data['investment_type']
+            account_no_2 = form.cleaned_data['account_no']
+            fund_name_2 = form.cleaned_data['fund_name']
+            account_value_2 = form.cleaned_data['account_value']
+            investment_type_3 = form.cleaned_data['investment_type']
+            account_no_3 = form.cleaned_data['account_no']
+            fund_name_3 = form.cleaned_data['fund_name']
+            account_value_3 = form.cleaned_data['account_value']
             item = Item.objects.create(user=request.user,data={'investment_type':investment_type,'account_no':account_no,'fund_name':fund_name,'account_value':account_value},item_type='Investment',created_by=request.user)
-            if form.acount_value is none:
-                messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
+            item = Item.objects.create(user=request.user,data={'investment_type':investment_type_2,'account_no':account_no_2,'fund_name':fund_name_2,'account_value':account_value_2},item_type='Investment',created_by=request.user)
+            item = Item.objects.create(user=request.user,data={'investment_type':investment_type_3,'account_no':account_no_3,'fund_name':fund_name_3,'account_value':account_value_3},item_type='Investment',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             return redirect('property_form')
     context = {'form':form}
     return render(request,'backend/assets-4-investment.html',context)

@@ -117,6 +117,14 @@ class InvestmentForm(forms.Form):
     account_no = forms.CharField(required = False)
     fund_name = forms.CharField(required = False)
     account_value = forms.CharField(required = False)
+    investment_type_2 = forms.CharField(required = False)
+    account_no_2 = forms.CharField(required = False)
+    fund_name_2 = forms.CharField(required = False)
+    account_value_2 = forms.CharField(required = False)
+    investment_type_3 = forms.CharField(required = False)
+    account_no_3 = forms.CharField(required = False)
+    fund_name_3 = forms.CharField(required = False)
+    account_value_3 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 
