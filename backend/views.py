@@ -201,7 +201,7 @@ def insurance_form(request):
             policy_no_2 = form.cleaned_data['policy_no_2']
             nominee_name_2 = form.cleaned_data['nominee_name_2']
             sum_insured_2 = form.cleaned_data['sum_insured_2']
-            item2 = Item.objects.create(user=request.user,data={'insurance_type_2':insurance_type_2,'policy_no_2':policy_no_2,'nominee_name_2':nominee_name_2,'sum_insured_2':sum_insured_2},item_type='Insurance',created_by=request.user)
+            item2 = Item.objects.create(user=request.user,data={'insurance_type':insurance_type_2,'policy_no':policy_no_2,'nominee_name':nominee_name_2,'sum_insured':sum_insured_2},item_type='Insurance',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
             return redirect('investment_form')
     context = {'form':form}

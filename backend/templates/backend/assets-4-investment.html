@@ -70,10 +70,7 @@
 												<h5 class="Color-Primary">Public Investment</h5><br>
 												<select name="investment_type" id="" class="px-4">
 													<option value="TabungHaji">Tabung Haji</option>
-													<option value="Maybank">Maybank</option>
-													<option value="CIMB">CIMB</option>
-													<option value="RHB">RHB</option>
-													<option value="UOB">UOB</option>
+													<option value="PNB">PNB</option>
 												</select>
 											</div>
 										</div>
@@ -85,11 +82,11 @@
 												<input type="text" name="account_no" id="" placeholder="A123456XX"
 													class="px-4">
 											</div>
-											<!-- <div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
-												<h5>Fund Name</h5><br>
-												<input type=" text" name="fund_name" id="" placeholder="Name"
+											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+												<h5>Investment Value</h5><br>
+												<input type=" text" name="account_value" id="" placeholder="Name"
 													class="px-4">
-											</div> -->
+											</div>
 										</div><br>
 										<!-- <div class="form-row row Btn-Radio">
 											<div class="col-lg-6 col-12">
@@ -102,13 +99,48 @@
 									<!-- Billing Cycle Toggle -->
 									<div class="answer mt-4 pt-5 text-center">
 										<div class="answer form-check form-switch flex-row d-flex align-items-center">
-											<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+											<input class="hide_answer_2 form-check-input" type="checkbox" id="flexSwitchCheckDefault">
 											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
 												Public Investment
 											</label>
 
 										</div>
 									</div>
+									<br><br><br>
+									<!-- Investment 2 -->
+<div class="answer_2">
+										<div class="answer form-row Btn-Radio">
+											<div class="answer col-lg-6 col-12">
+												<h5 class="Color-Primary">Public Investment</h5><br>
+												<select name="investment_type_2" id="" class="px-4">
+													<option value="TabungHaji">Tabung Haji</option>
+													<option value="PNB">PNB</option>
+												</select>
+											</div>
+										</div>
+										<br><br>
+										<br>
+										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+											<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
+												<h5>Account Number</h5><br>
+												<input type="text" name="account_no_2" id="" placeholder="A123456XX"
+													class="px-4">
+											</div>
+											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+												<h5>Investment Value</h5><br>
+												<input type=" text" name="account_value_2" id="" placeholder="Name"
+													class="px-4">
+											</div>
+										</div><br>
+										<!-- <div class="form-row row Btn-Radio">
+											<div class="col-lg-6 col-12">
+												<h5>Investment Value</h5><br>
+												<input type="text" name="account_value" id="" placeholder="RM100,000"
+													class="px-4">
+											</div>
+										</div> -->
+									</div>
+									<!-- End Investment 2 -->
 									<br><br><br>
 
 			<h5>Do you have Private Investment?</h5>
@@ -117,7 +149,7 @@
 											<div class="form-row Btn-Radio">
 												<!-- Start Input -->
 												<div class="col-6 col-lg-6">
-													<input type="radio" name="is_epf_member" id="control_06" value="Yes" checked>
+													<input type="radio" name="yesno2" id="control_06" value="Yes" checked>
 													<label for="control_06">
 														<h6>Yes</h6>
 													</label>
@@ -126,7 +158,7 @@
 												<!-- End Input -->
 												<!-- Start Input -->
 												<div class="col-6 col-lg-6 mx-1">
-													<input type="radio" name="is_epf_member" id="control_07" value="No">
+													<input type="radio" name="yesno2" id="control_07" value="No">
 													<label for="control_07">
 														<h6>No</h6>
 													</label>
