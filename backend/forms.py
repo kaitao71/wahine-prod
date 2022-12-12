@@ -119,8 +119,8 @@ class InsuranceForm(forms.Form):
 
 #Pending
 class InvestmentForm(forms.Form):
-    investment_type = forms.CharField(required = False)
-    account_no = forms.CharField(required = False)
+    investment_type = forms.CharField()
+    account_no = forms.CharField()
     fund_name = forms.CharField(required = False)
     account_value = forms.CharField(required = False)
     investment_type_2 = forms.CharField(required = False)
@@ -137,7 +137,10 @@ class InvestmentForm(forms.Form):
 class PropertyForm(forms.Form):
     property_type = forms.CharField(required = False)
     residential_type = forms.CharField(required = False)
-    address = forms.CharField(required = False)
+    address = forms.CharField()
+    property_type_2 = forms.CharField(required = False)
+    residential_type_2 = forms.CharField(required = False)
+    address_2 = forms.CharField(required = False)
     ## Removed spa_price field  5/12/2022
     yesno = forms.CharField(required = False)
 

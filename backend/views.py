@@ -246,8 +246,11 @@ def property_form(request):
             property_type = form.cleaned_data['property_type']
             residential_type = form.cleaned_data['residential_type']
             address = form.cleaned_data['address']
-            spa_price = form.cleaned_data['spa_price']
-            item = Item.objects.create(user=request.user,data={'property_type':property_type,'residential_type':residential_type,'address':address,'spa_price':spa_price},item_type='Property',created_by=request.user)
+            property_type_2 = form.cleaned_data['property_type_2']
+            residential_type_2 = form.cleaned_data['residential_type_2']
+            address_2 = form.cleaned_data['address_2']
+            item = Item.objects.create(user=request.user,data={'property_type':property_type,'residential_type':residential_type,'address':address},item_type='Property',created_by=request.user)
+            item2 = Item.objects.create(user=request.user,data={'property_type_2':property_type_2,'residential_type_2':residential_type_2,'address_2':address_2},item_type='Property',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Property data successfully updated.')
             return redirect('vehicles_form')
     context = {'form':form}
