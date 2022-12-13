@@ -83,27 +83,19 @@
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Bank Account</h5>
-													<small>Last Updated on June 01, 2022</small>
-													<br>
-													<br>
-													<div class="row Color-Primary	">
-														<small class="col-9 ">MYR 120,000 / MYR 3,370,000</small>
-														<small class="col-3 text-end">3.6%</small>
-													</div>
-
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
+													</div> --><br>
 													<!-- Bank Asset #1 -->
+													{% for bank in banks %}
 													<div>
-														<small class="Color-Secondary">#1</small><br>
-														<small>Bank Type: Savings</small><br>
-														<small>Bank Name: Maybank</small><br>
-														<small>Account Number: A12345678</small><br>
-														<small>Account Value: MYR 120,000</small>
-													</div><br>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Type: {{bank.data.account_type}}</small><br>
+														<small>Bank Name: {{bank.data.bank_name}}</small><br>
+														<small>Account Number: {{bank.data.account_no}}</small><br>
+														<small>Account Value: {{bank.data.account_value}}</small><br>
+														<small>Last Updated: {{bank.created_at}}</small>
+													</div>
+													{% endfor %}
+													<br>
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
 													</div>
@@ -137,19 +129,9 @@
 													</div>
 													<br>
 													<h5 class="Color-Secondary">EPF/SOCSO</h5>
-													<small>Last Updated on June 01, 2022</small>
-													<br>
-													<br>
-													<div class="row Color-Primary	">
-														<small class="col-9 ">MYR 100,000 / MYR 3,370,000</small>
-														<small class="col-3 text-end">3.0%</small>
-													</div>
+												</div>
 
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
+													<br>
 													<!-- EPF #1 -->
 													<div>
 														<small class="Color-Secondary">#1</small><br>
