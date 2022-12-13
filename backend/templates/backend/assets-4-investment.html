@@ -1,271 +1,299 @@
-	{% extends "backend/base.html" %}
-	{% load static %}
+{% extends "backend/base.html" %}
+{% load static %}
 
 {% block extrahead %}
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<!-- Steps CSS and JS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 
-	{% block content %}
-	<!-- Start Wrapper -->
-		<div class="wrapper BG-Blue pb-5">
-			<!-- Start Container -->
-					<div class="inner col-12 col-lg-10 m-auto">
-						<!-- Column 1 -->
-						<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-								<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-								<h2 class="mb-1 Color-Secondary">Assets</h2>
-								<p>Please fill the form below to record your personal assets information. Feel free to add
-									as much detail as needed. </p>
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
+
+
+
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					{% include 'backend/onboarding-assets-breadcrumbs.html' %}
+					<!-- Form -->
+					<form method="post" class="Assets">
+						{% csrf_token %}
+						<!-- Start Investment -->
+						<div class="mb-5">
+
+							<h4 class="text-black">Investment Details</h4>
+							<p class="text-start">Fill in your investment information.</p><br>
+							<h5>Do you have Public Investment?</h5>
+							<br>
+							<!-- Start Form Row -->
+							<div class="form-row Btn-Radio">
+								<!-- Start Input -->
+								<div class="col-6 col-lg-6">
+									<input class="unhide_answer" type="radio" name="yesno" id="control_01" value="yes"
+										checked>
+									<label for="control_01">
+										<h6>Yes</h6>
+									</label>
+
+								</div>
+								<!-- End Input -->
+								<!-- Start Input -->
+								<div class="col-6 col-lg-6 mx-1">
+									<input class="hide_answer" type="radio" name="yesno" id="control_02" value="no">
+									<label for="control_02">
+										<h6>No</h6>
+									</label>
+								</div>
+								<!-- End Input -->
 							</div>
+							<!-- End Form Row -->
+							<br>
 
-
-
-							<!-- Left Column Inner Column -->
-							<div class="inner pb-5">
-								<!-- Form Div -->
-								<div class="form-content w-100 pb-3">
-								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
-								<!-- Form -->
-								<form method="post" class="Assets">
-									{% csrf_token %}
-									<!-- Start Investment -->
-									<div class="mb-5">
-
-									<h4 class="text-black">Investment Details</h4>
-									<p class="text-start">Fill in your investment information.</p><br>
-											<h5>Do you have Public Investment?</h5>
-											<br>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio">
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6">
-													<input class="unhide_answer"type="radio" name="yesno" id="control_01" value="yes" checked>
-													<label for="control_01">
-														<h6>Yes</h6>
-													</label>
-
-												</div>
-												<!-- End Input -->
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6 mx-1">
-													<input class="hide_answer"type="radio" name="yesno" id="control_02" value="no">
-													<label for="control_02">
-														<h6>No</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-											</div>
-											<!-- End Form Row -->
-											<br>
-
-									<!-- Information -->
-									<!-- Core Investment #1 -->
-									<div>
-										<div class="answer form-row Btn-Radio">
-											<div class="answer col-lg-6 col-12">
-												<h5 class="Color-Primary">Public Investment</h5><br>
-												<select name="investment_type" id="" class="px-4">
-													<option value="TabungHaji">Tabung Haji</option>
-													<option value="PNB">PNB</option>
-												</select>
-											</div>
-										</div>
-										<br><br>
-										<br>
-										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
-												<h5>Account Number</h5><br>
-												<input type="text" name="account_no" id="" placeholder="A123456XX"
-													class="px-4">
-											</div>
-											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
-												<h5>Investment Value</h5><br>
-												<input type=" text" name="account_value" id="" placeholder="Name"
-													class="px-4">
-											</div>
-										</div><br>
-										<!-- <div class="form-row row Btn-Radio">
+							<!-- Information -->
+							<!-- Core Investment #1 -->
+							<div>
+								<div class="answer form-row Btn-Radio">
+									<div class="answer col-lg-6 col-12">
+										<h5 class="Color-Primary">Public Investment</h5><br>
+										<select name="investment_type" id="" class="px-4">
+											<option value="TabungHaji">Tabung Haji</option>
+											<option value="PNB">PNB</option>
+										</select>
+									</div>
+								</div>
+								<br><br>
+								<br>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no" id="" placeholder="A123456XX" class="px-4">
+									</div>
+									<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+										<h5>Investment Value</h5><br>
+										<input type=" text" name="account_value" id="" placeholder="Name" class="px-4">
+									</div>
+								</div><br>
+								<!-- <div class="form-row row Btn-Radio">
 											<div class="col-lg-6 col-12">
 												<h5>Investment Value</h5><br>
 												<input type="text" name="account_value" id="" placeholder="RM100,000"
 													class="px-4">
 											</div>
 										</div> -->
-									</div>
-									<!-- Billing Cycle Toggle -->
-									<div class="answer mt-4 pt-5 text-center">
-										<div class="answer form-check form-switch flex-row d-flex align-items-center">
-											<input class="hide_answer_2 form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-												Public Investment
-											</label>
+							</div>
+							<!-- Billing Cycle Toggle -->
+							<div class="answer mt-4 pt-5 text-center">
+								<div class="answer form-check form-switch flex-row d-flex align-items-center">
+									<input class="hide_answer_2 form-check-input" type="checkbox"
+										id="flexSwitchCheckDefault">
+									<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
+										Public Investment
+									</label>
 
-										</div>
+								</div>
+							</div>
+							<br><br><br>
+							<!-- Investment 2 -->
+							<div class="answer_2">
+								<div class="answer form-row Btn-Radio">
+									<div class="answer col-lg-6 col-12">
+										<h5 class="Color-Primary">Public Investment</h5><br>
+										<select name="investment_type_3" id="" class="px-4">
+											<option value="TabungHaji">Tabung Haji</option>
+											<option value="PNB">PNB</option>
+										</select>
 									</div>
-									<br><br><br>
-									<!-- Investment 2 -->
-<div class="answer_2">
-										<div class="answer form-row Btn-Radio">
-											<div class="answer col-lg-6 col-12">
-												<h5 class="Color-Primary">Public Investment</h5><br>
-												<select name="investment_type_3" id="" class="px-4">
-													<option value="TabungHaji">Tabung Haji</option>
-													<option value="PNB">PNB</option>
-												</select>
-											</div>
-										</div>
-										<br><br>
-										<br>
-										<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
-												<h5>Account Number</h5><br>
-												<input type="text" name="account_no_3" id="" placeholder="A123456XX"
-													class="px-4">
-											</div>
-											<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
-												<h5>Investment Value</h5><br>
-												<input type=" text" name="account_value_3" id="" placeholder="Name"
-													class="px-4">
-											</div>
-										</div><br>
-										<!-- <div class="form-row row Btn-Radio">
+								</div>
+								<br><br>
+								<br>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no_3" id="" placeholder="A123456XX"
+											class="px-4">
+									</div>
+									<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+										<h5>Investment Value</h5><br>
+										<input type=" text" name="account_value_3" id="" placeholder="Name"
+											class="px-4">
+									</div>
+								</div><br>
+								<!-- <div class="form-row row Btn-Radio">
 											<div class="col-lg-6 col-12">
 												<h5>Investment Value</h5><br>
 												<input type="text" name="account_value" id="" placeholder="RM100,000"
 													class="px-4">
 											</div>
 										</div> -->
-									</div>
-									<!-- End Investment 2 -->
-									<br><br><br>
-
-			<h5>Do you have Private Investment?</h5>
-											<br>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio">
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6">
-													<input class="unhide_answer_3" type="radio" name="yesno2" id="control_06" value="yes" checked>
-													<label for="control_06">
-														<h6>Yes</h6>
-													</label>
-
-												</div>
-												<!-- End Input -->
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6 mx-1">
-													<input class="hide_answer_3" type="radio" name="yesno2" id="control_07" value="no">
-													<label for="control_07">
-														<h6>No</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-											</div>
-											<!-- End Form Row -->
-											<br>
-
-
-									<!-- Unit Trust Investment -->
-									<div class="answer_3 mt-5">
-										<h5 class="Color-Primary">Unit Trust Investment</h5><BR>
-										<br>
-										<br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="col-12 col-lg-6 mb-5 mb-lg-0">
-												<h5>Unit Trust Name</h5><br>
-												<select name="investment_type_2" id="unit_trust_name" class="px-4">
-													<option value="">Select A Fund</option>
-<option value="AFFIN FUND MANAGEMENT BERHAD">AFFIN FUND MANAGEMENT BERHAD</option>
-<option value="ALLIANCE INVESTMENT MANAGEMENT BERHAD">ALLIANCE INVESTMENT MANAGEMENT BERHAD</option>
-<option value="AMANAH MUTUAL BERHAD">AMANAH MUTUAL BERHAD</option>
-<option value="AMANAH SAHAM KEDAH BERHAD">AMANAH SAHAM KEDAH BERHAD</option>
-<option value="AMANAH SAHAM NASIONAL BERHAD">AMANAH SAHAM NASIONAL BERHAD</option>
-<option value="AMANAH SAHAM SARAWAK BERHAD">AMANAH SAHAM SARAWAK BERHAD</option>
-<option value="AMANAHRAYA UNIT TRUST MANAGEMENT SDN BHD">AMANAHRAYA UNIT TRUST MANAGEMENT SDN BHD</option>
-<option value="AMANAHRAYA-JMF ASSET MANAGEMENT SDN BHD">AMANAHRAYA-JMF ASSET MANAGEMENT SDN BHD</option>
-<option value="AMINVESTMENT SERVICES BERHAD">AMINVESTMENT SERVICES BERHAD</option>
-<option value="APEX INVESTMENT SERVICES BERHAD">APEX INVESTMENT SERVICES BERHAD</option>
-<option value="ARECA CAPITAL SDN BHD">ARECA CAPITAL SDN BHD</option>
-<option value="ASIA UNIT TRUSTS BERHAD">ASIA UNIT TRUSTS BERHAD</option>
-<option value="ASM INVESTMENT SERVICES BERHAD">ASM INVESTMENT SERVICES BERHAD</option>
-<option value="AVENUE INVEST BERHAD">AVENUE INVEST BERHAD</option>
-<option value="BIMB UNIT TRUST MANAGEMENT BERHAD">BIMB UNIT TRUST MANAGEMENT BERHAD</option>
-<option value="CIMB WEALTH ADVISORS BERHAD">CIMB WEALTH ADVISORS BERHAD</option>
-<option value="CIMB-PRINCIPAL ASSET MANAGEMENT BERHAD">CIMB-PRINCIPAL ASSET MANAGEMENT BERHAD</option>
-<option value="CMS TRUST MANAGEMENT BERHAD">CMS TRUST MANAGEMENT BERHAD</option>
-<option value="HLG UNIT TRUST BERHAD">HLG UNIT TRUST BERHAD</option>
-<option value="HWANGDBS INVESTMENT MANAGEMENT BERHAD">HWANGDBS INVESTMENT MANAGEMENT BERHAD</option>
-<option value="ING FUNDS BERHAD">ING FUNDS BERHAD</option>
-<option value="INTER-PACIFIC ASSET MANAGEMENT SDN BHD">INTER-PACIFIC ASSET MANAGEMENT SDN BHD</option>
-<option value="KAF FUND MANAGEMENT SDN BHD">KAF FUND MANAGEMENT SDN BHD</option>
-<option value="KENANGA UNIT TRUST BERHAD">KENANGA UNIT TRUST BERHAD</option>
-<option value="KSC CAPITAL BERHAD">KSC CAPITAL BERHAD</option>
-<option value="MAAKL MUTUAL BERHAD">MAAKL MUTUAL BERHAD</option>
-<option value="MANULIFE UNIT TRUSTS BERHAD">MANULIFE UNIT TRUSTS BERHAD</option>
-<option value="MAYBAN INVESTMENT MANAGEMENT SDN BHD">MAYBAN INVESTMENT MANAGEMENT SDN BHD</option>
-<option value="OSK-UOB UNIT TRUST MANAGEMENT BERHAD">OSK-UOB UNIT TRUST MANAGEMENT BERHAD</option>
-<option value="PACIFIC MUTUAL FUND BERHAD">PACIFIC MUTUAL FUND BERHAD</option>
-<option value="PELABURAN HARTANAH NASIONAL BERHAD">PELABURAN HARTANAH NASIONAL BERHAD</option>
-<option value="PELABURAN JOHOR BERHAD">PELABURAN JOHOR BERHAD</option>
-<option value="PENGURUSAN KUMIPA BERHAD">PENGURUSAN KUMIPA BERHAD</option>
-<option value="PERMODALAN BSN BERHAD">PERMODALAN BSN BERHAD</option>
-<option value="PHEIM UNIT TRUSTS BERHAD">PHEIM UNIT TRUSTS BERHAD</option>
-<option value="PHILLIP MUTUAL BERHAD">PHILLIP MUTUAL BERHAD</option>
-<option value="PRUDENTIAL FUND MANAGEMENT BERHAD">PRUDENTIAL FUND MANAGEMENT BERHAD</option>
-<option value="PTB UNIT TRUST BERHAD">PTB UNIT TRUST BERHAD</option>
-<option value="PUBLIC MUTUAL BERHAD">PUBLIC MUTUAL BERHAD</option>
-<option value="RHB INVESTMENT MANAGEMENT SDN BHD">RHB INVESTMENT MANAGEMENT SDN BHD</option>
-<option value="SAHAM SABAH BERHAD">SAHAM SABAH BERHAD</option>
-<option value="TA INVESTMENT MANAGEMENT BERHAD">TA INVESTMENT MANAGEMENT BERHAD</option>
-												</select>
-
-											</div>
-											<div class="col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
-												<h5>Account Number</h5><br>
-												<input type="text" name="account_no_2" id="" placeholder="A123456XX"
-													class="px-4">
-											</div>
-
-										</div>
-										<br><br><br>
-										<div class="form-row row Btn-Radio">
-
-											<div class="mx-1 col-lg-6 col-12">
-												<h5>Investment Value</h5><br>
-												<input type="text" name="account_value_2" id="" placeholder="RM100,000"
-													class="px-4">
-											</div>
-										</div>
-									</div>
-									<!-- Billing Cycle Toggle -->
-								
-								</div>
-								<!-- End Investment -->
-
-
-
-									<!-- Button -->
-									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
-									</div>
-								</form>
-								<!-- End Form -->
-								</div>
-								<!-- End Form Div-->
 							</div>
-							<!-- End Left Column Inner Column -->
+							<!-- End Investment 2 -->
+							<br><br><br>
+
+							<h5>Do you have Private Investment?</h5>
+							<br>
+							<!-- Start Form Row -->
+							<div class="form-row Btn-Radio">
+								<!-- Start Input -->
+								<div class="col-6 col-lg-6">
+									<input class="unhide_answer_3" type="radio" name="yesno2" id="control_06"
+										value="yes" checked>
+									<label for="control_06">
+										<h6>Yes</h6>
+									</label>
+
+								</div>
+								<!-- End Input -->
+								<!-- Start Input -->
+								<div class="col-6 col-lg-6 mx-1">
+									<input class="hide_answer_3" type="radio" name="yesno2" id="control_07" value="no">
+									<label for="control_07">
+										<h6>No</h6>
+									</label>
+								</div>
+								<!-- End Input -->
+							</div>
+							<!-- End Form Row -->
+							<br>
+
+
+							<!-- Unit Trust Investment -->
+							<div class="answer_3 mt-5">
+								<h5 class="Color-Primary">Unit Trust Investment</h5><BR>
+								<br>
+								<br>
+								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-12 col-lg-6 mb-5 mb-lg-0">
+										<h5>Unit Trust Name</h5><br>
+										<select name="investment_type_2" id="unit_trust_name" class="px-4">
+											<option value="">Select A Fund</option>
+											<option value="Abrdn Islamic Malaysia Sdn. Bhd.">Abrdn Islamic Malaysia Sdn.
+												Bhd.</option>
+											<option value="Affin Hwang Asset Management Berhad">Affin Hwang Asset
+												Management Berhad</option>
+											<option value="AIIMAN Asset Management Sdn. Bhd.">AIIMAN Asset Management
+												Sdn. Bhd.</option>
+											<option value="Amanah Saham Nasional Berhad">Amanah Saham Nasional Berhad
+											</option>
+											<option value="Amanah Saham Sarawak Berhad">Amanah Saham Sarawak Berhad
+											</option>
+											<option value="AmanahRaya Investment Management Sdn Bhd">AmanahRaya
+												Investment Management Sdn Bhd</option>
+											<option value="AmFunds Management Berhad">AmFunds Management Berhad</option>
+											<option value="Areca Capital Sdn Bhd">Areca Capital Sdn Bhd</option>
+											<option value="Astute Fund Management Berhad">Astute Fund Management Berhad
+											</option>
+											<option value="BIMB Investment Management Berhad">BIMB Investment Management
+												Berhad</option>
+											<option value="BOS Wealth Management Malaysia Berhad">BOS Wealth Management
+												Malaysia Berhad</option>
+											<option value="Eastspring Investments Berhad">Eastspring Investments Berhad
+											</option>
+											<option value="Franklin Templeton GSC Asset Management Sdn Bhd">Franklin
+												Templeton GSC Asset Management Sdn Bhd</option>
+											<option value="Hong Leong Asset Management Bhd">Hong Leong Asset Management
+												Bhd</option>
+											<option value="Inter-Pacific Asset Management Sdn Bhd">Inter-Pacific Asset
+												Management Sdn Bhd</option>
+											<option value="i-VCap Management Sdn Bhd *">i-VCap Management Sdn Bhd
+											</option>
+											<option value="KAF Investment Funds Berhad">KAF Investment Funds Berhad
+											</option>
+											<option value="Kedah Islamic Asset Management Berhad">Kedah Islamic Asset
+												Management Berhad</option>
+											<option value="Kenanga Investors Berhad">Kenanga Investors Berhad</option>
+											<option value="Manulife Investment Management (M) Berhad">Manulife
+												Investment Management (M) Berhad</option>
+											<option value="Maybank Asset Management Sdn Bhd">Maybank Asset Management
+												Sdn Bhd</option>
+											<option value="MIDF Amanah Asset Management Berhad">MIDF Amanah Asset
+												Management Berhad</option>
+											<option value="Muamalat Invest Sdn Bhd">Muamalat Invest Sdn Bhd</option>
+											<option value="Nomura Asset Management Malaysia Sdn Bhd">Nomura Asset
+												Management Malaysia Sdn Bhd</option>
+											<option value="Opus Asset Management Sdn Bhd">Opus Asset Management Sdn Bhd
+											</option>
+											<option value="Pengurusan KUMIPA Berhad">Pengurusan KUMIPA Berhad</option>
+											<option value="Permodalan BSN Berhad">Permodalan BSN Berhad</option>
+											<option value="Pheim Unit Trusts Berhad">Pheim Unit Trusts Berhad</option>
+											<option value="Phillip Mutual Berhad">Phillip Mutual Berhad</option>
+											<option value="PMB Investment Berhad">PMB Investment Berhad</option>
+											<option value="Principal Asset Management Berhad">Principal Asset Management
+												Berhad</option>
+											<option value="PTB Unit Trust Berhad">PTB Unit Trust Berhad</option>
+											<option value="Public Mutual Berhad">Public Mutual Berhad</option>
+											<option value="RHB Asset Management Sdn Bhd">RHB Asset Management Sdn Bhd
+											</option>
+											<option value="RHB Islamic International Asset Management Bhd">RHB Islamic
+												International Asset Management Bhd</option>
+											<option value="Saham Sabah Berhad">Saham Sabah Berhad</option>
+											<option value="Saturna Sdn Bhd">Saturna Sdn Bhd</option>
+											<option value="TA Investment Management Berhad">TA Investment Management
+												Berhad</option>
+											<option value="UOB Asset Management (Malaysia) Berhad">UOB Asset Management
+												(Malaysia) Berhad</option>
+											<option value="Value Partners Asset Management Malaysia Sdn Bhd">alue
+												Partners Asset Management Malaysia Sdn Bhd</option>
+
+										</select>
+
+									</div>
+									<div class="col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no_2" id="" placeholder="A123456XX"
+											class="px-4">
+									</div>
+
+								</div>
+								<br><br><br>
+								<div class="form-row row Btn-Radio">
+
+									<div class="mx-1 col-lg-6 col-12">
+										<h5>Investment Value</h5><br>
+										<input type="text" name="account_value_2" id="" placeholder="RM100,000"
+											class="px-4">
+									</div>
+								</div>
+							</div>
+							<!-- Billing Cycle Toggle -->
+
 						</div>
-						<!-- End Column 1 -->
-						<!-- Start Column 2 -->
-						{% include 'backend/onboarding-assets-sidebar.html' %}
+						<!-- End Investment -->
+
+
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}"
+								role="button">Back</a>
+							<button class="btn Btn-Primary mt-5 float-end" type="submit">NEXT</button>
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
 		</div>
-		<!-- End Container -->
-		</div>
-		<!-- End Wrapper -->
-		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-	{% endblock %}
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}
