@@ -130,6 +130,13 @@
 										<div class="px-4" style="color:red">{{ form.provider_name.errors }}</div>
 										{% endif %}
 									</div>
+									<div class="mx-1 col-lg-6 col-12">
+										<h5>Provider Name</h5><br>
+									<input type="text" name="provider_name_custom" id="" placeholder="" class="px-4 insurance-name">
+									</div>
+									
+								</div><br><br><br>
+								<div class="answer form-row Btn-Radio">
 									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Policy Number</h5><br>
 										<input type="text" name="policy_no" id="" placeholder="A12345678" class="px-4">
@@ -137,19 +144,21 @@
 										<div class="px-4" style="color:red">{{ form.policy_no.errors }}</div>
 										{% endif %}
 									</div>
-								</div><br><br><br>
-								<div class="answer form-row Btn-Radio">
 									<div class="col-lg-6 col-12">
 										<h5>Nominee Details</h5><br>
 										<input type="text" name="nominee_name" id="" placeholder="Name" class="px-4">
 									</div>
-									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+									
+
+								</div>
+								<br><br>
+<div class="answer form-row Btn-Radio">
+								<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Sum Insured</h5><br>
 										<input type="text" name="sum_insured" id="" placeholder="RM1,000,000"
 											class="px-4">
 									</div>
-
-								</div>
+									</div>
 							</div>
 							<!-- End Information -->
 							<div class="answer mb-5">
