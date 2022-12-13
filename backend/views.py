@@ -442,9 +442,30 @@ def assets_overview(request):
     return render(request,'backend/assets-overview.html',context)
 
 def liabilities_overview(request):
-    context = {}
+    user = request.user
+    items = Item.objects.filter(user=user)
+    creditcard = items.filter(item_type='Credit Card').last()
+    personalloan = items.filter(item_type='Personal Loan').last()
+    vehicleloan = items.filter(item_type='Vehicle Loan').last()
+    propertyloan = items.filter(item_type='Property Loan').last()
+    others_liabilities = items.filter(item_type='Other Liabilities').last()
+    context = {'items':items,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
     return render(request,'backend/liabilities-overview.html',context)
 
 def dashboard(request):
-    context = {}
+    user = request.user
+    items = Item.objects.filter(user=user)
+    banks = items.filter(item_type='Bank Account')
+    epf_socso = items.filter(item_type='EPF Socso')
+    insurances = items.filter(item_type='Insurance')
+    investments = items.filter(item_type='Investment')
+    properties = items.filter(item_type='Property')
+    vehicles = items.filter(item_type='Vehicles')
+    others = items.filter(item_type='Other Assets')
+    creditcard = items.filter(item_type='Credit Card')
+    personalloan = items.filter(item_type='Personal Loan')
+    vehicleloan = items.filter(item_type='Vehicle Loan')
+    propertyloan = items.filter(item_type='Property Loan')
+    others_liabilities = items.filter(item_type='Other Liabilities')
+    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'others':others,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
     return render(request,'backend/dashboard.html',context)

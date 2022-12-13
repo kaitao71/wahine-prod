@@ -62,55 +62,77 @@
 												<tbody>
 													<tr>
 														<th scope="row">1</th>
-														<td><a href="liabilities-1-creditcard">Credit Card</a></td>
-														<td>25/11/2022</td>
+														<td>{% if not creditcard %}
+														<a href="{% url 'credit_card_form' %}">Credit Card</a>
+														{% else %} 
+														<a href="{% url 'dashboard' %}">Credit Card</a>
+														{% endif %}</td>
+														<td>{{creditcard.created_at}}</td>
 														<td>
 															<div class="checkbox">
-																<label><input type="checkbox" value="check1"
-																		checked /></label>
+																<label><input type="checkbox" value="check1" disabled="disabled"
+																		{% if creditcard %} checked {% endif %} /></label>
 															</div>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row">2</th>
-														<td><a href="liabilities-2-personalloan">Personal Loan</a></td>
-														<td>24/11/2022</td>
+														<td>{% if not personalloan %}
+														<a href="{% url 'personal_loan_form' %}">Personal Loan</a>
+														{% else %} 
+														<a href="{% url 'dashboard' %}">Personal Loan</a>
+														{% endif %}</td>
+														<td>{{personalloan.created_at}}</td>
 														<td>
 															<div class="checkbox">
-																<label><input type="checkbox" value="check1"
-																		checked /></label>
+																<label><input type="checkbox" value="check1" disabled="disabled"
+																		{% if personalloan %} checked {% endif %} /></label>
 															</div>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row">3</th>
-														<td><a href="liabilities-3-vehiclesloan">Vehicle Loan</a> </td>
-														<td>23/11/2022</td>
+														<td>{% if not vehicleloan %}
+														<a href="{% url 'vehicles_loan_form' %}">Vehicle Loan</a>
+														{% else %} 
+														<a href="{% url 'dashboard' %}">Vehicle Loan</a>
+														{% endif %}</td>
+														<td>{{vehicleloan.created_at}}</td>
 														<td>
 															<div class="checkbox">
-																<label><input type="checkbox" value="check1"
-																		checked /></label>
+																<label><input type="checkbox" value="check1" disabled="disabled"
+																		{% if vehicleloan %} checked {% endif %} /></label>
 															</div>
 														</td>
 													</tr>
 													<tr>
 														<th scope="row">4</th>
-														<td><a href="liabilities-4-property">Property</a> </td>
-														<td>23/11/2022</td>
+														<td>{% if not propertyloan %}
+														<a href="{% url 'property_loan_form' %}">Property Loan</a>
+														{% else %} 
+														<a href="{% url 'dashboard' %}">Property Loan</a>
+														{% endif %}</td>
+														<td>{{propertyloan.created_at}}</td>
 														<td>
 															<div class="checkbox">
-																<label><input type="checkbox" value="check1" /></label>
+																<label><input type="checkbox" value="check1" disabled="disabled"
+																	{% if propertyloan %} checked {% endif %}/></label>
 															</div>
 														</td>
 													</tr>
 
 													<tr>
 														<th scope="row">5</th>
-														<td><a href="liabilities-5-others">Others</a> </td>
-														<td>22/11/2022</td>
+														<td>{% if not others %}
+														<a href="{% url 'liabilities_others_form' %}">Other Liabilities</a>
+														{% else %} 
+														<a href="{% url 'dashboard' %}">Other Liabilities</a>
+														{% endif %}</td>
+														<td>{{others.created_at}}</td>
 														<td>
 															<div class="checkbox">
-																<label><input type="checkbox" value="check1" /></label>
+																<label><input type="checkbox" value="check1" disabled="disabled"
+																	{% if others %} checked {% endif %}/></label>
 															</div>
 														</td>
 													</tr>
@@ -135,7 +157,7 @@
 								<!-- Button -->
 								<div class="mt-5">
 									<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}" role="button">Back</a>
-<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}" role="button">Next</a>
+<a class="btn Btn-Secondary-2 mt-5" href="{% url 'notifier_list_form' %}" role="button">Next</a>
 								</div>
 							</div>
 
