@@ -161,6 +161,11 @@ a {
     font-size: 16px;
 }
 
+.TermsLink label a {
+    all: unset;
+    color: #0d6efd;
+}
+
 /* a:hover {
     background-color: gray;
     color: white;

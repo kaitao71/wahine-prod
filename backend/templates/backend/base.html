@@ -173,7 +173,7 @@
   </script>
   {% if messages %}
   {% for message in messages %}
-<script>
+  <script>
     toastr.options = {
       "closeButton": true,
       "debug": false,
@@ -191,7 +191,7 @@
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     }
-    toastr.{{ message.tags }} ('{{message}}');
+    toastr.{ { message.tags } } ('{{message}}');
   </script>
   {% endfor %}
   {% endif %}

@@ -1,4 +1,4 @@
-	{% extends "backend/base.html" %}
+{% extends "backend/base.html" %}
 {% load widget_tweaks %}
 {% load static %}
 
@@ -14,8 +14,8 @@
 	<div class="wrapper container" style="padding-bottom:50px">
 		<form method="post">
 			<!-- SECTION 1 -->
-  {% csrf_token %}
-<section>
+			{% csrf_token %}
+			<section>
 				<div class="inner row">
 					<div class="col-lg-4 px-0 image-holder overflow-Hidden d-none d-lg-block">
 						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_SmilingGirl3.png" alt="">
@@ -27,45 +27,45 @@
 						<p>Please fill in your details</p>
 						<div class="form-row">
 							<div class="form-holder">
-								
-{% render_field form.last_name class+="form-control" placeholder="Full Name" %}
-{{form.last_name.errors}}
+
+								{% render_field form.last_name class+="form-control" placeholder="Full Name" %}
+								{{form.last_name.errors}}
 							</div>
-<div class="form-holder">
-								
-{% render_field form.email class+="form-control" placeholder="Email" %}
-{{form.email.errors}}
+							<div class="form-holder">
+
+								{% render_field form.email class+="form-control" placeholder="Email" %}
+								{{form.email.errors}}
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-holder">
-								
-{% render_field form.age class+="form-control" placeholder="Age" %}
-{{form.age.errors}}
+
+								{% render_field form.age class+="form-control" placeholder="Age" %}
+								{{form.age.errors}}
 							</div>
-<div class="form-holder">
-								
-{% render_field form.gender class+="form-control" placeholder="Gender" %}
-{{form.gender.errors}}
+							<div class="form-holder">
+
+								{% render_field form.gender class+="form-control" placeholder="Gender" %}
+								{{form.gender.errors}}
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-holder">
-								
-{% render_field form.referral_code class+="form-control" placeholder="Referral Code" %}
-{{form.referral_code.errors}}
+
+								{% render_field form.referral_code class+="form-control" placeholder="Referral Code" %}
+								{{form.referral_code.errors}}
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-holder">
-								
-{% render_field form.password1 class+="form-control" placeholder="Password" %}
-{{form.password1.errors}}
+
+								{% render_field form.password1 class+="form-control" placeholder="Password" %}
+								{{form.password1.errors}}
 							</div>
-<div class="form-holder">
-								
-{% render_field form.password2 class+="form-control" placeholder="Confirm Password" %}
-{{form.password2.errors}}
+							<div class="form-holder">
+
+								{% render_field form.password2 class+="form-control" placeholder="Confirm Password" %}
+								{{form.password2.errors}}
 							</div>
 						</div>
 						<div class="checkbox-circle p-0">
@@ -75,13 +75,14 @@
 
 						</div>
 						<br>
-						<div class="form-check">
+						<div class="form-check TermsLink">
 							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
 							<label class="form-check-label" for="flexCheckDefault">I have read and agree to Wahine’s
-								User Agreement and Privacy Policy.</label>
+								<a href="{% url 'terms-of-service' %}">User Agreement</a> and <a
+									href="{% url 'privacy-policy' %}">Privacy Policy</a>.</label>
 						</div>
 						<div class="">
-							<button class="signup-next-button"type="submit">Next</button>
+							<button class="signup-next-button" type="submit">Next</button>
 						</div>
 
 					</div>
