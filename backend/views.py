@@ -431,14 +431,14 @@ def access_list_form(request):
 def assets_overview(request):
     user = request.user
     items = Item.objects.filter(user=user)
-    banks = items.filter(item_type='Bank Account')
-    epf_socso = items.filter(item_type='EPF Socso')
-    insurances = items.filter(item_type='Insurance')
-    investments = items.filter(item_type='Investment')
-    properties = items.filter(item_type='Property')
-    vehicles = items.filter(item_type='Vehicles')
-    others = items.filter(item_type='Other Assets')
-    context = {'items':items}
+    banks = items.filter(item_type='Bank Account').last()
+    epf_socso = items.filter(item_type='EPF Socso').last()
+    insurances = items.filter(item_type='Insurance').last()
+    investments = items.filter(item_type='Investment').last()
+    properties = items.filter(item_type='Property').last()
+    vehicles = items.filter(item_type='Vehicles').last()
+    others = items.filter(item_type='Other Assets').last()
+    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'others':others}
     return render(request,'backend/assets-overview.html',context)
 
 def liabilities_overview(request):
