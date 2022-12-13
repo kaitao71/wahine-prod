@@ -14,6 +14,14 @@ def logout_view(request):
     logout(request)
     return redirect('index')
 
+def terms_of_service(request):
+    return render(request,'backend/terms-of-service.html')
+
+def return_refund_policy(request):
+    return render(request,'backend/return-refund-policy.html')
+
+def privacy_policy(request):
+    return render(request,'backend/privacy-policy.html')
 
 def contactus(request):
     return render(request,'backend/contact-us.html')

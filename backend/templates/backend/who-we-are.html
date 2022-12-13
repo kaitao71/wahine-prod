@@ -13,9 +13,9 @@
         <h3 class="display-4 mb-4 font-weight-bold text-black">Who We Are</h3>
         <p class="h5 aa mb-4 pb-3 text-black-50">W is your personal life manager to help you start that first steps
           towards a financially secure future.
-          .</p>
-        <h3 class="text-black mb-5">Start For Free Today</h3>
-        <a class="btn Btn-Secondary-2" href="{% url 'joinnow' %}" role="button">Get Started</a>
+          . Start for free today!</p>
+
+        <a class="btn Btn-Secondary-2" href="/joinnow" role="button">Get Started</a>
       </div>
       <div class="col-lg-6 col-12 text-lg-right text-center mt-5 mt-lg-0">
         <div class="banner-phone-image"> <img src="https://wahine.s3.amazonaws.com/static/Img_IphoneMockUp2.png"
@@ -63,7 +63,7 @@
         gap,
         tendency towards the informal labour sector, safety at the workplace and many more.</p>
     </div>
-    <div class="SectionImage col-lg-4" style="">
+    <div class="SectionImage col-lg-4">
       <img class="" src="https://wahine.s3.amazonaws.com/static/Img_Brainstorm.png" alt=""
         style="max-height:400px; margin-left: 100px;">
     </div>
@@ -76,46 +76,31 @@
 
 <!-- Pricing -->
 <!-- Section 9 -->
-<div class="container-fluid Section9 pt-5 pb-5" style="padding:0px 50px;">
+<div class="container-fluid Section9 pt-5 pb-5">
   <div class="row">
     <div class="col-lg-11 offset-lg-1">
       <h4 class="pb-3">Pricing</h4>
       <p>W is your personal life manager to help you start that first steps towards a financially secure future.
       </p>
-      <p>3 Months Free For The First Few Lucky Customers</p>
+      <p>3 Months Free For The First Few Lucky Customers. Cancel or change your plan anytime!</p>
     </div>
     <div class="col-lg-5 offset-lg-1">
 
       <h4 class="Color-Primary">Option 1</h4>
       <h2 style="color:#F3CD03">RM 19.90</h2>
       <p>per month</p>
+      <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
     </div>
     <div class="col-lg-5 offset-lg-1  ">
       <h4 class="Color-Primary">Option 2</h4>
       <h2 style="color:#F3CD03">RM 199.00</h2>
       <p>per annum</p>
-      <p>Cancel or change your plan anytime</p>
+
       <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
     </div>
   </div>
 </div>
 
-<!-- Section 10 -->
-<div class="container-fluid 
-   pt-5 pb-5" style="padding:0px 50px;">
-  <div class="row">
-    <div class="col-lg-6 offset-lg-1">
-      <h5>We focus on Women for Women</h5>
-    </div>
-    <div class="col-lg-5">
-      <p>With Waris, you can minimise the stress of dealing with lawyers by having the necessary information
-        kept
-        securely and only released upon your choice of trigger events such as dementia, full body disability
-        or death.
-        Empower yourself today! </p>
-      <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
-    </div>
-  </div>
-</div>
+
 
 {% endblock %}
