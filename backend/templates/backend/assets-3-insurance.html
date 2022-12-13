@@ -19,9 +19,9 @@
 				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
 				<h2 class="mb-1 Color-Secondary">Assets</h2>
 				<p>Please fill the form below to record your personal assets information. Feel free to add
-					as much detail as needed. </p>
+					as much detail as needed.2 </p>
 			</div>
-		{{formset}}
+			{{formset}}
 
 
 
@@ -126,14 +126,14 @@
 											<option value="TOKIOMARINE">Tokio Marine</option>
 											<option value="Others">Others</option>
 										</select>
-											{% if form.errors %}
+										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.provider_name.errors }}</div>
 										{% endif %}
 									</div>
 									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Policy Number</h5><br>
 										<input type="text" name="policy_no" id="" placeholder="A12345678" class="px-4">
-											{% if form.errors %}
+										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.policy_no.errors }}</div>
 										{% endif %}
 									</div>
@@ -153,23 +153,25 @@
 							</div>
 							<!-- End Information -->
 							<div class="answer mb-5">
-							<!-- Billing Cycle Toggle -->
-							<div class="mt-4 pt-5 text-center">
-								<div class="form-check form-switch flex-row d-flex align-items-center">
-									<input class="hide_answer_2 form-check-input" type="checkbox" id="flexSwitchCheckDefault">
-									<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-										Insurance</label>
+								<!-- Billing Cycle Toggle -->
+								<div class="mt-4 pt-5 text-center">
+									<div class="form-check form-switch flex-row d-flex align-items-center">
+										<input class="hide_answer_2 form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault">
+										<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
+											Insurance</label>
 
+									</div>
 								</div>
 							</div>
-						</div>
-<br><br><br>
+							<br><br><br>
 							<!-- 2nd form -->
-<div class="answer answer_2">
+							<div class="answer answer_2">
 								<h5>Applicable Insurance #2</h5><BR>
 								<div class=" answer form-row Btn-Radio">
 									<div class=" answer col-6 col-lg-6">
-										<input type="radio" id="control_07" name="insurance_type_2" value="Life" checked>
+										<input type="radio" id="control_07" name="insurance_type_2" value="Life"
+											checked>
 										<label for="control_07">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 												fill="currentColor" class="bi bi-arrow-through-heart"
@@ -227,14 +229,15 @@
 											<option value="TOKIOMARINE">Tokio Marine</option>
 											<option value="Others">Others</option>
 										</select>
-											{% if form.errors %}
+										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.provider_name_2.errors }}</div>
 										{% endif %}
 									</div>
 									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Policy Number</h5><br>
-										<input type="text" name="policy_no_2" id="policy_no_2" placeholder="A12345678" class="px-4">
-											{% if form.errors %}
+										<input type="text" name="policy_no_2" id="policy_no_2" placeholder="A12345678"
+											class="px-4">
+										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.policy_no_2.errors }}</div>
 										{% endif %}
 									</div>
@@ -242,12 +245,13 @@
 								<div class="answer form-row Btn-Radio">
 									<div class="col-lg-6 col-12">
 										<h5>Nominee Details</h5><br>
-										<input type="text" name="nominee_name_2" id="nominee_name_2" placeholder="Name" class="px-4">
+										<input type="text" name="nominee_name_2" id="nominee_name_2" placeholder="Name"
+											class="px-4">
 									</div>
 									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Sum Insured</h5><br>
-										<input type="text" name="sum_insured_2" id="sum_insured_2" placeholder="RM1,000,000"
-											class="px-4">
+										<input type="text" name="sum_insured_2" id="sum_insured_2"
+											placeholder="RM1,000,000" class="px-4">
 									</div>
 
 								</div>
