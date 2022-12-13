@@ -74,16 +74,11 @@
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">1/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">1/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Bank Account</h5>
-													</div> --><br>
+													<br>
 													<!-- Bank Asset #1 -->
 													{% for bank in banks %}
 													<div>
@@ -93,9 +88,11 @@
 														<small>Account Number: {{bank.data.account_no}}</small><br>
 														<small>Account Value: {{bank.data.account_value}}</small><br>
 														<small>Last Updated: {{bank.created_at}}</small>
-													</div>
+													</div><br>
+
 													{% endfor %}
-													<br>
+													</div>
+													
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
 													</div>
@@ -114,41 +111,31 @@
 
 												</div>
 											</div>
-										</div>
 										<!-- EPF/SOCSO -->
 										<div class="col-lg-4 mb-5">
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">2/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">2/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">EPF/SOCSO</h5>
-												</div>
+												
 
 													<br>
 													<!-- EPF #1 -->
+													{% for x in epf_socso %}
 													<div>
-														<small class="Color-Secondary">#1</small><br>
-														<small>EPF</small><br>
-														<small>Membership Number: A123456</small><br>
-														<small>Nominee Details: Jason Ang</small><br>
-														<small>Account Value: MYR 50,000</small>
+														<small class="Color-Secondary">EPF</small><br>
+														<small>Membership Number: {{x.data.epf_member_no}}</small><br>
+														<small>Nominee Details: {{x.data.epf_nominee_name}}</small><br>
+														<small>Account Value: {{x.data.epf_account_value}}</small><br>
+														<small>Account Value: {{x.created_at}}</small>
+													</div><br>
+													{% endfor %}
+													
 													</div>
-													<br>
 													<!-- SOCSO #2 -->
-													<div>
-														<small class="Color-Secondary">#2</small><br>
-														<small>SOCSO</small><br>
-														<small>Membership Number: A123456</small><br>
-														<small>Nominee Details: Jeremy Leong</small><br>
-														<small>Account Value: MYR 50,000</small>
-													</div>
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
 													</div>
@@ -164,60 +151,29 @@
 													</div>
 												</div>
 											</div>
-										</div>
 										<!-- Insurance -->
 										<div class="col-lg-4 mb-5">
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">3/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">3/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Insurance</h5>
-													<small>Last Updated on June 01, 2022</small>
 													<br>
-													<br>
-													<div class="row Color-Primary	">
-														<small class="col-9 ">MYR 2,100,000 / MYR 3,370,000</small>
-														<small class="col-3 text-end">62.3%</small>
-													</div>
-
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 25%" aria-valuenow="25" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
 													<!-- Life Insurance #1 -->
+													{% for x in insurances %}
 													<div>
-														<small class="Color-Secondary">#1</small><br>
-														<small>Life Insurance</small><br>
-														<small>Policy Number: A1234567</small><br>
-														<small>Nominee Details: Keith</small><br>
-														<small>Sum Insured: 1,000,000</small>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>{{x.data.insurance_type}}</small><br>
+														<small>Policy Number: {{x.data.policy_no}}</small><br>
+														<small>Nominee Details: {{x.data.nominee_name}}</small><br>
+														<small>Sum Insured: {{x.data.sum_insured}}</small>
+														
 													</div>
 													<br>
+													{% endfor %}
 													<!-- Medical Insurance #2 -->
-													<div>
-														<small class="Color-Secondary">#2</small><br>
-														<small>Medical Insurance</small><br>
-														<small>Policy Number: A1234567</small><br>
-														<small>Nominee Details: Keith</small><br>
-														<small>Sum Insured: 1,000,000</small>
-													</div>
-													<br>
-													<!-- General Insurance #3 -->
-													<div>
-														<small class="Color-Secondary">#3</small><br>
-														<small>General Insurance</small><br>
-														<small>Policy Number: A1234567</small><br>
-														<small>Nominee Details: Keith</small><br>
-														<small>Sum Insured: 100,000</small>
-													</div>
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
 													</div>
@@ -240,43 +196,23 @@
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">2/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">4/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Investment</h5>
-													<small>Last Updated on June 01, 2022</small>
 													<br>
-													<br>
-													<div class="row Color-Primary	">
-														<small class="col-9 ">N/A / MYR 3,370,000</small>
-														<small class="col-3 text-end">6.5%</small>
-													</div>
-
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
 													<!-- Public Investment #1 -->
+													{% for x in investments %}
 													<div>
-														<small class="Color-Secondary">#1</small><br>
-														<small>Public Investment</small><br>
-														<small>Investment Type: Tabung Haji </small><br>
-														<small>Account Number: A1234567</small><br>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>{{x.data.investment_type}}</small><br>
+														<small>Investment Type: {{x.data.fund_name}} </small><br>
+														<small>Account Number: {{x.data.account_no}}</small><br>
+														<small>Account value: {{x.data.account_value}}</small>
 													</div>
 													<br>
+													{% endfor %}
 													<!-- Private Investment #2 -->
-													<div>
-														<small class="Color-Secondary">#2</small><br>
-														<small>Public Investment</small><br>
-														<small>Investment Type: Unit Trust </small><br>
-
-													</div>
 
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
@@ -299,35 +235,23 @@
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">1/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">5/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Property</h5>
-													<small>Last Updated on June 01, 2022</small>
 													<br>
-													<br>
-													<div class="row Color-Primary	">
-														<small class="col-9 ">MYR 850,000 / MYR 3,370,000</small>
-														<small class="col-3 text-end">25.2%</small>
-													</div>
 
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
 													<!-- Property #1 -->
+													{% for x in properties %}
 													<div>
-														<small class="Color-Secondary">#1</small><br>
-														<small>Property Type: Residential</small><br>
-														<small>Residential Type: Landed </small><br>
-														<small>SPA Price: MYR 850,000</small><br>
-													</div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Property Type:{{x.data.property_type}}</small><br>
+														<small>Residential Type: {{x.data.residential_type}} </small><br>
+														<small>Address: {{x.data.address}}</small>
+														<small>Postcode: {{x.data.postcode}}</small>
+														<small>State: {{x.data.state}}</small>
+													</div><br>
+													{% endfor %}
 
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
@@ -350,36 +274,23 @@
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">1/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">6/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Vehicles</h5>
-													<small>Last Updated on June 01, 2022</small>
 													<br>
 													<br>
-													<div class="row Color-Primary	">
-														<small class="col-9 ">MYR 150,000 / MYR 3,370,000</small>
-														<small class="col-3 text-end">4.5%</small>
-													</div>
-
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
+													<br>
 													<!-- Vehicles #1 -->
+													{% for x in vehicles %}
 													<div>
 														<small class="Color-Secondary">#1</small><br>
-														<small>Vehicle Type: Car</small><br>
-														<small>Vehicle Registration Number: A1234567 </small><br>
-														<small>Vehicle Make & Model: Honda Accord </small><br>
-														<small>Car Price: MYR 150,000</small><br>
+														<small>Vehicle Type: {{x.data.vehicle_type}}</small><br>
+														<small>Vehicle Registration Number: {{x.data.registration_no}} </small><br>
+														<small>Vehicle Make & Model: {{x.data.make_model}} </small>
 													</div>
+													<br>
+													{% endfor %}
 
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
@@ -403,34 +314,22 @@
 											<div class="card bg-light border-0 h-100">
 												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
 													<div class="row align-items-center pt-4 ">
-														<small class="col Color-Primary">1/11 Assets</small>
-														<div class="col text-end Color-Primary">
-															<small>Export</small>
-															<img src="{% static 'Img/Icon-Export.svg' %}" alt=""
-																class="col" style="max-height: 30px;">
-														</div>
+														<small class="col Color-Primary">7/7 Assets</small>
 													</div>
 													<br>
 													<h5 class="Color-Secondary">Others</h5>
-													<small>Last Updated on June 01, 2022</small>
 													<br>
 													<br>
-													<div class="row Color-Primary	">
-														<small class="col-10 ">MYR 50,000 / MYR 3,370,000</small>
-														<small class="col-2 text-end">1.5%</small>
-													</div>
 
-													<div class="progress mt-1">
-														<div class="progress-bar Bg-Primary" role="progressbar"
-															style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-															aria-valuemax="100"></div>
-													</div><br>
+													<br>
 													<!-- Others #1 -->
+													{% for x in others %}
 													<div>
-														<small class="Color-Secondary">#1</small><br>
-														<small>Asset Type: Cryptocurrency</small><br>
-														<small>Asset Value: MYR 100,000</small><br>
-													</div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Asset Type: {{x.dataasset_type}}</small><br>
+														<small>Asset Value: {{x.data.asset_value}}</small>
+													</div><br>
+													{% endfor %}
 
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
