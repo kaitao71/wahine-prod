@@ -197,7 +197,7 @@ def insurance_form(request):
     if request.POST:
         form = InsuranceForm(request.POST)
         if form.data['yesno'] == 'no':
-            messages.add_message(request, messages.INFO, 'Success.')
+            messages.add_message(request, messages.INFO, 'No Insurance Added.')
             return redirect('investment_form')
         if form.is_valid():
             insurance_type = form.cleaned_data['insurance_type']
@@ -219,10 +219,10 @@ def investment_form(request):
     form = InvestmentForm()
     if request.POST:
         form = InvestmentForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Investments Added.')
+            return redirect('property_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('property_form')
             investment_type = form.cleaned_data['investment_type']
             account_no = form.cleaned_data['account_no']
             fund_name = form.cleaned_data['fund_name']
@@ -247,10 +247,10 @@ def property_form(request):
     form = PropertyForm()
     if request.POST:
         form = PropertyForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Property Added.')
+            return redirect('vehicles_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('vehicles_form')
             property_type = form.cleaned_data['property_type']
             residential_type = form.cleaned_data['residential_type']
             address = form.cleaned_data['address']
@@ -268,10 +268,10 @@ def vehicles_form(request):
     form = VehicleForm()
     if request.POST:
         form = VehicleForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Vehicle Added.')
+            return redirect('asset_others_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('asset_others_form')
             vehicle_type = form.cleaned_data['vehicle_type']
             make_model = form.cleaned_data['make_model']
             registration_no = form.cleaned_data['registration_no']
@@ -287,7 +287,7 @@ def asset_others_form(request):
         form = AssetOthersForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
+                messages.add_message(request, messages.INFO, 'No Assets Added.')
                 return redirect('assets_overview')
             asset_name = form.cleaned_data['asset_name']
             asset_value = form.cleaned_data['asset_value']
