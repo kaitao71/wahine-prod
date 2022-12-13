@@ -16,19 +16,21 @@
             <div class="col-6 col-lg-3"><img src="https://wahine.s3.amazonaws.com/static/Img-Browser3.png" alt=""
                     style="margin-left: -500px;max-width: 800px;"></div>
             <div class="col-8 col-lg-6 mx-auto pb-5 order-first order-lg-0">
-                <h2>Wahine</h2><br>
-                <p>With Wahine, you can minimise the stress of dealing with lawyers by having the
-                    necessary information
-                    kept securely and only released upon your choice of trigger events such as dementia, full body
-                    disability or death.
+                <h2>W Vault</h2><br>
+                <p><b>W the digital vault:</b> W is more than just a digital vault to house the user’s important
+                    documents. In
+                    addition to allowing users (and their authorised list of accessors), immediate access to a list of
+                    assets and liabilities for processing important life events such as divorce, death or even tax
+                    audits, W will provide users a snapshot of their financial life (through a dashboard) of their
+                    assets and liabilities, the user is able to get a good understanding of their financial standing. By
+                    users inputting information, W serves as a personal life manager for the user.</p>
+                <p><b>What? </b>The Dashboard will highlight areas where the user is over or under exposed to an asset
+                    or
+                    liability.</p>
 
-                <p>We can assist to help you find lawyers, will writers, financial planners and the right insurance
-                    and
-                    fund managers.
-                </p>
-                <p>If you are currently in the midst of relooking at your marriage/life/career and needs some
-                    coaching
-                    to get you to live your best life, we are here every ready to empower you.
+                <p><b>Why? </b>By highlighting the over or under exposure, the user will be made aware that for better
+                    financial health, it is healthier for them to have a more diversified asset base and minimal
+                    liabilities.</p>
                 </p>
                 <br>
                 <a class="btn Btn-Secondary" href="{% url 'signup' %}" role="button">Begin For Free</a>
@@ -47,7 +49,7 @@
                     confidence, capability and
                     knowledge
                     to secure a sound financial future for themselves and their community.</p><br>
-                <a class="btn Btn-Secondary" href="/createaccount" role="button">Begin For Free</a>
+                <a class="btn Btn-Secondary" href="{% url 'signup' %}" role="button">Begin For Free</a>
             </div>
         </div>
     </div>
@@ -55,8 +57,9 @@
     <div class="container-fluid mt-5 margin-RightN200">
         <div class="row align-items-center Relative-P">
             <div class="col-lg-4 col-8 mx-auto text-lg-start text-center">
-                <h4 class="text-center">1st 3 Months Free, then only RM19.90 A Month</h4><br>
-                <p class="text-center">Get started today and be a part of the women community who empowers each other
+                <h4 class="text-center text-lg-start">1st 3 Months Free, then only RM19.90 A Month</h4><br>
+                <p class="text-center text-lg-start">Get started today and be a part of the women community who empowers
+                    each other
                     and to make sure
                     you
                     secure a sound financial future.</p>
@@ -80,11 +83,11 @@
         <div class="row align-items-center Relative-P">
             <div class="col-6 col-lg-4"><img src="https://wahine.s3.amazonaws.com/static/Vector_Irregular-Navy.png"
                     alt=""></div>
-            <div class="col-6 col-lg-4"><img src="https://wahine.s3.amazonaws.com/static/Img-Planning.jpg" alt="" class="Img-Abv"
-                    style="margin-left: -200px; max-width: 500px;"></div>
+            <div class="col-6 col-lg-4"><img src="https://wahine.s3.amazonaws.com/static/Img-Planning.jpg" alt=""
+                    class="Img-Abv" style="margin-left: -200px; max-width: 500px;"></div>
             <div class="col-lg-4 text-center text-lg-start mt-5 margin-Left100">
                 <h4>Private & Secure Planning</h4><br>
-                <p>Your security is our highest priority. We invest heavily
+                <p class="text-center text-lg-start">Your security is our highest priority. We invest heavily
                     in security technology and build it into every aspect of
                     Wahine.</p>
             </div>
@@ -92,8 +95,30 @@
 
     </div>
 
-    <!-- section 3 Plans & Pricing -->
-    <div class="container mt-5 mb-5" style="">
+
+    <!-- Security   -->
+    <div class="container-fluid bg-light pt-5 pb-5 px-5">
+        <div class="row">
+            <div class="col-lg-8 pt-5" style="">
+                <h3>W Vault Security</h3>
+                <br>
+                <p>We take security and your data privacy seriously and we are working towards ensuring that we meet
+                    banking standard security. We will be conducting periodic penetration testing to ensure that our
+                    security levels are always in guard, because your security concern is ours too.
+                </p>
+                <a class="btn Btn-Primary" href="{% url 'signup' %}" role="button">Get Started</a>
+            </div>
+            <div class="col-lg-4">
+                <img src="https://wahine.s3.amazonaws.com/static/css/Img-Security.png" alt=""
+                    style="max-height:350px ;">
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- section 3 How We Protect -->
+    <div class="container-fluid mt-5 mb-5 px-5">
         <div class="row">
             <div class="col-lg-12 col-12'">
                 <h4>How We Protect You</h4><br>
@@ -101,12 +126,12 @@
                     adopted the following best practices to keep you and your data safe.</p>
             </div>
             <div class="col-12">
-
                 <div class="row">
                     <div class="col-lg-4 col-md-12 mb-4">
                         <div class="card card1 h-100">
                             <div class="card-body">
-                                <img src="https://wahine.s3.amazonaws.com/static/Icon-AES256.svg" alt="" style="max-width:100px; ">
+                                <img src="https://wahine.s3.amazonaws.com/static/Icon-AES256.svg" alt=""
+                                    style="max-width:100px; ">
                                 <h5 class="card-title">AES-256 Encryption</h5>
                                 <small class='text-muted'>With end to end encryption,
                                     your information and
@@ -123,7 +148,8 @@
                     <div class="col-lg-4 col-md-12 mb-4">
                         <div class="card card1 h-100">
                             <div class="card-body">
-                                <img src="https://wahine.s3.amazonaws.com/static/Icon-SSL.svg" alt="" style="max-width:100px;fill: aqua; ">
+                                <img src="https://wahine.s3.amazonaws.com/static/Icon-SSL.svg" alt=""
+                                    style="max-width:100px;fill: aqua; ">
                                 <h5 class="card-title">SSL Encryption</h5>
                                 <small class='text-muted'>On top of AES-256 encryption,
                                     we add another layer of security
@@ -143,7 +169,8 @@
                     <div class="col-lg-4 col-md-12 mb-4">
                         <div class="card card1 h-100">
                             <div class="card-body">
-                                <img src="https://wahine.s3.amazonaws.com/static/Icon-Audit2.svg" alt="" style="max-width:100px; ">
+                                <img src="https://wahine.s3.amazonaws.com/static/Icon-Audit2.svg" alt=""
+                                    style="max-width:100px; ">
                                 <h5 class="card-title">Security Audits</h5>
                                 <small class='text-muted'>We have a team dedicated to
                                     maintaining your account's
@@ -166,48 +193,33 @@
 
     <!-- Pricing -->
     <!-- Section 4 -->
-    <div class="container-fluid Section9 pt-5 pb-5" style="padding:0px 50px;">
+    <div class="container-fluid Section9 pt-5 pb-5 px-5">
         <div class="row">
-            <div class="col-lg-11 offset-lg-1">
+            <div class="col-lg-12">
                 <h4 class="pb-3">Pricing</h4>
                 <p>W is your personal life manager to help you start that first steps towards a financially secure
                     future.
                 </p>
-                <p>3 Months Free For The First Few Lucky Customers</p>
+                <p>3 months free for the first lucky 100 customers. Cancel or change your plan anytime! </p>
             </div>
-            <div class="col-lg-5 offset-lg-1">
+            <div class="col-lg-6">
 
                 <h4 class="Color-Primary">Option 1</h4>
                 <h2 style="color:#F3CD03">RM 19.90</h2>
                 <p>per month</p>
+                <a class="btn Btn-Primary" href="{% url 'signup' %}" role="button">Get Started</a>
             </div>
-            <div class="col-lg-5 offset-lg-1  ">
+            <div class="col-lg-6 ">
                 <h4 class="Color-Primary">Option 2</h4>
                 <h2 style="color:#F3CD03">RM 199.00</h2>
                 <p>per annum</p>
-                <p>Cancel or change your plan anytime</p>
-                <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
+
+                <a class="btn Btn-Primary" href="{% url 'signup' %}" role="button">Get Started</a>
             </div>
         </div>
     </div>
 
-    <!-- Section 5 -->
-    <div class="container-fluid 
-   pt-5 pb-5" style="padding:0px 50px;">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-1">
-                <h5>We focus on Women for Women</h5>
-            </div>
-            <div class="col-lg-5">
-                <p>With Waris, you can minimise the stress of dealing with lawyers by having the necessary information
-                    kept
-                    securely and only released upon your choice of trigger events such as dementia, full body disability
-                    or death.
-                    Empower yourself today! </p>
-                <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
-            </div>
-        </div>
-    </div>
+
 
 </body>
 
