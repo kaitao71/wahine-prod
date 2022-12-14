@@ -180,6 +180,10 @@ class PersonalLoanForm(forms.Form):
     account_no = forms.CharField()
     loan_amount = forms.CharField()
     loan_tenure = forms.CharField()
+    bank_name_2 = forms.CharField(required=False)
+    account_no_2 = forms.CharField(required=False)
+    loan_amount_2 = forms.CharField(required=False)
+    loan_tenure_2 = forms.CharField(required=False)
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
@@ -188,6 +192,10 @@ class PropertyLoanForm(forms.Form):
     account_no = forms.CharField()
     loan_amount = forms.CharField()
     loan_tenure = forms.CharField()
+    bank_name_2 = forms.CharField(required=False)
+    account_no_2 = forms.CharField(required=False)
+    loan_amount_2 = forms.CharField(required=False)
+    loan_tenure_2 = forms.CharField(required=False)
     yesno = forms.CharField(required = False)
 
 class VehicleLoanForm(forms.Form):
@@ -195,6 +203,10 @@ class VehicleLoanForm(forms.Form):
     account_no = forms.CharField()
     loan_amount = forms.CharField()
     loan_tenure = forms.CharField()
+    bank_name_2 = forms.CharField(required=False)
+    account_no_2 = forms.CharField(required=False)
+    loan_amount_2 = forms.CharField(required=False)
+    loan_tenure_2 = forms.CharField(required=False)
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 

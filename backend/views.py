@@ -347,18 +347,16 @@ def personal_loan_form(request):
             return redirect('vehicles_loan_form')
         if form.is_valid():
             loan_tenure = form.cleaned_data['loan_tenure']
-            loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             loan_amount = form.cleaned_data['loan_amount']
             loan_tenure_2 = form.cleaned_data['loan_tenure_2']
-            loan_interest_2 = form.cleaned_data['loan_interest_2']
             bank_name_2 = form.cleaned_data['bank_name_2']
             account_no_2 = form.cleaned_data['account_no_2']
             loan_amount_2 = form.cleaned_data['loan_amount_2']
-            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Personal Loan',created_by=request.user)
-            if bank_name_2 and account_no_2:
-                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2,'loan_interest':loan_interest_2},item_type='Personal Loan',created_by=request.user)
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure},item_type='Personal Loan',created_by=request.user)
+            if bank_name_2 and account_no_2 and loan_amount_2 and loan_tenure_2:
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2},item_type='Personal Loan',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Added Personal Loan.')
             messages.add_message(request, messages.INFO, 'Added Personal Loan.')
             return redirect('vehicles_loan_form')
