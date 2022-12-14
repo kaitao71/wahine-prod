@@ -170,6 +170,9 @@ class CreditCardForm(forms.Form):
     bank_name = forms.CharField()
     account_no = forms.CharField()
     amount_outstanding = forms.CharField(required = False)
+    bank_name_2 = forms.CharField(required = False)
+    account_no_2 = forms.CharField(required = False)
+    amount_outstanding_2 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class PersonalLoanForm(forms.Form):
@@ -185,7 +188,6 @@ class PropertyLoanForm(forms.Form):
     account_no = forms.CharField()
     loan_amount = forms.CharField()
     loan_tenure = forms.CharField()
-    loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class VehicleLoanForm(forms.Form):
@@ -199,6 +201,10 @@ class VehicleLoanForm(forms.Form):
 class LiabilitiesOthersForm(forms.Form):
     liability_name = forms.CharField(required = False)
     liability_value = forms.CharField(required = False)
+    liability_name_2 = forms.CharField(required = False)
+    liability_value_2 = forms.CharField(required = False)
+    liability_name_3 = forms.CharField(required = False)
+    liability_value_3 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class NotifierForm(forms.Form):

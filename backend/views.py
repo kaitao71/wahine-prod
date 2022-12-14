@@ -258,7 +258,9 @@ def property_form(request):
             residential_type_2 = form.cleaned_data['residential_type_2']
             address_2 = form.cleaned_data['address_2']
             item = Item.objects.create(user=request.user,data={'property_type':property_type,'residential_type':residential_type,'address':address},item_type='Property',created_by=request.user)
-            item2 = Item.objects.create(user=request.user,data={'property_type_2':property_type_2,'residential_type_2':residential_type_2,'address_2':address_2},item_type='Property',created_by=request.user)
+            if property_type_2 and residential_type_2 and address_2:
+                item2 = Item.objects.create(user=request.user,data={'property_type_2':property_type_2,'residential_type_2':residential_type_2,'address_2':address_2},item_type='Property',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Property data successfully updated.')
             messages.add_message(request, messages.INFO, 'Property data successfully updated.')
             return redirect('vehicles_form')
     context = {'form':form}
@@ -301,16 +303,19 @@ def liability_credit_card_form(request):
     form = CreditCardForm()
     if request.POST:
         form = CreditCardForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Credit Card Added.')
+            return redirect('personal_loan_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('personal_loan_form')
-            bnpl_service = form.cleaned_data['bnpl_service']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             amount_outstanding = form.cleaned_data['amount_outstanding']
-            item = Item.objects.create(user=request.user,data={'bnpl_service':bnpl_service,'bank_name':bank_name,'account_no':account_no,'amount_outstanding':amount_outstanding},item_type='Credit Card',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            bank_name_2 = form.cleaned_data['bank_name_2']
+            account_no_2 = form.cleaned_data['account_no_2']
+            amount_outstanding_2 = form.cleaned_data['amount_outstanding_2']
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'amount_outstanding':amount_outstanding},item_type='Credit Card',created_by=request.user)
+            item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'amount_outstanding':amount_outstanding_2},item_type='Credit Card',created_by=request.user)
+            messages.add_message(request, messages.INFO, 'Credit Card Info Added.')
             return redirect('personal_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-1-credit-card.html',context)
