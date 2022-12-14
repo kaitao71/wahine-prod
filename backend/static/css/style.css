@@ -162,6 +162,8 @@ a {
     font-size: 16px;
 }
 
+
+
 .TermsLink label a {
     all: unset;
     color: #0d6efd;
@@ -234,7 +236,7 @@ a {
 
 
 .HeroBanner {
-    background: url('http://wahine.wcapital.asia/wp-content/uploads/2022/10/Img_Banner3.png');
+    background: url('https://wahine.s3.amazonaws.com/static/Img_Banner3.png');
     min-height: 100vh;
     background-size: cover;
 
@@ -243,7 +245,7 @@ a {
 
 
 .Image-Centered {
-    margin-top: -170px;
+    margin-top: -260px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -400,7 +402,7 @@ a {
 /* Join Now Page */
 
 .Bg-Gradient {
-    background: linear-gradient(180deg, #FFFFsFF 0%, #D9FDFF 100%);
+    background: linear-gradient(180deg, #FFFFFF 0%, #D9FDFF 100%);
 }
 
 
@@ -508,6 +510,40 @@ a {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
+
+/* Who we are page */
+.Banner-WhoWeAre {
+    background: linear-gradient(rgba(191, 192, 205, 0.8), hsla(0, 0%, 0%, 0.155)), url('https://wahine.s3.amazonaws.com/static/Banner_WhoWeAre2.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+
+}
+
+
+
+/* Contact Us */
+.HeroBannerContact {
+    background: url('https://wahine.s3.amazonaws.com/static/Img_Banner_Contact.jpg');
+    min-height: 70vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+
+/* Terms Of Service */
+.HeroBannerTOS {
+    background: url('https://wahine.s3.amazonaws.com/static/Img_Banner3.png');
+    min-height: 70vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+
+
 
 
 /* Desktop Only */
