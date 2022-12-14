@@ -43,6 +43,7 @@ h3,
 .banner h3 {
     font-size: 2.369rem !important;
     margin: 0;
+    font-family: 'Playfair Display', serif;
 }
 
 h2,
@@ -210,8 +211,7 @@ a {
     background-color: #8f1346;
     border: none;
     border-radius: 85px;
-    height: 52px;
-    width: 245px;
+    padding: 1rem;
     margin: auto;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, .09);
     font-family: 'Lato', sans-serif;
@@ -243,7 +243,7 @@ a {
 
 
 .Image-Centered {
-    margin-top: -320px;
+    margin-top: -170px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -385,13 +385,29 @@ a {
 
 }
 
+/* Women Network Background */
+.Bg-WomenNetwork {
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(http://wahine.wcapital.asia/wp-content/uploads/2022/12/Img_WomenNetwork.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-blend-mode: overlay;
+
+
+
+}
 
 /* Join Now Page */
 
 .Bg-Gradient {
-    background: linear-gradient(180deg, #FFFFFF 0%, #D9FDFF 100%);
+    background: linear-gradient(180deg, #FFFFsFF 0%, #D9FDFF 100%);
 }
 
+
+.Screenshot-Margin {
+    margin-left: -320px;
+    max-width: 800px;
+}
 
 /* Image Div Parent Relative */
 .Relative-P {
@@ -559,7 +575,7 @@ a {
     }
 
     .Image-Centered {
-        margin-top: -280px;
+        margin-top: -140px;
         margin-left: auto;
         margin-right: auto;
     }
@@ -570,6 +586,15 @@ a {
 
     .margin-Left100 {
         margin-left: 100px;
+    }
+
+    .Screenshot-Margin {
+        margin-left: auto !important;
+        max-width: 360px !important;
+    }
+
+    .Max-Width360-Mobile {
+        max-width: 360px;
     }
 
 }
