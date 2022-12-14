@@ -425,7 +425,7 @@ def liabilities_others_form(request):
             liability_name = form.cleaned_data['liability_name']
             liability_value = form.cleaned_data['liability_value']
             item = Item.objects.create(user=request.user,data={'liability_value':liability_value,'liability_name':liability_name},item_type='Other Liabilities',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            messages.add_message(request, messages.INFO, 'Added Other Liabilities.')
             return redirect('notifier_list_form')
     context = {'form':form}
     return render(request,'backend/liabilities-5-others.html',context)
@@ -435,18 +435,27 @@ def notifier_list_form(request):
     if request.POST:
         form = NotifierForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('notifier_list_form')
             notifier_name = form.cleaned_data['notifier_name']
             notifier_email = form.cleaned_data['notifier_email']
             notifier_ic = form.cleaned_data['notifier_ic']
             notifier_contactno = form.cleaned_data['notifier_contactno']
             notifier_relationship = form.cleaned_data['notifier_relationship']
             notifier_event = form.cleaned_data['notifier_event']
+            notifier_name_2 = form.cleaned_data['notifier_name_2']
+            notifier_email_2 = form.cleaned_data['notifier_email_2']
+            notifier_ic_2 = form.cleaned_data['notifier_ic_2']
+            notifier_contactno_2 = form.cleaned_data['notifier_contactno_2']
+            notifier_relationship_2 = form.cleaned_data['notifier_relationship_2']
+            notifier_event_2 = form.cleaned_data['notifier_event_2']
             item = Item.objects.create(user=request.user,data={'notifier_name':notifier_name,'notifier_email':notifier_email,'notifier_relationship':notifier_relationship,'notifier_event':notifier_event,'notifier_contactno':notifier_contactno,'notifier_ic':notifier_ic},item_type='Notifier List',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            if notifier_name_2 and notifier_contactno_2 and notifier_ic_2:
+                item = Item.objects.create(user=request.user,data={'notifier_name':notifier_name_2,'notifier_email':notifier_email_2,'notifier_relationship':notifier_relationship_2,'notifier_event':notifier_event_2,'notifier_contactno':notifier_contactno_2,'notifier_ic':notifier_ic_2},item_type='Notifier List',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Added notifier.')
+            messages.add_message(request, messages.INFO, 'Added notifier.')
             return redirect('access_list_form')
+        else:
+            messages.add_message(request, messages.INFO, 'Please add a valid notifier with name and email.')
+            return redirect('notifier_list_form')
     context = {'form':form}
     return render(request,'backend/notifier-list-form.html',context)
 
@@ -455,15 +464,21 @@ def access_list_form(request):
     if request.POST:
         form = AccessListForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('access_list_form')
             accesslist_name = form.cleaned_data['accesslist_name']
             accesslist_email = form.cleaned_data['accesslist_email']
             accesslist_ic = form.cleaned_data['accesslist_ic']
             accesslist_contactno = form.cleaned_data['accesslist_contactno']
             accesslist_relationship = form.cleaned_data['accesslist_relationship']
+
+            accesslist_name_2 = form.cleaned_data['accesslist_name_2']
+            accesslist_email_2 = form.cleaned_data['accesslist_email_2']
+            accesslist_ic_2 = form.cleaned_data['accesslist_ic_2']
+            accesslist_contactno_2 = form.cleaned_data['accesslist_contactno_2']
+            accesslist_relationship_2 = form.cleaned_data['accesslist_relationship_2']
+
             item = Item.objects.create(user=request.user,data={'accesslist_name':accesslist_name,'accesslist_email':accesslist_email,'accesslist_relationship':accesslist_relationship,'accesslist_contactno':accesslist_contactno,'accesslist_ic':accesslist_ic},item_type='Access List',created_by=request.user)
+            if accesslist_name_2 and accesslist_email_2 and accesslist_contactno_2:
+                item = Item.objects.create(user=request.user,data={'accesslist_name':accesslist_name_2,'accesslist_email':accesslist_email_2,'accesslist_relationship':accesslist_relationship_2,'accesslist_contactno':accesslist_contactno_2,'accesslist_ic':accesslist_ic_2},item_type='Access List',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Done.')
             return redirect('dashboard')
     context = {'form':form}

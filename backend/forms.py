@@ -65,12 +65,21 @@ BANK_TYPE_CHOICES = [
 #     ('RHB Bank','RHB Bank'),
 # ]
 
+EVENT_CHOICES =(
+    ("Critical Illness", "Critical Illness"),
+    ("Death", "Death"),
+    ("Dementia", "Dementia"),
+    ("Permanent Disability", "Permanent Disability"),
+)
+
+
 INSURANCE_CHOICES = [
 ('Life','Life'),
 ('General','General'),
 ('Medical','Medical'),
 ('Others','Others'),
 ]
+
 BOOLEAN_CHOICES = [
     ('Yes','Yes'),
     ('No','No'),
@@ -220,18 +229,29 @@ class LiabilitiesOthersForm(forms.Form):
     yesno = forms.CharField(required = False)
 
 class NotifierForm(forms.Form):
-    notifier_name = forms.CharField(required = False)
-    notifier_email = forms.CharField(required = False)
+    notifier_name = forms.CharField()
+    notifier_email = forms.CharField()
     notifier_ic = forms.CharField(required = False)
     notifier_contactno = forms.CharField(required = False)
     notifier_relationship = forms.CharField(required = False)
-    notifier_event = forms.CharField(required = False)
+    notifier_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)  
+    notifier_name_2 = forms.CharField(required = False)
+    notifier_email_2 = forms.CharField(required = False)
+    notifier_ic_2 = forms.CharField(required = False)
+    notifier_contactno_2 = forms.CharField(required = False)
+    notifier_relationship_2 = forms.CharField(required = False)
+    notifier_event_2 = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
     yesno = forms.CharField(required = False)
 
 class AccessListForm(forms.Form):
-    accesslist_name = forms.CharField(required = False)
-    accesslist_email = forms.CharField(required = False)
+    accesslist_name = forms.CharField()
+    accesslist_email = forms.CharField()
     accesslist_ic = forms.CharField(required = False)
     accesslist_contactno = forms.CharField(required = False)
     accesslist_relationship = forms.CharField(required = False)
+    accesslist_name_2 = forms.CharField(required = False)
+    accesslist_email_2 = forms.CharField(required = False)
+    accesslist_ic_2 = forms.CharField(required = False)
+    accesslist_contactno_2 = forms.CharField(required = False)
+    accesslist_relationship_2 = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
