@@ -123,16 +123,16 @@
 
 													<tr>
 														<th scope="row">5</th>
-														<td>{% if not others %}
+														<td>{% if not others_liabilities %}
 														<a href="{% url 'liabilities_others_form' %}">Other Liabilities</a>
 														{% else %} 
 														<a href="{% url 'dashboard' %}">Other Liabilities</a>
 														{% endif %}</td>
-														<td>{{others.created_at}}</td>
+														<td>{{others_liabilities.created_at}}</td>
 														<td>
 															<div class="checkbox">
 																<label><input type="checkbox" value="check1" disabled="disabled"
-																	{% if others %} checked {% endif %}/></label>
+																	{% if others_liabilities %} checked {% endif %}/></label>
 															</div>
 														</td>
 													</tr>

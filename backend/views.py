@@ -398,18 +398,16 @@ def property_loan_form(request):
             return redirect('liabilities_others_form')
         if form.is_valid():
             loan_tenure = form.cleaned_data['loan_tenure']
-            loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             loan_amount = form.cleaned_data['loan_amount']
             loan_tenure_2 = form.cleaned_data['loan_tenure_2']
-            loan_interest_2 = form.cleaned_data['loan_interest_2']
             bank_name_2 = form.cleaned_data['bank_name_2']
             account_no_2 = form.cleaned_data['account_no_2']
             loan_amount_2 = form.cleaned_data['loan_amount_2']
-            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Property Loan',created_by=request.user)
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure},item_type='Property Loan',created_by=request.user)
             if bank_name_2 and account_no_2:
-                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2,'loan_interest':loan_interest_2},item_type='Property Loan',created_by=request.user)
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2},item_type='Property Loan',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Property Loan Added.')
             messages.add_message(request, messages.INFO, 'Property Loan Added.')
             return redirect('liabilities_others_form')
@@ -479,9 +477,9 @@ def assets_overview(request):
     insurances = items.filter(item_type='Insurance').last()
     investments = items.filter(item_type='Investment').last()
     properties = items.filter(item_type='Property').last()
-    vehicles = items.filter(item_type='Vehicles').last()
+    vehicles = items.filter(item_type='Vehicle').last()
     others = items.filter(item_type='Other Assets').last()
-    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'others':others}
+    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'properties':properties,'others':others}
     return render(request,'backend/assets-overview.html',context)
 
 def liabilities_overview(request):
@@ -500,15 +498,15 @@ def dashboard(request):
     items = Item.objects.filter(user=user)
     banks = items.filter(item_type='Bank Account')
     epf_socso = items.filter(item_type='EPF Socso')
-    insurances = items.filter(item_type='Insurance')
+    insurances = items.filter(item_type='Insurance')    
     investments = items.filter(item_type='Investment')
     properties = items.filter(item_type='Property')
-    vehicles = items.filter(item_type='Vehicles')
+    vehicles = items.filter(item_type='Vehicle')
     others = items.filter(item_type='Other Assets')
     creditcard = items.filter(item_type='Credit Card')
     personalloan = items.filter(item_type='Personal Loan')
     vehicleloan = items.filter(item_type='Vehicle Loan')
     propertyloan = items.filter(item_type='Property Loan')
     others_liabilities = items.filter(item_type='Other Liabilities')
-    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'others':others,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
+    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'properties':properties,'investments':investments,'vehicles':vehicles,'others':others,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
     return render(request,'backend/dashboard.html',context)

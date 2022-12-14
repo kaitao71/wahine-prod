@@ -68,8 +68,8 @@
 								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>Bank Name</h5><br>
-										<select name="BankName" id="BankName" class="px-4">
-											<option value="SelectABank">Select A Bank</option>
+										<select name="bank_name" id="BankName" class="px-4">
+											<option value="">Select A Bank</option>
 											<option value="Maybank">Maybank</option>
 											<option value="RHB">RHB</option>
 											<option value="CIMB">CIMB</option>
@@ -77,20 +77,20 @@
 										</select>
 									</div>
 									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
-										<h5>Account Number (*Optional)</h5><br>
-										<input type="text" name="AccountNumber" id="" placeholder="Name" class="px-4">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no" id="" placeholder="Name" class="px-4">
 									</div>
 								</div>
 								<br><br><br>
 								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>Loan Amount</h5><br>
-										<input type="text" name="LoanAmount" id="" placeholder="RM1,000,000"
+										<input type="text" name="loan_amount" id="" placeholder="RM1,000,000"
 											class="px-4">
 									</div>
 									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
 										<h5>Loan Tenure</h5><br>
-										<input type="text" name="LoanTenure" id="" placeholder="35 Years" class="px-4">
+										<input type="text" name="loan_tenure" id="" placeholder="35 Years" class="px-4">
 									</div>
 								</div>
 
@@ -100,19 +100,43 @@
 								<!-- Billing Cycle Toggle -->
 								<div class="answer text-center ">
 									<div class="form-check form-switch flex-row d-flex align-items-center">
-										<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+										<input class="hide_answer_2 form-check-input" type="checkbox" id="flexSwitchCheckDefault">
 										<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add
 											More
 											Loan</label>
 
 									</div>
 								</div>
+								<br><br><br><h5 class="answer answer_2 text-black">Property Mortgage #2</h5><br><br><br>
+																<div class="answer_2 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer answer_2 mb-5 mb-lg-0 col-lg-6 col-12">
+										<h5>Bank Name</h5><br>
+										<select name="bank_name_2" id="BankName2" class="px-4">
+											<option value="">Select A Bank</option>
+											<option value="Maybank">Maybank</option>
+											<option value="RHB">RHB</option>
+											<option value="CIMB">CIMB</option>
+											<option value="CitiBank">Citibank</option>
+										</select>
+									</div>
+									<div class="answer answer_2 mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no_2" id="" placeholder="Name" class="px-4">
+									</div>
+								</div>
+								<br><br><br>
+								<div class="answer answer_2 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
+										<h5>Loan Amount</h5><br>
+										<input type="text" name="loan_amount_2" id="" placeholder="RM1,000,000"
+											class="px-4">
+									</div>
+									<div class="answer answer_2 mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
+										<h5>Loan Tenure</h5><br>
+										<input type="text" name="loan_tenure_2" id="" placeholder="35 Years" class="px-4">
+									</div>
+								</div>
 							</div>
-
-
-
-
-
 
 
 							<!-- Button -->
