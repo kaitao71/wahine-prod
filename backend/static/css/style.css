@@ -708,6 +708,12 @@ a {
         margin-left: 100px;
     }
 
+    .HeroBannerContact,
+    .HeroBannerTOS {
+        min-height: 30vh;
+
+    }
+
     .Screenshot-Margin {
         margin-left: auto !important;
         max-width: 360px !important;
