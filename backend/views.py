@@ -209,8 +209,10 @@ def insurance_form(request):
             policy_no_2 = form.cleaned_data['policy_no_2']
             nominee_name_2 = form.cleaned_data['nominee_name_2']
             sum_insured_2 = form.cleaned_data['sum_insured_2']
-            item2 = Item.objects.create(user=request.user,data={'insurance_type':insurance_type_2,'policy_no':policy_no_2,'nominee_name':nominee_name_2,'sum_insured':sum_insured_2},item_type='Insurance',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
+            if insurance_type_2 and policy_no_2:
+                item2 = Item.objects.create(user=request.user,data={'insurance_type':insurance_type_2,'policy_no':policy_no_2,'nominee_name':nominee_name_2,'sum_insured':sum_insured_2},item_type='Insurance',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
+            messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
             return redirect('investment_form')
     context = {'form':form}
     return render(request,'backend/assets-3-insurance.html',context)
@@ -227,17 +229,21 @@ def investment_form(request):
             account_no = form.cleaned_data['account_no']
             fund_name = form.cleaned_data['fund_name']
             account_value = form.cleaned_data['account_value']
-            investment_type_2 = form.cleaned_data['investment_type']
-            account_no_2 = form.cleaned_data['account_no']
-            fund_name_2 = form.cleaned_data['fund_name']
-            account_value_2 = form.cleaned_data['account_value']
-            investment_type_3 = form.cleaned_data['investment_type']
-            account_no_3 = form.cleaned_data['account_no']
-            fund_name_3 = form.cleaned_data['fund_name']
-            account_value_3 = form.cleaned_data['account_value']
+            investment_type_2 = form.cleaned_data['investment_type_2']
+            account_no_2 = form.cleaned_data['account_no_2']
+            fund_name_2 = form.cleaned_data['fund_name_2']
+            account_value_2 = form.cleaned_data['account_value_2']
+            investment_type_3 = form.cleaned_data['investment_type_3']
+            account_no_3 = form.cleaned_data['account_no_3']
+            fund_name_3 = form.cleaned_data['fund_name_3']
+            account_value_3 = form.cleaned_data['account_value_3']
             item = Item.objects.create(user=request.user,data={'investment_type':investment_type,'account_no':account_no,'fund_name':fund_name,'account_value':account_value},item_type='Investment',created_by=request.user)
-            item = Item.objects.create(user=request.user,data={'investment_type':investment_type_2,'account_no':account_no_2,'fund_name':fund_name_2,'account_value':account_value_2},item_type='Investment',created_by=request.user)
-            item = Item.objects.create(user=request.user,data={'investment_type':investment_type_3,'account_no':account_no_3,'fund_name':fund_name_3,'account_value':account_value_3},item_type='Investment',created_by=request.user)
+            if account_no_2 and fund_name_2:
+                item2 = Item.objects.create(user=request.user,data={'investment_type':investment_type_2,'account_no':account_no_2,'fund_name':fund_name_2,'account_value':account_value_2},item_type='Investment',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
+            if account_no_3 and fund_name_3:
+                item3 = Item.objects.create(user=request.user,data={'investment_type':investment_type_3,'account_no':account_no_3,'fund_name':fund_name_3,'account_value':account_value_3},item_type='Investment',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             return redirect('property_form')
     context = {'form':form}
@@ -277,7 +283,13 @@ def vehicles_form(request):
             vehicle_type = form.cleaned_data['vehicle_type']
             make_model = form.cleaned_data['make_model']
             registration_no = form.cleaned_data['registration_no']
+            vehicle_type_2 = form.cleaned_data['vehicle_type_2']
+            make_model_2 = form.cleaned_data['make_model_2']
+            registration_no_2 = form.cleaned_data['registration_no_2']
             item = Item.objects.create(user=request.user,data={'vehicle_type':vehicle_type,'make_model':make_model,'registration_no':registration_no},item_type='Vehicle',created_by=request.user)
+            if make_model_2 and registration_no_2:
+                item2 = Item.objects.create(user=request.user,data={'vehicle_type':vehicle_type_2,'make_model':make_model_2,'registration_no':registration_no_2},item_type='Vehicle',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
             messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
             return redirect('asset_others_form')
     context = {'form':form}
@@ -293,6 +305,10 @@ def asset_others_form(request):
                 return redirect('assets_overview')
             asset_name = form.cleaned_data['asset_name']
             asset_value = form.cleaned_data['asset_value']
+            # asset_name_2 = form.cleaned_data['asset_name']
+            # asset_value_2 = form.cleaned_data['asset_value']
+            # asset_name_3 = form.cleaned_data['asset_name']
+            # asset_value_3 = form.cleaned_data['asset_value']
             item = Item.objects.create(user=request.user,data={'asset_name':asset_name,'asset_value':asset_value},item_type='Other Assets',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Assets successfully updated.')
             return redirect('assets_overview')
@@ -314,7 +330,9 @@ def liability_credit_card_form(request):
             account_no_2 = form.cleaned_data['account_no_2']
             amount_outstanding_2 = form.cleaned_data['amount_outstanding_2']
             item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'amount_outstanding':amount_outstanding},item_type='Credit Card',created_by=request.user)
-            item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'amount_outstanding':amount_outstanding_2},item_type='Credit Card',created_by=request.user)
+            if account_no_2 and bank_name_2:
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'amount_outstanding':amount_outstanding_2},item_type='Credit Card',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Credit Card Info Added.')
             messages.add_message(request, messages.INFO, 'Credit Card Info Added.')
             return redirect('personal_loan_form')
     context = {'form':form}
@@ -324,17 +342,25 @@ def personal_loan_form(request):
     form = PersonalLoanForm()
     if request.POST:
         form = PersonalLoanForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Personal Loan Added.')
+            return redirect('vehicles_loan_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('vehicles_loan_form')
             loan_tenure = form.cleaned_data['loan_tenure']
             loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             loan_amount = form.cleaned_data['loan_amount']
+            loan_tenure_2 = form.cleaned_data['loan_tenure_2']
+            loan_interest_2 = form.cleaned_data['loan_interest_2']
+            bank_name_2 = form.cleaned_data['bank_name_2']
+            account_no_2 = form.cleaned_data['account_no_2']
+            loan_amount_2 = form.cleaned_data['loan_amount_2']
             item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Personal Loan',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            if bank_name_2 and account_no_2:
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2,'loan_interest':loan_interest_2},item_type='Personal Loan',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Added Personal Loan.')
+            messages.add_message(request, messages.INFO, 'Added Personal Loan.')
             return redirect('vehicles_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-2-personal-loan.html',context)
@@ -343,17 +369,25 @@ def vehicles_loan_form(request):
     form = VehicleLoanForm()
     if request.POST:
         form = VehicleLoanForm(request.POST)
+        if form.cleaned_data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Vehicle Loan Added.')
+            return redirect('property_loan_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('property_loan_form')
             loan_tenure = form.cleaned_data['loan_tenure']
             loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             loan_amount = form.cleaned_data['loan_amount']
+            loan_tenure_2 = form.cleaned_data['loan_tenure_2']
+            loan_interest_2 = form.cleaned_data['loan_interest_2']
+            bank_name_2 = form.cleaned_data['bank_name_2']
+            account_no_2 = form.cleaned_data['account_no_2']
+            loan_amount_2 = form.cleaned_data['loan_amount_2']
             item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Vehicle Loan',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            messages.add_message(request, messages.INFO, 'Vehicle Loan Added.')
+            if bank_name_2 and account_no_2:
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2,'loan_interest':loan_interest_2},item_type='Vehicle Loan',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Vehicle Loan Added.')
             return redirect('property_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-3-vehicle-loan.html',context)
@@ -363,17 +397,25 @@ def property_loan_form(request):
     form = PropertyLoanForm()
     if request.POST:
         form = PropertyLoanForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Property Loan Added.')
+            return redirect('liabilities_others_form')
         if form.is_valid():
-            if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
-                return redirect('liabilities_others_form')
             loan_tenure = form.cleaned_data['loan_tenure']
             loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             loan_amount = form.cleaned_data['loan_amount']
+            loan_tenure_2 = form.cleaned_data['loan_tenure_2']
+            loan_interest_2 = form.cleaned_data['loan_interest_2']
+            bank_name_2 = form.cleaned_data['bank_name_2']
+            account_no_2 = form.cleaned_data['account_no_2']
+            loan_amount_2 = form.cleaned_data['loan_amount_2']
             item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Property Loan',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+            if bank_name_2 and account_no_2:
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2,'loan_interest':loan_interest_2},item_type='Property Loan',created_by=request.user)
+                messages.add_message(request, messages.INFO, 'Property Loan Added.')
+            messages.add_message(request, messages.INFO, 'Property Loan Added.')
             return redirect('liabilities_others_form')
     context = {'form':form}
     return render(request,'backend/liabilities-4-property.html',context)
