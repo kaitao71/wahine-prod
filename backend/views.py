@@ -479,8 +479,11 @@ def access_list_form(request):
             item = Item.objects.create(user=request.user,data={'accesslist_name':accesslist_name,'accesslist_email':accesslist_email,'accesslist_relationship':accesslist_relationship,'accesslist_contactno':accesslist_contactno,'accesslist_ic':accesslist_ic},item_type='Access List',created_by=request.user)
             if accesslist_name_2 and accesslist_email_2 and accesslist_contactno_2:
                 item = Item.objects.create(user=request.user,data={'accesslist_name':accesslist_name_2,'accesslist_email':accesslist_email_2,'accesslist_relationship':accesslist_relationship_2,'accesslist_contactno':accesslist_contactno_2,'accesslist_ic':accesslist_ic_2},item_type='Access List',created_by=request.user)
-            messages.add_message(request, messages.INFO, 'Done.')
+                messages.add_message(request, messages.INFO, 'Added Access List.')
+            messages.add_message(request, messages.INFO, 'Added Access List.')
             return redirect('dashboard')
+        else:
+            messages.add_message(request, messages.INFO, 'Please make sure to key in Name and Email.')
     context = {'form':form}
     return render(request,'backend/access-list-form.html',context)
 
