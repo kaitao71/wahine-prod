@@ -33,12 +33,12 @@
 						{% csrf_token %}
 						<!-- Start EPF Div-->
 						<!-- Information -->
-						<!-- Vehicles Loan -->
-						<!-- Vehicles Loan -->
+						<!-- Notifier -->
+						<!-- Notifier -->
 						<DIV class="mb-5">
 							<h4 class="text-black">Notifier List</h4>
 							<br>
-							<!-- Personal Loan #1 -->
+							<!-- Notifier #1 -->
 							<div>
 								<h5 class="answer text-black">Notifier #1</h5>
 								<br>
@@ -53,7 +53,7 @@
 										<input type="text" name="notifier_email" id="" placeholder="Email" class="px-4">
 									</div>
 								</div>
-								<br><br>
+								<br><br><br>
 								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>IC</h5><br>
@@ -65,34 +65,42 @@
 											class="px-4">
 									</div>
 								</div>
-								<br><br>
+								<br><br><br>
 								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
-										<h5>Events</h5><br>
-										<select name="events" id="events" class="px-4">
-											<option value="SelectAnEventk">Select An Event</option>
-											<option value="Death">Death</option>
-											<option value="Permanent Disability">Permanent Disability</option>
-											<option value="Dementia">Dementia</option>
-										</select>
-
-									</div>
-
-
 
 									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
 										<h5>Relationship</h5><br>
 										<input type="text" name="notifier_relationship" id="" placeholder="Father"
 											class="px-4">
 									</div>
+									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
+										<h5>Events</h5><br>
+										<input type="checkbox" name="favorite_pet" value="Cats">Cats<br>
+										<input type="checkbox" name="favorite_pet" value="Dogs">Dogs<br>
+										<input type="checkbox" name="favorite_pet" value="Birds">Birds<br>
+									</div>
 								</div>
-								<br><br><br>
+								<br>
+							</div>
+							<!-- End Information -->
+							<div class="answer mb-5">
+								<!-- Billing Cycle Toggle -->
+								<div class="mt-4 pt-5 text-center">
+									<div class="form-check form-switch flex-row d-flex align-items-center">
+										<input class="hide_answer_2 form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault">
+										<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
+											Notifier</label>
+
+									</div>
+								</div>
 							</div>
 
 
 
-
-
+							<input type="checkbox" name="favorite_pet" value="Cats">Cats<br>
+							<input type="checkbox" name="favorite_pet" value="Dogs">Dogs<br>
+							<input type="checkbox" name="favorite_pet" value="Birds">Birds<br>
 
 
 							<!-- Button -->

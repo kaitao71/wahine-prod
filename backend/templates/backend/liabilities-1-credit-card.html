@@ -1,123 +1,106 @@
-	{% extends "backend/base.html" %}
-	{% load static %}
+{% extends "backend/base.html" %}
+{% load static %}
 
 {% block extrahead %}
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<!-- Steps CSS and JS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 
-	{% block content %}
-	<!-- Start Wrapper -->
-		<div class="wrapper BG-Blue pb-5">
-			<!-- Start Container -->
-					<div class="inner col-12 col-lg-10 m-auto">
-						<!-- Column 1 -->
-						<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							{% include 'backend/onboarding-liabilities-title.html' %}
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			{% include 'backend/onboarding-liabilities-title.html' %}
 
 
 
-							<!-- Left Column Inner Column -->
-							<div class="inner pb-5">
-								<!-- Form Div -->
-								<div class="form-content w-100 pb-3">
-								{% include 'backend/onboarding-liabilities-breadcrumbs.html' %}
-								<!-- Form -->
-								<form method="post" class="Assets needs-validation" novalidate>
-									{% csrf_token %}
-									<!-- Start EPF Div-->
-									<div class="" style="">
-									<h4 class="text-black">Credit Card Details</h4>
-									<p class="text-start">Fill in your credit card information.</p><br>
-									<!-- Information -->
-									<div>
-										<div class="form-row">
-											<h5 class="text-black">Do You Have A Credit Card?</h5><br>
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					{% include 'backend/onboarding-liabilities-breadcrumbs.html' %}
+					<!-- Form -->
+					<form method="post" class="Assets needs-validation" novalidate>
+						{% csrf_token %}
+						<!-- Start EPF Div-->
+						<div class="" style="">
+							<h4 class="text-black">Credit Card Details</h4>
+							<p class="text-start">Fill in your credit card information.</p><br>
+							<!-- Information -->
+							<div>
+								<div class="form-row">
+									<h5 class="text-black">Do You Have A Credit Card?</h5><br>
+								</div>
+								<div class="form-row Btn-Radio mb-5">
+									<div class="col-lg-6 col-6">
+										<input class="unhide_answer" type="radio" id="control_01" name="yesno"
+											value="yes" checked>
+										<label for="control_01">
+											<h6>Yes</h6>
+										</label>
+									</div>
+									<div class="mx-2 col-lg-6 col-6">
+										<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
+										<label for="control_02">
+											<h6>No</h6>
+										</label>
+									</div>
+								</div>
+
+
+								<!--Credit Card #1 -->
+								<div>
+									<h5 class="answer text-black">Credit Card #1</h5>
+									<br>
+									<br>
+
+									<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+										<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
+											<h5>Bank Name</h5><br>
+											<select name="bank_name" id="BankName" class="px-4">
+												<option value="SelectABank">Select A Bank</option>
+												<option value="Maybank">Maybank</option>
+												<option value="RHB">RHB</option>
+												<option value="CIMB">CIMB</option>
+												<option value="CitiBank">Citibank</option>
+											</select>
 										</div>
-										<div class="form-row Btn-Radio mb-5">
-											<div class="col-lg-6 col-6">
-												<input class="unhide_answer" type="radio" id="control_01" name="yesno" value="yes" checked>
-												<label for="control_01">
-													<h6>Yes</h6>
-												</label>
-											</div>
-											<div class="mx-2 col-lg-6 col-6">
-												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
-												<label for="control_02">
-													<h6>No</h6>
-												</label>
-											</div>
+										<div class="answer mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
+											<h5>Account Number (*Optional)</h5><br>
+											<input type="text" name="account_no" id="" placeholder="Name" class="px-4">
 										</div>
-										<div class="answer form-row">
-											<h5 class="answer text-black">Do You Use BNPL Service?</h5><br>
+									</div><br><br><br>
+									<div class="answer form-row Btn-Radio">
+										<div class="mx-1 col-lg-6 col-12">
+											<h5>Amount Outstanding</h5><br>
+											<input type="text" name="amount_outstanding" id="" placeholder="RM3,000"
+												class="px-4">
 										</div>
-										<div class="answer form-row Btn-Radio mb-5">
-											<div class="col-lg-6 col-6">
-												<input type="radio" id="control_03" name="bnpl_service" value="1" checked>
-												<label for="control_03">
-													<h6>Yes</h6>
-												</label>
-											</div>
-											<div class="answer mx-2 col-lg-6 col-6">
-												<input type="radio" id="control_04" name="bnpl_service" value="2">
-												<label for="control_04">
-													<h6>No</h6>
-												</label>
-											</div>
-										</div>
+									</div>
+									<br>
+									<br>
+									<br>
+									<!-- Billing Cycle Toggle -->
+									<div class="answer text-center ">
+										<div class="form-check form-switch flex-row d-flex align-items-center">
+											<input class="form-check-input" type="checkbox" checked
+												id="flexSwitchCheckDefault">
+											<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
+												Card</label>
 
-										<!--Credit Card #1 -->
-										<div>
-											<h5 class="answer text-black">Credit Card #1</h5>
-											<br>
-											<br>
-
-											<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-												<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
-													<h5>Bank Name</h5><br>
-													<select name="bank_name" id="BankName" class="px-4">
-														<option value="SelectABank">Select A Bank</option>
-														<option value="Maybank">Maybank</option>
-														<option value="RHB">RHB</option>
-														<option value="CIMB">CIMB</option>
-														<option value="CitiBank">Citibank</option>
-													</select>
-												</div>
-												<div class="answer mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
-													<h5>Account Number (*Optional)</h5><br>
-													<input type="text" name="account_no" id="" placeholder="Name"
-														class="px-4">
-												</div>
-											</div><br><br><br>
-											<div class="answer form-row Btn-Radio">
-												<div class="mx-1 col-lg-6 col-12">
-													<h5>Amount Outstanding</h5><br>
-													<input type="text" name="amount_outstanding" id=""
-														placeholder="RM3,000" class="px-4">
-												</div>
-											</div>
-											<br>
-											<br>
-											<br>
-											<!-- Billing Cycle Toggle -->
-											<div class="answer text-center ">
-												<div class="form-check form-switch flex-row d-flex align-items-center">
-													<input class="form-check-input" type="checkbox" checked
-														id="flexSwitchCheckDefault">
-													<label class="form-check-label ms-2"
-														for="flexSwitchCheckDefault">Add More
-														Card</label>
-
-												</div>
-											</div>
 										</div>
-										<br>
-										<br>
-										<br>
-										<!--Credit Card #2 -->
-										<!-- <div>
+									</div>
+								</div>
+								<br>
+								<br>
+								<br>
+								<!--Credit Card #2 -->
+								<!-- <div>
 											<h5 class="text-black">Credit Card #2</h5>
 											<br>
 											<br>
@@ -160,30 +143,31 @@
 												</div>
 											</div>
 										</div> -->
-									</div>
-								</div>
-									<!-- End EPF Div-->
-
-
-
-									<!-- Button -->
-									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
-									</div>
-								</form>
-								<!-- End Form -->
-								</div>
-								<!-- End Form Div-->
 							</div>
-							<!-- End Left Column Inner Column -->
 						</div>
-						<!-- End Column 1 -->
-						<!-- Start Column 2 -->
-						{% include 'backend/onboarding-liabilities-sidebar.html' %}
+						<!-- End EPF Div-->
+
+
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}"
+								role="button">Back</a>
+							<button class="btn Btn-Primary mt-5 float-end" type="submit">NEXT</button>
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
 		</div>
-		<!-- End Container -->
-		</div>
-		<!-- End Wrapper -->
-		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-	{% endblock %}
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-liabilities-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}

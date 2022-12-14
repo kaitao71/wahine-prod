@@ -1,179 +1,208 @@
-	{% extends "backend/base.html" %}
-	{% load static %}
+{% extends "backend/base.html" %}
+{% load static %}
 
 {% block extrahead %}
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<!-- Steps CSS and JS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 
-	{% block content %}
-	<!-- Start Wrapper -->
-		<div class="wrapper BG-Blue pb-5">
-			<!-- Start Container -->
-					<div class="inner col-12 col-lg-10 m-auto">
-						<!-- Column 1 -->
-						<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-								<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-								<h2 class="mb-1 Color-Secondary">Assets</h2>
-								<p>Please fill the form below to record your personal assets information. Feel free to add
-									as much detail as needed. </p>
-							</div>
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
 
 
 
-							<!-- Left Column Inner Column -->
-							<div class="inner pb-5">
-								<!-- Form Div -->
-								<div class="form-content w-100 pb-3">
-								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
-								<!-- Form -->
-								<form method="post" class="Assets needs-validation" novalidate>
-									{% csrf_token %}
-									<!-- Start EPF Div-->
-									<div class="" style="">
-									<h4 class="text-black">Bank</h4>
-									<p class="text-start">Fill in your Bank information.</p><br>
-									<!-- Information -->
-									<div>
-										<h5>Account Type</h5><BR>
-										<div class="form-row Btn-Radio justify-content-be">
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					{% include 'backend/onboarding-assets-breadcrumbs.html' %}
+					<!-- Form -->
+					<form method="post" class="Assets needs-validation" novalidate>
+						{% csrf_token %}
+						<!-- Start EPF Div-->
+						<div class="" style="">
+							<h4 class="text-black">Bank</h4>
+							<p class="text-start">Fill in your Bank information.</p><br>
+							<!-- Information -->
+							<div>
+								<h5>Account Type</h5><BR>
+								<div class="form-row Btn-Radio justify-content-be">
 
-											<div class="col-6">
-												<input type="radio" name="account_type" id="control_01" value="Saving Account" checked>
-												<label for="control_01"><svg xmlns="http://www.w3.org/2000/svg"
-														width="24" height="24" fill="currentColor" class="bi bi-bank2"
-														viewBox="0 0 16 16">
-														<path
-															d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z" />
-													</svg>
-													<h6>
-														Saving Account</h6>
-												</label>
-											</div>
+									<div class="col-6">
+										<input type="radio" name="account_type" id="control_01" value="Saving Account"
+											checked>
+										<label for="control_01"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
+												<path
+													d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z" />
+											</svg>
+											<h6>
+												Saving Account</h6>
+										</label>
+									</div>
 
-											<div class="col-6 mx-2">
-												<input type="radio" name="account_type" id="control_02" value="Current Account" checked>
-												<label for="control_02"><svg xmlns="http://www.w3.org/2000/svg"
-														width="24" height="24" fill="currentColor"
-														class="bi bi-cash-stack" viewBox="0 0 16 16">
-														<path
-															d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
-														<path
-															d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
-													</svg>
-													<h6>Current Account</h6>
-												</label>
-											</div>
+									<div class="col-6 mx-2">
+										<input type="radio" name="account_type" id="control_02" value="Current Account"
+											checked>
+										<label for="control_02"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" fill="currentColor" class="bi bi-cash-stack"
+												viewBox="0 0 16 16">
+												<path
+													d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+												<path
+													d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V5zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2H3z" />
+											</svg>
+											<h6>Current Account</h6>
+										</label>
+									</div>
 
-										</div>
-										<div class="form-row Btn-Radio justify-content-between">
-											<div class="col-6">
-												<input type="radio" name="account_type" id="control_03" value="Fixed Deposit" checked>
-												<label for="control_03"><svg xmlns="http://www.w3.org/2000/svg"
-														width="24" height="24" fill="currentColor" class="bi bi-coin"
-														viewBox="0 0 16 16">
-														<path
-															d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
-														<path
-															d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-														<path
-															d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
-													</svg>
-													<h6>Fixed
-														Deposit</h6>
-												</label>
-											</div>
-										</div><br>
-
-
-
+								</div>
+								<div class="form-row Btn-Radio justify-content-between">
+									<div class="col-6">
+										<input type="radio" name="account_type" id="control_03" value="Fixed Deposit"
+											checked>
+										<label for="control_03"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+												height="24" fill="currentColor" class="bi bi-coin" viewBox="0 0 16 16">
+												<path
+													d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z" />
+												<path
+													d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+												<path
+													d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+											</svg>
+											<h6>Fixed
+												Deposit</h6>
+										</label>
+									</div>
+								</div><br>
 
 
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="col-sm-6 col-12 mb-lg-0 mb-5">
-												<h5>Bank Name</h5><br>
-												<select name="bank_name" id="bank_name" class="px-4">
+
+
+
+								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-sm-6 col-12 mb-lg-0 mb-5">
+										<h5>Bank Name</h5><br>
+										<select name="bank_name" id="bank_name" class="px-4">
 											<option value="SelectABank">Select A Bank</option>
-											<option value="Affin Bank">Affin Bank</option>
-											<option value="Affin Islamic">Affin Islamic</option>
-											<option value="Agro Bank">Agro Bank</option>
-											<option value="Alliance Bank">Alliance Bank</option>
-											<option value="Alliance Islamic Bank">Alliance Islamic Bank</option>
-											<option value="AmBank">AmBank</option>
-											<option value="AmBank Islamic">AmBank Islamic</option>
-											<option value="Bank Islam">Bank Islam</option>
-											<option value="Bank Mualamat">Bank Mualamat</option>
-											<option value="CIMB Bank">CIMB Bank</option>
-											<option value="CIMB Islamic">CIMB Islamic</option>
-											<option value="HongLeong Bank">HongLeong Bank</option>
-											<option value="HongLeong Islamic Bank">HongLeong Islamic</option>
-											<option value="HSBC">HSBC</option>
-											<option value="HSBC Amanah">HSBC Amanah</option>
-											<option value="Maybank">Maybank</option>
-											<option value="Maybank Islamic">Maybank Islamic</option>
-											<option value="OCBC Bank">OCBC Bank</option>
-											<option value="OCBC Al-Amin">OCBC Al-Amin</option>
-											<option value="RHB Bank">RHB Bank</option>
-											<option value="RHB Islamic">RHB Islamic Bank</option>
-											<option value="Standard Chartered">Standard Chartered</option>
-											<option value="Standard Chartered Saadiq">Standard Chartered Saadiq</option>
-											<option value="Others">Others</option>
+											<option value="AEON Credit Service (M) Berhad">AEON Credit Service (M)
+												Berhad</option>
+											<option value="Affin Bank Berhad">Affin Bank Berhad</option>
+											<option value="Affin Islamic Bank Berhad">Affin Islamic Bank Berhad</option>
+											<option value="Alliance Bank Malaysia Berhad">Alliance Bank Malaysia Berhad
+											</option>
+											<option value="Al Rajhi Banking & Investment Corporation (Malaysia) Berhad">
+												Al Rajhi Banking & Investment Corporation (Malaysia) Berhad</option>
+											<option value="AmBank (M) Berhad">AmBank (M) Berhad</option>
+											<option value="AmBank Islamic Berhad">AmBank Islamic Berhad</option>
+											<option value="Bank Islam Malaysia Berhad (BIMB)">Bank Islam Malaysia Berhad
+												(BIMB)</option>
+											<option value="Bank Kerjasama Rakyat Malaysia Berhad (Bank Rakyat)">Bank
+												Kerjasama Rakyat Malaysia Berhad (Bank Rakyat)</option>
+											<option value="Bank Muamalat Malaysia Berhad">Bank Muamalat Malaysia Berhad
+											</option>
+											<option value="Bank of America Malaysia Berhad">Bank of America Malaysia
+												Berhad</option>
+											<option value="Bank of China (Malaysia) Berhad">Bank of China (Malaysia)
+												Berhad</option>
+											<option value="Bank Pertanian Malaysia Berhad (Agrobank)">Bank Pertanian
+												Malaysia Berhad (Agrobank)</option>
+											<option value="Bank Simpanan Nasional">Bank Simpanan Nasional</option>
+											<option value="CIMB Bank Berhad">CIMB Bank Berhad</option>
+											<option value="CIMB Islamic Bank Berhad">CIMB Islamic Bank Berhad</option>
+											<option value="Citibank Berhad">Citibank Berhad</option>
+											<option value="Deutsche Bank (Malaysia) Berhad">Deutsche Bank (Malaysia)
+												Berhad</option>
+											<option value="Hong Leong Bank Berhad">Hong Leong Bank Berhad</option>
+											<option value="HSBC Amanah Malaysia Berhad">HSBC Amanah Malaysia Berhad
+											</option>
+											<option value="HSBC Bank Malaysia Berhad">HSBC Bank Malaysia Berhad</option>
+											<option value="Industrial and Commercial Bank of China (Malaysia) Berhad">
+												Industrial and Commercial Bank of China (Malaysia) Berhad</option>
+											<option value="J.P. Morgan Chase Bank Berhad">J.P. Morgan Chase Bank Berhad
+											</option>
+											<option value="Kuwait Finance House">Kuwait Finance House</option>
+											<option value="Malayan Banking Berhad">Malayan Banking Berhad</option>
+											<option value="Maybank Islamic Berhad">Maybank Islamic Berhad</option>
+											<option value="OCBC Bank (Malaysia) Berhad">OCBC Bank (Malaysia) Berhad
+											</option>
+											<option value="Public Bank Berhad">Public Bank Berhad</option>
+											<option value="Public Islamic Bank Berhad">Public Islamic Bank
+												Berhad/option>
+											<option value="RHB Bank Berhad">RHB Bank Berhad</option>
+											<option value="RHB Islamic Bank Berhad">RHB Islamic Bank Berhad</option>
+											<option value="Standard Chartered Bank Malaysia Berhad">Standard Chartered
+												Bank Malaysia Berhad</option>
+											<option value="United Overseas Bank (Malaysia) Berhad">United Overseas Bank
+												(Malaysia) Berhad</option>
+
+
 										</select>
-			{% if form.errors %}
-    	<div class="px-4" style="color:red">
-    		{{ form.bank_name.errors }}
-		</div>
-{% endif %}
-											</div>
-											<div class="col-sm-6 col-12 mx-1 mt-lg-0 mt-5">
-												<h5>Account Number</h5><br>
-												<input type="text" name="account_no" id="" placeholder="12345XXX"
-													class="px-4">
-			{% if form.errors %}
-        <div class="px-4" style="color:red">{{ form.account_no.errors }}</div>
-{% endif %}
-
-											</div>
-
+										{% if form.errors %}
+										<div class="px-4" style="color:red">
+											{{ form.bank_name.errors }}
 										</div>
-										<br><br><br>
-										<div class="form-row Btn-Radio">
-
-											<div class="mx-1 col-12 col-lg-6 mt-5">
-												<h5>Account Value</h5><br>
-												<input type="text" name="account_value" id="" placeholder="RM1,000,000"
-													class="px-4">
-											</div>
-
-										</div>
+										{% endif %}
+									</div>
+									<div class="col-sm-6 col-12 mx-1 mt-lg-0 mt-5">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no" id="" placeholder="12345XXX" class="px-4">
+										{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.account_no.errors }}</div>
+										{% endif %}
 
 									</div>
+
 								</div>
-									<!-- End EPF Div-->
-
-
-
-									<!-- Button -->
-									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
+								<br>
+								<div class="form-row Btn-Radio">
+									<div class="mx-1 col-12 col-lg-6 mt-5">
+										<h5>Account Value</h5><br>
+										<input type="text" name="account_value" id="" placeholder="RM1,000,000"
+											class="px-4">
 									</div>
-								</form>
-								<!-- End Form -->
+
 								</div>
-								<!-- End Form Div-->
+
 							</div>
-							<!-- End Left Column Inner Column -->
 						</div>
-						<!-- End Column 1 -->
-						<!-- Start Column 2 -->
-						{% include 'backend/onboarding-assets-sidebar.html' %}
+						<!-- End EPF Div-->
+
+
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}"
+								role="button">Back</a>
+							<button class="btn Btn-Primary mt-5 float-end" type="submit">NEXT</button>
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
 		</div>
-		<!-- End Container -->
-		</div>
-		<!-- End Wrapper -->
-		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-	{% endblock %}
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+
+{% endblock %}
