@@ -367,24 +367,22 @@ def vehicles_loan_form(request):
     form = VehicleLoanForm()
     if request.POST:
         form = VehicleLoanForm(request.POST)
-        if form.cleaned_data['yesno'] == 'no':
+        if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Vehicle Loan Added.')
             return redirect('property_loan_form')
         if form.is_valid():
             loan_tenure = form.cleaned_data['loan_tenure']
-            loan_interest = form.cleaned_data['loan_interest']
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             loan_amount = form.cleaned_data['loan_amount']
             loan_tenure_2 = form.cleaned_data['loan_tenure_2']
-            loan_interest_2 = form.cleaned_data['loan_interest_2']
             bank_name_2 = form.cleaned_data['bank_name_2']
             account_no_2 = form.cleaned_data['account_no_2']
             loan_amount_2 = form.cleaned_data['loan_amount_2']
-            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure,'loan_interest':loan_interest},item_type='Vehicle Loan',created_by=request.user)
+            item = Item.objects.create(user=request.user,data={'bank_name':bank_name,'account_no':account_no,'loan_amount':loan_amount,'loan_tenure':loan_tenure},item_type='Vehicle Loan',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Vehicle Loan Added.')
             if bank_name_2 and account_no_2:
-                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2,'loan_interest':loan_interest_2},item_type='Vehicle Loan',created_by=request.user)
+                item2 = Item.objects.create(user=request.user,data={'bank_name':bank_name_2,'account_no':account_no_2,'loan_amount':loan_amount_2,'loan_tenure':loan_tenure_2},item_type='Vehicle Loan',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Vehicle Loan Added.')
             return redirect('property_loan_form')
     context = {'form':form}
