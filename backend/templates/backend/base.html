@@ -19,9 +19,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
     integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
-
+  <!-- SignUp CSS -->
+  <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
 
   <!-- Add icon library -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -55,12 +54,16 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'whoweare' %}">Who We Are</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'joinnow' %}">W.Vault</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'joinnow' %}" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">W Vault</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="{% url 'joinnow' %}">Security</a></li>
+            </ul>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Career</a>
-          </li> -->
+
+
+
           <li class="nav-item">
             <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
           </li>
@@ -191,7 +194,7 @@
       "showMethod": "fadeIn",
       "hideMethod": "fadeOut"
     }
-    toastr.{{message.tags}}('{{message}}');
+    toastr.{ { message.tags } } ('{{message}}');
   </script>
   {% endfor %}
   {% endif %}

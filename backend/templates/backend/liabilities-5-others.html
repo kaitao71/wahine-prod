@@ -1,109 +1,111 @@
-	{% extends "backend/base.html" %}
-	{% load static %}
+{% extends "backend/base.html" %}
+{% load static %}
 
 {% block extrahead %}
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<!-- Steps CSS and JS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 
-	{% block content %}
-	<!-- Start Wrapper -->
-		<div class="wrapper BG-Blue pb-5">
-			<!-- Start Container -->
-					<div class="inner col-12 col-lg-10 m-auto">
-						<!-- Column 1 -->
-						<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-							<h2 class="Color-Secondary mb-2 d-lg-none">Step 3/4:</h2>
-							<h2 class="mb-1 Color-Secondary">Liabilities</h2>
-							<p>Please fill the form below to record your personal liabilities information. Feel free to
-								add
-								as much detail as needed. </p>
-						</div>
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 3/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Liabilities</h2>
+				<p>Please fill the form below to record your personal liabilities information. Feel free to
+					add
+					as much detail as needed. </p>
+			</div>
 
 
 
-							<!-- Left Column Inner Column -->
-							<div class="inner pb-5">
-								<!-- Form Div -->
-								<div class="form-content w-100 pb-3">
-								{% include 'backend/onboarding-liabilities-breadcrumbs.html' %}
-								<!-- Form -->
-								<form method="post" class="Assets needs-validation" novalidate>
-									{% csrf_token %}
-									<!-- Start EPF Div-->
-									<!-- Information -->
-							<!-- Vehicles Loan -->
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					{% include 'backend/onboarding-liabilities-breadcrumbs.html' %}
+					<!-- Form -->
+					<form method="post" class="Assets needs-validation" novalidate>
+						{% csrf_token %}
+						<!-- Start EPF Div-->
+						<!-- Information -->
 						<!-- Vehicles Loan -->
-								<DIV class="mb-5">
-									<h4 class="text-black">Other Liabilities</h4>
-									<p class="text-start">Fill in your other liabilities information.</p><br>
-									<!-- Personal Loan #1 -->
-									<div>
-										<h5>Do you have other liabilities?</h5><BR>
-										<div class="form-row Btn-Radio">
-											<div class="col-6 col-lg-6">
-												<input class="unhide_answer" type="radio" id="control_01" name="yesno" value="yes" checked>
-												<label for="control_01">
-													<h6>Yes</h6>
-												</label>
+						<!-- Vehicles Loan -->
+						<DIV class="mb-5">
+							<h4 class="text-black">Other Liabilities</h4>
+							<p class="text-start">Fill in your other liabilities information.</p><br>
+							<!-- Personal Loan #1 -->
+							<div>
+								<h5>Do you have other liabilities?</h5><BR>
+								<div class="form-row Btn-Radio">
+									<div class="col-6 col-lg-6">
+										<input class="unhide_answer" type="radio" id="control_01" name="yesno"
+											value="yes" checked>
+										<label for="control_01">
+											<h6>Yes</h6>
+										</label>
 
-											</div>
-											<div class="col-6 col-lg-6 mx-1">
-												<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
-												<label for="control_02">
-													</svg>
-													<h6>No</h6>
-												</label>
-											</div>
-										</div>
-										<br>
-										<br>
-										<h5 class="answer text-black">Other Liability #1</h5>
-										<br>
-										<br>
-										<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-											<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
-												<h5>Liability Name</h5><br>
-													<input type="text" name="liability_name" id="" placeholder="Name"
-													class="px-4">
-											</div>
-											<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
-												<h5>Value (*Optional)</h5><br>
-												<input type="text" name="liability_value" id="" placeholder="RM1,000"
-													class="px-4">
-											</div>
-										</div>
-										<br><br><br>
 									</div>
-
-
-
-
-
-
-
-									<!-- Button -->
-									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
+									<div class="col-6 col-lg-6 mx-1">
+										<input class="hide_answer" type="radio" id="control_02" name="yesno" value="no">
+										<label for="control_02">
+											</svg>
+											<h6>No</h6>
+										</label>
 									</div>
-								</form>
-								<!-- End Form -->
 								</div>
-								<!-- End Form Div-->
+								<br>
+								<br>
+								<h5 class="answer text-black">Other Liability #1</h5>
+								<br>
+								<br>
+								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
+										<h5>Liability Name</h5><br>
+										<input type="text" name="liability_name" id="" placeholder="Name" class="px-4">
+									</div>
+									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
+										<h5>Value (*Optional)</h5><br>
+										<input type="text" name="liability_value" id="" placeholder="RM1,000"
+											class="px-4">
+									</div>
+								</div>
+								<br><br><br>
 							</div>
-							<!-- End Left Column Inner Column -->
-						</div>
-						<!-- End Column 1 -->
-					</div>
-						<!-- Start Column 2 -->
-						{% include 'backend/onboarding-liabilities-sidebar.html' %}
+
+
+
+
+
+
+
+							<!-- Button -->
+							<div class="mt-5">
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'property_loan_form' %}"
+									role="button">Back</a>
+								<a class="btn Btn-Primary float-end mt-5" href="{% url 'liabilities_overview' %}"
+									role="button">Next</a>
+							</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
 		</div>
-		<!-- End Container -->
-		</div>
-		<!-- End Wrapper -->
-		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-	{% endblock %}
+		<!-- End Column 1 -->
+	</div>
+	<!-- Start Column 2 -->
+	{% include 'backend/onboarding-liabilities-sidebar.html' %}
+</div>
+<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}

@@ -65,7 +65,7 @@
 													<th scope="row">1</th>
 													<td>{% if not banks %}
 														<a href="{% url 'bank_account_form' %}">Bank</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">Bank</a>
 														{% endif %}
 													</td>
@@ -73,7 +73,8 @@
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if banks %} checked {% endif %} /></label>
+																	value="check1" {% if banks %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -81,14 +82,16 @@
 													<th scope="row">2</th>
 													<td>{% if not epf_socso %}
 														<a href="{% url 'epf_socso_form' %}">EPF/SOCSO</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">EPF/SOCSO</a>
-														{% endif %}</td>
+														{% endif %}
+													</td>
 													<td>{{epf_socso.created_at}}</td>
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if epf_socso %} checked {% endif %} /></label>
+																	value="check1" {% if epf_socso %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -96,7 +99,7 @@
 													<th scope="row">3</th>
 													<td>{% if not insurances %}
 														<a href="{% url 'insurance_form' %}">Insurances</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">Insurances</a>
 														{% endif %}
 													</td>
@@ -104,7 +107,8 @@
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if insurances %} checked {% endif %}/></label>
+																	value="check1" {% if insurances %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -112,16 +116,17 @@
 													<th scope="row">4</th>
 													<td>{% if not investments %}
 														<a href="{% url 'investment_form' %}">Investments</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">Investments</a>
 														{% endif %}
-														
+
 													</td>
 													<td>{{investments.created_at}}</td>
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if investments %} checked {% endif %}/></label>
+																	value="check1" {% if investments %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -130,14 +135,16 @@
 													<th scope="row">5</th>
 													<td>{% if not properties %}
 														<a href="{% url 'property_form' %}">Property</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">Property</a>
-														{% endif %}</td>
+														{% endif %}
+													</td>
 													<td>{{properties.created_at}}</td>
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if properties %} checked {% endif %} /></label>
+																	value="check1" {% if properties %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -147,14 +154,16 @@
 													<th scope="row">6</th>
 													<td>{% if not vehicles %}
 														<a href="{% url 'vehicles_form' %}">Vehicle</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">Vehicle</a>
-														{% endif %}</td>
+														{% endif %}
+													</td>
 													<td>{{vehicles.created_at}}</td>
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if vehicles %} checked {% endif %} /></label>
+																	value="check1" {% if vehicles %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -164,14 +173,16 @@
 													<th scope="row">7</th>
 													<td>{% if not others %}
 														<a href="{% url 'bank_account_form' %}">Others</a>
-														{% else %} 
+														{% else %}
 														<a href="{% url 'dashboard' %}">Others</a>
-														{% endif %}</td>
+														{% endif %}
+													</td>
 													<td>{{others.created_at}}</td>
 													<td>
 														<div class="checkbox">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if others %} checked {% endif %}/></label>
+																	value="check1" {% if others %} checked {% endif
+																	%} /></label>
 														</div>
 													</td>
 												</tr>
@@ -193,7 +204,8 @@
 							<!-- Button -->
 							<div class="mt-5">
 								<!-- <a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a> -->
-
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'property_loan_form' %}"
+									role="button">Back</a>
 								<a class="btn Btn-Primary mt-5 float-end" href="{% url 'credit_card_form' %}"
 									role="button">Next</a>
 							</div>

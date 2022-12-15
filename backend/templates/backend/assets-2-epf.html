@@ -1,174 +1,180 @@
-	{% extends "backend/base.html" %}
-	{% load static %}
+{% extends "backend/base.html" %}
+{% load static %}
 
 {% block extrahead %}
-		<!-- STYLE CSS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
-		<!-- Steps CSS and JS -->
-		<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 
-	{% block content %}
-	<!-- Start Wrapper -->
-		<div class="wrapper BG-Blue pb-5">
-			<!-- Start Container -->
-					<div class="inner col-12 col-lg-10 m-auto">
-						<!-- Column 1 -->
-						<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-							<div class="form-header">
-								<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-								<h2 class="mb-1 Color-Secondary">Assets</h2>
-								<p>Please fill the form below to record your personal assets information. Feel free to add
-									as much detail as needed. </p>
-							</div>
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
 
 
 
-							<!-- Left Column Inner Column -->
-							<div class="inner pb-5">
-								<!-- Form Div -->
-								<div class="form-content w-100 pb-3">
-								{% include 'backend/onboarding-assets-breadcrumbs.html' %}
-								<!-- Form -->
-								<form method="post" class="Assets">
-									{% csrf_token %}
-									<!-- Start EPF Div-->
-									<div class="mb-5">
-										<h4 class="text-black">EPF</h4>
-										<p class="text-start">Fill in your EPF information.</p><br>
-										<!-- Start Information -->
-										<div>
-											<h5>Are You An EPF Member?</h5>
-											<br>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio">
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6">
-													<input class="unhide_answer" type="radio" name="yesno" id="control_01" value="yes" checked>
-													<label for="control_01">
-														<h6>Yes</h6>
-													</label>
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					{% include 'backend/onboarding-assets-breadcrumbs.html' %}
+					<!-- Form -->
+					<form method="post" class="Assets">
+						{% csrf_token %}
+						<!-- Start EPF Div-->
+						<div class="mb-5">
+							<h4 class="text-black">EPF</h4>
+							<p class="text-start">Fill in your EPF information.</p><br>
+							<!-- Start Information -->
+							<div>
+								<h5>Are You An EPF Member?</h5>
+								<br>
+								<!-- Start Form Row -->
+								<div class="form-row Btn-Radio">
+									<!-- Start Input -->
+									<div class="col-6 col-lg-6">
+										<input class="unhide_answer" type="radio" name="yesno" id="control_01"
+											value="yes" checked>
+										<label for="control_01">
+											<h6>Yes</h6>
+										</label>
 
-												</div>
-												<!-- End Input -->
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6 mx-1">
-													<input class="hide_answer" type="radio" name="yesno" id="control_02" value="no">
-													<label for="control_02">
-														<h6>No</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-											</div>
-											<!-- End Form Row -->
-											<br>
-
-											<!-- Start Form Row -->
-											<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-												<div class="mb-5 mb-lg-0 col-lg-6">
-													<h5>Membership Number</h5><br>
-													<input type="text" name="epf_member_no" id=""
-														placeholder="1XXXXXX8" class="px-4">
-																	{% if form.errors %}
-        <div class="px-4" style="color:red">{{ form.epf_member_no.errors }}</div>
-{% endif %}
-												</div>
-												<div class="mt-5 mt-lg-0 col-lg-6 mx-1">
-													<h5>Nominee Details</h5><br>
-													<input type="text" name="epf_nominee_name" id="" placeholder="Name"
-														class="px-4">
-												</div>
-											</div>
-											<!-- End Form Row -->
-											<br><br><br>
-
-											<!-- Start Form Row -->
-											<div class="answer form-row Btn-Radio">
-
-												<div class="mx-1">
-													<h5>Account Value</h5><br>
-													<input type="text" name="epf_account_value" id="" placeholder="RM1,000,000"
-														class="px-4">
-
-												</div>
-
-											</div>
-											<!-- End Form Row -->
-										</div>
-										<!-- End Information -->
 									</div>
-									<!-- End EPF Div-->
+									<!-- End Input -->
+									<!-- Start Input -->
+									<div class="col-6 col-lg-6 mx-1">
+										<input class="hide_answer" type="radio" name="yesno" id="control_02" value="no">
+										<label for="control_02">
+											<h6>No</h6>
+										</label>
+									</div>
+									<!-- End Input -->
+								</div>
+								<!-- End Form Row -->
+								<br>
+
+								<!-- Start Form Row -->
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
+										<h5>Membership Number</h5><br>
+										<input type="text" name="epf_member_no" id="" placeholder="1XXXXXX8"
+											class="px-4">
+										{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.epf_member_no.errors }}</div>
+										{% endif %}
+									</div>
+									<div class="mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
+										<h5>Nominee Details</h5><br>
+										<input type="text" name="epf_nominee_name" id="" placeholder="Name"
+											class="px-4">
+									</div>
+								</div>
+								<!-- End Form Row -->
+								<br><br><br>
+
+								<!-- Start Form Row -->
+								<div class="answer form-row Btn-Radio">
+
+									<div class="mx-1 col-lg-6 col-12">
+										<h5>Account Value</h5><br>
+										<input type="text" name="epf_account_value" id="" placeholder="RM1,000,000"
+											class="px-4">
+
+									</div>
+
+								</div>
+								<!-- End Form Row -->
+							</div>
+							<!-- End Information -->
+						</div>
+						<!-- End EPF Div-->
 
 
-									<!-- SOCSO -->
-									<div class="" style="margin-top: 7rem;">
-										<h4 class="text-black">SOCSO</h4>
-										<p class="text-start">Fill in your SOCSO information.</p><br>
-										<!-- Start Information -->
-										<div>
-											<h5>Are You A SOCSO Member?</h5><BR>
-											<!-- Start Form Row -->
-											<div class="form-row Btn-Radio">
-												<!-- Start Input -->
-												<div class="col-6 col-lg-6">
-													<input class="unhide_answer_3" type="radio" id="control_05" name="is_socso_member" value="yes" checked>
-													<label for="control_05">
-														<h6>Yes</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-												<!-- Start Input -->
-												<div class="mx-1 col-lg-6 col-6">
-													<input class="hide_answer_3" type="radio" id="control_06" name="is_socso_member" value="no">
-													<label for="control_06">
-														<h6>No</h6>
-													</label>
-												</div>
-												<!-- End Input -->
-											</div>
-											<!-- End Form Row -->
-											<br>
-											<!-- Start Form Row -->
-											<div class="answer_3 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-												<div class="col-12 col-lg-6 mb-5 mb-lg-0">
-													<h5>Membership Number</h5><br>
-													<input type="text" name="socso_member_no" id=""
-														placeholder="950112-XX-XXXX" class="px-4">
-												{% if form.errors %}
-        										<div class="px-4" style="color:red">{{ form.socso_member_no.errors }}</div>
-												{% endif %}
-												</div>
-												<!-- <div class=" col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
+						<!-- SOCSO -->
+						<div class="" style="margin-top: 7rem;">
+							<h4 class="text-black">SOCSO</h4>
+							<p class="text-start">Fill in your SOCSO information.</p><br>
+							<!-- Start Information -->
+							<div>
+								<h5>Are You A SOCSO Member?</h5><BR>
+								<!-- Start Form Row -->
+								<div class="form-row Btn-Radio">
+									<!-- Start Input -->
+									<div class="col-6 col-lg-6">
+										<input class="unhide_answer_3" type="radio" id="control_05"
+											name="is_socso_member" value="yes" checked>
+										<label for="control_05">
+											<h6>Yes</h6>
+										</label>
+									</div>
+									<!-- End Input -->
+									<!-- Start Input -->
+									<div class="mx-1 col-lg-6 col-6">
+										<input class="hide_answer_3" type="radio" id="control_06" name="is_socso_member"
+											value="no">
+										<label for="control_06">
+											<h6>No</h6>
+										</label>
+									</div>
+									<!-- End Input -->
+								</div>
+								<!-- End Form Row -->
+								<br>
+								<!-- Start Form Row -->
+								<div class="answer_3 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-12 col-lg-6 mb-5 mb-lg-0">
+										<h5>Membership Number</h5><br>
+										<input type="text" name="socso_member_no" id="" placeholder="950112-XX-XXXX"
+											class="px-4">
+										{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.socso_member_no.errors }}</div>
+										{% endif %}
+									</div>
+									<!-- <div class=" col-12 col-lg-6 mt-5 mt-lg-0 mx-1">
 													<h5>Nominee Details</h5><br>
 													<input type="text" name="socso_nominee_name" id="" placeholder="Name"
 														class="px-4">
 												</div> -->
-											</div>
-											<!-- End Form Row -->
-											<br><br><br>
-										</div>
-										<!-- End Information -->
-									</div>
-									<!-- End SOSCO Div-->
-
-									<!-- Button -->
-									<div class="mt-5">
-										<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a>
-										<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
-									</div>
-								</form>
-								<!-- End Form -->
 								</div>
-								<!-- End Form Div-->
+								<!-- End Form Row -->
+								<br><br><br>
 							</div>
-							<!-- End Left Column Inner Column -->
+							<!-- End Information -->
 						</div>
-						<!-- End Column 1 -->
-						<!-- Start Column 2 -->
-						{% include 'backend/onboarding-assets-sidebar.html' %}
+						<!-- End SOSCO Div-->
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}"
+								role="button">Back</a>
+							<a class="btn Btn-Primary float-end mt-5" href="{% url 'insurance_form' %}"
+								role="button">Next</a>
+
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
 		</div>
-		<!-- End Container -->
-		</div>
-		<!-- End Wrapper -->
-		<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
-	{% endblock %}
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}

@@ -66,34 +66,27 @@
 							<!-- Information -->
 							<!-- Core Investment #1 -->
 							<div>
-								<div class="answer form-row Btn-Radio">
-									<div class="answer col-lg-6 col-12">
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer col-lg-6 col-12 mb-5 mb-lg-0">
 										<h5 class="Color-Primary">Public Investment</h5><br>
 										<select name="investment_type" id="" class="px-4">
 											<option value="TabungHaji">Tabung Haji</option>
 											<option value="PNB">PNB</option>
 										</select>
 									</div>
-								</div>
-								<br><br>
-								<br>
-								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-									<div class="answer col-12 col-lg-6 mb-5 mb-lg-0">
+									<div class="answer mx-1 col-12 col-lg-6 mt-lg-0 mt-5">
 										<h5>Account Number</h5><br>
 										<input type="text" name="account_no" id="" placeholder="A123456XX" class="px-4">
 									</div>
-									<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+								</div>
+								<br><br><br>
+								<div class="form-row row Btn-Radio">
+									<div class="col-lg-6 col-12">
 										<h5>Investment Value</h5><br>
-										<input type=" text" name="account_value" id="" placeholder="Name" class="px-4">
+										<input type="text" name="account_value" id="" placeholder="RM100,000"
+											class="px-4">
 									</div>
-								</div><br>
-								<!-- <div class="form-row row Btn-Radio">
-											<div class="col-lg-6 col-12">
-												<h5>Investment Value</h5><br>
-												<input type="text" name="account_value" id="" placeholder="RM100,000"
-													class="px-4">
-											</div>
-										</div> -->
+								</div>
 							</div>
 							<!-- Billing Cycle Toggle -->
 							<div class="answer mt-4 pt-5 text-center">
@@ -179,7 +172,7 @@
 									<div class="col-12 col-lg-6 mb-5 mb-lg-0">
 										<h5>Unit Trust Name</h5><br>
 										<select name="investment_type_2" id="unit_trust_name" class="px-4">
-											<option value="">Select A Fund Management Company</option>
+											<option value="">Select A Fund Manager</option>
 											<option value="Abrdn Islamic Malaysia Sdn. Bhd.">Abrdn Islamic Malaysia Sdn.
 												Bhd.</option>
 											<option value="Affin Hwang Asset Management Berhad">Affin Hwang Asset
@@ -277,9 +270,10 @@
 
 						<!-- Button -->
 						<div class="mt-5">
-							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}"
-								role="button">Back</a>
-							<button class="btn Btn-Primary mt-5 float-end" type="submit">NEXT</button>
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'insurance_form' %}" role="button">Back</a>
+							<a class="btn Btn-Primary float-end mt-5" href="{% url 'property_form' %}"
+								role="button">Next</a>
+
 						</div>
 					</form>
 					<!-- End Form -->
