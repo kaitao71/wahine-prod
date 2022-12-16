@@ -96,16 +96,16 @@ BOOLEAN_CHOICES = [
 ##move all blue colored fields to dashboard, instead of sign up flow
 
 #vehicle - loan tenure instead of coverage
-class InsuranceModelForm(forms.ModelForm):
+class EditItemModelForm(forms.ModelForm):
 
     def __init__(self, *args, instance=None, **kwargs):
-        super(InsuranceModelForm, self).__init__(*args, instance=instance, **kwargs)
+        super(EditItemModelForm, self).__init__(*args, instance=instance, **kwargs)
         if instance:
-            self.fields['item_type'] = forms.CharField(initial="Insurance")
+            self.fields['item_type'] = forms.CharField()
 
     def save(self, commit=True):
         # self.fields['insurance_type'] = self.cleaned_data.get(f'insurance_type', '')
-        self.fields['item_type'] = "Insurance"
+        self.fields['item_type'] = ""
         return super(InsuranceModelForm, self).save(commit=commit)
 
     class Meta:

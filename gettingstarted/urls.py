@@ -40,13 +40,13 @@ urlpatterns = [
 	path("assets/others/",asset_others_form,name="asset_others_form"),
 	
 	## Editing Assets
-	path("assets/bank/edit/<uuid>",edit_bank_account_form,name="edit_bank_account_form"),
-	path("assets/epf/edit/<uuid>",edit_epf_socso_form,name="edit_epf_socso_form"),
+	# path("assets/bank/edit/<uuid>",edit_bank_account_form,name="edit_bank_account_form"),
+	# path("assets/epf/edit/<uuid>",edit_epf_socso_form,name="edit_epf_socso_form"),
 	path("assets/insurance/edit/<uuid>",edit_insurance_form,name="edit_insurance_form"),
 	path("assets/investment/edit/<uuid>",edit_investment_form,name="edit_investment_form"),
-	path("assets/property/edit/<uuid>",edit_property_form,name="edit_property_form"),
-	path("assets/vehicles/edit/<uuid>",edit_vehicles_form,name="edit_vehicles_form"),
-	path("assets/others/edit/<uuid>",edit_asset_others_form,name="edit_asset_others_form"),
+	# path("assets/property/edit/<uuid>",edit_property_form,name="edit_property_form"),
+	# path("assets/vehicles/edit/<uuid>",edit_vehicles_form,name="edit_vehicles_form"),
+	# path("assets/others/edit/<uuid>",edit_asset_others_form,name="edit_asset_others_form"),
 	## Onboarding Liabilities
 	path("liabilities/overview",liabilities_overview,name="liabilities_overview"),
 	path("liabilities/card/",liability_credit_card_form,name="credit_card_form"),
@@ -56,11 +56,11 @@ urlpatterns = [
 	path("liabilities/others/",liabilities_others_form,name="liabilities_others_form"),
 
 	## Editing Liabilities
-	path("liabilities/card/edit/<uuid>",edit_liability_credit_card_form,name="edit_credit_card_form"),
-	path("liabilities/personal/edit/<uuid>",edit_personal_loan_form,name="edit_personal_loan_form"),
-	path("liabilities/vehicles/edit/<uuid>",edit_vehicles_loan_form,name="edit_vehicles_loan_form"),
-	path("liabilities/property/edit/<uuid>",edit_property_loan_form,name="edit_property_loan_form"),
-	path("liabilities/others/edit/<uuid>",edit_liabilities_others_form,name="edit_liabilities_others_form"),
+	# path("liabilities/card/edit/<uuid>",edit_liability_credit_card_form,name="edit_credit_card_form"),
+	# path("liabilities/personal/edit/<uuid>",edit_personal_loan_form,name="edit_personal_loan_form"),
+	# path("liabilities/vehicles/edit/<uuid>",edit_vehicles_loan_form,name="edit_vehicles_loan_form"),
+	# path("liabilities/property/edit/<uuid>",edit_property_loan_form,name="edit_property_loan_form"),
+	# path("liabilities/others/edit/<uuid>",edit_liabilities_others_form,name="edit_liabilities_others_form"),
 
 	## Onboarding Trigger Events
 	path("triggers/notifier/",notifier_list_form,name="notifier_list_form"),

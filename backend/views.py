@@ -232,8 +232,16 @@ def edit_insurance_form(request,uuid):
     nominee_name = instance.data['nominee_name']
     sum_insured = instance.data['sum_insured']
     item_type = 'Insurance'
-    form = InsuranceModelForm(request.POST,instance=instance,initial={'item_type':item_type,'insurance_type':insurance_type,'provider_name':provider_name,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured})
-    print(form)
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'insurance_type':insurance_type,
+        'provider_name':provider_name,
+        'policy_no':policy_no,
+        'nominee_name':nominee_name,
+        'sum_insured':sum_insured
+        }
+        )
+
     if request.POST:
         instance.data['insurance_type'] = form.data['insurance_type']
         instance.data['policy_no'] = form.data['policy_no']
@@ -283,6 +291,39 @@ def investment_form(request):
             return redirect('property_form')
     context = {'form':form}
     return render(request,'backend/assets-4-investment.html',context)
+
+def edit_investment_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    investment_type = instance.data['investment_type']
+    account_no = instance.data['account_no']
+    fund_name = instance.data['fund_name']
+    account_value = ''
+    item_type = 'Investment'
+    
+    form = EditItemModelForm(request.POST,instance=instance,initial={
+        'item_type':item_type,
+        'investment_type':investment_type,
+        'fund_name':fund_name,
+        'account_no':account_no,
+        }
+        )
+
+    if request.POST:
+        instance.data['investment_type'] = form.data['investment_type']
+        instance.data['fund_name'] = form.data['fund_name']
+        instance.data['account_no'] = form.data['account_no']
+        instance.data['account_value'] = form.data['account_value']
+        instance.data['item_type'] = "Investment"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
+        return redirect('dashboard')
+    else:
+        messages.add_message(request, messages.INFO, 'Something went wrong. Please make sure fields are entered correctly')
+
+    context = {'form':form,'investment_type':investment_type,'fund_name':fund_name,'account_no':account_no,'account_value':account_value}
+    return render(request,'backend/edit-assets-4-investment.html',context)
 
 def property_form(request):
     form = PropertyForm()
