@@ -44,7 +44,7 @@ urlpatterns = [
 	# path("assets/epf/edit/<uuid>",edit_epf_socso_form,name="edit_epf_socso_form"),
 	path("assets/insurance/edit/<uuid>",edit_insurance_form,name="edit_insurance_form"),
 	path("assets/investment/edit/<uuid>",edit_investment_form,name="edit_investment_form"),
-	# path("assets/property/edit/<uuid>",edit_property_form,name="edit_property_form"),
+	path("assets/property/edit/<uuid>",edit_property_form,name="edit_property_form"),
 	# path("assets/vehicles/edit/<uuid>",edit_vehicles_form,name="edit_vehicles_form"),
 	# path("assets/others/edit/<uuid>",edit_asset_others_form,name="edit_asset_others_form"),
 	## Onboarding Liabilities

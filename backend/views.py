@@ -289,15 +289,24 @@ def investment_form(request):
                 messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
             return redirect('property_form')
+        else:
+            messages.add_message(request, messages.INFO, 'Something went wrong, please check if all fields are entered correctly.' + str(form.errors))
     context = {'form':form}
     return render(request,'backend/assets-4-investment.html',context)
 
 def edit_investment_form(request,uuid):
     instance = Item.objects.get(uuid=uuid)
     investment_type = instance.data['investment_type']
+    if instance.data['fund_name']:
+        fund_name = instance.data['fund_name']
+    else:
+        fund_name = ''
     account_no = instance.data['account_no']
-    fund_name = instance.data['fund_name']
-    account_value = ''
+    
+    if instance.data['account_value']:
+        account_value = instance.data['account_value']
+    else:
+        account_value = ''
     item_type = 'Investment'
     
     form = EditItemModelForm(request.POST,instance=instance,initial={
@@ -319,9 +328,6 @@ def edit_investment_form(request,uuid):
         print(instance)
         messages.add_message(request, messages.INFO, 'Investment data successfully updated.')
         return redirect('dashboard')
-    else:
-        messages.add_message(request, messages.INFO, 'Something went wrong. Please make sure fields are entered correctly')
-
     context = {'form':form,'investment_type':investment_type,'fund_name':fund_name,'account_no':account_no,'account_value':account_value}
     return render(request,'backend/edit-assets-4-investment.html',context)
 
@@ -336,17 +342,62 @@ def property_form(request):
             property_type = form.cleaned_data['property_type']
             residential_type = form.cleaned_data['residential_type']
             address = form.cleaned_data['address']
+            state = form.cleaned_data['state']
+            postcode = form.cleaned_data['postcode']
+            titleno = form.cleaned_data['titleno']
             property_type_2 = form.cleaned_data['property_type_2']
             residential_type_2 = form.cleaned_data['residential_type_2']
             address_2 = form.cleaned_data['address_2']
-            item = Item.objects.create(user=request.user,data={'property_type':property_type,'residential_type':residential_type,'address':address},item_type='Property',created_by=request.user)
+            state_2 = form.cleaned_data['state_2']
+            postcode_2 = form.cleaned_data['postcode_2']
+            titleno_2 = form.cleaned_data['titleno_2']
+            item = Item.objects.create(user=request.user,data={'property_type':property_type,'residential_type':residential_type,'address':address,'state':state,'postcode':postcode,'titleno':titleno},item_type='Property',created_by=request.user)
             if property_type_2 and residential_type_2 and address_2:
-                item2 = Item.objects.create(user=request.user,data={'property_type_2':property_type_2,'residential_type_2':residential_type_2,'address_2':address_2},item_type='Property',created_by=request.user)
+                item2 = Item.objects.create(user=request.user,data={'property_type':property_type_2,'residential_type':residential_type_2,'address':address_2,'state':state_2,'postcode':postcode_2,'titleno':titleno_2},item_type='Property',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Property data successfully updated.')
             messages.add_message(request, messages.INFO, 'Property data successfully updated.')
             return redirect('vehicles_form')
     context = {'form':form}
     return render(request,'backend/assets-5-property.html',context)
+
+def edit_property_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    property_type = instance.data['property_type']
+    residential_type = instance.data['residential_type']
+    address = instance.data['address']
+    state = instance.data['state']
+    postcode = instance.data['postcode']
+    titleno = instance.data['titleno']
+    item_type = 'Property'
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'property_type':property_type,
+        'residential_type':residential_type,
+        'address':address,
+        'state':state,
+        'postcode':postcode,
+        'titleno':titleno
+        }
+        )
+
+    if request.POST:
+        instance.data['property_type'] = form.data['property_type']
+        instance.data['residential_type'] = form.data['residential_type']
+        instance.data['address'] = form.data['address']
+        instance.data['state'] = form.data['state']
+        instance.data['postcode'] = form.data['postcode']
+        instance.data['titleno'] = form.data['titleno']
+        instance.data['item_type'] = 'Property'
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Property data successfully updated.')
+        return redirect('dashboard')
+    else:
+        messages.add_message(request, messages.INFO, 'Something went wrong. Please make sure fields are entered correctly')
+
+    context = {'form':form,'property_type':property_type,'residential_type':residential_type,'address':address,'state':state,'postcode':postcode,'titleno':titleno}
+    return render(request,'backend/edit-assets-5-property.html',context)
 
 def vehicles_form(request):
     form = VehicleForm()
@@ -367,6 +418,7 @@ def vehicles_form(request):
                 item2 = Item.objects.create(user=request.user,data={'vehicle_type':vehicle_type_2,'make_model':make_model_2,'registration_no':registration_no_2},item_type='Vehicle',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
             messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
+            return redirect('asset_others_form')
         else:
             messages.add_message(request, messages.INFO, 'Please make sure to fill in all information to proceed.')
             return redirect('vehicles_form')

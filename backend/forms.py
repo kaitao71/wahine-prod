@@ -167,11 +167,13 @@ class PropertyForm(forms.Form):
     address = forms.CharField()
     state = forms.CharField(required = False)
     postcode = forms.CharField(required = False)
+    titleno = forms.CharField(required = False) 
     property_type_2 = forms.CharField(required = False)
     residential_type_2 = forms.CharField(required = False)
     address_2 = forms.CharField(required = False)
     state_2= forms.CharField(required = False)
     postcode_2 = forms.CharField(required = False)
+    titleno_2 = forms.CharField(required = False)
     ## Removed spa_price field  5/12/2022
     yesno = forms.CharField(required = False)
 

@@ -17,7 +17,7 @@
 		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
 			<div class="form-header">
 				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
-				<h2 class="mb-1 Color-Secondary">Assets</h2>
+				<h2 class="mb-1 Color-Secondary">Edit Assets</h2>
 				<p>Please fill the form below to record your personal assets information. Feel free to add
 					as much detail as needed. </p>
 			</div>
@@ -28,7 +28,7 @@
 			<div class="inner pb-5">
 				<!-- Form Div -->
 				<div class="form-content w-100 pb-3">
-					{% include 'backend/onboarding-assets-breadcrumbs.html' %}
+					<!--  -->
 					<!-- Form -->
 					<form method="post" class="Assets">
 						{% csrf_token %}
@@ -50,14 +50,19 @@
 									</div>
 									<div class="answer mx-1 col-12 col-lg-6 mt-lg-0 mt-5">
 										<h5>Account Number</h5><br>
-										<input type="text" name="account_no" id="" placeholder="{{account_no}}" class="px-4">
+										<input type="text" name="account_no" id="" value="{{account_no}}" placeholder="{{account_no}}" class="px-4">
 									</div>
 								</div>
 								<br><br><br>
 								<div class="answer form-row row Btn-Radio">
+								<div class="col-lg-6 col-12">
+										<h5>Fund Name</h5><br>
+										<input type="text" name="fund_name" id="" value="{{fund_name}}" placeholder="{{fund_name}}"
+											class="px-4">
+									</div>
 									<div class="col-lg-6 col-12">
 										<h5>Investment Value</h5><br>
-										<input type="text" name="account_value" id="" placeholder="{{account_value}}"
+										<input type="text" name="account_value" id="" value="{{account_value}}" placeholder="{{account_value}}"
 											class="px-4">
 									</div>
 								</div>
@@ -73,8 +78,8 @@
 
 						<!-- Button -->
 						<div class="mt-5">
-							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'insurance_form' %}" role="button">Back</a>
-							<button class="btn Btn-Primary mt-5 float-end"type="submit">NEXT</button>
+							<!-- <a class="btn Btn-Secondary-2 mt-5" href="{% url 'insurance_form' %}" role="button">Back</a> -->
+							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
 
 						</div>
 					</form>

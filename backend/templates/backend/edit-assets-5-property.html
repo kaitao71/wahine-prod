@@ -1,0 +1,194 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Edit Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
+
+
+
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					<!-- Form -->
+					<form method="post" class="Assets">
+						{% csrf_token %}
+						<!-- Property Details -->
+						<div class="mb-5">
+							<h4 class="text-black">Property Details</h4>
+							<p class="text-start">Fill in your property information.</p><br>
+							<!-- Information -->
+							<!-- Core Investment #1 -->
+							<div>
+								<div class="answer form-row mt-3">
+									<h5 class="text-black">Property #1</h5><br>
+								</div>
+								<div class="answer form-row Btn-Radio">
+									<div class="col-lg-6 col-6">
+										<input type="radio" id="residential" name="property_type" value="residential" {% if property_type == "residential" %} checked {% endif %}>
+										<label for="residential">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
+												<path
+													d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z" />
+												<path
+													d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z" />
+											</svg>
+											<h6>Residential</h6>
+										</label>
+									</div>
+									<div class="answer mx-2 col-lg-6 col-6">
+										<input type="radio" id="commercial" name="property_type" value="commercial" {% if property_type == "commercial" %} checked {% endif %}>
+										<label for="commercial">
+
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+												<path
+													d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
+											</svg>
+											<h6>Commercial</h6>
+										</label>
+									</div>
+								</div>
+								<div class="answer form-row Btn-Radio mb-5">
+									<div class="col-lg-6 col-6">
+										<input type="radio" id="land" name="property_type" value="land" {% if property_type == "land" %} checked {% endif %}>
+										<label for="land">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-image-alt" viewBox="0 0 16 16">
+												<path
+													d="M7 2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm4.225 4.053a.5.5 0 0 0-.577.093l-3.71 4.71-2.66-2.772a.5.5 0 0 0-.63.062L.002 13v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4.5l-4.777-3.947z" />
+											</svg>
+											<h6>Land</h6>
+										</label>
+									</div>
+								</div>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-12 col-lg-6 mb-5 mb-lg-0">
+										<h5>Residential Type</h5><br>
+										<select name="residential_type" id="residentialType" class="px-4">
+											<option {% if residential_type == 'landed' %} selected {% endif %} value="landed">Landed</option>
+											<option {% if residential_type == 'condominium' %} selected {% endif %} value="condo">Condominium</option>
+											<option {% if residential_type == 'shop lot' %} selected {% endif %} value="shoplot">Shop Lot</option>
+											<option {% if residential_type == 'factory' %} selected {% endif %} value="factory">Factory</option>
+											<option {% if residential_type == 'residential' %} selected {% endif %} value="residential">Residential</option>
+											<option {% if residential_type == 'commercial' %} selected {% endif %} value="commercial">Commercial</option>
+										</select>
+
+									</div>
+									<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+										<h5>Address</h5><br>
+										<input type="text" name="address" id="" placeholder="{{address}}" value="{{address}}"
+											class="px-4">
+										{% if form.errors %}
+										<div class="px-4" style="color:red">{{ form.address.errors }}</div>
+										{% endif %}
+									</div>
+								</div><br><br><br>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+
+									<div class="col-12 col-lg-6 mb-5 mb-lg-0 ">
+										<h5>State</h5><br>
+										<input type="text" name="state" id="" value="{{state}}" placeholder="{{state}}" class="px-4">
+									</div>
+									<div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+										<h5>Postcode</h5><br>
+										<input type="text" name="postcode" id="" value="{{postcode}}" placeholder="{{postcode}}" class="px-4">
+									</div>
+
+								</div><br><br><br>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+
+									<div class="col-12 col-lg-6 mb-5 mb-lg-0 ">
+										<h5>Title No.</h5><br>
+										<input type="text" name="titleno" id="" value="{{titleno}}" placeholder="{{titleno}}" class="px-4">
+									</div>
+
+
+								</div>
+
+								<br><br><br>
+								<!-- <div class="form-row">
+											<h5 class="text-black">Do You Own Any Loan For This Property?</h5><br>
+										</div> -->
+								<!-- <div class="form-row Btn-Radio mb-5">
+											<div class="col-6 col-lg-6">
+												<input type="radio" id="loanY" name="loan" value="loanY" checked>
+												<label for="loanY">
+													<h6>Yes</h6>
+												</label>
+											</div>
+											<div class="mx-2 col-6 col-lg-6">
+												<input type="radio" id="loanN" name="loan" value="loanN">
+												<label for="loanN">
+													<h6>No</h6>
+												</label>
+											</div>
+										</div> -->
+
+								<!-- <div class="form-row">
+											<h5 class="text-black">Do You Have MRTA/MRTT Takaful?</h5><br>
+										</div> -->
+								<!-- <div class="form-row Btn-Radio mb-5">
+											<div class="col-6 col-lg-6">
+												<input type="radio" id="MRTAYes" name="MRTA" value="MRTAYes" checked>
+												<label for="MRTAYes">
+													<h6>Yes</h6>
+												</label>
+											</div>
+											<div class="mx-2 col-6 col-lg-6">
+												<input type="radio" id="MRTTNo" name="MRTA" value="MRTTNo">
+												<label for="MRTTNo">
+													<h6>No</h6>
+												</label>
+											</div>
+										</div> -->
+							</div>
+						</div>
+						<!-- End Property Details -->
+
+
+
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}"
+								role="button">Back</a>
+							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
+
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
+		</div>
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}
