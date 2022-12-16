@@ -1,0 +1,158 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
+
+
+
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					<!-- Form -->
+					<form method="post" class="Assets">
+						{% csrf_token %}
+						<!-- Start Vehicle -->
+						<DIV class="mb-5">
+							<!-- Information -->
+							<!-- Core Investment #1 -->
+							<div>
+								<div class="answer form-row mt-3">
+									<h5 class="text-black">Vehicle #1</h5><br>
+								</div>
+								<div class="answer form-row Btn-Radio">
+									<div class="col-lg-6 col-6">
+										<input type="radio" id="car" name="vehicle_type" value="car" {% if vehicle_type == 'car' %} checked {% endif %}>
+										<label for="car">
+											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+												fill="currentColor" class="bi bi-car-front-fill" viewBox="0 0 16 16">
+												<path fill-rule="evenodd"
+													d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189l.956-1.913A.5.5 0 0 1 4.309 3h7.382a.5.5 0 0 1 .447.276l.956 1.913a.51.51 0 0 1-.497.731c-.91-.073-3.35-.17-4.597-.17-1.247 0-3.688.097-4.597.17a.51.51 0 0 1-.497-.731Z" />
+											</svg>
+											<h6>Car</h6>
+										</label>
+									</div>
+									<div class="answer mx-2 col-lg-6 col-6">
+										<input type="radio" id="motor" name="vehicle_type" value="motor" {% if vehicle_type == 'motor' %} checked {% endif %}>
+										<label for="motor">
+
+											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+												width="24" height="24" xmlns:xlink="http://www.w3.org/1999/xlink"
+												x="0px" y="0px" viewBox="0 0 487.993 487.993"
+												style="enable-background:new 0 0 487.993 487.993;" xml:space="preserve">
+												<g transform="translate(0 -540.36)">
+													<g>
+														<g>
+															<path d="M469.593,815.356c-12-12.4-28-19.3-45.1-19.3c-35.2,0-62.7,28.8-62.7,65.7c0,36.3,27.6,64.8,62.7,64.8
+				c35.6,0,63.5-28.4,63.5-64.8C487.993,844.156,481.493,827.756,469.593,815.356z M424.493,906.556c-24.4,0-42.7-19.2-42.7-44.8
+				c0-25.6,18.8-45.7,42.7-45.7c24.4,0,43.5,20.1,43.5,45.7C467.993,886.856,448.893,906.556,424.493,906.556z" />
+															<path d="M424.493,716.956c5.5,0,10-4.5,10-10v-32.7c0-5.5-4.5-10-10-10s-10,4.5-10,10v32.7
+				C414.493,712.456,418.993,716.956,424.493,716.956z" />
+															<path d="M84.693,796.056c-35.2,0-62.7,28.8-62.7,65.7c0,36.3,27.6,64.8,62.7,64.8c35.7,0,63.6-28.4,63.5-64.8
+				c0-17.6-6.5-34-18.4-46.4C117.793,802.956,101.793,796.056,84.693,796.056z M84.693,906.556c-24.4,0-42.7-19.2-42.7-44.8
+				c0-25.6,18.8-45.7,42.7-45.7c24.4,0,43.6,20.1,43.5,45.7C128.193,886.856,109.093,906.556,84.693,906.556z" />
+															<path d="M415.793,777.956c1.8,3.4,5.3,5.3,8.9,5.3c1.6,0,3.2-0.4,4.6-1.2c4.7-2.5,6.6-8.5,4-13.4v0l-63.7-121.2
+				c-1.7-3.3-5.1-5.3-8.9-5.3h-31.4c-5.5,0-10,4.5-10,10s4.5,10,10,10h25.4l18.3,34.8h-118.4c-3.4,0-6.6,1.7-8.4,4.6l-11.4,17.8
+				l-203.6-0.3c-3.8,0-7.4,2.2-9,5.7l-21.2,44.2c-1.5,3.1-1.3,6.7,0.6,9.7c1.8,2.9,5,4.7,8.5,4.7h122.3l60.7,84.3
+				c1.9,2.6,4.9,4.2,8.1,4.2h106.2c3.8,0,7.3-2.2,9-5.7l69.8-144.5L415.793,777.956z M300.993,851.756h-94.8l-60.7-84.3
+				c-1.9-2.6-4.9-4.2-8.1-4.2h-111.5l11.6-24.2l184.5,0.3l-18.3,28.6c-2,3.1-2.1,7-0.4,10.2c1.8,3.2,5.1,5.2,8.8,5.2h121.9
+				L300.993,851.756z M343.493,763.256h-113.1l29.7-46.3h105.9L343.493,763.256z" />
+														</g>
+													</g>
+												</g>
+											</svg>
+
+											<h6>Motorcycle</h6>
+										</label>
+									</div>
+								</div>
+								<div class="answer form-row Btn-Radio mt-5 flex-row flex-wrap flex-lg-nowrap">
+									<div class="col-12 col-lg-6 mb-5 mb-lg-0">
+										<h5>Registration Number</h5><br>
+										<input type="text" name="registration_no" id="" placeholder="{{registration_no}}" value="{{registration_no}}"
+											class="px-4">
+										{% if form.errors %}
+										<div class="px-4" style="color:red">
+											{{ form.registration_no.errors }}
+										</div>
+										{% endif %}
+									</div>
+									<div class="answer mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
+										<h5>Vehicle Make & Model</h5><br>
+										<input type="text" name="make_model" id="" placeholder="{{make_model}}" value="{{make_model}}"
+											class="px-4">
+										{% if form.errors %}
+										<div class="px-4" style="color:red">
+											{{ form.make_model.errors }}
+										</div>
+										{% endif %}
+									</div>
+								</div>
+								<!-- <div class="form-row" style="margin-top:6rem ;">
+											<h5 class="text-black">Do You Own Any Loan For This Vehicle?</h5><br>
+										</div> -->
+								<!-- <div class="form-row Btn-Radio mb-5">
+											<div class="col-lg-6 col-6">
+												<input type="radio" id="loanY" name="loan" value="loanY" checked>
+												<label for="loanY">
+													<h6>Yes</h6>
+												</label>
+											</div>
+											<div class="mx-2 col-lg-6 col-6">
+												<input type="radio" id="loanN" name="loan" value="loanN">
+												<label for="loanN">
+													<h6>No</h6>
+												</label>
+											</div>
+										</div> -->
+							</div>
+
+
+
+							<!-- Billing Cycle Toggle -->
+
+						</div>
+						<br><br>
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}" role="button">Back</a>
+							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
+
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
+		</div>
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}

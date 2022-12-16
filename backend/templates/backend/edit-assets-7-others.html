@@ -1,0 +1,85 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Edit Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to
+					add
+					as much detail as needed. </p>
+			</div>
+
+
+
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					<!-- Form -->
+					<form method="post" class="Assets needs-validation" novalidate>
+						{% csrf_token %}
+						<!-- Start EPF Div-->
+						<!-- Information -->
+						<!-- Vehicles Loan -->
+						<!-- Vehicles Loan -->
+						<DIV class="mb-5">
+							<div>
+								<h5 class="answer text-black">Other Assets #1</h5>
+								<br>
+								<br>
+								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
+										<h5>Asset Name</h5><br>
+										<input type="text" name="asset_name" id="" placeholder="{{asset_name}}" value="{{asset_name}}" class="px-4">
+									</div>
+									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
+										<h5>Value</h5><br>
+										<input type="text" name="asset_value" id="" placeholder="{{asset_value}}" value="{{asset_value}}" class="px-4">
+									</div>
+								</div>
+								<br><br><br>
+							</div>
+
+
+
+
+
+
+
+							<!-- Button -->
+							<div class="mt-5">
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}"
+									role="button">Back</a>
+								<button class="btn Btn-Primary mt-5 float-end"type="submit">Save</button>
+							</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
+		</div>
+		<!-- End Column 1 -->
+	</div>
+	<!-- Start Column 2 -->
+	{% include 'backend/onboarding-assets-sidebar.html' %}
+</div>
+<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}
