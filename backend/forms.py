@@ -101,11 +101,11 @@ class InsuranceModelForm(forms.ModelForm):
     def __init__(self, *args, instance=None, **kwargs):
         super(InsuranceModelForm, self).__init__(*args, instance=instance, **kwargs)
         if instance:
-            self.fields['insurance_type'] = forms.CharField(initial=instance.data['insurance_type'])
-            # self.fields['insurance_type'].initial = instance.data['insurance_type']
+            self.fields['item_type'] = forms.CharField(initial="Insurance")
 
     def save(self, commit=True):
         # self.fields['insurance_type'] = self.cleaned_data.get(f'insurance_type', '')
+        self.fields['item_type'] = "Insurance"
         return super(InsuranceModelForm, self).save(commit=commit)
 
     class Meta:

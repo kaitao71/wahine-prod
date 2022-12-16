@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.forms import formset_factory
 from django.contrib.auth.forms import AuthenticationForm #add this
 from django.views.generic.edit import UpdateView
+import datetime
 # Create your views here.
 ## TODO
 ## IF data exist, show existing data/edit mode
@@ -230,23 +231,25 @@ def edit_insurance_form(request,uuid):
     policy_no = instance.data['policy_no']
     nominee_name = instance.data['nominee_name']
     sum_insured = instance.data['sum_insured']
-    form = InsuranceModelForm(request.POST,instance=instance,initial={'insurance_type':insurance_type,'provider_name':provider_name,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured})
+    item_type = 'Insurance'
+    form = InsuranceModelForm(request.POST,instance=instance,initial={'item_type':item_type,'insurance_type':insurance_type,'provider_name':provider_name,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured})
     print(form)
-
     if request.POST:
-        form = InsuranceForm(request.POST)
-        if form.data['yesno'] == 'no':
-            messages.add_message(request, messages.INFO, 'No Insurance Added.')
-            return redirect('investment_form')
-        if form.is_valid():
-            insurance_type = form.cleaned_data['insurance_type']
-            policy_no = form.cleaned_data['policy_no']
-            nominee_name = form.cleaned_data['nominee_name']
-            sum_insured = form.cleaned_data['sum_insured']
-            messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
-            return redirect('investment_form')
+        instance.data['insurance_type'] = form.data['insurance_type']
+        instance.data['policy_no'] = form.data['policy_no']
+        instance.data['provider_name'] = form.data['provider_name']
+        instance.data['nominee_name'] = form.data['nominee_name']
+        instance.data['sum_insured'] = form.data['sum_insured']
+        instance.data['item_type'] = "Insurance"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
+        return redirect('dashboard')
+    else:
+        messages.add_message(request, messages.INFO, 'Something went wrong. Please make sure fields are entered correctly')
 
-    context = {'form':form,'insurance_type':insurance_type}
+    context = {'form':form,'insurance_type':insurance_type,'provider_name':provider_name,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured}
     return render(request,'backend/edit-assets-3-insurance.html',context)
 
 def investment_form(request):

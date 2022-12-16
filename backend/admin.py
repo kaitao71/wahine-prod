@@ -28,7 +28,7 @@ class JsonAdmin(admin.ModelAdmin):
         JSONField: {'widget': PrettyJSONWidget}
     }
     search_fields = ('user',)
-    list_display = ('uuid', 'user', 'data', 'item_type','created_at',)
+    list_display = ('uuid', 'user', 'data', 'item_type','created_at','modified_at')
     list_display_links = ('uuid', 'user', 'data', )
     list_filter = ('user','item_type')
 

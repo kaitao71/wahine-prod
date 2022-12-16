@@ -84,7 +84,7 @@
 										<h5>Insurance Provider</h5><br>
 										<select name="provider_name" id="provider_name" class="px-4">
 											<option value="">Select A Provider</option>
-											<option value="AIA Berhad">AIA Berhad</option>
+											<option selected value="AIA Berhad">AIA Berhad</option>
 											<option value="AIA General Berhad">AIA General Berhad</option>
 											<option value="AIA PUBLIC Takaful Berhad">AIA PUBLIC Takaful Berhad</option>
 											<option value="AIG Malaysia Insurance Berhad">AIG Malaysia Insurance Berhad
@@ -174,22 +174,9 @@
 
 										</select>
 
-										{% if form.errors %}
-										<div class="px-4" style="color:red">{{ form.provider_name.errors }}</div>
-										{% endif %}
 									</div>
 
-
-
-									<div class="mx-1 col-lg-6 col-12 mt-5 mt-lg-0">
-										<h5>Provider Name</h5><br>
-										<input type="text" name="provider_name_custom" id="" placeholder="{{provider_name}}"
-											class="px-4 insurance-name">
-									</div>
-
-								</div><br><br>
-								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12 mb-5 mb-lg-0">
+<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12 mb-5 mb-lg-0">
 										<h5>Policy Number</h5><br>
 										<input type="text" name="policy_no" id="" placeholder="{{policy_no}}" class="px-4">
 										{% if form.errors %}
@@ -197,33 +184,42 @@
 										{% endif %}
 									</div>
 
+									<!-- <div class="mx-1 col-lg-6 col-12 mt-5 mt-lg-0">
+										<h5>Provider Name</h5><br>
+										<input type="text" name="provider_name_custom" id="" placeholder="{{provider_name}}"
+											class="px-4 insurance-name">
+									</div> -->
+
+								</div><br><br>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									
+
 									<div class="col-lg-6 col-12 mt-5 mt-lg-0">
 										<h5>Nominee Details</h5><br>
-										<input type="text" name="nominee_name" id="" placeholder="{{nominee_details}}" class="px-4">
+										<input type="text" name="nominee_name" id="" placeholder="{{nominee_name}}" class="px-4">
 									</div>
-
-
-								</div>
-								<br><br>
-								<div class="answer form-row Btn-Radio">
 									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Sum Insured</h5><br>
 										<input type="text" name="sum_insured" id="" placeholder="{{sum_insured}}"
 											class="px-4">
 									</div>
+
+
 								</div>
+								<br><br>
+							
 							</div>
 							<!-- End Information -->	
 							<!-- End 2nd form -->
 						</div>
 						<!-- End Insurance Div-->
 
-
+<input type="text" name="item_type" id="" value="Insurance"
+											class="px-4">
 						<!-- Button -->
 						<div class="mt-5">
 							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'epf_socso_form' %}" role="button">Back</a>
-							<a class="btn Btn-Primary float-end mt-5" href="{% url 'investment_form' %}"
-								role="button">Next</a>
+							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
 
 						</div>
 					</form>
