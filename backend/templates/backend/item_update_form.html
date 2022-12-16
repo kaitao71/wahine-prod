@@ -1,0 +1,10 @@
+{% extends 'backend/base.html' %}
+{% block content %}
+<form method="post"> 
+    {% csrf_token %} 
+    {{ form.data }}
+    {% for x in form %}
+    {% endfor %} 
+    <input type="submit" value="Save"> 
+</form> 
+{% endblock %}

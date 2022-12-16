@@ -34,6 +34,7 @@ urlpatterns = [
 	path("assets/bank",bank_account_form,name="bank_account_form"),
 	path("assets/epf",epf_socso_form,name="epf_socso_form"),
 	path("assets/insurance/",insurance_form,name="insurance_form"),
+	path("assets/insurance/edit/<uuid>",edit_insurance_form,name="edit_insurance_form"),
 	path("assets/investment/",investment_form,name="investment_form"),
 	path("assets/property/",property_form,name="property_form"),
 	path("assets/vehicles/",vehicles_form,name="vehicles_form"),

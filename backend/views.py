@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
 from django.forms import formset_factory
 from django.contrib.auth.forms import AuthenticationForm #add this
+from django.views.generic.edit import UpdateView
 # Create your views here.
 ## TODO
 ## IF data exist, show existing data/edit mode
@@ -204,18 +205,49 @@ def insurance_form(request):
             policy_no = form.cleaned_data['policy_no']
             nominee_name = form.cleaned_data['nominee_name']
             sum_insured = form.cleaned_data['sum_insured']
-            item = Item.objects.create(user=request.user,data={'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured},item_type='Insurance',created_by=request.user)
+            provider_name = form.cleaned_data['provider_name']
+            item = Item.objects.create(user=request.user,data={'provider_name':provider_name,'insurance_type':insurance_type,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured},item_type='Insurance',created_by=request.user)
             insurance_type_2 = form.cleaned_data['insurance_type_2']
             policy_no_2 = form.cleaned_data['policy_no_2']
             nominee_name_2 = form.cleaned_data['nominee_name_2']
+            provider_name_2 = form.cleaned_data['provider_name_2']
             sum_insured_2 = form.cleaned_data['sum_insured_2']
             if insurance_type_2 and policy_no_2:
                 item2 = Item.objects.create(user=request.user,data={'insurance_type':insurance_type_2,'policy_no':policy_no_2,'nominee_name':nominee_name_2,'sum_insured':sum_insured_2},item_type='Insurance',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
             messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
-            return redirect('investment_form')
+        else:
+            messages.add_message(request, messages.INFO, 'Something went wrong, please make sure all fields are entered correctly')
+            print(form.errors)
+            return redirect('insurance_form')
     context = {'form':form}
     return render(request,'backend/assets-3-insurance.html',context)
+
+def edit_insurance_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    insurance_type = instance.data['insurance_type']
+    provider_name = instance.data['provider_name']
+    policy_no = instance.data['policy_no']
+    nominee_name = instance.data['nominee_name']
+    sum_insured = instance.data['sum_insured']
+    form = InsuranceModelForm(request.POST,instance=instance,initial={'insurance_type':insurance_type,'provider_name':provider_name,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured})
+    print(form)
+
+    if request.POST:
+        form = InsuranceForm(request.POST)
+        if form.data['yesno'] == 'no':
+            messages.add_message(request, messages.INFO, 'No Insurance Added.')
+            return redirect('investment_form')
+        if form.is_valid():
+            insurance_type = form.cleaned_data['insurance_type']
+            policy_no = form.cleaned_data['policy_no']
+            nominee_name = form.cleaned_data['nominee_name']
+            sum_insured = form.cleaned_data['sum_insured']
+            messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
+            return redirect('investment_form')
+
+    context = {'form':form,'insurance_type':insurance_type}
+    return render(request,'backend/edit-assets-3-insurance.html',context)
 
 def investment_form(request):
     form = InvestmentForm()
@@ -291,7 +323,9 @@ def vehicles_form(request):
                 item2 = Item.objects.create(user=request.user,data={'vehicle_type':vehicle_type_2,'make_model':make_model_2,'registration_no':registration_no_2},item_type='Vehicle',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
             messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
-            return redirect('asset_others_form')
+        else:
+            messages.add_message(request, messages.INFO, 'Please make sure to fill in all information to proceed.')
+            return redirect('vehicles_form')
     context = {'form':form}
     return render(request,'backend/assets-6-vehicles.html',context)
 
@@ -499,6 +533,11 @@ def assets_overview(request):
     others = items.filter(item_type='Other Assets').last()
     context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'properties':properties,'others':others}
     return render(request,'backend/assets-overview.html',context)
+
+class ItemUpdateView(UpdateView):
+    model = Item
+    fields = ['data']
+    template_name_suffix = '_update_form'
 
 def liabilities_overview(request):
     user = request.user

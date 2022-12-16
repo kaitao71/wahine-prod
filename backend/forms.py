@@ -96,6 +96,22 @@ BOOLEAN_CHOICES = [
 ##move all blue colored fields to dashboard, instead of sign up flow
 
 #vehicle - loan tenure instead of coverage
+class InsuranceModelForm(forms.ModelForm):
+
+    def __init__(self, *args, instance=None, **kwargs):
+        super(InsuranceModelForm, self).__init__(*args, instance=instance, **kwargs)
+        if instance:
+            self.fields['insurance_type'] = forms.CharField(initial=instance.data['insurance_type'])
+            # self.fields['insurance_type'].initial = instance.data['insurance_type']
+
+    def save(self, commit=True):
+        # self.fields['insurance_type'] = self.cleaned_data.get(f'insurance_type', '')
+        return super(InsuranceModelForm, self).save(commit=commit)
+
+    class Meta:
+        model = Item
+        fields = ['item_type']
+
 class BankAccountForm(forms.Form):
     account_type = forms.CharField()
     bank_name = forms.CharField()
@@ -116,11 +132,13 @@ class EpfSocsoForm(forms.Form):
 class InsuranceForm(forms.Form):
     insurance_type = forms.CharField()
     provider_name = forms.CharField()
+    provider_name_custom = forms.CharField(required = False)
     policy_no = forms.CharField()
     nominee_name = forms.CharField(required = False)
     sum_insured = forms.CharField(required = False)
     insurance_type_2 = forms.CharField(required=False)
     provider_name_2 = forms.CharField(required=False)
+    provider_name_custom_2 = forms.CharField(required=False)
     policy_no_2 = forms.CharField(required=False)
     nominee_name_2 = forms.CharField(required = False)
     sum_insured_2 = forms.CharField(required = False)
