@@ -56,7 +56,7 @@
 													<th scope="col">#</th>
 													<th scope="col">Assets</th>
 													<th scope="col">Last Modified</th>
-													<th scope="col">Complete?</th>
+													<th scope="col" class="text-center">Complete?</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -67,14 +67,13 @@
 														<a href="{% url 'bank_account_form' %}">Bank</a>
 														{% else %}
 														<a href="{% url 'dashboard' %}">Bank</a>
-														{% endif %}
+														{% endif %} 
 													</td>
 													<td>{{banks.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if banks %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if banks %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -88,10 +87,9 @@
 													</td>
 													<td>{{epf_socso.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if epf_socso %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if epf_socso %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -105,10 +103,9 @@
 													</td>
 													<td>{{insurances.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if insurances %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if insurances %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -123,10 +120,9 @@
 													</td>
 													<td>{{investments.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if investments %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if investments %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -141,10 +137,9 @@
 													</td>
 													<td>{{properties.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if properties %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if properties %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -160,10 +155,9 @@
 													</td>
 													<td>{{vehicles.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if vehicles %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if vehicles %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -179,10 +173,9 @@
 													</td>
 													<td>{{others.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" disabled="disabled"
-																	value="check1" {% if others %} checked {% endif
-																	%} /></label>
+																	value="check1" {% if others %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -204,7 +197,7 @@
 							<!-- Button -->
 							<div class="mt-5">
 								<!-- <a class="btn Btn-Secondary-2 mt-5" href="{% url 'bank_account_form' %}" role="button">Back</a> -->
-								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'property_loan_form' %}"
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'asset_others_form' %}"
 									role="button">Back</a>
 								<a class="btn Btn-Primary mt-5 float-end" href="{% url 'credit_card_form' %}"
 									role="button">Next</a>

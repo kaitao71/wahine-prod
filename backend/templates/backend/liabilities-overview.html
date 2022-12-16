@@ -55,7 +55,7 @@
 													<th scope="col">#</th>
 													<th scope="col">Assets</th>
 													<th scope="col">Last Modified</th>
-													<th scope="col">Complete?</th>
+													<th scope="col" class="text-center">Complete?</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -69,10 +69,9 @@
 													</td>
 													<td>{{creditcard.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" value="check1"
-																	disabled="disabled" {% if creditcard %} checked {%
-																	endif %} /></label>
+																	disabled="disabled" {% if creditcard %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -86,10 +85,9 @@
 													</td>
 													<td>{{personalloan.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" value="check1"
-																	disabled="disabled" {% if personalloan %} checked {%
-																	endif %} /></label>
+																	disabled="disabled" {% if personalloan %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -103,10 +101,9 @@
 													</td>
 													<td>{{vehicleloan.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" value="check1"
-																	disabled="disabled" {% if vehicleloan %} checked {%
-																	endif %} /></label>
+																	disabled="disabled" {% if vehicleloan %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -120,10 +117,9 @@
 													</td>
 													<td>{{propertyloan.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" value="check1"
-																	disabled="disabled" {% if propertyloan %} checked {%
-																	endif %} /></label>
+																	disabled="disabled" {% if propertyloan %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -134,15 +130,14 @@
 														<a href="{% url 'liabilities_others_form' %}">Other
 															Liabilities</a>
 														{% else %}
-														<a href="{% url 'dashboard' %}">Other Liabilities</a>
-														{% endif %}
+														<a href="{% url 'dashboard' %}">Other Liabilities</a>{% endif %}
+
 													</td>
 													<td>{{others.created_at}}</td>
 													<td>
-														<div class="checkbox">
+														<div class="checkbox text-center">
 															<label><input type="checkbox" value="check1"
-																	disabled="disabled" {% if others %} checked {% endif
-																	%} /></label>
+																	disabled="disabled" {% if others %} checked {% endif %} /></label>
 														</div>
 													</td>
 												</tr>
@@ -166,9 +161,9 @@
 
 							<!-- Button -->
 							<div class="mt-5">
-								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'credit_card_form' %}"
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'liabilities_others_form' %}"
 									role="button">Back</a>
-								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'notifier_list_form' %}"
+									<a class="btn Btn-Primary float-end mt-5" href="{% url 'dashboard' %}"
 									role="button">Next</a>
 							</div>
 						</div>
