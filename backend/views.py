@@ -124,6 +124,37 @@ def bank_account_form(request):
     context = {'form':form}
     return render(request,'backend/assets-1-bank.html',context)
 
+def edit_bank_account_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    account_type = instance.data['account_type']
+    bank_name = instance.data['bank_name']
+    account_no = instance.data['account_no']
+    account_value = instance.data['account_value']
+    item_type = 'Bank Account'
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'account_value':account_value,
+        'account_type':account_type,
+        'bank_name':bank_name,
+        'account_no':account_no
+        }
+        )
+
+    if request.POST:
+        instance.data['account_no'] = form.data['account_no']
+        instance.data['account_value'] = form.data['account_value']
+        instance.data['account_type'] = form.data['account_type']
+        instance.data['bank_name'] = form.data['bank_name']
+        instance.data['item_type'] = "Bank Account"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Bank data successfully updated.')
+        return redirect('dashboard')
+
+    context = {'form':form,'account_value':account_value,'account_no':account_no,'bank_name':bank_name,'account_type':account_type}
+    return render(request,'backend/edit-assets-1-bank.html',context)
+
 def epf_socso_form(request):
     form = EpfSocsoForm()
     if request.POST:
@@ -191,6 +222,37 @@ def epf_socso_form(request):
     context = {'form':form}
     return render(request,'backend/assets-2-epf.html',context)
 
+def edit_epf_socso_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    epf_member_no = instance.data['epf_member_no']
+    epf_nominee_name = instance.data['epf_nominee_name']
+    socso_member_no = instance.data['socso_member_no']
+    epf_account_value = instance.data['epf_account_value']
+    item_type = 'EPF Socso'
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'epf_member_no':epf_member_no,
+        'epf_nominee_name':epf_nominee_name,
+        'socso_member_no':socso_member_no,
+        'epf_account_value':epf_account_value
+        }
+        )
+
+    if request.POST:
+        instance.data['epf_member_no'] = form.data['epf_member_no']
+        instance.data['epf_nominee_name'] = form.data['epf_nominee_name']
+        instance.data['socso_member_no'] = form.data['socso_member_no']
+        instance.data['epf_account_value'] = form.data['epf_account_value']
+        instance.data['item_type'] = "EPF/Socso"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'EPF/Socso data successfully updated.')
+        return redirect('dashboard')
+
+    context = {'form':form,'epf_member_no':epf_member_no,'epf_nominee_name':epf_nominee_name,'socso_member_no':socso_member_no,'epf_account_value':epf_account_value}
+    return render(request,'backend/edit-assets-2-epf.html',context)
+
 def insurance_form(request):
     form = InsuranceForm()
     form2 = InsuranceForm()
@@ -254,8 +316,6 @@ def edit_insurance_form(request,uuid):
         print(instance)
         messages.add_message(request, messages.INFO, 'Insurance data successfully updated.')
         return redirect('dashboard')
-    else:
-        messages.add_message(request, messages.INFO, 'Something went wrong. Please make sure fields are entered correctly')
 
     context = {'form':form,'insurance_type':insurance_type,'provider_name':provider_name,'policy_no':policy_no,'nominee_name':nominee_name,'sum_insured':sum_insured}
     return render(request,'backend/edit-assets-3-insurance.html',context)
@@ -365,9 +425,19 @@ def edit_property_form(request,uuid):
     property_type = instance.data['property_type']
     residential_type = instance.data['residential_type']
     address = instance.data['address']
-    state = instance.data['state']
-    postcode = instance.data['postcode']
-    titleno = instance.data['titleno']
+    if instance.data['state']:
+        state = instance.data['state']
+    else:
+        state = ''
+    if instance.data['postcode']:
+        postcode = instance.data['postcode']
+    else:
+        postcode = ''
+    if instance.data['titleno']:
+        titleno = instance.data['titleno']
+    else:
+        titleno = ''
+    spa_price = ''
     item_type = 'Property'
 
     form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
@@ -376,7 +446,8 @@ def edit_property_form(request,uuid):
         'address':address,
         'state':state,
         'postcode':postcode,
-        'titleno':titleno
+        'titleno':titleno,
+        'spa_price':spa_price,
         }
         )
 
@@ -387,16 +458,15 @@ def edit_property_form(request,uuid):
         instance.data['state'] = form.data['state']
         instance.data['postcode'] = form.data['postcode']
         instance.data['titleno'] = form.data['titleno']
+        instance.data['spa_price'] = form.data['spa_price']
         instance.data['item_type'] = 'Property'
         instance.updated_at = datetime.datetime.now()
         instance.save()
         print(instance)
         messages.add_message(request, messages.INFO, 'Property data successfully updated.')
         return redirect('dashboard')
-    else:
-        messages.add_message(request, messages.INFO, 'Something went wrong. Please make sure fields are entered correctly')
 
-    context = {'form':form,'property_type':property_type,'residential_type':residential_type,'address':address,'state':state,'postcode':postcode,'titleno':titleno}
+    context = {'form':form,'property_type':property_type,'residential_type':residential_type,'address':address,'state':state,'postcode':postcode,'titleno':titleno,'spa_price':spa_price}
     return render(request,'backend/edit-assets-5-property.html',context)
 
 def vehicles_form(request):
@@ -425,6 +495,34 @@ def vehicles_form(request):
     context = {'form':form}
     return render(request,'backend/assets-6-vehicles.html',context)
 
+def edit_vehicle_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    vehicle_type = instance.data['vehicle_type']
+    make_model = instance.data['make_model']
+    registration_no = instance.data['registration_no']
+    item_type = 'Vehicle'
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'vehicle_type':vehicle_type,
+        'make_model':make_model,
+        'registration_no':registration_no,
+        }
+        )
+
+    if request.POST:
+        instance.data['vehicle_type'] = form.data['vehicle_type']
+        instance.data['make_model'] = form.data['make_model']
+        instance.data['registration_no'] = form.data['registration_no']
+        instance.data['item_type'] = 'Vehicle'
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Vehicle data successfully updated.')
+        return redirect('dashboard')
+
+    context = {'form':form,'vehicle_type':vehicle_type,'make_model':make_model,'registration_no':registration_no}
+    return render(request,'backend/edit-assets-6-vehicle.html',context)
+
 def asset_others_form(request):
     form = AssetOthersForm()
     if request.POST:
@@ -444,6 +542,32 @@ def asset_others_form(request):
             return redirect('assets_overview')
     context = {'form':form}
     return render(request,'backend/assets-7-others.html',context)
+
+def edit_asset_others_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    asset_name = instance.data['asset_name']
+    asset_value = instance.data['asset_value']
+    item_type = 'Other Assets'
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'asset_name':asset_name,
+        'asset_value':asset_value,
+        }
+        )
+
+    if request.POST:
+        instance.data['asset_name'] = form.data['asset_name']
+        instance.data['asset_value'] = form.data['asset_value']
+        instance.data['item_type'] = 'Other Assets'
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Other assets data successfully updated.')
+        return redirect('dashboard')
+
+    context = {'form':form,'asset_name':asset_name,'asset_value':asset_value}
+    return render(request,'backend/edit-assets-7-others.html',context)
+
 
 def liability_credit_card_form(request):
     form = CreditCardForm()
@@ -467,6 +591,38 @@ def liability_credit_card_form(request):
             return redirect('personal_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-1-credit-card.html',context)
+
+
+def edit_liability_credit_card_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    if instance.data['amount_outstanding']:
+        amount_outstanding = instance.data['amount_outstanding']
+    else:
+        amount_outstanding = ''
+    account_no = instance.data['account_no']
+    bank_name = instance.data['bank_name']
+    item_type = 'Credit Card'
+    
+    form = EditItemModelForm(request.POST,instance=instance,initial={
+        'item_type':item_type,
+        'bank_name':bank_name,
+        'amount_outstanding':amount_outstanding,
+        'account_no':account_no,
+        }
+        )
+
+    if request.POST:
+        instance.data['bank_name'] = form.data['bank_name']
+        instance.data['amount_outstanding'] = form.data['amount_outstanding']
+        instance.data['account_no'] = form.data['account_no']
+        instance.data['item_type'] = "Credit Card"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Credit card data successfully updated.')
+        return redirect('dashboard')
+    context = {'form':form,'amount_outstanding':amount_outstanding,'bank_name':bank_name,'account_no':account_no}
+    return render(request,'backend/edit-liabilities-1-credit-card.html',context)
 
 def personal_loan_form(request):
     form = PersonalLoanForm()
@@ -493,6 +649,37 @@ def personal_loan_form(request):
     context = {'form':form}
     return render(request,'backend/liabilities-2-personal-loan.html',context)
 
+def edit_personal_loan_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    account_no = instance.data['account_no']
+    loan_amount = instance.data['loan_amount']
+    loan_tenure = instance.data['loan_tenure']
+    bank_name = instance.data['bank_name']
+    item_type = 'Personal Loan'
+    
+    form = EditItemModelForm(request.POST,instance=instance,initial={
+        'item_type':item_type,
+        'bank_name':bank_name,
+        'loan_amount':loan_amount,
+        'loan_tenure':loan_tenure,
+        'account_no':account_no,
+        }
+        )
+
+    if request.POST:
+        instance.data['bank_name'] = form.data['bank_name']
+        instance.data['loan_tenure'] = form.data['loan_tenure']
+        instance.data['loan_amount'] = form.data['loan_amount']
+        instance.data['account_no'] = form.data['account_no']
+        instance.data['item_type'] = "Personal Loan"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Personal loan data successfully updated.')
+        return redirect('dashboard')
+    context = {'form':form,'loan_tenure':loan_tenure,'loan_amount':loan_amount,'bank_name':bank_name,'account_no':account_no}
+    return render(request,'backend/edit-liabilities-2-personal-loan.html',context)
+
 def vehicles_loan_form(request):
     form = VehicleLoanForm()
     if request.POST:
@@ -517,6 +704,37 @@ def vehicles_loan_form(request):
             return redirect('property_loan_form')
     context = {'form':form}
     return render(request,'backend/liabilities-3-vehicle-loan.html',context)
+
+def edit_vehicle_loan_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    account_no = instance.data['account_no']
+    loan_amount = instance.data['loan_amount']
+    loan_tenure = instance.data['loan_tenure']
+    bank_name = instance.data['bank_name']
+    item_type = 'Vehicle Loan'
+    
+    form = EditItemModelForm(request.POST,instance=instance,initial={
+        'item_type':item_type,
+        'bank_name':bank_name,
+        'loan_amount':loan_amount,
+        'loan_tenure':loan_tenure,
+        'account_no':account_no,
+        }
+        )
+
+    if request.POST:
+        instance.data['bank_name'] = form.data['bank_name']
+        instance.data['loan_tenure'] = form.data['loan_tenure']
+        instance.data['loan_amount'] = form.data['loan_amount']
+        instance.data['account_no'] = form.data['account_no']
+        instance.data['item_type'] = "Vehicle Loan"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Vehicle loan data successfully updated.')
+        return redirect('dashboard')
+    context = {'form':form,'loan_tenure':loan_tenure,'loan_amount':loan_amount,'bank_name':bank_name,'account_no':account_no}
+    return render(request,'backend/edit-liabilities-3-vehicle-loan.html',context)
 
 
 def property_loan_form(request):
@@ -544,6 +762,37 @@ def property_loan_form(request):
     context = {'form':form}
     return render(request,'backend/liabilities-4-property.html',context)
 
+def edit_property_loan_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    account_no = instance.data['account_no']
+    loan_amount = instance.data['loan_amount']
+    loan_tenure = instance.data['loan_tenure']
+    bank_name = instance.data['bank_name']
+    item_type = 'Property Loan'
+    
+    form = EditItemModelForm(request.POST,instance=instance,initial={
+        'item_type':item_type,
+        'bank_name':bank_name,
+        'loan_amount':loan_amount,
+        'loan_tenure':loan_tenure,
+        'account_no':account_no,
+        }
+        )
+
+    if request.POST:
+        instance.data['bank_name'] = form.data['bank_name']
+        instance.data['loan_tenure'] = form.data['loan_tenure']
+        instance.data['loan_amount'] = form.data['loan_amount']
+        instance.data['account_no'] = form.data['account_no']
+        instance.data['item_type'] = "Vehicle Loan"
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Property loan data successfully updated.')
+        return redirect('dashboard')
+    context = {'form':form,'loan_tenure':loan_tenure,'loan_amount':loan_amount,'bank_name':bank_name,'account_no':account_no}
+    return render(request,'backend/edit-liabilities-4-property-loan.html',context)
+
 def liabilities_others_form(request):
     form = LiabilitiesOthersForm()
     if request.POST:
@@ -559,6 +808,30 @@ def liabilities_others_form(request):
             return redirect('notifier_list_form')
     context = {'form':form}
     return render(request,'backend/liabilities-5-others.html',context)
+
+def edit_liabilities_others_form(request,uuid):
+    instance = Item.objects.get(uuid=uuid)
+    liability_name = instance.data['liability_name']
+    liability_value = instance.data['liability_value']
+    item_type = 'Other Liabilities'
+
+    form = EditItemModelForm(request.POST,instance=instance,initial={'item_type':item_type,
+        'liability_name':liability_name,
+        'liability_value':liability_value,
+        }
+        )
+    if request.POST:
+        instance.data['liability_name'] = form.data['liability_name']
+        instance.data['liability_value'] = form.data['liability_value']
+        instance.data['item_type'] = 'Other Liabilities'
+        instance.updated_at = datetime.datetime.now()
+        instance.save()
+        print(instance)
+        messages.add_message(request, messages.INFO, 'Other liabilities data successfully updated.')
+        return redirect('dashboard')
+
+    context = {'form':form,'liability_name':liability_name,'liability_value':liability_value}
+    return render(request,'backend/edit-liabilities-5-others.html',context)
 
 def notifier_list_form(request):
     form = NotifierForm()

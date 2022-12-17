@@ -19,20 +19,15 @@
 				<div class="form-content w-100 pb-5 mx-auto">
 					<div class="inner pb-5">
 						<div class="form-content w-100 pb-3">
-							<h4 class="text-black">Assets</h4>
-							<p class="text-start mb-0">Overview of all your logged assets.</p><br>
+							<h4 class="text-black">Assets & Liabilities</h4>
+							<p class="text-start mb-0">Overview of all your logged assets and liabilities.</p><br>
 							<!-- SECTION 1 -->
 							<!-- Pill Shape Filter Assets, Liabilities & All -->
 							<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-								<li class="nav-item" role="presentation">
-									<button class="nav-link shadow" id="pills-home-tab" data-bs-toggle="pill"
-										data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
-										aria-selected="true">All</button>
-								</li>
 								<li class="nav-item mx-2" role="presentation">
 									<button class="nav-link shadow active" id="pills-profile-tab" data-bs-toggle="pill"
 										data-bs-target="#pills-profile" type="button" role="tab"
-										aria-controls="pills-profile" aria-selected="false">Assets</button>
+										aria-controls="pills-profile" aria-selected="true">Assets</button>
 								</li>
 								<li class="nav-item" role="presentation">
 									<button class="nav-link shadow" id="pills-contact-tab" data-bs-toggle="pill"
@@ -41,32 +36,11 @@
 								</li>
 							</ul>
 							<div class="tab-content" id="pills-tabContent">
-								<div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-									aria-labelledby="pills-home-tab">All Content</div>
-								<div class="tab-pane fade" id="pills-profile" role="tabpanel"
+								<div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
 									aria-labelledby="pills-profile-tab">
 									<!-- Doughnut Chart -->
 									<section class="pt-5">
-										<div class="container p-0">
-											<div class="row">
-												<div class="col-lg-6 col-12 mb-4 mx-auto">
-
-													<!-- Asset Chart -->
-													<canvas class="" id="AssetChart"></canvas>
-
-												</div>
-											</div>
-										</div>
-									</section>
-								</div>
-								<div class="tab-pane fade" id="pills-contact" role="tabpanel"
-									aria-labelledby="pills-contact-tab">Liabilities Content</div>
-							</div>
-
-
-							<!-- Assets Columns -->
-							<section class="pt-4">
-								<div class="container px-lg-5 mt-4">
+									<div class="container px-lg-5 mt-4">
 									<!-- Page Features-->
 									<div class="row">
 										<!-- Bank -->
@@ -89,14 +63,15 @@
 														<small>Account Value: {{bank.data.account_value}}</small><br>
 														<small>Last Updated: {{bank.created_at}}</small>
 													</div><br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_bank_account_form' uuid=bank.uuid %}" role="button">Edit</a>
+													</div>
+													<br>
 
 													{% endfor %}
 
 
-													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+													
 													<!-- Upload Documents -->
 													<div>
 														<label class="form-label" for="customFile"> Upload Relevant
@@ -133,14 +108,15 @@
 														<small>Account Value: {{x.data.epf_account_value}}</small><br>
 														<small>Account Value: {{x.created_at}}</small>
 													</div><br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_epf_socso_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div>
+													<br>
 													{% endfor %}
 
 
 													<!-- SOCSO #2 -->
-													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+													
 
 													<!-- Upload Documents -->
 													<div>
@@ -174,12 +150,11 @@
 
 													</div>
 													<br>
-													{% endfor %}
-													<!-- Medical Insurance #2 -->
 													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_insurance_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
+												
 													<!-- Upload Documents -->
 													<div>
 														<label class="form-label" for="customFile"> Upload Relevant
@@ -213,13 +188,14 @@
 														<small>Account value: {{x.data.account_value}}</small>
 													</div>
 													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_investment_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
 													{% endfor %}
 													<!-- Private Investment #2 -->
 
-													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+													
 													<!-- Upload Documents -->
 													<div>
 														<label class="form-label" for="customFile"> Upload Relevant
@@ -254,12 +230,12 @@
 														<small>Postcode: {{x.data.postcode}}</small>
 														<small>State: {{x.data.state}}</small>
 													</div><br>
-													{% endfor %}
 
 													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_property_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
+
 													<!-- Upload Documents -->
 													<div>
 														<label class="form-label" for="customFile"> Upload Relevant
@@ -294,12 +270,12 @@
 														<small>Vehicle Make & Model: {{x.data.make_model}} </small>
 													</div>
 													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_vehicles_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
 													{% endfor %}
 
-													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+													
 													<!-- Upload Documents -->
 													<div>
 														<label class="form-label" for="customFile"> Upload Relevant
@@ -333,12 +309,11 @@
 														<small>Asset Type: {{x.dataasset_type}}</small><br>
 														<small>Asset Value: {{x.data.asset_value}}</small>
 													</div><br>
-													{% endfor %}
 
 													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="#" role="button">Edit</a>
-													</div>
-													<br>
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_asset_others_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
 													<!-- Upload Documents -->
 													<div>
 														<label class="form-label" for="customFile"> Upload Relevant
@@ -354,7 +329,213 @@
 
 									</div>
 								</div>
-							</section>
+									</section>
+								</div>
+								<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+									aria-labelledby="pills-contact-tab"><div class="container px-lg-5 mt-4">
+									<!-- Page Features-->
+
+									<section class="pt-5">
+									<div class="container px-lg-5 mt-4">
+									<div class="row">
+										<!-- Bank -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">1/7 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Credit Card</h5>
+													<br>
+													<!-- Bank Asset #1 -->
+													{% for x in creditcard %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Name: {{x.data.bank_name}}</small><br>
+														<small>Account Number: {{x.data.account_no}}</small><br>
+														<small>Amount Outstanding: {{x.data.account_outstanding}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+
+													</div><br>
+												
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_credit_card_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+
+													{% endfor %}
+													<!-- Upload Documents -->
+													<div>
+														<label class="form-label" for="customFile"> Upload Relevant
+															Documents</label>
+														<input type="file" class="form-control" id="customFile"
+															multiple /> <br>
+														<input type="submit">
+													</div>
+												</div>
+
+
+
+
+											</div>
+										</div>
+										<!-- EPF/SOCSO -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">2/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Personal Loan</h5>
+
+
+													<br>
+													<!-- EPF #1 -->
+													{% for x in personal_loan %}
+													<div>
+														<small class="Color-Secondary">Personal Loan</small><br>
+														<small>Bank Name: {{x.data.bank_name}}</small><br>
+														<small>Account No: {{x.data.account_no}}</small><br>
+														<small>Loan Amount: {{x.data.loan_amount}}</small><br>
+														<small>Loan Tenure: {{x.data.loan_tenure}}</small><br>
+														<small>Created At: {{x.created_at}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_personal_loan_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
+
+													<!-- Upload Documents -->
+													<div>
+														<label class="form-label" for="customFile"> Upload Relevant
+															Documents</label>
+														<input type="file" class="form-control" id="customFile"
+															multiple /> <br>
+														<input type="submit">
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Insurance -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">3/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Vehicle Loan</h5>
+													<br>
+													<!-- Life Insurance #1 -->
+													{% for x in vehicleloan %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Name: {{x.data.bank_name}}</small><br>
+														<small>Account No: {{x.data.account_no}}</small><br>
+														<small>Loan Amount: {{x.data.loan_amount}}</small><br>
+														<small>Loan Tenure: {{x.data.loan_tenure}}</small><br>
+														<small>Created At: {{x.created_at}}</small>
+
+													</div>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_vehicles_loan_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
+													<!-- Upload Documents -->
+													<div>
+														<label class="form-label" for="customFile"> Upload Relevant
+															Documents</label>
+														<input type="file" class="form-control" id="customFile"
+															multiple /> <br>
+														<input type="submit">
+													</div>
+
+												</div>
+											</div>
+										</div>
+
+										<!-- Investment -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">4/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Property Loan</h5>
+													<br>
+													<!-- Public Investment #1 -->
+													{% for x in propertyloan %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Name: {{x.data.bank_name}}</small><br>
+														<small>Account No: {{x.data.account_no}}</small><br>
+														<small>Loan Amount: {{x.data.loan_amount}}</small><br>
+														<small>Loan Tenure: {{x.data.loan_tenure}}</small><br>
+														<small>Created At: {{x.created_at}}</small>
+													</div>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_property_loan_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
+													<!-- Upload Documents -->
+													<div>
+														<label class="form-label" for="customFile"> Upload Relevant
+															Documents</label>
+														<input type="file" class="form-control" id="customFile"
+															multiple /> <br>
+														<input type="submit">
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Property -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">5/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Other Liabilities</h5>
+													<br>
+
+													<!-- Property #1 -->
+													{% for x in other_liabilities %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+													<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Liability Type: {{x.dataasset_type}}</small><br>
+														<small>Liability Value: {{x.data.asset_value}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_liabilities_other_form' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endfor %}
+
+													<div>
+														<label class="form-label" for="customFile"> Upload Relevant
+															Documents</label>
+														<input type="file" class="form-control" id="customFile"
+															multiple /> <br>
+														<input type="submit">
+													</div>
+												</div>
+											</div>
+										</div>
+										</div>
+
+
+</div>
+									
+
 
 
 
