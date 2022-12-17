@@ -77,7 +77,9 @@
         <a class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'bank_account_form' %}">Dashboard</a> <a
           class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'logout' %}">Log out</a>
         {% else %}
-        <a class="btn Btn-Primary" href="{% url 'login' %}" role="button" style="margin:0">Log In</a>
+        <a class="btn Btn-Primary px-2 mx-1" href="{% url 'signup' %}" role="button" style="margin:0">Sign Up</a>
+        <a class="btn Btn-Primary px-2 mx-1" href="{% url 'login' %}" role="button" style="margin:0">Log In</a>
+
         {% endif %}
       </div>
     </div>
