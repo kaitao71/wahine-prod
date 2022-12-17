@@ -279,10 +279,11 @@ def insurance_form(request):
                 item2 = Item.objects.create(user=request.user,data={'insurance_type':insurance_type_2,'policy_no':policy_no_2,'nominee_name':nominee_name_2,'sum_insured':sum_insured_2},item_type='Insurance',created_by=request.user)
                 messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
             messages.add_message(request, messages.INFO, 'Insurance data successfully added.')
+            return redirect('investment_form')
         else:
             messages.add_message(request, messages.INFO, 'Something went wrong, please make sure all fields are entered correctly')
-            print(form.errors)
             return redirect('insurance_form')
+            
     context = {'form':form}
     return render(request,'backend/assets-3-insurance.html',context)
 
