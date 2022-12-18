@@ -117,8 +117,8 @@
 								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>Loan Amount</h5><br>
-										<input type="text" name="loan_amount" id="" placeholder="{{loan_amount}}" value="{{loan_amount}}"
-											class="px-4">
+										<input type="number" name="loan_amount" id="" placeholder="{{loan_amount}}" value="{{loan_amount}}"
+											class="px-4 form-control">
 										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.loan_amount.errors }}</div>
 										{% endif %}
