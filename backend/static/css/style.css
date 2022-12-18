@@ -429,7 +429,7 @@ a {
 
 /* Women Network Background */
 .Bg-WomenNetwork {
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url(http://wahine.wcapital.asia/wp-content/uploads/2022/12/Img_WomenNetwork.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://wahine.s3.amazonaws.com/static/BG-WomenNetwork.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

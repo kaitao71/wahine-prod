@@ -137,8 +137,8 @@
 								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>Loan Amount</h5><br>
-										<input type="text" name="loan_amount" id="" placeholder="RM1,000,000"
-											class="px-4">
+										<input type="number" name="loan_amount" id="" placeholder="1000000"
+											class="px-4 form-control">
 										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.loan_amount.errors }}</div>
 										{% endif %}
@@ -169,13 +169,72 @@
 								<div class="answer answer_2 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>Bank Name</h5><br>
-										<select name="bank_name_2" id="BankName" class="px-4">
-											<option value="">Select A Bank</option>
-											<option value="Maybank">Maybank</option>
-											<option value="RHB">RHB</option>
-											<option value="CIMB">CIMB</option>
-											<option value="CitiBank">Citibank</option>
-										</select>
+										<select name="bank_name_2" id="bank_name_2" class="px-4">
+												<option value="">Select A Bank</option>
+												<option value="AEON Credit Service (M) Berhad">AEON Credit Service (M)
+													Berhad</option>
+												<option value="Affin Bank Berhad">Affin Bank Berhad</option>
+												<option value="Affin Islamic Bank Berhad">Affin Islamic Bank Berhad
+												</option>
+												<option value="Alliance Bank Malaysia Berhad">Alliance Bank Malaysia
+													Berhad
+												</option>
+												<option
+													value="Al Rajhi Banking & Investment Corporation (Malaysia) Berhad">
+													Al Rajhi Banking & Investment Corporation (Malaysia) Berhad</option>
+												<option value="AmBank (M) Berhad">AmBank (M) Berhad</option>
+												<option value="AmBank Islamic Berhad">AmBank Islamic Berhad</option>
+												<option value="Bank Islam Malaysia Berhad (BIMB)">Bank Islam Malaysia
+													Berhad
+													(BIMB)</option>
+												<option value="Bank Kerjasama Rakyat Malaysia Berhad (Bank Rakyat)">Bank
+													Kerjasama Rakyat Malaysia Berhad (Bank Rakyat)</option>
+												<option value="Bank Muamalat Malaysia Berhad">Bank Muamalat Malaysia
+													Berhad
+												</option>
+												<option value="Bank of America Malaysia Berhad">Bank of America Malaysia
+													Berhad</option>
+												<option value="Bank of China (Malaysia) Berhad">Bank of China (Malaysia)
+													Berhad</option>
+												<option value="Bank Pertanian Malaysia Berhad (Agrobank)">Bank Pertanian
+													Malaysia Berhad (Agrobank)</option>
+												<option value="Bank Simpanan Nasional">Bank Simpanan Nasional</option>
+												<option value="CIMB Bank Berhad">CIMB Bank Berhad</option>
+												<option value="CIMB Islamic Bank Berhad">CIMB Islamic Bank Berhad
+												</option>
+												<option value="Citibank Berhad">Citibank Berhad</option>
+												<option value="Deutsche Bank (Malaysia) Berhad">Deutsche Bank (Malaysia)
+													Berhad</option>
+												<option value="Hong Leong Bank Berhad">Hong Leong Bank Berhad</option>
+												<option value="HSBC Amanah Malaysia Berhad">HSBC Amanah Malaysia Berhad
+												</option>
+												<option value="HSBC Bank Malaysia Berhad">HSBC Bank Malaysia Berhad
+												</option>
+												<option
+													value="Industrial and Commercial Bank of China (Malaysia) Berhad">
+													Industrial and Commercial Bank of China (Malaysia) Berhad</option>
+												<option value="J.P. Morgan Chase Bank Berhad">J.P. Morgan Chase Bank
+													Berhad
+												</option>
+												<option value="Kuwait Finance House">Kuwait Finance House</option>
+												<option value="Malayan Banking Berhad">Malayan Banking Berhad</option>
+												<option value="Maybank Islamic Berhad">Maybank Islamic Berhad</option>
+												<option value="OCBC Bank (Malaysia) Berhad">OCBC Bank (Malaysia) Berhad
+												</option>
+												<option value="Public Bank Berhad">Public Bank Berhad</option>
+												<option value="Public Islamic Bank Berhad">Public Islamic Bank
+													Berhad/option>
+												<option value="RHB Bank Berhad">RHB Bank Berhad</option>
+												<option value="RHB Islamic Bank Berhad">RHB Islamic Bank Berhad</option>
+												<option value="Standard Chartered Bank Malaysia Berhad">Standard
+													Chartered
+													Bank Malaysia Berhad</option>
+												<option value="United Overseas Bank (Malaysia) Berhad">United Overseas
+													Bank
+													(Malaysia) Berhad</option>
+
+
+											</select>
 									</div>
 									<div class="mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
 										<h5>Account Number</h5><br>
@@ -186,8 +245,8 @@
 								<div class="answer answer_2 form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="mb-5 mb-lg-0 col-lg-6 col-12">
 										<h5>Loan Amount</h5><br>
-										<input type="text" name="loan_amount_2" id="" placeholder="RM1,000,000"
-											class="px-4">
+										<input type="number" name="loan_amount_2" id="" placeholder="1000000"
+											class="px-4 form-control">
 									</div>
 									<div class="mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
 										<h5>Loan Tenure</h5><br>

@@ -133,7 +133,7 @@ class BankAccountForm(forms.Form):
     account_type = forms.CharField()
     bank_name = forms.CharField()
     account_no = forms.CharField()
-    account_value = forms.CharField(required = False)
+    account_value = forms.IntegerField(required = False)
     yesno = forms.CharField(required = False)
 
 class EpfSocsoForm(forms.Form):
@@ -143,7 +143,7 @@ class EpfSocsoForm(forms.Form):
     socso_member_no = forms.CharField()
     epf_nominee_name = forms.CharField(required = False)
     socso_nominee_name = forms.CharField(required = False)
-    epf_account_value = forms.CharField(required = False)
+    epf_account_value = forms.IntegerField(required = False)
     yesno = forms.CharField(required = False)
 
 class InsuranceForm(forms.Form):
@@ -152,13 +152,13 @@ class InsuranceForm(forms.Form):
     provider_name_custom = forms.CharField(required = False)
     policy_no = forms.CharField()
     nominee_name = forms.CharField(required = False)
-    sum_insured = forms.CharField(required = False)
+    sum_insured = forms.IntegerField(required = False)
     insurance_type_2 = forms.CharField(required=False)
     provider_name_2 = forms.CharField(required=False)
     provider_name_custom_2 = forms.CharField(required=False)
     policy_no_2 = forms.CharField(required=False)
     nominee_name_2 = forms.CharField(required = False)
-    sum_insured_2 = forms.CharField(required = False)
+    sum_insured_2 = forms.IntegerField(required = False)
     yesno = forms.CharField(required = False)
 
 #Pending
@@ -166,15 +166,15 @@ class InvestmentForm(forms.Form):
     investment_type = forms.CharField()
     account_no = forms.CharField()
     fund_name = forms.CharField(required = False)
-    account_value = forms.CharField(required = False)
+    account_value = forms.IntegerField(required = False)
     investment_type_2 = forms.CharField(required = False)
     account_no_2 = forms.CharField(required = False)
     fund_name_2 = forms.CharField(required = False)
-    account_value_2 = forms.CharField(required = False)
+    account_value_2 = forms.IntegerField(required = False)
     investment_type_3 = forms.CharField(required = False)
     account_no_3 = forms.CharField(required = False)
     fund_name_3 = forms.CharField(required = False)
-    account_value_3 = forms.CharField(required = False)
+    account_value_3 = forms.IntegerField(required = False)
     yesno = forms.CharField(required = False)
 
 
@@ -224,11 +224,11 @@ class CreditCardForm(forms.Form):
 class PersonalLoanForm(forms.Form):
     bank_name = forms.CharField()
     account_no = forms.CharField()
-    loan_amount = forms.CharField()
+    loan_amount = forms.IntegerField()
     loan_tenure = forms.CharField()
     bank_name_2 = forms.CharField(required=False)
     account_no_2 = forms.CharField(required=False)
-    loan_amount_2 = forms.CharField(required=False)
+    loan_amount_2 = forms.IntegerField(required=False)
     loan_tenure_2 = forms.CharField(required=False)
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
@@ -236,33 +236,33 @@ class PersonalLoanForm(forms.Form):
 class PropertyLoanForm(forms.Form):
     bank_name = forms.CharField()
     account_no = forms.CharField()
-    loan_amount = forms.CharField()
+    loan_amount = forms.IntegerField()
     loan_tenure = forms.CharField()
     bank_name_2 = forms.CharField(required=False)
     account_no_2 = forms.CharField(required=False)
-    loan_amount_2 = forms.CharField(required=False)
+    loan_amount_2 = forms.IntegerField(required=False)
     loan_tenure_2 = forms.CharField(required=False)
     yesno = forms.CharField(required = False)
 
 class VehicleLoanForm(forms.Form):
     bank_name = forms.CharField()
     account_no = forms.CharField()
-    loan_amount = forms.CharField()
+    loan_amount = forms.IntegerField()
     loan_tenure = forms.CharField()
     bank_name_2 = forms.CharField(required=False)
     account_no_2 = forms.CharField(required=False)
-    loan_amount_2 = forms.CharField(required=False)
+    loan_amount_2 = forms.IntegerField(required=False)
     loan_tenure_2 = forms.CharField(required=False)
     loan_interest = forms.CharField(required = False)
     yesno = forms.CharField(required = False)
 
 class LiabilitiesOthersForm(forms.Form):
     liability_name = forms.CharField(required = False)
-    liability_value = forms.CharField(required = False)
+    liability_value = forms.IntegerField(required = False)
     liability_name_2 = forms.CharField(required = False)
-    liability_value_2 = forms.CharField(required = False)
+    liability_value_2 = forms.IntegerField(required = False)
     liability_name_3 = forms.CharField(required = False)
-    liability_value_3 = forms.CharField(required = False)
+    liability_value_3 = forms.IntegerField(required = False)
     yesno = forms.CharField(required = False)
 
 class NotifierForm(forms.Form):
