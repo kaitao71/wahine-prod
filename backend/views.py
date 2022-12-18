@@ -166,7 +166,8 @@ def epf_socso_form(request):
     if request.POST:
         form = EpfSocsoForm(request.POST)
         if form.data['yesno'] == 'no':
-            messages.add_message(request, messages.INFO, 'Success.')
+            messages.add_message(request, messages.INFO, 'No data added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='EPF Socso',created_by=request.user)
             return redirect('insurance_form')
         if form.data['is_socso_member'] == 'no':
             # remember old state
@@ -268,6 +269,7 @@ def insurance_form(request):
         form = InsuranceForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Insurance Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Insurance',created_by=request.user)
             return redirect('investment_form')
         if form.is_valid():
             insurance_type = form.cleaned_data['insurance_type']
@@ -333,6 +335,7 @@ def investment_form(request):
         form = InvestmentForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Investments Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Investment',created_by=request.user)
             return redirect('property_form')
         if form.is_valid():
             investment_type = form.cleaned_data['investment_type']
@@ -403,6 +406,7 @@ def property_form(request):
     if request.POST:
         form = PropertyForm(request.POST)
         if form.data['yesno'] == 'no':
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Property',created_by=request.user)
             messages.add_message(request, messages.INFO, 'No Property Added.')
             return redirect('vehicles_form')
         if form.is_valid():
@@ -482,6 +486,7 @@ def vehicles_form(request):
         form = VehicleForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Vehicle Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Vehicle',created_by=request.user)
             return redirect('asset_others_form')
         if form.is_valid():
             vehicle_type = form.cleaned_data['vehicle_type']
@@ -537,6 +542,7 @@ def asset_others_form(request):
         if form.is_valid():
             if form.cleaned_data['yesno'] == 'no':
                 messages.add_message(request, messages.INFO, 'No Assets Added.')
+                item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Assets',created_by=request.user)
                 return redirect('assets_overview')
             asset_name = form.cleaned_data['asset_name']
             asset_value = form.cleaned_data['asset_value']
@@ -582,6 +588,7 @@ def liability_credit_card_form(request):
         form = CreditCardForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Credit Card Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Credit Card',created_by=request.user)
             return redirect('personal_loan_form')
         if form.is_valid():
             bank_name = form.cleaned_data['bank_name']
@@ -637,6 +644,7 @@ def personal_loan_form(request):
         form = PersonalLoanForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Personal Loan Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Personal Loan',created_by=request.user)
             return redirect('vehicles_loan_form')
         if form.is_valid():
             loan_tenure = form.cleaned_data['loan_tenure']
@@ -693,6 +701,7 @@ def vehicles_loan_form(request):
         form = VehicleLoanForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Vehicle Loan Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Vehicle Loan',created_by=request.user)
             return redirect('property_loan_form')
         if form.is_valid():
             loan_tenure = form.cleaned_data['loan_tenure']
@@ -750,6 +759,7 @@ def property_loan_form(request):
         form = PropertyLoanForm(request.POST)
         if form.data['yesno'] == 'no':
             messages.add_message(request, messages.INFO, 'No Property Loan Added.')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Property Loan',created_by=request.user)
             return redirect('liabilities_others_form')
         if form.is_valid():
             loan_tenure = form.cleaned_data['loan_tenure']
@@ -806,7 +816,8 @@ def liabilities_others_form(request):
         form = LiabilitiesOthersForm(request.POST)
         if form.is_valid():
             if form.cleaned_data['yesno'] == 'no':
-                messages.add_message(request, messages.INFO, 'Success.')
+                messages.add_message(request, messages.INFO, 'No Liabilities Added.')
+                item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Liabilities',created_by=request.user)
                 return redirect('liabilities_others_form')
             liability_name = form.cleaned_data['liability_name']
             liability_value = form.cleaned_data['liability_value']

@@ -54,32 +54,27 @@
 													<h5 class="Color-Secondary">Bank Account</h5>
 													<br>
 													<!-- Bank Asset #1 -->
-													{% for bank in banks %}
+													{% for x in banks %}
+													{% if not x.data.nodata %}
 													<div>
-														<small class="Color-Secondary">{{forloop.counter}}</small><br>
-														<small>Bank Type: {{bank.data.account_type}}</small><br>
-														<small>Bank Name: {{bank.data.bank_name}}</small><br>
-														<small>Account Number: {{bank.data.account_no}}</small><br>
-														<small>Account Value: {{bank.data.account_value}}</small><br>
-														<small>Last Updated: {{bank.created_at}}</small>
+														<small class="Color-Secondary">{{x.counter}}</small><br>
+														<small>Bank Type: {{x.data.account_type}}</small><br>
+														<small>Bank Name: {{x.data.bank_name}}</small><br>
+														<small>Account Number: {{x.data.account_no}}</small><br>
+														<small>Account Value: {{x.data.account_value}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 													<div class="mt-3">
-														<a class="btn Btn-Secondary-2" href="{% url 'edit_bank_account_form' uuid=bank.uuid %}" role="button">Edit</a>
+														<a class="btn Btn-Secondary-2" href="{% url 'edit_bank_account_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div>
 													<br>
 
+{% endif %}
 													{% endfor %}
 
 
 													
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 
 
@@ -101,6 +96,7 @@
 													<br>
 													<!-- EPF #1 -->
 													{% for x in epf_socso %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">EPF</small><br>
 														<small>Membership Number: {{x.data.epf_member_no}}</small><br>
@@ -112,6 +108,7 @@
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_epf_socso_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div>
 													<br>
+													{% endif %}
 													{% endfor %}
 
 
@@ -119,13 +116,6 @@
 													
 
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
@@ -141,6 +131,7 @@
 													<br>
 													<!-- Life Insurance #1 -->
 													{% for x in insurances %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>{{x.data.insurance_type}}</small><br>
@@ -153,16 +144,10 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_insurance_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 												
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 
 												</div>
 											</div>
@@ -180,6 +165,7 @@
 													<br>
 													<!-- Public Investment #1 -->
 													{% for x in investments %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>{{x.data.investment_type}}</small><br>
@@ -192,18 +178,12 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_investment_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 													<!-- Private Investment #2 -->
 
 													
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
@@ -221,6 +201,7 @@
 
 													<!-- Property #1 -->
 													{% for x in properties %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Property Type:{{x.data.property_type}}</small><br>
@@ -234,16 +215,10 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_property_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
@@ -262,6 +237,7 @@
 													<br>
 													<!-- Vehicles #1 -->
 													{% for x in vehicles %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">#1</small><br>
 														<small>Vehicle Type: {{x.data.vehicle_type}}</small><br>
@@ -273,17 +249,11 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_vehicles_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 
 													
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 
 												</div>
 											</div>
@@ -304,6 +274,7 @@
 													<br>
 													<!-- Others #1 -->
 													{% for x in others %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Asset Type: {{x.dataasset_type}}</small><br>
@@ -313,15 +284,9 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_asset_others_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
@@ -350,6 +315,7 @@
 													<br>
 													<!-- Bank Asset #1 -->
 													{% for x in creditcard %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
@@ -363,15 +329,9 @@
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_credit_card_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
 
+{% endif %}
 													{% endfor %}
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 
 
@@ -393,6 +353,7 @@
 													<br>
 													<!-- EPF #1 -->
 													{% for x in personal_loan %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">Personal Loan</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
@@ -405,16 +366,10 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_personal_loan_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
@@ -430,6 +385,7 @@
 													<br>
 													<!-- Life Insurance #1 -->
 													{% for x in vehicleloan %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
@@ -444,15 +400,9 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_vehicles_loan_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 
 												</div>
 											</div>
@@ -470,6 +420,7 @@
 													<br>
 													<!-- Public Investment #1 -->
 													{% for x in propertyloan %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
@@ -482,15 +433,9 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_property_loan_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 													<!-- Upload Documents -->
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
@@ -508,6 +453,7 @@
 
 													<!-- Property #1 -->
 													{% for x in other_liabilities %}
+													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 													<small class="Color-Secondary">{{forloop.counter}}</small><br>
@@ -518,15 +464,9 @@
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_liabilities_other_form' uuid=x.uuid %}" role="button">Edit</a>
 													</div><br>
+													{% endif %}
 													{% endfor %}
 
-													<div>
-														<label class="form-label" for="customFile"> Upload Relevant
-															Documents</label>
-														<input type="file" class="form-control" id="customFile"
-															multiple /> <br>
-														<input type="submit">
-													</div>
 												</div>
 											</div>
 										</div>
