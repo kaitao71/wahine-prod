@@ -91,3 +91,74 @@ class Subscription(TimeStampedModel):
     plan = models.CharField(max_length=128)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_subscriptions')
 
+""" V2 Assets """
+class Epf(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_epf')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_no = models.CharField(max_length=128)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+    nominee_name = models.CharField(max_length=128,null=True,blank=True)
+
+class Socso(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_socso')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_no = models.CharField(max_length=128)
+    nominee_name = models.CharField(max_length=128,null=True,blank=True)
+
+class Bank(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_bankaccount')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_type = models.CharField(max_length=128)
+    bank_name = models.CharField(max_length=128)
+    account_no = models.CharField(max_length=128)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+class Insurance(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_insurance')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    provider = models.CharField(max_length=128)
+    policy_no = models.CharField(max_length=128)
+    nominee_name = models.CharField(max_length=128,null=True,blank=True)
+    sum_insured = models.FloatField(max_length=128,null=True,blank=True)
+
+class Investment(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_investment')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_type = models.CharField(max_length=128)
+    bank_name = models.CharField(max_length=128)
+    account_no = models.CharField(max_length=128)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+class Property(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_property')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_type = models.CharField(max_length=128)
+    bank_name = models.CharField(max_length=128)
+    account_no = models.CharField(max_length=128)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+class Vehicle(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_vehicle')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_type = models.CharField(max_length=128)
+    bank_name = models.CharField(max_length=128)
+    account_no = models.CharField(max_length=128)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+class OtherAsset(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_otherassets')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    name = models.CharField(max_length=128)
+    value = models.FloatField(max_length=128,null=True,blank=True)
+""" V2 Assets """
+
+
+

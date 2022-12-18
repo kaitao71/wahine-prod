@@ -16,6 +16,7 @@ from django.conf.urls.static import static
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
+	path("formset/",formset_testview,name="formset"),
 	path("",index,name="index"),
 	path("joinnow/",joinnow,name="joinnow"),
 	path("whoweare/",whoweare,name="whoweare"),

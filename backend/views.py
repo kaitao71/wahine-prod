@@ -12,6 +12,12 @@ import datetime
 ## IF data exist, show existing data/edit mode
 ## If fields can have multiple entry (eg policy), show no of policies
 
+def formset_testview(request):
+    ItemFormSet = formset_factory(EditItemModelForm)
+    formset = ItemFormSet()
+    context = {'formset':formset}
+    return render(request,"backend/formset.html",context)
+
 def logout_view(request):
     logout(request)
     return redirect('index')

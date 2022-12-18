@@ -9,6 +9,23 @@ GENDER_CHOICES = [
         ('Female', 'Female'),
         ('Prefer not to respond', 'Prefer not to respond'),
     ]
+
+class EditItemModelForm(forms.ModelForm):
+
+    def __init__(self, *args, instance=None, **kwargs):
+        super(EditItemModelForm, self).__init__(*args, instance=instance, **kwargs)
+        if instance:
+            self.fields['item_type'] = forms.CharField()
+
+    def save(self, commit=True):
+        self.fields['insurance_type'] = self.cleaned_data.get(f'insurance_type', '')
+        self.fields['item_type'] = ""
+        return super(InsuranceModelForm, self).save(commit=commit)
+
+    class Meta:
+        model = Item
+        fields = ['item_type',]
+
 class SignUpForm(UserCreationForm):
 
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
