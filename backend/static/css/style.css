@@ -429,10 +429,10 @@ a {
 
 /* Women Network Background */
 .Bg-WomenNetwork {
-    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('https://wahine.s3.amazonaws.com/static/BG-WomenNetwork.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://wahine.s3.amazonaws.com/static/Banner_WomenNetwork3.png');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    /* background-position: center; */
     background-blend-mode: overlay;
 
 
@@ -728,19 +728,24 @@ a {
         margin-top: 240px;
     }
 
-}
+    .Bg-WomenNetwork {
+        background-position: center;
 
-.next-button {
-    padding: 0;
-    border: none;
-    display: inline-flex;
-    height: 41px;
-    width: 135px;
-    align-items: center;
-    background: #e9e0cf;
-    font-family: "Muli-SemiBold";
-    color: #666;
-    cursor: pointer;
-    position: relative;
-    padding-left: 28px;
+
+    }
+
+    .next-button {
+        padding: 0;
+        border: none;
+        display: inline-flex;
+        height: 41px;
+        width: 135px;
+        align-items: center;
+        background: #e9e0cf;
+        font-family: "Muli-SemiBold";
+        color: #666;
+        cursor: pointer;
+        position: relative;
+        padding-left: 28px;
+    }
 }
