@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login,logout
 from django.forms import formset_factory
 from django.contrib.auth.forms import AuthenticationForm #add this
 from django.views.generic.edit import UpdateView
+from django.db.models import Avg, Count, Min, Sum
 import datetime
 # Create your views here.
 ## TODO
@@ -95,9 +96,6 @@ def selectplan(request):
             return render(request,'backend/select-a-plan.html', {'form': form})
     form = SignUpForm()
     return render(request,'backend/select-a-plan.html', {'form': form})
-
-def dashboard(request):
-    return render(request,'backend/dashboard.html')
 
 def profile(request):
     return render(request,'backend/profile.html')
@@ -940,17 +938,76 @@ def liabilities_overview(request):
 def dashboard(request):
     user = request.user
     items = Item.objects.filter(user=user)
+
     banks = items.filter(item_type='Bank Account')
-    epf_socso = items.filter(item_type='EPF Socso')
-    insurances = items.filter(item_type='Insurance')    
+    bank_total = 0
+    bank_values = banks.values('data')
+    for x in bank_values:
+        if 'account_value' in x['data']:
+            bank_total += float(x['data']['account_value'])
+
+    
+
+    insurances = items.filter(item_type='Insurance')
+    insurance_total = 0
+    insurance_values = insurances.values('data') 
+    for x in insurance_values:
+        if 'sum_insured' in x['data']:
+            insurance_total += float(x['data']['sum_insured'])
+
     investments = items.filter(item_type='Investment')
+    investment_total = 0
+    investment_values = investments.values('data')
+    for x in investment_values:
+        if 'account_value' in x['data']:
+            investment_total += float(x['data']['account_value'])
+
+    epf_socso = items.filter(item_type='EPF Socso')
     properties = items.filter(item_type='Property')
     vehicles = items.filter(item_type='Vehicle')
+
     others = items.filter(item_type='Other Assets')
+    other_asset_total = 0
+    asset_values = others.values('data')
+    for x in asset_values:
+        if 'asset_value' in x['data']:
+            other_asset_total += float(x['data']['asset_value'])
+
     creditcard = items.filter(item_type='Credit Card')
+    creditcard_total = 0
+    creditcard_values = creditcard.values('data')
+    for x in creditcard_values:
+        if 'amount_outstanding' in x['data']:
+            creditcard_total += float(x['data']['amount_outstanding'])
+
     personalloan = items.filter(item_type='Personal Loan')
+    personalloan_total = 0
+    personalloan_values = personalloan.values('data')
+    for x in personalloan_values:
+        if 'loan_amount' in x['data']:
+            personalloan_total += float(x['data']['loan_amount'])
+
     vehicleloan = items.filter(item_type='Vehicle Loan')
+    vehicleloan_total = 0
+    vehicleloan_values = vehicleloan.values('data')
+    for x in vehicleloan_values:
+        if 'loan_amount' in x['data']:
+            vehicleloan_total += float(x['data']['loan_amount'])
+
     propertyloan = items.filter(item_type='Property Loan')
+    propertyloan_total = 0
+    propertyloan_values = propertyloan.values('data')
+    for x in propertyloan_values:
+        if 'loan_amount' in x['data']:
+            propertyloan_total += float(x['data']['loan_amount'])
+
     others_liabilities = items.filter(item_type='Other Liabilities')
-    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'properties':properties,'investments':investments,'vehicles':vehicles,'others':others,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
+    other_liabilities_total = 0
+    liabilities_values = others_liabilities.values('data')
+    for x in liabilities_values:
+        if 'liabilities_values' in x['data']:
+            other_liabilities_total += float(x['data']['liabilities_value'])
+
+
+    context = {'creditcard_total':creditcard_total,'personalloan_total':personalloan_total,'vehicleloan_total':vehicleloan_total,'propertyloan_total':propertyloan_total,'other_liabilities_total':other_liabilities_total,'other_asset_total':other_asset_total,'insurance_total':insurance_total,'investment_total':investment_total,'bank_total':bank_total,'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'properties':properties,'investments':investments,'vehicles':vehicles,'others':others,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
     return render(request,'backend/dashboard.html',context)

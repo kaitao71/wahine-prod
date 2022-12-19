@@ -42,6 +42,7 @@
 									<section class="pt-5">
 									<div class="container px-lg-5 mt-4">
 									<!-- Page Features-->
+									<div><canvas class="" id="AssetChart"></canvas></div>
 									<div class="row">
 										<!-- Bank -->
 										<div class="col-lg-4 mb-5">
@@ -61,7 +62,7 @@
 														<small>Bank Type: {{x.data.account_type}}</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
 														<small>Account Number: {{x.data.account_no}}</small><br>
-														<small>Account Value: {{x.data.account_value}}</small><br>
+														<small>Account Value: RM{{x.data.account_value}}</small><br>
 														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 													<div class="mt-3">
@@ -98,11 +99,11 @@
 													{% for x in epf_socso %}
 													{% if not x.data.nodata %}
 													<div>
-														<small class="Color-Secondary">EPF</small><br>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Membership Number: {{x.data.epf_member_no}}</small><br>
 														<small>Nominee Details: {{x.data.epf_nominee_name}}</small><br>
-														<small>Account Value: {{x.data.epf_account_value}}</small><br>
-														<small>Account Value: {{x.created_at}}</small>
+														<small>Account Value: RM{{x.data.epf_account_value}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 													<div class="mt-3">
 														<a class="btn Btn-Secondary-2" href="{% url 'edit_epf_socso_form' uuid=x.uuid %}" role="button">Edit</a>
@@ -137,7 +138,8 @@
 														<small>{{x.data.insurance_type}}</small><br>
 														<small>Policy Number: {{x.data.policy_no}}</small><br>
 														<small>Nominee Details: {{x.data.nominee_name}}</small><br>
-														<small>Sum Insured: {{x.data.sum_insured}}</small>
+														<small>Sum Insured: RM{{x.data.sum_insured}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 
 													</div>
 													<br>
@@ -171,7 +173,8 @@
 														<small>{{x.data.investment_type}}</small><br>
 														<small>Investment Type: {{x.data.fund_name}} </small><br>
 														<small>Account Number: {{x.data.account_no}}</small><br>
-														<small>Account value: {{x.data.account_value}}</small>
+														<small>Account Value: RM{{x.data.account_value}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div>
 													<br>
 
@@ -207,9 +210,10 @@
 														<small>Property Type:{{x.data.property_type}}</small><br>
 														<small>Residential Type: {{x.data.residential_type}}
 														</small><br>
-														<small>Address: {{x.data.address}}</small>
-														<small>Postcode: {{x.data.postcode}}</small>
-														<small>State: {{x.data.state}}</small>
+														<small>Address: {{x.data.address}}</small><br>
+														<small>Postcode: {{x.data.postcode}}</small><br>
+														<small>State: {{x.data.state}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 
 													<div class="mt-3">
@@ -243,7 +247,8 @@
 														<small>Vehicle Type: {{x.data.vehicle_type}}</small><br>
 														<small>Vehicle Registration Number: {{x.data.registration_no}}
 														</small><br>
-														<small>Vehicle Make & Model: {{x.data.make_model}} </small>
+														<small>Vehicle Make & Model: {{x.data.make_model}} </small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div>
 													<br>
 													<div class="mt-3">
@@ -278,7 +283,8 @@
 													<div>
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Asset Type: {{x.dataasset_type}}</small><br>
-														<small>Asset Value: {{x.data.asset_value}}</small>
+														<small>Asset Value: RM{{x.data.asset_value}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 
 													<div class="mt-3">
@@ -302,6 +308,7 @@
 
 									<section class="pt-5">
 									<div class="container px-lg-5 mt-4">
+										<div><canvas class="" id="LiabilityChart"></canvas></div>
 									<div class="row">
 										<!-- Bank -->
 										<div class="col-lg-4 mb-5">
@@ -320,7 +327,7 @@
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
 														<small>Account Number: {{x.data.account_no}}</small><br>
-														<small>Amount Outstanding: {{x.data.account_outstanding}}</small><br>
+														<small>Amount Outstanding: RM{{x.data.account_outstanding}}</small><br>
 														<small>Last Updated: {{x.created_at}}</small>
 
 													</div><br>
@@ -352,15 +359,15 @@
 
 													<br>
 													<!-- EPF #1 -->
-													{% for x in personal_loan %}
+													{% for x in personalloan %}
 													{% if not x.data.nodata %}
 													<div>
 														<small class="Color-Secondary">Personal Loan</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
 														<small>Account No: {{x.data.account_no}}</small><br>
-														<small>Loan Amount: {{x.data.loan_amount}}</small><br>
+														<small>Loan Amount: RM{{x.data.loan_amount}}</small><br>
 														<small>Loan Tenure: {{x.data.loan_tenure}}</small><br>
-														<small>Created At: {{x.created_at}}</small>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 
 													<div class="mt-3">
@@ -390,9 +397,9 @@
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Bank Name: {{x.data.bank_name}}</small><br>
 														<small>Account No: {{x.data.account_no}}</small><br>
-														<small>Loan Amount: {{x.data.loan_amount}}</small><br>
+														<small>Loan Amount: RM{{x.data.loan_amount}}</small><br>
 														<small>Loan Tenure: {{x.data.loan_tenure}}</small><br>
-														<small>Created At: {{x.created_at}}</small>
+														<small>Last Updated: {{x.created_at}}</small>
 
 													</div>
 													<br>
@@ -427,7 +434,7 @@
 														<small>Account No: {{x.data.account_no}}</small><br>
 														<small>Loan Amount: {{x.data.loan_amount}}</small><br>
 														<small>Loan Tenure: {{x.data.loan_tenure}}</small><br>
-														<small>Created At: {{x.created_at}}</small>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div>
 													<br>
 													<div class="mt-3">
@@ -458,7 +465,8 @@
 														<small class="Color-Secondary">{{forloop.counter}}</small><br>
 													<small class="Color-Secondary">{{forloop.counter}}</small><br>
 														<small>Liability Type: {{x.dataasset_type}}</small><br>
-														<small>Liability Value: {{x.data.asset_value}}</small>
+														<small>Liability Value: RM{{x.data.asset_value}}</small>
+														<small>Last Updated: {{x.created_at}}</small>
 													</div><br>
 
 													<div class="mt-3">
@@ -505,27 +513,27 @@
 <script>
 	// setup 
 	const data = {
-		labels: ['Bank', 'EPF/SOCSO', 'Insurance', 'Investment', 'Property', 'Vehicles', 'Others'],
+		labels: ['Insurance', 'Investment','Bank','Other Assets'],
 		datasets: [{
 			label: 'Asset Value',
-			data: [120, 100, 200, 0, 850, 150, 130],
+			data: [{{insurance_total}}, {{investment_total}},{{bank_total}},{{other_asset_total}}],
 			backgroundColor: [
 				'#e63a54',
 				'#d8f4ff',
 				"#110f48",
-				"gray",
+				// "gray",
 				"#55BCB9",
-				"#8f1346",
-				"#ffba00"
+				// "#8f1346",
+				// "#ffba00"
 			],
 			borderColor: [
 				'#e63a54',
 				'#d8f4ff',
 				"#110f48",
-				"gray",
+				// "gray",
 				"#55BCB9",
-				"#8f1346",
-				"#ffba00"
+				// "#8f1346",
+				// "#ffba00"
 			],
 			borderWidth: 1,
 			cutout: '85%',
@@ -539,7 +547,6 @@
 		id: 'doughnutLabelsLine',
 		afterDraw(chart, args, options) {
 			const { ctx, chartArea: { top, bottom, left, right, width, height } } = chart;
-
 			chart.data.datasets.forEach((dataset, i) => {
 
 				chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
@@ -616,6 +623,122 @@
 	const AssetChart = new Chart(
 		document.getElementById('AssetChart'),
 		config
+	);
+</script>
+
+<script>
+	// setup 
+	const data2 = {
+		labels: ['Personal Loan', 'Credit Card','Vehicle Loan','Other Liabilities','Property Loan'],
+		datasets: [{
+			label: 'Liabilities Value',
+			data: [{{personalloan_total}}, {{creditcard_total}},{{vehicleloan_total}},{{other_liabilities_total}},{{propertyloan_total}}],
+			backgroundColor: [
+				'#e63a54',
+				'#d8f4ff',
+				"#110f48",
+				// "gray",
+				"#55BCB9",
+				"#8f1346",
+				// "#ffba00"
+			],
+			borderColor: [
+				'#e63a54',
+				'#d8f4ff',
+				"#110f48",
+				// "gray",
+				"#55BCB9",
+				"#8f1346",
+				// "#ffba00"
+			],
+			borderWidth: 1,
+			cutout: '85%',
+			borderRadius: 10,
+			offset: 0,
+		}]
+	};
+
+	// doughnutLabelsLine plugin
+	const doughnutLabelsLine2 = {
+		id: 'doughnutLabelsLine',
+		afterDraw(chart, args, options) {
+			const { ctx, chartArea: { top, bottom, left, right, width, height } } = chart;
+			chart.data.datasets.forEach((dataset, i) => {
+
+				chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
+					// console.log(chart.data.labels)
+					const { x, y } = datapoint.tooltipPosition();
+					// ctx.fillStyle = dataset.borderColor[index];
+					// ctx.fill();
+					// // ctx.fillRect(x, y, 2, 2);
+					// console.log(x)
+
+					//draw line
+					const halfwidth = width / 2;
+					const halfheight = height / 2;
+
+					const xLine = x >= halfwidth ? x + 15 : x - 15;
+					const yLine = y >= halfheight ? y + 15 : y - 15;
+					const extraLine = x >= halfwidth ? 15 : -15;
+					//line	
+					ctx.beginPath();
+					ctx.moveTo(x, y);
+					ctx.lineTo(xLine, yLine);
+					ctx.lineTo(xLine + extraLine, yLine);
+					ctx.strokeStyle = dataset.borderColor[index];
+					ctx.stroke();
+
+					//text
+					const textWidth = ctx.measureText(chart.data.labels[index]).width;
+					console.log(textWidth)
+					ctx.font = '14px Arial';
+
+					//control position
+					const textXPosition = x >= halfwidth ? 'left' : 'right';
+					const plusFifteenPx = x >= halfwidth ? 5 : -5;
+					ctx.textAlign = textXPosition;
+					ctx.textBaseline = 'middle';
+					ctx.fillStyle = dataset.borderColor[index];
+
+					// Sum of datasets
+					datasum = chart.data.datasets[0].data.reduce((partialSum, a) => partialSum + a, 0)
+
+					//Convert
+					data_percentage = (chart.data.datasets[0].data[index] / datasum * 100).toFixed(2) + '%'
+					ctx.fillText(data_percentage, xLine + extraLine + plusFifteenPx, yLine);
+
+				})
+			})
+		}
+	}
+
+
+
+	// config 
+	const config2 = {
+		type: 'doughnut',
+		data:data2,
+		options: {
+			layout: {
+				padding: 20
+			},
+			maintainAspectRatio: false,
+			plugins: {
+				legend: {
+					display: true,
+					position: 'bottom'
+				},
+			}
+		},
+
+		plugins: [doughnutLabelsLine2],
+
+	};
+
+	// render init block
+	const LiabilityChart = new Chart(
+		document.getElementById('LiabilityChart'),
+		config2
 	);
 </script>
 
