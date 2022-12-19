@@ -35,12 +35,12 @@
 
   <!-- Navigation Bar -->
   <!-- <nav class="navbar navbar-light bg-light navbar-expand-lg"> -->
-    <div class="bg-black color-white pb-1/6 text-center d-block no-style container-fluid">
+  <div class="bg-black color-white pb-1/6 text-center d-block no-style container-fluid">
     <div class="container d-flex flex-row justify-content-center small-copy">
       <span class="d-none d-md-block">This is a beta version (Best viewed on desktop)</span>
     </div>
   </div>
-<!-- </nav> -->
+  <!-- </nav> -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <!-- logo -->
@@ -66,7 +66,7 @@
             <a class="nav-link dropdown-toggle" href="{% url 'joinnow' %}" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">W Vault</a>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                 <li><a class="dropdown-item" href="{% url 'joinnow' %}">W Vault</a></li>
+              <li><a class="dropdown-item" href="{% url 'joinnow' %}#whatiswvault">What Is W Vault</a></li>
               <li><a class="dropdown-item" href="{% url 'joinnow' %}#security">Security</a></li>
             </ul>
           </li>
@@ -205,7 +205,7 @@
       "hideMethod": "fadeOut"
     }
 
-    toastr.{{message.tags}}('{{message}}');
+    toastr.{ { message.tags } } ('{{message}}');
   </script>
   {% endfor %}
   {% endif %}
