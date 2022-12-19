@@ -111,6 +111,11 @@ def bank_account_form(request):
             bank_name = form.cleaned_data['bank_name']
             account_no = form.cleaned_data['account_no']
             account_value = form.cleaned_data['account_value']
+            account_type_2 = form.cleaned_data['account_type_2']
+            bank_name_2 = form.cleaned_data['bank_name_2']
+            account_no_2 = form.cleaned_data['account_no_2']
+            account_value_2 = form.cleaned_data['account_value_2']
+
             item = Item.objects.create(
                 user=request.user,
                 data={'account_type':account_type,
@@ -121,6 +126,18 @@ def bank_account_form(request):
                 created_by=request.user
                 )
             messages.add_message(request, messages.INFO, 'Bank data successfully updated.')
+
+            if bank_name_2 and account_no_2:
+                item = Item.objects.create(
+                user=request.user,
+                data={'account_type':account_type_2,
+                    'bank_name':bank_name_2,
+                    'account_no':account_no_2,
+                    'account_value':account_value_2},
+                item_type='Bank Account',
+                created_by=request.user
+                )
+                messages.add_message(request, messages.INFO, 'Bank data successfully updated.')
             return redirect('epf_socso_form')
         else:
             context = {'form':form}
@@ -151,6 +168,7 @@ def edit_bank_account_form(request,uuid):
         instance.data['bank_name'] = form.data['bank_name']
         instance.data['item_type'] = "Bank Account"
         instance.updated_at = datetime.datetime.now()
+
         instance.save()
         print(instance)
         messages.add_message(request, messages.INFO, 'Bank data successfully updated.')
