@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     # 'compressor', 
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/']
+CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia'],
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
