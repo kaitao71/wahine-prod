@@ -173,6 +173,10 @@ class BankAccountForm(forms.Form):
     account_type = forms.CharField()
     bank_name = forms.CharField()
     account_no = forms.CharField()
+    account_type_2 = forms.CharField(required=False)
+    bank_name_2 = forms.CharField(required=False)
+    account_no_2 = forms.CharField(required=False)
+    account_value_2 = forms.CharField(required=False)
     account_value = forms.IntegerField(required = False)
     yesno = forms.CharField(required = False)
 

@@ -834,7 +834,7 @@ def liabilities_others_form(request):
             if form.cleaned_data['yesno'] == 'no':
                 messages.add_message(request, messages.INFO, 'No Liabilities Added.')
                 item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Liabilities',created_by=request.user)
-                return redirect('liabilities_others_form')
+                return redirect('notifier_list_form')
             liability_name = form.cleaned_data['liability_name']
             liability_value = form.cleaned_data['liability_value']
             item = Item.objects.create(user=request.user,data={'liability_value':liability_value,'liability_name':liability_name},item_type='Other Liabilities',created_by=request.user)
