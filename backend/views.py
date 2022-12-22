@@ -3,7 +3,7 @@ from backend.forms import *
 import uuid
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
-from django.forms import formset_factory
+from django.forms import formset_factory, inlineformset_factory
 from django.contrib.auth.forms import AuthenticationForm #add this
 from django.views.generic.edit import UpdateView
 from django.db.models import Avg, Count, Min, Sum
@@ -14,8 +14,8 @@ import datetime
 ## If fields can have multiple entry (eg policy), show no of policies
 
 def formset_testview(request):
-    ItemFormSet = formset_factory(EditItemModelForm)
-    formset = ItemFormSet()
+    BankFormSet = formset_factory(BankForm)
+    formset = BankFormSet()
     context = {'formset':formset}
     return render(request,"backend/formset.html",context)
 

@@ -10,6 +10,46 @@ GENDER_CHOICES = [
         ('Prefer not to respond', 'Prefer not to respond'),
     ]
 
+class EpfForm(forms.ModelForm):
+    class Meta:
+        model = Epf
+        fields = ['account_no','account_value','nominee_name',]
+
+class SocsoForm(forms.ModelForm):
+    class Meta:
+        model = Socso
+        fields = ['account_no','nominee_name',]
+
+class BankForm(forms.ModelForm):
+    class Meta:
+        model = Bank
+        fields = ['account_type','bank_name','account_no','account_value',]
+
+class InsuranceForm(forms.ModelForm):
+    class Meta:
+        model = Insurance
+        fields = ['provider','policy_no','nominee_name','sum_insured',]
+
+class InvestmentForm(forms.ModelForm):
+    class Meta:
+        model = Investment
+        fields = ['account_type','bank_name','account_no','account_value',]
+
+class PropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ['account_type','bank_name','account_no','account_value',]
+
+class VehicleForm(forms.ModelForm):
+    class Meta:
+        model = Vehicle
+        fields = ['account_type','bank_name','account_no','account_value',]
+
+class OtherAssetForm(forms.ModelForm):
+    class Meta:
+        model = OtherAsset
+        fields = ['name','value',]
+        
 class EditItemModelForm(forms.ModelForm):
 
     def __init__(self, *args, instance=None, **kwargs):

@@ -55,9 +55,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "backend",
+    "django_htmx",
     'widget_tweaks',
     # 'compressor', 
 ]
+
+CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/']
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -68,6 +71,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
 ]
 AUTH_USER_MODEL="backend.User"
 ROOT_URLCONF = "gettingstarted.urls"

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<head>
+  {% load static %}
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- Bootstrap Icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <!-- Sign Up Form Template CSS -->
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <!-- SignUp CSS -->
+  <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+    integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  {% block extrahead %}
+  {% endblock %}
+</head>
+
+<header>
+
+  <!-- Navigation Bar -->
+  <!-- <nav class="navbar navbar-light bg-light navbar-expand-lg"> -->
+  <div class="bg-black color-white pb-1/6 text-center d-block no-style container-fluid">
+    <div class="container d-flex flex-row justify-content-center small-copy">
+      <span class="d-md-block">This is a beta version (Best viewed on desktop)</span>
+    </div>
+  </div>
+  <!-- </nav> -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- logo -->
+      <div class="order-lg-0 order-2">
+        <a class="navbar-brand" href="{% url 'index' %}"><img class="MainLogo img-fluid"
+            src="https://wahine.s3.amazonaws.com/static/Images/Logo_Wahine_No_Text.png" alt="WahineLogo"></a>
+      </div>
+      <!-- Hamburger Menu -->
+      <div class="order-1">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+
+      <!-- Menu -->
+      <div class="order-2 collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'whoweare' %}">Who We Are</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="{% url 'joinnow' %}" type="button" id="dropdownMenuButton1"
+              data-bs-toggle="dropdown" aria-expanded="false">W Vault</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="{% url 'joinnow' %}#whatiswvault">What Is W Vault</a></li>
+              <li><a class="dropdown-item" href="{% url 'joinnow' %}#security">Security</a></li>
+            </ul>
+          </li>
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Button -->
+      <div class="order-lg-3 order-3">
+        {% if request.user.is_authenticated %}
+        <a class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'bank_account_form' %}">Dashboard</a> <a
+          class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'logout' %}">Log out</a>
+        {% else %}
+        <a class="btn Btn-Primary px-2 mx-1" href="{% url 'signup' %}" role="button" style="margin:0">Sign Up</a>
+        <a class="btn Btn-Primary px-2 mx-1" href="{% url 'login' %}" role="button" style="margin:0">Log In</a>
+
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <!-- Custom -->
+  <!-- <div class="NavBar">
+    <div class="TopHeader">
+      <div><img class="MainLogo" src="https://wahine.feelsion.com/assets/images/logo.png" alt="WahineLogo"></div>
+      <div class="NavMenu">
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Join Now</a></li>
+          <li><a href="#">Career</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <button class="PrimaryBtn">Sign In</button>
+    </div> -->
+
+</header>
+
+<body>
+
+  {% block content %}
+  {% endblock %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/htmx/1.8.4/htmx.min.js" integrity="sha512-KaCnhbNFxSS4ydQMZ4zrTrk/Gf8wx2xPJ8tfZgkkmY6+hVql4eFa04HqMnM1RdUygzLEIByqbClYHvDoKm1H/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+    integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('.hide_answer').click(function () {
+        var inputValue = $(this).attr("value");
+        if (inputValue = 'hide') {
+          $('.answer').hide(200);
+        }
+        else {
+          $('.answer').show(200);
+        }
+
+      });
+      $('.unhide_answer').click(function () {
+        var inputValue = $(this).attr("value");
+        if (inputValue = 'unhide') {
+          $('.answer').show(200);
+        }
+        else {
+          $('.answer').hide(200);
+        }
+
+      });
+      $(".answer_2").hide();
+      $(".hide_answer_2").click(function () {
+        if ($(this).is(":checked")) {
+          $(".answer_2").show();
+        } else {
+          $(".answer_2").hide();
+        }
+      });
+      $('.hide_answer_3').click(function () {
+        var inputValue = $(this).attr("value");
+        if (inputValue = 'hide') {
+          $('.answer_3').hide(200);
+        }
+        else {
+          $('.answer_3').show(200);
+        }
+
+      });
+      $('.unhide_answer_3').click(function () {
+        var inputValue = $(this).attr("value");
+        if (inputValue = 'unhide') {
+          $('.answer_3').show(200);
+        }
+        else {
+          $('.answer_3').hide(200);
+        }
+
+      });
+    });
+
+  </script>
+  {% if messages %}
+  {% for message in messages %}
+  <script>
+    toastr.options = {
+      "closeButton": true,
+      "debug": true,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-bottom-right",
+      "preventDuplicates": false,
+      "showDuration": "300",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+
+    toastr.{ { message.tags } } ('{{message}}');
+  </script>
+  {% endfor %}
+  {% endif %}
+</body>
+
+<footer>
+  <!-- Footer -->
+  <div class="container-fluid pt-5 pb-5 bg-light px-5">
+    <div class="row">
+      <div class="col-lg-5">
+        <h5>Contact</h5>
+        <p><span style="font-size: 85%;"><span style="font-weight: 400;">Suite B9-07, Plaza Mont Kiara,
+              <br /></span><span style="font-weight: 400;">2 </span><span style="font-weight: 400;">Jalan Kiara, Mont
+              Kiara, <br />50480 Kuala Lumpur, <br />Wilayah Persekutuan Kuala Lumpur</span></span></p>
+        <p><span style="font-size: 85%;">Email:
+            hello@wcapital.asia</span></p>
+      </div>
+      <div class="col-lg-7">
+        <h5>Disclaimer</h5>
+        <p><span style="font-weight: 400; font-size: 85%;">Wahine Capital Sdn Bhd (hereafter “Wahine Capital”) is not
+            in
+            any capacity associated with Wahine Capital Limited, which is a company incorporated in the British Virgin
+            Islands. The naming of the company is purely coincidental and Wahine Capital has no working relationship or
+            any other connection with Wahine Capital Limited.</span></p>
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="col-lg-5">
+        <p>Wahine Capital Sdn Bhd (1386249-H)</p>
+      </div>
+      <div class="col-lg-7 flex gap-5">
+        <div><a href="{% url 'terms-of-service' %}" class="p-0">
+            <p>TERMS OF SERVICE</p>
+          </a>
+        </div>
+        <div><a href="{% url 'privacy-policy' %}" class="p-0">
+            <p>PRIVACY POLICY</p>
+          </a>
+        </div>
+        <div><a href="{% url 'return-refund-policy' %}" class="p-0">
+            <p>REFUND POLICY</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+
+
+</html>
