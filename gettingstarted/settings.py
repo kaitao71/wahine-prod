@@ -63,6 +63,7 @@ INSTALLED_APPS = [
 CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/']
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
