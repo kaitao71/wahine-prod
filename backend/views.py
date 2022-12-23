@@ -839,7 +839,7 @@ def liabilities_others_form(request):
             liability_value = form.cleaned_data['liability_value']
             item = Item.objects.create(user=request.user,data={'liability_value':liability_value,'liability_name':liability_name},item_type='Other Liabilities',created_by=request.user)
             messages.add_message(request, messages.INFO, 'Added Other Liabilities.')
-            return redirect('notifier_list_form')
+            return redirect('liabilities_overview')
     context = {'form':form}
     return render(request,'backend/liabilities-5-others.html',context)
 
@@ -962,23 +962,30 @@ def dashboard(request):
     bank_values = banks.values('data')
     for x in bank_values:
         if 'account_value' in x['data']:
-            bank_total += float(x['data']['account_value'])
-
-    
+            if x['data']['account_value'] == "":
+                bank_total = bank_total
+            else:
+                bank_total += float(x['data']['account_value'])
 
     insurances = items.filter(item_type='Insurance')
     insurance_total = 0
     insurance_values = insurances.values('data') 
     for x in insurance_values:
         if 'sum_insured' in x['data']:
-            insurance_total += float(x['data']['sum_insured'])
+            if x['data']['sum_insured'] == "":
+                insurance_total = insurance_total
+            else:
+                insurance_total += float(x['data']['sum_insured'])
 
     investments = items.filter(item_type='Investment')
     investment_total = 0
     investment_values = investments.values('data')
     for x in investment_values:
         if 'account_value' in x['data']:
-            investment_total += float(x['data']['account_value'])
+            if x['data']['account_value'] == "":
+                investment_total = investment_total
+            else:
+                investment_total += float(x['data']['account_value'])
 
     epf_socso = items.filter(item_type='EPF Socso')
     properties = items.filter(item_type='Property')
@@ -989,6 +996,8 @@ def dashboard(request):
     asset_values = others.values('data')
     for x in asset_values:
         if 'asset_value' in x['data']:
+            if x['data']['asset_value'] == "":
+                other_asset_total = other_asset_total
             other_asset_total += float(x['data']['asset_value'])
 
     creditcard = items.filter(item_type='Credit Card')
@@ -996,34 +1005,48 @@ def dashboard(request):
     creditcard_values = creditcard.values('data')
     for x in creditcard_values:
         if 'amount_outstanding' in x['data']:
-            creditcard_total += float(x['data']['amount_outstanding'])
+            if x['data']['amount_outstanding'] == "":
+                creditcard_total = creditcard_total
+            else:
+                creditcard_total += float(x['data']['amount_outstanding'])
 
     personalloan = items.filter(item_type='Personal Loan')
     personalloan_total = 0
     personalloan_values = personalloan.values('data')
     for x in personalloan_values:
         if 'loan_amount' in x['data']:
-            personalloan_total += float(x['data']['loan_amount'])
+            if x['data']['loan_amount'] == "":
+                personalloan_total = personalloan_total
+            else:
+                personalloan_total += float(x['data']['loan_amount'])
 
     vehicleloan = items.filter(item_type='Vehicle Loan')
     vehicleloan_total = 0
     vehicleloan_values = vehicleloan.values('data')
     for x in vehicleloan_values:
         if 'loan_amount' in x['data']:
-            vehicleloan_total += float(x['data']['loan_amount'])
+            if x['data']['loan_amount'] == "":
+                vehicleloan_total = vehicleloan_total
+            else:
+                vehicleloan_total += float(x['data']['loan_amount'])
 
     propertyloan = items.filter(item_type='Property Loan')
     propertyloan_total = 0
     propertyloan_values = propertyloan.values('data')
     for x in propertyloan_values:
         if 'loan_amount' in x['data']:
-            propertyloan_total += float(x['data']['loan_amount'])
+            if x['data']['loan_amount'] == "":
+                propertyloan_total = propertyloan_total
+            else:
+                propertyloan_total += float(x['data']['loan_amount'])
 
     others_liabilities = items.filter(item_type='Other Liabilities')
     other_liabilities_total = 0
     liabilities_values = others_liabilities.values('data')
     for x in liabilities_values:
         if 'liabilities_values' in x['data']:
+            if x['data']['liabilities_value'] == "":
+                other_liabilities_total = other_liabilities_total
             other_liabilities_total += float(x['data']['liabilities_value'])
 
 
