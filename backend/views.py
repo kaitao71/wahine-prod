@@ -75,8 +75,8 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}.")
-                return redirect("bank_account_form")
-            return redirect('bank_account_form')
+                return redirect("dashboard")
+            return redirect('dashboard')
         else:
             return render(request,'backend/login.html', {'form': form})
     form = AuthenticationForm()
@@ -956,7 +956,9 @@ def liabilities_overview(request):
 def dashboard(request):
     user = request.user
     items = Item.objects.filter(user=user)
-
+    print(items.count())
+    if items.count() == 0:
+        return redirect('bank_account_form')
     banks = items.filter(item_type='Bank Account')
     bank_total = 0
     bank_values = banks.values('data')
