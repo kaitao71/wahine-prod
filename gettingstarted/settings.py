@@ -42,7 +42,7 @@ else:
 if not IS_HEROKU:
     DEBUG = True
 
-DEBUG = True
+DEBUG = False
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     # 'compressor', 
 ]
 
-CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia'],
+CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/','https://wahine.wcapital.asia']
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
