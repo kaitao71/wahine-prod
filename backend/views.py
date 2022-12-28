@@ -1000,7 +1000,8 @@ def dashboard(request):
         if 'asset_value' in x['data']:
             if x['data']['asset_value'] == "":
                 other_asset_total = other_asset_total
-            other_asset_total += float(x['data']['asset_value'])
+            else:
+                other_asset_total += float(x['data']['asset_value'])
 
     creditcard = items.filter(item_type='Credit Card')
     creditcard_total = 0
