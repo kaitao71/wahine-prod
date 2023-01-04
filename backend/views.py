@@ -14,17 +14,20 @@ import datetime
 ## If fields can have multiple entry (eg policy), show no of policies
 
 def formset_testview(request):
-    BankFormSet = formset_factory(BankForm)
+    BankFormSet = formset_factory(BankForm,extra=5)
     formset = BankFormSet()
     context = {'formset':formset}
     return render(request,"backend/formset.html",context)
+
 
 def logout_view(request):
     logout(request)
     return redirect('index')
 
+
 def terms_of_service(request):
     return render(request,'backend/terms-of-service.html')
+
 
 def return_refund_policy(request):
     return render(request,'backend/return-refund-policy.html')
@@ -36,6 +39,11 @@ def contactus(request):
     return render(request,'backend/contact-us.html')
 
 def index(request):
+    ## Source of data (Database)
+    items = Item.objects.filter(item_type="Notifier List") ## Get all notifier list from database
+    for item in items: ## Loop
+        print(item.data['notifier_event'])   ## Display item type
+
     return render(request,'backend/index.html')
 
 def whoweare(request):
@@ -964,7 +972,7 @@ def dashboard(request):
     bank_values = banks.values('data')
     for x in bank_values:
         if 'account_value' in x['data']:
-            if x['data']['account_value'] == "":
+            if x['data']['account_value'] == "" or x['data']['account_value'] is None:
                 bank_total = bank_total
             else:
                 bank_total += float(x['data']['account_value'])
@@ -974,7 +982,7 @@ def dashboard(request):
     insurance_values = insurances.values('data') 
     for x in insurance_values:
         if 'sum_insured' in x['data']:
-            if x['data']['sum_insured'] == "":
+            if x['data']['sum_insured'] == "" or x['data']['sum_insured'] is None:
                 insurance_total = insurance_total
             else:
                 insurance_total += float(x['data']['sum_insured'])
@@ -984,7 +992,7 @@ def dashboard(request):
     investment_values = investments.values('data')
     for x in investment_values:
         if 'account_value' in x['data']:
-            if x['data']['account_value'] == "":
+            if x['data']['account_value'] == "" or x['data']['account_value'] is None:
                 investment_total = investment_total
             else:
                 investment_total += float(x['data']['account_value'])
@@ -998,7 +1006,7 @@ def dashboard(request):
     asset_values = others.values('data')
     for x in asset_values:
         if 'asset_value' in x['data']:
-            if x['data']['asset_value'] == "":
+            if x['data']['asset_value'] == "" or x['data']['asset_value'] is None:
                 other_asset_total = other_asset_total
             else:
                 other_asset_total += float(x['data']['asset_value'])
@@ -1008,7 +1016,7 @@ def dashboard(request):
     creditcard_values = creditcard.values('data')
     for x in creditcard_values:
         if 'amount_outstanding' in x['data']:
-            if x['data']['amount_outstanding'] == "":
+            if x['data']['amount_outstanding'] == "" or x['data']['amount_outstanding'] is None:
                 creditcard_total = creditcard_total
             else:
                 creditcard_total += float(x['data']['amount_outstanding'])
@@ -1018,7 +1026,7 @@ def dashboard(request):
     personalloan_values = personalloan.values('data')
     for x in personalloan_values:
         if 'loan_amount' in x['data']:
-            if x['data']['loan_amount'] == "":
+            if x['data']['loan_amount'] == "" or x['data']['loan_amount'] is None:
                 personalloan_total = personalloan_total
             else:
                 personalloan_total += float(x['data']['loan_amount'])
@@ -1028,7 +1036,7 @@ def dashboard(request):
     vehicleloan_values = vehicleloan.values('data')
     for x in vehicleloan_values:
         if 'loan_amount' in x['data']:
-            if x['data']['loan_amount'] == "":
+            if x['data']['loan_amount'] == "" or x['data']['loan_amount'] is None:
                 vehicleloan_total = vehicleloan_total
             else:
                 vehicleloan_total += float(x['data']['loan_amount'])
@@ -1038,7 +1046,7 @@ def dashboard(request):
     propertyloan_values = propertyloan.values('data')
     for x in propertyloan_values:
         if 'loan_amount' in x['data']:
-            if x['data']['loan_amount'] == "":
+            if x['data']['loan_amount'] == "" or x['data']['loan_amount'] is None:
                 propertyloan_total = propertyloan_total
             else:
                 propertyloan_total += float(x['data']['loan_amount'])
@@ -1048,7 +1056,7 @@ def dashboard(request):
     liabilities_values = others_liabilities.values('data')
     for x in liabilities_values:
         if 'liabilities_values' in x['data']:
-            if x['data']['liabilities_value'] == "":
+            if x['data']['liabilities_value'] == "" or x['data']['liabilities_value'] is None:
                 other_liabilities_total = other_liabilities_total
             other_liabilities_total += float(x['data']['liabilities_value'])
 

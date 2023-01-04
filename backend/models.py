@@ -8,6 +8,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.exceptions import ValidationError 
 from django.utils import timezone
+from django_cryptography.fields import encrypt
+
 # from ckeditor.fields import RichTextField
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
