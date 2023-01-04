@@ -1,5 +1,4 @@
 asgiref==3.5.2
-backports.zoneinfo==0.2.1
 cffi==1.15.1
 cryptography==39.0.0
 dj-database-url==1.0.0
