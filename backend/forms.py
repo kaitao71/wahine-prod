@@ -2,6 +2,7 @@ from django import forms
 from backend.models import *
 from django.db import models
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import modelformset_factory, inlineformset_factory
 # from dal import autocomplete
 from django.contrib.auth import get_user_model
 GENDER_CHOICES = [
@@ -24,6 +25,26 @@ class BankForm(forms.ModelForm):
     class Meta:
         model = Bank
         fields = ['account_type','bank_name','account_no','account_value',]
+
+BankModelFormset = modelformset_factory(
+    Bank,
+    fields=('account_type',
+            'bank_name',
+            'account_no',
+            'account_value',
+            ),
+    extra=1,
+    widgets={'account_type': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account type here'
+        }),
+        'bank_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter bank name here'
+        }
+        )
+    }
+)
 
 class InsuranceForm(forms.ModelForm):
     class Meta:

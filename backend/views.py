@@ -3,7 +3,7 @@ from backend.forms import *
 import uuid
 from django.contrib import messages
 from django.contrib.auth import authenticate, login,logout
-from django.forms import formset_factory, inlineformset_factory
+from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib.auth.forms import AuthenticationForm #add this
 from django.views.generic.edit import UpdateView
 from django.db.models import Avg, Count, Min, Sum
@@ -13,8 +13,25 @@ import datetime
 ## IF data exist, show existing data/edit mode
 ## If fields can have multiple entry (eg policy), show no of policies
 
+def create_bank_model_form(request):
+    if request.method == 'GET':
+        # we don't want to display the already saved model instances
+        formset = BankModelFormset(queryset=Bank.objects.none())
+        context = {'formset':formset}
+    elif request.method == 'POST':
+        formset = BankModelFormset(request.POST)
+        context = {'formset':formset}
+        if formset.is_valid():
+            for form in formset:
+                # only save if name is present
+                if form.cleaned_data.get('account_type'):
+                    form.save()
+            return render(request,"backend/formset.html",context)
+    context = {'formset':formset}
+    return render(request,"backend/formset.html",context)
+
 def formset_testview(request):
-    BankFormSet = formset_factory(BankForm,extra=5)
+    BankFormSet = modelformset_factory(BankForm,extra=5)
     formset = BankFormSet()
     context = {'formset':formset}
     return render(request,"backend/formset.html",context)
