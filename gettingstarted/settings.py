@@ -26,7 +26,8 @@ IS_HEROKU = "DYNO" in os.environ
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
+## Use environment variable 
+SECRET_KEY = "fjd12489hHFG*$&H9h4r78TG08hyfO$*Ghy"
 
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ["SECRET_KEY"]
@@ -74,6 +75,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     # "django_htmx.middleware.HtmxMiddleware",
 ]
+
 AUTH_USER_MODEL="backend.User"
 ROOT_URLCONF = "gettingstarted.urls"
 

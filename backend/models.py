@@ -109,6 +109,9 @@ class Socso(TimeStampedModel):
     account_no = models.CharField(max_length=128)
     nominee_name = models.CharField(max_length=128,null=True,blank=True)
 
+
+
+
 class Bank(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_bankaccount')

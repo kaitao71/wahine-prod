@@ -1,16 +1,28 @@
 {% extends 'backend/base.html' %}
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
 {% block content %}
+<div class="container p-4">
 <form class="form-horizontal" method="POST" action="">
 {% csrf_token %}
 {{ formset.management_form }}
 {% for form in formset %}
-<div class="row form-row spacer">
-    <div class="col-2">
-        <label>{{form.account_type.label}}</label>
+<div class="row form-row">
+    <div class="col-12">
+
+    	<label>{{form.account_type.label}}</label>
+    	<div class="input-group Btn-Radio">
+    	{% for radio in form.account_type %}
+    	<div>
+        {{radio.tag}}
+        	<label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
     </div>
-    <div class="col-4">
-        <div class="input-group">
-            {{form.account_type}}</div>
+        {% endfor %}
+        </div>
         </div>
     <div class="col-2">
         <label>{{form.bank_name.label}}</label>
@@ -22,7 +34,6 @@
                 <button class="btn btn-success add-form-row">+</button>
             </div>
         </div>
-    </div>
 </div>
 {% endfor %}
 <div class="row spacer">
@@ -31,6 +42,7 @@
     </div>
 </div>
 </form>
+</div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type='text/javascript'>
 function updateElementIndex(el, prefix, ndx) {
@@ -40,15 +52,36 @@ function updateElementIndex(el, prefix, ndx) {
     if (el.id) el.id = el.id.replace(id_regex, replacement);
     if (el.name) el.name = el.name.replace(id_regex, replacement);
 }
+
+function updateRadioElementIndex(el, prefix, ndx) {
+    var id_regex = new RegExp('(' + prefix + '-\\d+)');
+    var replacement = prefix + '-2' + ndx;
+    if ($(el).attr("for")) $(el).attr("for", $(el).attr("for").replace(id_regex, replacement));
+    if (el.id) el.id = el.id.replace(id_regex, replacement);
+    if (el.name) el.name = el.name.replace(id_regex, replacement);
+}
+
 function cloneMore(selector, prefix) {
     var newElement = $(selector).clone(true);
     var total = $('#id_' + prefix + '-TOTAL_FORMS').val();
-    newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset])').each(function() {
+    newElement.find(':input:not([type=button]):not([type=submit]):not([type=reset]):not([type=radio])').each(function() {
         var name = $(this).attr('name')
         if(name) {
             name = name.replace('-' + (total-1) + '-', '-' + total + '-');
-            var id = 'id_' + name;
+            var id = 'id_' + name + '_' + (total-1);
             $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+        }
+    });
+    // For Radio Buttons, to fix the ID
+    newElement.find(':input([type=radio])').each(function() {
+        var name = $(this).attr('name')
+        var id = $(this).attr('id')
+        var count = 0
+        if(name) {
+            name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+            id = id.replace('-' + (total-1) + '-', '-' + total + '-');
+            $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            count++;
         }
     });
     newElement.find('label').each(function() {
@@ -75,9 +108,12 @@ function deleteForm(prefix, btn) {
         var forms = $('.form-row');
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
         for (var i=0, formCount=forms.length; i<formCount; i++) {
-            $(forms.get(i)).find(':input').each(function() {
-                updateElementIndex(this, prefix, i);
-            });
+            // $(forms.get(i)).find(':input').each(function() {
+            //     updateElementIndex(this, prefix, i);
+            // });
+            // $(forms.get(i)).find(':label').each(function() {
+            //     updateRadioElementIndex(this, prefix, i-1);
+            // });
         }
     }
     return false;

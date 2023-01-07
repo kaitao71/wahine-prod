@@ -26,6 +26,12 @@ class BankForm(forms.ModelForm):
         model = Bank
         fields = ['account_type','bank_name','account_no','account_value',]
 
+ACCOUNT_TYPE_CHOICES = [
+        ('Saving Account', 'Saving Account'),
+        ('Current Account', 'Current Account'),
+        ('Fixed Deposit', 'Fixed Deposit'),
+    ]
+
 BankModelFormset = modelformset_factory(
     Bank,
     fields=('account_type',
@@ -34,11 +40,9 @@ BankModelFormset = modelformset_factory(
             'account_value',
             ),
     extra=1,
-    widgets={'account_type': forms.TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Enter account type here'
+    widgets={'account_type': forms.RadioSelect(choices=ACCOUNT_TYPE_CHOICES,attrs={
         }),
-        'bank_name': forms.TextInput(attrs={
+            'bank_name': forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Enter bank name here'
         }
