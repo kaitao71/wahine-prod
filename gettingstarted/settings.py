@@ -43,7 +43,7 @@ else:
 if not IS_HEROKU:
     DEBUG = True
 
-DEBUG = True
+DEBUG = False
 # Application definition
 
 INSTALLED_APPS = [
