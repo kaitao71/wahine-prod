@@ -38,15 +38,24 @@ BankModelFormset = modelformset_factory(
             'bank_name',
             'account_no',
             'account_value',
+            'user',
             ),
     extra=1,
-    widgets={'account_type': forms.RadioSelect(choices=ACCOUNT_TYPE_CHOICES,attrs={
+    widgets={
+        'account_type': forms.RadioSelect(choices=ACCOUNT_TYPE_CHOICES,attrs={
         }),
-            'bank_name': forms.TextInput(attrs={
+        'bank_name': forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Enter bank name here'
-        }
-        )
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'account_value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
     }
 )
 
@@ -74,7 +83,7 @@ class OtherAssetForm(forms.ModelForm):
     class Meta:
         model = OtherAsset
         fields = ['name','value',]
-        
+
 class EditItemModelForm(forms.ModelForm):
 
     def __init__(self, *args, instance=None, **kwargs):
@@ -253,7 +262,7 @@ class PropertyForm(forms.Form):
     address = forms.CharField()
     state = forms.CharField(required = False)
     postcode = forms.CharField(required = False)
-    titleno = forms.CharField(required = False) 
+    titleno = forms.CharField(required = False)
     property_type_2 = forms.CharField(required = False)
     residential_type_2 = forms.CharField(required = False)
     address_2 = forms.CharField(required = False)
@@ -340,7 +349,7 @@ class NotifierForm(forms.Form):
     notifier_ic = forms.CharField(required = False)
     notifier_contactno = forms.CharField(required = False)
     notifier_relationship = forms.CharField(required = False)
-    notifier_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)  
+    notifier_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
     notifier_name_2 = forms.CharField(required = False)
     notifier_email_2 = forms.CharField(required = False)
     notifier_ic_2 = forms.CharField(required = False)
@@ -355,11 +364,11 @@ class AccessListForm(forms.Form):
     accesslist_ic = forms.CharField(required = False)
     accesslist_contactno = forms.CharField(required = False)
     accesslist_relationship = forms.CharField(required = False)
-    accesslist_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)  
+    accesslist_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
     accesslist_name_2 = forms.CharField(required = False)
     accesslist_email_2 = forms.CharField(required = False)
     accesslist_ic_2 = forms.CharField(required = False)
     accesslist_contactno_2 = forms.CharField(required = False)
     accesslist_relationship_2 = forms.CharField(required = False)
-    accessliost_event_2 = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)  
+    accessliost_event_2 = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
     yesno = forms.CharField(required = False)

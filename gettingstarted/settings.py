@@ -26,7 +26,7 @@ IS_HEROKU = "DYNO" in os.environ
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-## Use environment variable 
+## Use environment variable
 SECRET_KEY = "fjd12489hHFG*$&H9h4r78TG08hyfO$*Ghy"
 
 if 'SECRET_KEY' in os.environ:
@@ -40,10 +40,10 @@ else:
     ALLOWED_HOSTS = ["*"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 if not IS_HEROKU:
     DEBUG = True
 
-DEBUG = False
 # Application definition
 
 INSTALLED_APPS = [
@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     "backend",
     # "django_htmx",
     'widget_tweaks',
-    # 'compressor', 
+    # 'compressor',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/','https://wahine.wcapital.asia']

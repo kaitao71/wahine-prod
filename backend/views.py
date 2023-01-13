@@ -14,19 +14,23 @@ import datetime
 ## If fields can have multiple entry (eg policy), show no of policies
 
 def create_bank_model_form(request):
-    if request.method == 'GET':
-        # we don't want to display the already saved model instances
-        formset = BankModelFormset(queryset=Bank.objects.none())
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = BankModelFormset(post_data)
         context = {'formset':formset}
-    elif request.method == 'POST':
-        formset = BankModelFormset(request.POST)
-        context = {'formset':formset}
+
         if formset.is_valid():
-            for form in formset:
-                # only save if name is present
-                if form.cleaned_data.get('account_type'):
-                    form.save()
-            return render(request,"backend/formset.html",context)
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('formset')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/formset.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = BankModelFormset(queryset=Bank.objects.none())
     context = {'formset':formset}
     return render(request,"backend/formset.html",context)
 
@@ -332,7 +336,7 @@ def insurance_form(request):
         else:
             messages.add_message(request, messages.INFO, 'Something went wrong, please make sure all fields are entered correctly')
             return redirect('insurance_form')
-            
+
     context = {'form':form}
     return render(request,'backend/assets-3-insurance.html',context)
 
@@ -413,13 +417,13 @@ def edit_investment_form(request,uuid):
     else:
         fund_name = ''
     account_no = instance.data['account_no']
-    
+
     if instance.data['account_value']:
         account_value = instance.data['account_value']
     else:
         account_value = ''
     item_type = 'Investment'
-    
+
     form = EditItemModelForm(request.POST,instance=instance,initial={
         'item_type':item_type,
         'investment_type':investment_type,
@@ -657,7 +661,7 @@ def edit_liability_credit_card_form(request,uuid):
     account_no = instance.data['account_no']
     bank_name = instance.data['bank_name']
     item_type = 'Credit Card'
-    
+
     form = EditItemModelForm(request.POST,instance=instance,initial={
         'item_type':item_type,
         'bank_name':bank_name,
@@ -712,7 +716,7 @@ def edit_personal_loan_form(request,uuid):
     loan_tenure = instance.data['loan_tenure']
     bank_name = instance.data['bank_name']
     item_type = 'Personal Loan'
-    
+
     form = EditItemModelForm(request.POST,instance=instance,initial={
         'item_type':item_type,
         'bank_name':bank_name,
@@ -769,7 +773,7 @@ def edit_vehicle_loan_form(request,uuid):
     loan_tenure = instance.data['loan_tenure']
     bank_name = instance.data['bank_name']
     item_type = 'Vehicle Loan'
-    
+
     form = EditItemModelForm(request.POST,instance=instance,initial={
         'item_type':item_type,
         'bank_name':bank_name,
@@ -827,7 +831,7 @@ def edit_property_loan_form(request,uuid):
     loan_tenure = instance.data['loan_tenure']
     bank_name = instance.data['bank_name']
     item_type = 'Property Loan'
-    
+
     form = EditItemModelForm(request.POST,instance=instance,initial={
         'item_type':item_type,
         'bank_name':bank_name,
@@ -996,7 +1000,7 @@ def dashboard(request):
 
     insurances = items.filter(item_type='Insurance')
     insurance_total = 0
-    insurance_values = insurances.values('data') 
+    insurance_values = insurances.values('data')
     for x in insurance_values:
         if 'sum_insured' in x['data']:
             if x['data']['sum_insured'] == "" or x['data']['sum_insured'] is None:

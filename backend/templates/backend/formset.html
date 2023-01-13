@@ -7,41 +7,61 @@
 {% endblock %}
 {% block content %}
 <div class="container p-4">
-<form class="form-horizontal" method="POST" action="">
-{% csrf_token %}
-{{ formset.management_form }}
-{% for form in formset %}
-<div class="row form-row">
-    <div class="col-12">
+  <form class="form-horizontal" method="POST" action="">
+    {% csrf_token %}
+    {{ formset.management_form }}
 
-    	<label>{{form.account_type.label}}</label>
-    	<div class="input-group Btn-Radio">
-    	{% for radio in form.account_type %}
-    	<div>
-        {{radio.tag}}
-        	<label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
-    </div>
+    {% for form in formset %}
+    <div class="row form-row">
+
+      <div class="col-12">
+      	<label>{{form.account_type.label}}</label>
+      	<div class="input-group Btn-Radio">
+      	{% for radio in form.account_type %}
+      	 <div class="px-2">
+            {{radio.tag}}
+          	<label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+          </div>
         {% endfor %}
         </div>
-        </div>
-    <div class="col-2">
-        <label>{{form.bank_name.label}}</label>
+        <small class="text-danger">{{ form.account_type.errors }}</small>
+      </div>
+
+      <div class="col-3">
+        <label for="{{ form.bank_name.id_for_label }}">{{form.bank_name.label}}</label>
+        {{form.bank_name}}
+        <small class="text-danger">{{ form.bank_name.errors }}</small>
+      </div>
+
+      <div class="col-3">
+        <label for="{{ form.account_no.id_for_label }}">{{form.account_no.label}}</label>
+        {{form.account_no}}
+        <small class="text-danger">{{ form.account_no.errors }}</small>
+      </div>
+
+      <div class="col-2">
+        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}</label>
+        {{form.account_value}}
+        <small class="text-danger">{{ form.account_value.errors }}</small>
+      </div>
+
+      <div class="col-1 d-flex">
+        {% if forloop.last %}
+          <button class="btn btn-success add-form-row mt-auto">+</button>
+        {% else %}
+          <button class="btn btn-danger remove-form-row mt-auto">-</button>
+        {% endif %}
+      </div>
+
     </div>
-    <div class="col-4">
-        <div class="input-group">
-            {{form.bank_name}}
-            <div class="input-group-append">
-                <button class="btn btn-success add-form-row">+</button>
-            </div>
+    {% endfor %}
+
+    <div class="row spacer">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-block btn-primary">Create</button>
         </div>
-</div>
-{% endfor %}
-<div class="row spacer">
-    <div class="col-4 offset-2">
-        <button type="submit" class="btn btn-block btn-primary">Create</button>
     </div>
-</div>
-</form>
+  </form>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type='text/javascript'>
@@ -80,7 +100,7 @@ function cloneMore(selector, prefix) {
         if(name) {
             name = name.replace('-' + (total-1) + '-', '-' + total + '-');
             id = id.replace('-' + (total-1) + '-', '-' + total + '-');
-            $(this).attr({'name': name, 'id': id}).val('').removeAttr('checked');
+            $(this).attr({'name': name, 'id': id}).removeAttr('checked').prop('checked', false);
             count++;
         }
     });
@@ -108,10 +128,13 @@ function deleteForm(prefix, btn) {
         var forms = $('.form-row');
         $('#id_' + prefix + '-TOTAL_FORMS').val(forms.length);
         for (var i=0, formCount=forms.length; i<formCount; i++) {
+            $(forms.get(i)).find(':input').each(function() {
+                updateElementIndex(this, prefix, i);
+            });
+            $(forms.get(i)).find('label').each(function() {
+                updateElementIndex(this, prefix, i);
+            });
             // $(forms.get(i)).find(':input').each(function() {
-            //     updateElementIndex(this, prefix, i);
-            // });
-            // $(forms.get(i)).find(':label').each(function() {
             //     updateRadioElementIndex(this, prefix, i-1);
             // });
         }
