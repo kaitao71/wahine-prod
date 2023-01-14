@@ -283,7 +283,7 @@ class AssetOthersForm(forms.Form):
 
 class CreditCardForm(forms.Form):
     bank_name = forms.CharField()
-    account_no = forms.CharField()
+    account_no = forms.CharField(required = False)
     amount_outstanding = forms.CharField(required = False)
     bank_name_2 = forms.CharField(required = False)
     account_no_2 = forms.CharField(required = False)
