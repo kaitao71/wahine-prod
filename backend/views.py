@@ -13,7 +13,7 @@ import datetime
 ## IF data exist, show existing data/edit mode
 ## If fields can have multiple entry (eg policy), show no of policies
 
-def create_bank_model_form(request):
+def assets_bank_modelform(request):
     if request.method == 'POST':
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
@@ -24,15 +24,162 @@ def create_bank_model_form(request):
         if formset.is_valid():
             formset.save()
             messages.success(request, "Saved successfully.")
-            return redirect('formset')
+            return redirect('assets-epf-createform')
 
         messages.error(request, "Please correct the errors in the form and try again.")
-        return render(request,"backend/formset.html",context)
+        return render(request,"backend/assets-bank-create.html",context)
 
     # we don't want to display the already saved model instances
     formset = BankModelFormset(queryset=Bank.objects.none())
     context = {'formset':formset}
-    return render(request,"backend/formset.html",context)
+    return render(request,"backend/assets-bank-create.html",context)
+
+def assets_epf_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        post_data['user'] = request.user
+        form = EpfForm(post_data)
+        context = {'form':form}
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-socso-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-epf-create.html",context)
+
+    # we don't want to display the already saved model instances
+    form = EpfForm()
+    context = {'form':form}
+    return render(request,"backend/assets-epf-create.html",context)
+
+def assets_socso_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        post_data['user'] = request.user
+        form = SocsoForm(post_data)
+        context = {'form':form}
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-insurance-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-socso-create.html",context)
+
+    # we don't want to display the already saved model instances
+    form = SocsoForm()
+    context = {'form':form}
+    return render(request,"backend/assets-socso-create.html",context)
+
+def assets_insurance_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = InsuranceModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-investment-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-insurance-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = InsuranceModelFormset(queryset=Insurance.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/assets-insurance-create.html",context)
+
+def assets_investment_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = InvestmentModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-property-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-investment-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = InvestmentModelFormset(queryset=Investment.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/assets-investment-create.html",context)
+
+def assets_property_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = PropertyModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-vehicle-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-property-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = PropertyModelFormset(queryset=Property.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/assets-property-create.html",context)
+
+def assets_vehicle_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = VehicleModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-other-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-vehicle-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = VehicleModelFormset(queryset=Vehicle.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/assets-vehicle-create.html",context)
+
+def assets_other_modelform(request):
+    if request.method == 'POST':
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = OtherAssetModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('assets-other-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/assets-other-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = OtherAssetModelFormset(queryset=OtherAsset.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/assets-other-create.html",context)
+
+
 
 def formset_testview(request):
     BankFormSet = modelformset_factory(BankForm,extra=5)

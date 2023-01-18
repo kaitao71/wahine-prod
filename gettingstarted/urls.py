@@ -16,7 +16,15 @@ from django.conf.urls.static import static
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-	path("formset/",create_bank_model_form,name="formset"),
+	path("v2/assets/bank",assets_bank_modelform,name="assets-bank-createform"),
+	path("v2/assets/epf",assets_epf_modelform,name="assets-epf-createform"),
+	path("v2/assets/socso",assets_socso_modelform,name="assets-socso-createform"),
+	path("v2/assets/insurance",assets_insurance_modelform,name="assets-insurance-createform"),
+	path("v2/assets/investment",assets_investment_modelform,name="assets-investment-createform"),
+	path("v2/assets/property",assets_property_modelform,name="assets-property-createform"),
+	path("v2/assets/vehicle",assets_vehicle_modelform,name="assets-vehicle-createform"),
+	path("v2/assets/others",assets_other_modelform,name="assets-other-createform"),
+
 	path("",index,name="index"),
 	path("joinnow",joinnow,name="joinnow"),
 	path("whoweare/",whoweare,name="whoweare"),

@@ -6,26 +6,6 @@
 <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
 {% block content %}
-<div class="form-row Btn-Radio">
-                                    <!-- Start Input -->
-                                    <div class="col-6 col-lg-6">
-                                        <input class="unhide_answer" type="radio" name="yesno" id="yesno" value="yes"
-                                            checked>
-                                        <label for="yesno">
-                                            <h6>Yes</h6>
-                                        </label>
-
-                                    </div>
-                                    <!-- End Input -->
-                                    <!-- Start Input -->
-                                    <div class="col-6 col-lg-6 mx-1">
-                                        <input class="hide_answer" type="radio" name="yesno" id="yesno2" value="no">
-                                        <label for="yesno2">
-                                            <h6>No</h6>
-                                        </label>
-                                    </div>
-                                    <!-- End Input -->
-</div>
 <div class="container p-4">
   <form class="form-horizontal" method="POST" action="">
     {% csrf_token %}

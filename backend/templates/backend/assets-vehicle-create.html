@@ -1,0 +1,129 @@
+{% extends 'backend/base.html' %}
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+{% block extrastyle %}
+{% endblock %}
+{% block content %}
+<div class="container bg-white my-50 container-shadow">
+  <div class="row">
+    <!-- First Column -->
+    <div class="col-md-8 col-lg-8">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-12 mx-auto pt-5">
+        <h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+        <h2 class="mb-1 Color-Secondary text-center">Assets</h2>
+        <p class="text-center">Please fill the form below to record your personal assets information. Feel free to add
+          as much detail as needed. </p>
+    </div>
+  </div>
+  <div class="row">
+  <div class="container">
+<div class="row container-shadow p-4 m-4">
+      {% include 'backend/assets-onboarding-breadcrumbs.html' %}
+  <div class="row">
+    <div class="col-12">
+        <h4 class="text-black">Vehicle</h4>
+              <p class="text-start">Fill in your Vehicle information.</p>
+            </div>
+    <!-- Yes no label -->
+    <div class="col-12 py-2">
+      <label>Do you have vehicle?</label>
+    </div>
+                                    <!-- Start Input -->
+                                    <div class="col-3 col-lg-3 btn-radio">
+                                        <input class="unhide-form-block" type="radio" name="yesno" id="yesno" value="yes"
+                                            checked>
+                                        <label for="yesno">
+                                            <h6>Yes</h6>
+                                        </label>
+
+                                    </div>
+                                    <div class="col-3 col-lg-3 Btn-Radio">
+                                        <input class="hide-form-block" type="radio" name="yesno" id="yesno2" value="no">
+                                        <label for="yesno2">
+                                            <h6>No</h6>
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <!-- End Input -->
+      <!-- Yes no label -->
+
+  <form class="form-horizontal form-block" method="POST" action="">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+    <div class="row form-row">
+      <div class="col-12 py-2">
+        <label class="py-2">{{form.property_type.label}}</label>
+        <div class="input-group Btn-Radio">
+        {% for radio in form.property_type %}
+        <!-- Process each form fields manually -->
+         <div class="px-2">
+            {{radio.tag}}
+            <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
+          </div>
+        {% endfor %}
+        <small class="text-danger p-2">{{ form.property_type.errors }}</small>
+        </div>
+        
+      </div>
+        
+      <div class="col-6">
+        <label for="{{ form.vehicle_type.id_for_label }}">{{form.vehicle_type.label}}</label>
+        {{form.vehicle_type}}
+        <small class="text-danger">{{ form.vehicle_type.errors }}</small>
+      </div>
+
+      <div class="col-6">
+        <label for="{{ form.registration_no.id_for_label }}">{{form.registration_no.label}}</label>
+        {{form.registration_no}}
+        <small class="text-danger">{{ form.registration_no.errors }}</small>
+      </div>
+
+      <div class="col-6">
+        <label for="{{ form.make_model.id_for_label }}">{{form.make_model.label}}</label>
+        {{form.make_model}}
+        <small class="text-danger">{{ form.make_model.errors }}</small>
+      </div>
+
+        <!-- End process each form fields manually -->
+
+        <!-- Add/remove additional forms-->
+      <div class="col-1 d-flex py-2">
+        {% if forloop.last %}
+          <button class="btn btn-success add-form-row mt-auto">Add</button>
+        {% else %}
+          <button class="btn btn-danger remove-form-row mt-auto">Delete</button>
+        {% endif %}
+      </div>
+      <!-- End Add/remove additional forms-->
+
+    </div>
+    {% endfor %}
+    <!-- Submit Button -->
+    <div class="row spacer">
+        <div class="col-4">
+            <button type="submit" class="btn btn-block btn-primary">Create</button>
+        </div>
+    </div>
+    <!-- Submit Button -->
+  </form>
+</div>
+</div>
+  </div>
+</div>
+<!-- End First Column -->
+
+<!-- Start Second Column -->
+<div class="col-md-4 col-lg-4 BG-Gray">
+{% include 'backend/assets-onboarding-sidebar.html' %}
+  </div>
+  <!-- End Second Column -->
+</div>
+</div>
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}

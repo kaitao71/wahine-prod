@@ -1,0 +1,160 @@
+<div class="d-none d-lg-block">
+	<!-- Form Steps / Progress Bar -->
+	<ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0 overflow-auto">
+		<!-- Step 1 -->
+		<li class="text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-bank-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="1">
+			<a class="mx-2" href="{% url 'assets-bank-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>1</span>
+				</span>
+				<div class="label text-muted">Bank Details</div>
+			</a>
+		</li>
+		<!-- Step 2 -->
+		<li class="text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-epf-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="2">
+			<a class="mx-2" href="{% url 'assets-epf-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>2</span>
+				</span>
+				<div class="label text-muted">EPF/SOCSO</div>
+			</a>
+		</li>
+		<!-- Step 3 -->
+		<li class=" text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-insurance-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="3">
+			<a class="mx-2" href="{% url 'assets-insurance-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>3</span>
+				</span>
+				<div class="label text-muted">Insurance</div>
+			</a>
+		</li>
+		<!-- Step 4 -->
+		<li class=" text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-investment-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="4">
+			<a class="mx-2" href="{% url 'assets-investment-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>4</span>
+				</span>
+				<div class="label text-muted">Investment</div>
+			</a>
+		</li>
+		<!-- Step 5 -->
+		<li class=" text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-property-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="5">
+			<a class="mx-2" href="{% url 'assets-property-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>5</span>
+				</span>
+				<div class="label text-muted">Property</div>
+			</a>
+		</li>
+		<!-- Step 6 -->
+		<li class=" text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-vehicle-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="6">
+			<a class="mx-2" href="{% url 'assets-vehicle-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>6</span>
+				</span>
+				<div class="label text-muted">Vehicles</div>
+			</a>
+		</li>
+		<!-- Step 7 -->
+		<li class=" text-center form-stepper-list {% if request.resolver_match.url_name == 'assets-other-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+			step="7">
+			<a class="mx-2" href="{% url 'assets-other-createform' %}">
+				<span class="form-stepper-circle text-muted">
+					<span>7</span>
+				</span>
+				<div class="label text-muted">Others</div>
+			</a>
+		</li>
+	</ul>
+</div>
+
+<div class="carousel Flickity d-lg-none mb-5"
+	data-flickity='{ "cellAlign": "left", "freeScroll": true,"initialIndex": ".is-initial-select", "contain": true, "prevNextButtons": false, "pageDots": false }'>
+	<div
+		class="carousel-cell  {% if request.resolver_match.url_name == 'assets-bank-createform' or request.resolver_match.url_name == 'assets-epf-createform' or request.resolver_match.url_name == 'assets-insurance-createform' %} is-initial-select {% endif %}">
+		<div
+			class="form-stepper-list {% if request.resolver_match.url_name == 'assets-bank-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-bank-createform' %}">
+				<span class="form-stepper-circle">
+					<span>1</span>
+				</span>
+				<div class="label">Bank Details</div>
+			</a>
+		</div>
+	</div>
+
+	<div class="carousel-cell ">
+		<div
+			class="form-stepper-list {% if request.resolver_match.url_name == 'assets-epf-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-epf-createform' %}">
+				<span class="form-stepper-circle">
+					<span>2</span>
+				</span>
+				<div class="label">EPF/SOCSO</div>
+			</a>
+		</div>
+	</div>
+	<div class="carousel-cell">
+		<div
+			class="form-stepper-list {% if request.resolver_match.url_name == 'assets-insurance-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-insurance-createform' %}">
+				<span class="form-stepper-circle">
+					<span>3</span>
+				</span>
+				<div class="label">Insurance</div>
+			</a>
+		</div>
+	</div>
+	<div
+		class="carousel-cell {% if request.resolver_match.url_name == 'assets-investment-createform' or request.resolver_match.url_name == 'assets-property-createform' or request.resolver_match.url_name == 'assets-vehicle-createform' %} is-initial-select {% endif %}">
+		<div
+			class="form-stepper-list {% if request.resolver_match.url_name == 'assets-investment-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-investment-createform' %}">
+				<span class="form-stepper-circle">
+					<span>4</span>
+				</span>
+				<div class="label">Investment</div>
+			</a>
+		</div>
+	</div>
+	<div
+		class="carousel-cell {% if request.resolver_match.url_name == 'assets-other-createform' %} is-initial-select {% endif %}">
+		<div
+			class="form-stepper-list {% if request.resolver_match.url_name == 'assets-property-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-property-createform' %}">
+				<span class="form-stepper-circle">
+					<span>5</span>
+				</span>
+				<div class="label">Property</div>
+			</a>
+		</div>
+	</div>
+	<div class="carousel-cell">
+		<div
+			class="form-stepper-list  {% if request.resolver_match.url_name == 'assets-vehicle-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-vehicle-createform' %}">
+				<span class="form-stepper-circle">
+					<span>6</span>
+				</span>
+				<div class="label">Vehicles</div>
+			</a>
+		</div>
+	</div>
+	<div class="carousel-cell">
+		<div
+			class="form-stepper-list {% if request.resolver_match.url_name == 'assets-other-createform' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}">
+			<a class="mx-2" href="{% url 'assets-other-createform' %}">
+				<span class="form-stepper-circle">
+					<span>7</span>
+				</span>
+				<div class="label">Others</div>
+			</a>
+		</div>
+	</div>
+</div>

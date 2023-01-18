@@ -1,0 +1,94 @@
+{% extends 'backend/base.html' %}
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+{% block extrastyle %}
+{% endblock %}
+{% block content %}
+<div class="container bg-white my-50 container-shadow">
+  <div class="row">
+    <!-- First Column -->
+    <div class="col-md-8 col-lg-8">
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-12 mx-auto pt-5">
+        <h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+        <h2 class="mb-1 Color-Secondary text-center">Assets</h2>
+        <p class="text-center">Please fill the form below to record your personal assets information. Feel free to add
+          as much detail as needed. </p>
+    </div>
+  </div>
+  <div class="row">
+  <div class="container">
+<div class="row container-shadow p-4 m-4">
+      {% include 'backend/assets-onboarding-breadcrumbs.html' %}
+  <div class="row">
+    <div class="col-12">
+        <h4 class="text-black">EPF/Socso</h4>
+              <p class="text-start">Fill in your EPF/Socso information.</p>
+            </div>
+    <!-- Yes no label -->
+    <div class="col-12 py-2">
+      <label>Do you have an EPF account?</label>
+    </div>
+                                    <!-- Start Input -->
+                                    <div class="col-3 col-lg-3 btn-radio">
+                                        <input class="unhide-form-block" type="radio" name="yesno" id="yesno" value="yes"
+                                            checked>
+                                        <label for="yesno">
+                                            <h6>Yes</h6>
+                                        </label>
+
+                                    </div>
+                                    <div class="col-3 col-lg-3 Btn-Radio">
+                                        <input class="hide-form-block" type="radio" name="yesno" id="yesno2" value="no">
+                                        <label for="yesno2">
+                                            <h6>No</h6>
+                                        </label>
+                                      </div>
+                                    </div>
+                                    <!-- End Input -->
+      <!-- Yes no label -->
+
+  <form class="form-horizontal form-block" method="POST" action="">
+    {% csrf_token %}
+    <div class="row form-row">  
+      <div class="col-4">
+        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}</label>
+        {{form.account_value}}
+        <small class="text-danger">{{ form.account_value.errors }}</small>
+      </div>
+
+      <div class="col-4">
+        <label for="{{ form.account_no.id_for_label }}">{{form.account_no.label}}</label>
+        {{form.account_no}}
+        <small class="text-danger">{{ form.account_no.errors }}</small>
+      </div>
+        <!-- End process each form fields manually -->
+
+    </div>
+    <!-- Submit Button -->
+    <div class="row spacer">
+        <div class="col-4">
+            <button type="submit" class="btn btn-block btn-primary">Create</button>
+        </div>
+    </div>
+    <!-- Submit Button -->
+  </form>
+</div>
+</div>
+  </div>
+</div>
+<!-- End First Column -->
+
+<!-- Start Second Column -->
+<div class="col-md-4 col-lg-4 BG-Gray">
+{% include 'backend/assets-onboarding-sidebar.html' %}
+  </div>
+  <!-- End Second Column -->
+</div>
+</div>
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}
