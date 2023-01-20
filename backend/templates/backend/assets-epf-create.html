@@ -34,7 +34,7 @@
       <label>Do you have an EPF account?</label>
     </div>
                                     <!-- Start Input -->
-                                    <div class="col-3 col-lg-3 btn-radio">
+                                    <div class="col-6 col-lg-3 col-md-6 col-sm-6 btn-radio">
                                         <input class="unhide-form-block" type="radio" name="yesno" id="yesno" value="yes"
                                             checked>
                                         <label for="yesno">
@@ -42,7 +42,7 @@
                                         </label>
 
                                     </div>
-                                    <div class="col-3 col-lg-3 Btn-Radio">
+                                    <div class="col-6 col-lg-3 col-md-6 col-sm-6 btn-radio">
                                         <input class="hide-form-block" type="radio" name="yesno" id="yesno2" value="no">
                                         <label for="yesno2">
                                             <h6>No</h6>
@@ -54,14 +54,14 @@
 
   <form class="form-horizontal form-block" method="POST" action="">
     {% csrf_token %}
-    <div class="row form-row">  
-      <div class="col-4">
+    <div class="row form-row py-2">  
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}</label>
         {{form.account_value}}
         <small class="text-danger">{{ form.account_value.errors }}</small>
       </div>
 
-      <div class="col-4">
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.account_no.id_for_label }}">{{form.account_no.label}}</label>
         {{form.account_no}}
         <small class="text-danger">{{ form.account_no.errors }}</small>
@@ -71,12 +71,22 @@
     </div>
     <!-- Submit Button -->
     <div class="row spacer">
-        <div class="col-4">
+        <div class="col-12">
             <button type="submit" class="btn btn-block btn-primary">Create</button>
         </div>
     </div>
+
     <!-- Submit Button -->
   </form>
+  <form class="form-horizontal hidden-form-block py-4" method="POST" action="">
+    {% csrf_token %}
+  <div class="row spacer">
+        <div class="col-12">
+            <button type="submit" id="skip" name="skip" value="skip" class="btn btn-block btn-primary">Next</button>
+        </div>
+    </div>
+  </form>
+
 </div>
 </div>
   </div>

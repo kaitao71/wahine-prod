@@ -66,12 +66,11 @@
   }
 
   .btn-radio label {
-    height: 100%;
     display: block;
     background: white;
     border: 1px solid #EFF0F7;
     border-radius: 16px;
-    padding: 3rem;
+    padding: 15px;
     text-align: center;
     box-shadow: 0px 3px 10px -2px hsl(150deg 5% 65% / 50%);
     position: relative;
@@ -80,8 +79,8 @@
 .bg-gray {
   background:;
 }
-.rtn-radio select,
-.rtn-radio input[type="text"],
+.btn-radio select,
+.btn-radio input[type="text"],
 input[type="select"] {
   width: 100%;
   height: 100%;
@@ -176,14 +175,17 @@ input[type="select"] {
 
 
   <script type="text/javascript">
+    $(".hidden-form-block").hide();
     $(document).ready(function () {
       $('.hide-form-block').click(function () {
         var inputValue = $(this).attr("value");
         if (inputValue = 'hide') {
           $('.form-block').hide(200);
+          $('.hidden-form-block').show(200);
         }
         else {
           $('.form-block').show(200);
+          $('.hidden-form-block').hide(200);
         }
 
       });
@@ -191,9 +193,11 @@ input[type="select"] {
         var inputValue = $(this).attr("value");
         if (inputValue = 'unhide') {
           $('.form-block').show(200);
+          $('.hidden-form-block').hide(200);
         }
         else {
           $('.form-block').hide(200);
+          $('.hidden-form-block').show(200);
         }
 
       });

@@ -26,6 +26,7 @@ def assets_bank_modelform(request):
             messages.success(request, "Saved successfully.")
             return redirect('assets-epf-createform')
 
+
         messages.error(request, "Please correct the errors in the form and try again.")
         return render(request,"backend/assets-bank-create.html",context)
 
@@ -36,6 +37,9 @@ def assets_bank_modelform(request):
 
 def assets_epf_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='EPF',created_by=request.user)
+            return redirect('assets-socso-createform')
         post_data = request.POST.copy()
         post_data['user'] = request.user
         form = EpfForm(post_data)
@@ -56,6 +60,9 @@ def assets_epf_modelform(request):
 
 def assets_socso_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Socso',created_by=request.user)
+            return redirect('assets-insurance-createform')
         post_data = request.POST.copy()
         post_data['user'] = request.user
         form = SocsoForm(post_data)
@@ -76,6 +83,9 @@ def assets_socso_modelform(request):
 
 def assets_insurance_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Insurance',created_by=request.user)
+            return redirect('assets-investment-createform')
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
             post_data['form-%d-user' % i] = request.user
@@ -97,6 +107,9 @@ def assets_insurance_modelform(request):
 
 def assets_investment_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Investment',created_by=request.user)
+            return redirect('assets-property-createform')
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
             post_data['form-%d-user' % i] = request.user
@@ -118,6 +131,9 @@ def assets_investment_modelform(request):
 
 def assets_property_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Property',created_by=request.user)
+            return redirect('assets-vehicle-createform')
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
             post_data['form-%d-user' % i] = request.user
@@ -139,6 +155,9 @@ def assets_property_modelform(request):
 
 def assets_vehicle_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Vehicle',created_by=request.user)
+            return redirect('assets-other-createform')
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
             post_data['form-%d-user' % i] = request.user
@@ -160,6 +179,9 @@ def assets_vehicle_modelform(request):
 
 def assets_other_modelform(request):
     if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Assets',created_by=request.user)
+            return redirect('assets-other-createform')
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
             post_data['form-%d-user' % i] = request.user

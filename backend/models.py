@@ -93,7 +93,10 @@ class Subscription(TimeStampedModel):
     plan = models.CharField(max_length=128)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_subscriptions')
 
-""" V2 Assets """
+
+
+
+""" V2 Assets & Liabilities """
 class Epf(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_epf')
@@ -102,15 +105,12 @@ class Epf(TimeStampedModel):
     account_value = models.FloatField(max_length=128,null=True,blank=True)
     nominee_name = models.CharField(max_length=128,null=True,blank=True)
 
-class Socso(TimeStampedModel):
+class Socso(TimeStampedModel): 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_socso')
     created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
     account_no = models.CharField(max_length=128)
     nominee_name = models.CharField(max_length=128,null=True,blank=True)
-
-
-
 
 class Bank(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -165,7 +165,11 @@ class OtherAsset(TimeStampedModel):
     created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=128)
     value = models.FloatField(max_length=128,null=True,blank=True)
-""" V2 Assets """
+
+
+""" V2 Assets & Liabilities """
+
+
 
 
 

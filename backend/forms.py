@@ -102,6 +102,28 @@ INSURANCE_PROVIDER_CHOICES = [
         ('Zurich Takaful Malaysia Berhad','Zurich Takaful Malaysia Berhad'),
     ]
 
+RESIDENTIAL_TYPE_CHOICES = [
+        ('Landed','Landed'),
+        ('Condominium','Condominium'),
+        ('Shop Lot','Shop Lot'),
+        ('Factory','Factory'),
+        ('Residential','Residential'),
+        ('Commercial','Commercial'),
+    ]
+
+INSURANCE_TYPE_CHOICES = [
+        ('Life', 'Life'),
+        ('Medical', 'Medical'),
+        ('General', 'General'),
+    ]
+
+
+GENDER_CHOICES = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Prefer not to respond', 'Prefer not to respond'),
+    ]
+
 BankModelFormset = modelformset_factory(
     Bank,
     fields=('account_type',
@@ -129,12 +151,6 @@ BankModelFormset = modelformset_factory(
     ,
     }
 )
-
-INSURANCE_TYPE_CHOICES = [
-        ('Life', 'Life'),
-        ('Medical', 'Medical'),
-        ('General', 'General'),
-    ]
 
 InsuranceModelFormset = modelformset_factory(
     Insurance,
@@ -219,13 +235,13 @@ PropertyModelFormset = modelformset_factory(
     widgets={
         'property_type': forms.RadioSelect(choices=PROPERTY_TYPE_CHOICES,attrs={
         }),
-        'residential_type': forms.TextInput(attrs={
+        'residential_type': forms.Select(choices=RESIDENTIAL_TYPE_CHOICES,attrs={
             'class': 'form-control',
             'placeholder': 'Enter residential type here'
         }),
         'address': forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter address. here'
+            'placeholder': 'Enter address here'
         }),
         'state': forms.TextInput(attrs={
             'class': 'form-control',
@@ -256,15 +272,17 @@ VehicleModelFormset = modelformset_factory(
             ),
     extra=1,
     widgets={
-        'vehicle_type': forms.RadioSelect(choices=VEHICLE_TYPE_CHOICES,attrs={
+        'vehicle_type': forms.Select(choices=VEHICLE_TYPE_CHOICES,attrs={
+            'class': 'form-control',
+            'placeholder': 'Select a vehicle type',
         }),
         'registration_no': forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter residential type here'
+            'placeholder': 'Enter registration no here'
         }),
         'make_model': forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter address here'
+            'placeholder': 'Enter make model here'
         }),
     }
 )
@@ -289,22 +307,39 @@ OtherAssetModelFormset = modelformset_factory(
     }
 )
 
-GENDER_CHOICES = [
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Prefer not to respond', 'Prefer not to respond'),
-    ]
-
 class EpfForm(forms.ModelForm):
     class Meta:
         model = Epf
-        fields = ['account_no','account_value','nominee_name',]
+        fields = ['account_no','account_value','nominee_name','user']
+        widgets={
+            'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+            'account_value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+            'nominee_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter nominee name here'
+        }),
+        }
 
 class SocsoForm(forms.ModelForm):
     class Meta:
         model = Socso
-        fields = ['account_no','nominee_name',]
-
+        fields = ['account_no','nominee_name','user']
+        widgets={
+            'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+            'nominee_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter nominee name here'
+        }),
+        }
 class BankForm(forms.ModelForm):
     class Meta:
         model = Bank

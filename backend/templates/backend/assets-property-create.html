@@ -26,7 +26,7 @@
       {% include 'backend/assets-onboarding-breadcrumbs.html' %}
   <div class="row">
     <div class="col-12">
-        <h4 class="text-black">Insurance</h4>
+        <h4 class="text-black">Property</h4>
               <p class="text-start">Fill in your Property information.</p>
             </div>
     <!-- Yes no label -->
@@ -34,7 +34,7 @@
       <label>Do you have property?</label>
     </div>
                                     <!-- Start Input -->
-                                    <div class="col-3 col-lg-3 btn-radio">
+                                    <div class="col-6 col-lg-3 col-md-6 col-sm-6 btn-radio">
                                         <input class="unhide-form-block" type="radio" name="yesno" id="yesno" value="yes"
                                             checked>
                                         <label for="yesno">
@@ -42,7 +42,7 @@
                                         </label>
 
                                     </div>
-                                    <div class="col-3 col-lg-3 Btn-Radio">
+                                    <div class="col-6 col-lg-3 col-md-6 col-sm-6 btn-radio">
                                         <input class="hide-form-block" type="radio" name="yesno" id="yesno2" value="no">
                                         <label for="yesno2">
                                             <h6>No</h6>
@@ -59,10 +59,10 @@
     <div class="row form-row">
       <div class="col-12 py-2">
         <label class="py-2">{{form.property_type.label}}</label>
-        <div class="input-group Btn-Radio">
+        <div class="input-group">
         {% for radio in form.property_type %}
         <!-- Process each form fields manually -->
-         <div class="px-2">
+         <div class="col-4 col-lg-3 col-md-6 col-sm-6 btn-radio px-1">
             {{radio.tag}}
             <label for="{{ radio.id_for_label }}">{{ radio.choice_label }}</label>
           </div>
@@ -72,29 +72,29 @@
         
       </div>
         
-      <div class="col-6">
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.residential_type.id_for_label }}">{{form.residential_type.label}}</label>
         {{form.residential_type}}
         <small class="text-danger">{{ form.residential_type.errors }}</small>
       </div>
 
-      <div class="col-6">
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.address.id_for_label }}">{{form.address.label}}</label>
         {{form.address}}
         <small class="text-danger">{{ form.address.errors }}</small>
       </div>
 
-      <div class="col-6">
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.state.id_for_label }}">{{form.state.label}}</label>
         {{form.state}}
         <small class="text-danger">{{ form.state.errors }}</small>
       </div>
-<div class="col-6">
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.postcode.id_for_label }}">{{form.postcode.label}}</label>
         {{form.postcode}}
         <small class="text-danger">{{ form.postcode.errors }}</small>
       </div>
-<div class="col-6">
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
         <label for="{{ form.titleno.id_for_label }}">{{form.titleno.label}}</label>
         {{form.titleno}}
         <small class="text-danger">{{ form.postcode.titleno.errors }}</small>
@@ -102,7 +102,7 @@
         <!-- End process each form fields manually -->
 
         <!-- Add/remove additional forms-->
-      <div class="col-1 d-flex py-2">
+      <div class="col-12 d-flex py-2">
         {% if forloop.last %}
           <button class="btn btn-success add-form-row mt-auto">Add</button>
         {% else %}
@@ -115,11 +115,19 @@
     {% endfor %}
     <!-- Submit Button -->
     <div class="row spacer">
-        <div class="col-4">
+        <div class="col-12">
             <button type="submit" class="btn btn-block btn-primary">Create</button>
         </div>
     </div>
     <!-- Submit Button -->
+  </form>
+<form class="form-horizontal hidden-form-block py-4" method="POST" action="">
+    {% csrf_token %}
+  <div class="row spacer">
+        <div class="col-12">
+            <button type="submit" id="skip" name="skip" value="skip" class="btn btn-block btn-primary">Next</button>
+        </div>
+    </div>
   </form>
 </div>
 </div>
