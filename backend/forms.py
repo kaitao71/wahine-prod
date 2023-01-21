@@ -6,6 +6,8 @@ from django.forms import modelformset_factory, inlineformset_factory
 # from dal import autocomplete
 from django.contrib.auth import get_user_model
 
+""" Beginning of V2 Forms """
+
 ACCOUNT_TYPE_CHOICES = [
         ('Saving Account', 'Saving Account'),
         ('Current Account', 'Current Account'),
@@ -340,6 +342,133 @@ class SocsoForm(forms.ModelForm):
             'placeholder': 'Enter nominee name here'
         }),
         }
+
+
+CreditCardModelFormset = modelformset_factory(
+    CreditCard,
+    fields=(
+            'bank_name',
+            'account_no',
+            'amount_outstanding',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'amount_outstanding': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter amount outstanding here'
+        }),
+    }
+)
+
+PersonalLoanModelFormset = modelformset_factory(
+    PersonalLoan,
+    fields=(
+            'bank_name',
+            'account_no',
+            'amount_outstanding',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'amount_outstanding': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter amount outstanding here'
+        }),
+        'loan_tenure': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter loan tenure here'
+        }),
+    }
+)
+
+VehicleLoanModelFormset = modelformset_factory(
+    VehicleLoan,
+    fields=(
+            'bank_name',
+            'account_no',
+            'amount_outstanding',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'amount_outstanding': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter amount outstanding here'
+        }),
+        'loan_tenure': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter loan tenure here'
+        }),
+    }
+)
+
+PropertyLoanModelFormset = modelformset_factory(
+    PropertyLoan,
+    fields=(
+            'bank_name',
+            'account_no',
+            'amount_outstanding',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'amount_outstanding': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter amount outstanding here'
+        }),
+        'loan_tenure': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter loan tenure here'
+        }),
+    }
+)
+
+OtherLiabilityModelFormset = modelformset_factory(
+    OtherLiability,
+    fields=('name',
+            'value',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter liability name here'
+        }),
+        'value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter liability value here'
+        }),
+    }
+)
+""" End of V2 Forms """  
+
+
 class BankForm(forms.ModelForm):
     class Meta:
         model = Bank
