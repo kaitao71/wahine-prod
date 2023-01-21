@@ -25,6 +25,12 @@ urlpatterns = [
 	path("v2/assets/vehicle",assets_vehicle_modelform,name="assets-vehicle-createform"),
 	path("v2/assets/others",assets_other_modelform,name="assets-other-createform"),
 
+	path("v2/liabilities/creditcard",liabilities_creditcard_modelform,name="liabilities-creditcard-createform"),
+	path("v2/liabilities/personalloan",personalloan_modelform,name="liabilities-personalloan-createform"),
+	path("v2/liabilities/vehicle",liabilities_vehicle_modelform,name="liabilities-vehicle-createform"),
+	path("v2/liabilities/property",liabilities_property_modelform,name="liabilities-property-createform"),
+	path("v2/liabilities/others",liabilities_other_modelform,name="liabilities-other-createform"),
+
 	path("",index,name="index"),
 	path("joinnow",joinnow,name="joinnow"),
 	path("whoweare/",whoweare,name="whoweare"),

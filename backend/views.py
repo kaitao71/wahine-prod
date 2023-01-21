@@ -201,6 +201,126 @@ def assets_other_modelform(request):
     context = {'formset':formset}
     return render(request,"backend/assets-other-create.html",context)
 
+def liabilities_creditcard_modelform(request):
+    if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Credit Card',created_by=request.user)
+            return redirect('liabilities-personalloan-createform')
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = CreditCardModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('liabilities-personalloan-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/liabilities-creditcard-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = CreditCardModelFormset(queryset=CreditCard.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/liabilities-creditcard-create.html",context)
+
+def liabilities_personalloan_modelform(request):
+    if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Personal Loan',created_by=request.user)
+            return redirect('liabilities-vehicleloan-createform')
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = PersonalLoanModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('liabilities-vehicleloan-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/liabilities-vehicleloan-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = PersonalLoanModelFormset(queryset=PersonalLoan.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/liabilities-personalloan-create.html",context)
+
+def liabilities_vehicleloan_modelform(request):
+    if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Vehicle Loan',created_by=request.user)
+            return redirect('liabilities-propertyloan-createform')
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = VehicleLoanModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('liabilities-propertyloan-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/liabilities-propertyloan-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = VehicleLoanModelFormset(queryset=VehicleLoan.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/liabilities-vehicleloan-create.html",context)
+
+def liabilities_propertyloan_modelform(request):
+    if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Property Loan',created_by=request.user)
+            return redirect('liabilities-other-createform')
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = PropertyLoanModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('liabilities-other-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/liabilities-other-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = PropertyLoanModelFormset(queryset=PropertyLoan.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/liabilities-propertyloan-create.html",context)
+
+def liabilities_other_modelform(request):
+    if request.method == 'POST':
+        if 'skip' in request.POST:
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Liabilities',created_by=request.user)
+            return redirect('liabilities-other-createform')
+        post_data = request.POST.copy()
+        for i in range(int(post_data['form-TOTAL_FORMS'])):
+            post_data['form-%d-user' % i] = request.user
+        formset = OtherLiabilityModelFormset(post_data)
+        context = {'formset':formset}
+
+        if formset.is_valid():
+            formset.save()
+            messages.success(request, "Saved successfully.")
+            return redirect('liabilities-other-createform')
+
+        messages.error(request, "Please correct the errors in the form and try again.")
+        return render(request,"backend/liabilities-other-create.html",context)
+
+    # we don't want to display the already saved model instances
+    formset = OtherLiabilityModelFormset(queryset=OtherLiability.objects.none())
+    context = {'formset':formset}
+    return render(request,"backend/liabilities-other-create.html",context)
+
 
 
 def formset_testview(request):
