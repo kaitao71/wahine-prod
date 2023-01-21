@@ -354,7 +354,9 @@ CreditCardModelFormset = modelformset_factory(
             ),
     extra=1,
     widgets={
-        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        'bank_name': forms.Select(choices=BANK_NAME_CHOICES,attrs={
+            'class': 'form-control',
+            'placeholder': 'Select a bank',
         }),
         'account_no': forms.TextInput(attrs={
             'class': 'form-control',
@@ -377,7 +379,9 @@ PersonalLoanModelFormset = modelformset_factory(
             ),
     extra=1,
     widgets={
-        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        'bank_name': forms.Select(choices=BANK_NAME_CHOICES,attrs={
+            'class': 'form-control',
+            'placeholder': 'Select a bank',
         }),
         'account_no': forms.TextInput(attrs={
             'class': 'form-control',
@@ -404,7 +408,9 @@ VehicleLoanModelFormset = modelformset_factory(
             ),
     extra=1,
     widgets={
-        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        'bank_name': forms.Select(choices=BANK_NAME_CHOICES,attrs={
+            'class': 'form-control',
+            'placeholder': 'Select a bank',
         }),
         'account_no': forms.TextInput(attrs={
             'class': 'form-control',
@@ -431,7 +437,9 @@ PropertyLoanModelFormset = modelformset_factory(
             ),
     extra=1,
     widgets={
-        'bank_name': forms.RadioSelect(choices=BANK_NAME_CHOICES,attrs={
+        'bank_name': forms.Select(choices=BANK_NAME_CHOICES,attrs={
+            'class': 'form-control',
+            'placeholder': 'Select a bank',
         }),
         'account_no': forms.TextInput(attrs={
             'class': 'form-control',
