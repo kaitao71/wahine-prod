@@ -13,9 +13,9 @@ import datetime
 ## IF data exist, show existing data/edit mode
 ## If fields can have multiple entry (eg policy), show no of policies
 def load_residential_type(request):
-    country_id = request.GET.get('property_type')
-    cities = City.objects.filter(country_id=country_id).order_by('name')
-    return render(request, 'backend/residential_type_dropdown_list_options.html', {'cities': cities})
+    property_type = request.GET.get('property_type')
+    residential_types = ResidentialType.objects.filter(property_type__name=property_type).order_by('name')
+    return render(request, 'backend/residential-type-dropdown-list.html', {'residential_types': residential_types})
 
 def assets_bank_modelform(request):
     if request.method == 'POST':

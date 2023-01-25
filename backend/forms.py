@@ -234,6 +234,13 @@ PROPERTY_TYPE_CHOICES = [
         ('Land', 'Land'),
     ]
 
+def load_property_type(request):
+    ## Todo
+    ## Create a model for the dropdown instead of a fixed list
+    country_id = request.GET.get('country')
+    cities = City.objects.filter(country_id=country_id).order_by('name')
+    return render(request, 'hr/city_dropdown_list_options.html', {'cities': cities})
+
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
@@ -247,8 +254,9 @@ class PropertyForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['residential_type'].widget = forms.Select(choices=PROPERTY_TYPE_CHOICES)
+        # self.fields['residential_type'].widget = forms.Select(choices=PROPERTY_TYPE_CHOICES)
         self.fields['residential_type'].widget.attrs['class'] = 'form-control'
+        self.fields['residential_type'].queryset = ResidentialType.objects.none()
 
 
 PropertyModelFormset = modelformset_factory(
@@ -265,8 +273,8 @@ PropertyModelFormset = modelformset_factory(
     widgets={
         'property_type': forms.RadioSelect(choices=PROPERTY_TYPE_CHOICES,attrs={
         }),
-        'residential_type': forms.Select(choices=RESIDENTIAL_TYPE_CHOICES,attrs={
-            'class': 'form-control',
+        'residential_type': forms.Select(choices=ResidentialType.objects.none(),attrs={
+            # 'class': 'form-control',
             'placeholder': 'Enter residential type here'
         }),
         'address': forms.TextInput(attrs={
