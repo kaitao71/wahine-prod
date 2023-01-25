@@ -208,6 +208,21 @@ class OtherLiability(TimeStampedModel):
     name = models.CharField(max_length=128)
     value = models.FloatField(max_length=128,null=True,blank=True)
 
+
+## Property 
+class PropertyType(TimeStampedModel):
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
+
+class ResidentialType(TimeStampedModel):
+    property_type = models.ForeignKey('backend.PropertyType',on_delete=models.CASCADE)
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return self.name
+
 """ V2 Assets & Liabilities """
 
 

@@ -12,6 +12,10 @@ import datetime
 ## TODO
 ## IF data exist, show existing data/edit mode
 ## If fields can have multiple entry (eg policy), show no of policies
+def load_residential_type(request):
+    country_id = request.GET.get('property_type')
+    cities = City.objects.filter(country_id=country_id).order_by('name')
+    return render(request, 'backend/residential_type_dropdown_list_options.html', {'cities': cities})
 
 def assets_bank_modelform(request):
     if request.method == 'POST':
@@ -39,6 +43,9 @@ def assets_epf_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='EPF',created_by=request.user)
+            if item:
+                return redirect('assets-socso-createform')
+            item = Item.objects.create(user=request.user,data={'nodata':True},item_type='EPF',created_by=request.user)
             return redirect('assets-socso-createform')
         post_data = request.POST.copy()
         post_data['user'] = request.user
@@ -61,6 +68,9 @@ def assets_epf_modelform(request):
 def assets_socso_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Socso',created_by=request.user)
+            if item:
+                return redirect('assets-insurance-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Socso',created_by=request.user)
             return redirect('assets-insurance-createform')
         post_data = request.POST.copy()
@@ -84,6 +94,9 @@ def assets_socso_modelform(request):
 def assets_insurance_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Insurance',created_by=request.user)
+            if item:
+                return redirect('assets-investment-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Insurance',created_by=request.user)
             return redirect('assets-investment-createform')
         post_data = request.POST.copy()
@@ -108,6 +121,9 @@ def assets_insurance_modelform(request):
 def assets_investment_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Investment',created_by=request.user)
+            if item:
+                return redirect('assets-property-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Investment',created_by=request.user)
             return redirect('assets-property-createform')
         post_data = request.POST.copy()
@@ -132,6 +148,9 @@ def assets_investment_modelform(request):
 def assets_property_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Property',created_by=request.user)
+            if item:
+                return redirect('assets-vehicle-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Property',created_by=request.user)
             return redirect('assets-vehicle-createform')
         post_data = request.POST.copy()
@@ -156,6 +175,9 @@ def assets_property_modelform(request):
 def assets_vehicle_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Vehicle',created_by=request.user)
+            if item:
+                return redirect('assets-other-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Vehicle',created_by=request.user)
             return redirect('assets-other-createform')
         post_data = request.POST.copy()
@@ -180,6 +202,9 @@ def assets_vehicle_modelform(request):
 def assets_other_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Other Assets',created_by=request.user)
+            if item:
+                return redirect('assets-other-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Assets',created_by=request.user)
             return redirect('assets-other-createform')
         post_data = request.POST.copy()
@@ -204,6 +229,9 @@ def assets_other_modelform(request):
 def liabilities_creditcard_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Credit Card',created_by=request.user)
+            if item:
+                return redirect('liabilities-personalloan-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Credit Card',created_by=request.user)
             return redirect('liabilities-personalloan-createform')
         post_data = request.POST.copy()
@@ -228,6 +256,9 @@ def liabilities_creditcard_modelform(request):
 def liabilities_personalloan_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Personal Loan',created_by=request.user)
+            if item:
+                return redirect('liabilities-vehicleloan-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Personal Loan',created_by=request.user)
             return redirect('liabilities-vehicleloan-createform')
         post_data = request.POST.copy()
@@ -252,6 +283,9 @@ def liabilities_personalloan_modelform(request):
 def liabilities_vehicleloan_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Vehicle Loan',created_by=request.user)
+            if item:
+                return redirect('liabilities-propertyloan-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Vehicle Loan',created_by=request.user)
             return redirect('liabilities-propertyloan-createform')
         post_data = request.POST.copy()
@@ -276,6 +310,9 @@ def liabilities_vehicleloan_modelform(request):
 def liabilities_propertyloan_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Property Loan',created_by=request.user)
+            if item:
+                return redirect('liabilities-other-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Property Loan',created_by=request.user)
             return redirect('liabilities-other-createform')
         post_data = request.POST.copy()
@@ -300,6 +337,9 @@ def liabilities_propertyloan_modelform(request):
 def liabilities_other_modelform(request):
     if request.method == 'POST':
         if 'skip' in request.POST:
+            item = Item.objects.get(user=request.user,data={'nodata':True},item_type='Other Liabilities',created_by=request.user)
+            if item:
+                return redirect('liabilities-other-createform')
             item = Item.objects.create(user=request.user,data={'nodata':True},item_type='Other Liabilities',created_by=request.user)
             return redirect('liabilities-other-createform')
         post_data = request.POST.copy()
@@ -321,7 +361,41 @@ def liabilities_other_modelform(request):
     context = {'formset':formset}
     return render(request,"backend/liabilities-other-create.html",context)
 
+def assets_overview_v2(request):
+    user = request.user
+    """ Check if user skipped form"""
+    items = Item.objects.filter(user=user)
+    banks = items.filter(item_type='Bank Account').last()
+    epf_socso = items.filter(item_type='EPF Socso').last()
+    insurances = items.filter(item_type='Insurance').last()
+    investments = items.filter(item_type='Investment').last()
+    properties = items.filter(item_type='Property').last()
+    vehicles = items.filter(item_type='Vehicle').last()
+    others = items.filter(item_type='Other Assets').last()
+    """ Check if user skipped form"""
 
+
+
+    context = {'items':items,'banks':banks,'epf_socso':epf_socso,'insurances':insurances,'investments':investments,'vehicles':vehicles,'properties':properties,'others':others}
+    return render(request,'backend/assets-overview.html',context)
+
+class ItemUpdateView(UpdateView):
+    model = Item
+    fields = ['data']
+    template_name_suffix = '_update_form'
+
+def liabilities_overview_v2(request):
+    user = request.user
+    items = Item.objects.filter(user=user)
+    creditcard = items.filter(item_type='Credit Card').last()
+    personalloan = items.filter(item_type='Personal Loan').last()
+    vehicleloan = items.filter(item_type='Vehicle Loan').last()
+    propertyloan = items.filter(item_type='Property Loan').last()
+    others_liabilities = items.filter(item_type='Other Liabilities').last()
+    context = {'items':items,'creditcard':creditcard,'personalloan':personalloan,'vehicleloan':vehicleloan,'propertyloan':propertyloan,'others_liabilities':others_liabilities}
+    return render(request,'backend/liabilities-overview.html',context)
+
+"""End V2 """
 
 def formset_testview(request):
     BankFormSet = modelformset_factory(BankForm,extra=5)

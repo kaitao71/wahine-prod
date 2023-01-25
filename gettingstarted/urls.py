@@ -31,6 +31,11 @@ urlpatterns = [
 	path("v2/liabilities/property",liabilities_propertyloan_modelform,name="liabilities-propertyloan-createform"),
 	path("v2/liabilities/others",liabilities_other_modelform,name="liabilities-other-createform"),
 
+	path("v2/assets/overview",assets_overview_v2,name="assets-overview"),
+	path("v2/liabilities/overview",liabilities_overview_v2,name="liabilities-overview"),
+
+    path('ajax/load-residential-type/', load_residential_type, name='ajax_load_residential_type'),
+
 	path("",index,name="index"),
 	path("joinnow",joinnow,name="joinnow"),
 	path("whoweare/",whoweare,name="whoweare"),

@@ -7,6 +7,15 @@ from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib.auth import get_user_model
 
 """ Beginning of V2 Forms """
+from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
+def validate_ic_length(value):
+    if value.length != 12:
+        raise ValidationError(
+            _('%(value)s is not of length 12'),
+            params={'value': value},
+        )
 
 ACCOUNT_TYPE_CHOICES = [
         ('Saving Account', 'Saving Account'),
@@ -217,14 +226,33 @@ InsuranceModelFormset = modelformset_factory(
 #     }
 # )
 
+from django.forms import BaseModelFormSet
+
 PROPERTY_TYPE_CHOICES = [
         ('Residential', 'Residential'),
         ('Commercial', 'Commercial'),
         ('Land', 'Land'),
     ]
 
+class PropertyForm(forms.ModelForm):
+    class Meta:
+        model = Property
+        fields = ['property_type',
+            'residential_type',
+            'address',
+            'state',
+            'postcode',
+            'titleno',
+            'user']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['residential_type'].widget = forms.Select(choices=PROPERTY_TYPE_CHOICES)
+        self.fields['residential_type'].widget.attrs['class'] = 'form-control'
+
+
 PropertyModelFormset = modelformset_factory(
-    Property,
+    Property,form=PropertyForm,
     fields=('property_type',
             'residential_type',
             'address',
@@ -335,7 +363,7 @@ class SocsoForm(forms.ModelForm):
         widgets={
             'account_no': forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter account value here'
+            'placeholder': '900101100101'
         }),
             'nominee_name': forms.TextInput(attrs={
             'class': 'form-control',
@@ -343,6 +371,14 @@ class SocsoForm(forms.ModelForm):
         }),
         }
 
+    def clean_account_no(self):
+        account_no = str(self.cleaned_data.get('account_no', False))
+        if len(account_no) !=12:
+            raise ValidationError(
+                _('Account no should be 12 characters long'),
+                params={'account_no': account_no},
+            )
+        return account_no
 
 CreditCardModelFormset = modelformset_factory(
     CreditCard,
@@ -454,6 +490,7 @@ PropertyLoanModelFormset = modelformset_factory(
             'placeholder': 'Enter loan tenure here'
         }),
     }
+
 )
 
 OtherLiabilityModelFormset = modelformset_factory(
