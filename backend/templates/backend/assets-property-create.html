@@ -145,10 +145,10 @@
  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
   <script>
-    $("#id_form-0-property_type_0").change(function () {
+    $("#id_form-0-property_type_0 , #id_form-0-property_type_1 , #id_form-0-property_type_2").change(function () {
       var url = $("#propertyForm").attr("data-residential-type-url");  // get the url of the `load_cities` view
       var property_type = $(this).val();  // get the selected property ID from the HTML input
-
+      console.log("triggered")
       $.ajax({                       // initialize an AJAX request
         url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
         data: {
@@ -156,6 +156,24 @@
         },
         success: function (data) {   // `data` is the return of the `load_cities` view function
           $("#id_form-0-residential_type").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script><script>
+    $(document).on("change","#id_form-1-property_type_0 , #id_form-1-property_type_1 , #id_form-1-property_type_2", function () {
+      var url2 = $("#propertyForm").attr("data-residential-type-url");  // get the url of the `load_cities` view
+      var property_type2 = $(this).val();  // get the selected property ID from the HTML input
+      console.log("triggered 2")
+      $.ajax({                       // initialize an AJAX request
+        url: url2,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'property_type': property_type2      // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_form-1-residential_type_0").html(data);
+          $("#id_form-1-residential_type").html(data);
+            // replace the contents of the city input with the data that came from the server
         }
       });
 
