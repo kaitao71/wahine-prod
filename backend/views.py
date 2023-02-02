@@ -22,8 +22,11 @@ def assets_bank_modelform(request):
         post_data = request.POST.copy()
         for i in range(int(post_data['form-TOTAL_FORMS'])):
             post_data['form-%d-user' % i] = request.user
+        print(post_data)
         formset = BankModelFormset(post_data)
         context = {'formset':formset}
+        print(formset.errors)
+        print(formset)
 
         if formset.is_valid():
             formset.save()
@@ -32,6 +35,7 @@ def assets_bank_modelform(request):
 
 
         messages.error(request, "Please correct the errors in the form and try again.")
+        print(formset.errors)
         return render(request,"backend/assets-bank-create.html",context)
 
     # we don't want to display the already saved model instances
@@ -165,6 +169,7 @@ def assets_property_modelform(request):
             return redirect('assets-vehicle-createform')
 
         messages.error(request, "Please correct the errors in the form and try again.")
+        print(formset.errors)
         return render(request,"backend/assets-property-create.html",context)
 
     # we don't want to display the already saved model instances

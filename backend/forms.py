@@ -234,13 +234,6 @@ PROPERTY_TYPE_CHOICES = [
         ('Land', 'Land'),
     ]
 
-def load_property_type(request):
-    ## Todo
-    ## Create a model for the dropdown instead of a fixed list
-    country_id = request.GET.get('country')
-    cities = City.objects.filter(country_id=country_id).order_by('name')
-    return render(request, 'hr/city_dropdown_list_options.html', {'cities': cities})
-
 class PropertyForm(forms.ModelForm):
     class Meta:
         model = Property
@@ -258,6 +251,14 @@ class PropertyForm(forms.ModelForm):
         self.fields['residential_type'].widget.attrs['class'] = 'form-control'
         self.fields['residential_type'].queryset = ResidentialType.objects.none()
 
+        if 'property_type' in self.data:
+            try:
+                property_type_id = int(self.data.get('property_type'))
+                self.fields['residential_type'].queryset = PropertyType.objects.filter(property_type_id=property_type_id).order_by('name')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        elif self.instance.pk:
+            self.fields['residential_type'].queryset = self.instance.property_type.residential_type_set.order_by('name')
 
 PropertyModelFormset = modelformset_factory(
     Property,form=PropertyForm,
