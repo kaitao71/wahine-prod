@@ -47,6 +47,7 @@ urlpatterns = [
 	path("signup/",signup,name="signup"),
 	path("login/",login_view,name="login"),
 	path("plan/",selectplan,name="plan"),
+	path("faq/",faq,name="faq"),
 	path("dashboard/",dashboard,name="dashboard"),
 	path("logout/",logout_view,name="logout"),
 	## Onboarding Assets 

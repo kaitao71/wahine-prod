@@ -438,6 +438,9 @@ def index(request):
 def whoweare(request):
     return render(request,'backend/who-we-are.html')
 
+def faq(request):
+    return render(request,'backend/faq.html')
+
 def joinnow(request):
     return render(request,'backend/joinnow.html')
 

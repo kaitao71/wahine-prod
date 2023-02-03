@@ -1,0 +1,122 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<body>
+   
+    <!-- Hero Banner -->
+
+    <!-- Section 2 -->
+    <div class="container mt-5 pb-3">
+
+        <br>
+        <div class="row">
+            <div class="col-10 text-center mx-auto p-5">
+                <h4 class="Color-Secondary">WAHINE COMMON FAQS</h4><br>
+                <h2 class="text-black">What We Need To Know
+                </h2><br>
+                <p class="text-center text-black">Frequently Asked Questions</p><br>
+              
+            </div>
+        </div>
+    </div>
+
+    <!-- Question 1 & 2 -->
+    <div class="container-fluid Bg-Primary Section" id="whatiswvault">
+        <div class="row align-items-center Relative-P ">
+            <div class="col-6 col-lg-2 d-none d-lg-block"  style="margin-left: -100px"><img
+                    src="https://wahine.s3.amazonaws.com/static/Vector_Irregular-Navy.png" alt=""></div>
+
+            <div class="col-lg-10 text-center text-lg-start mt-5">
+                <h4 class="text-black">What is a Digital Vault?</h4><br><br>
+                <p class="text-black text-center text-lg-start"> Digital vaults are simply a digital safebox. It is a great way to secure and manage your digital assets
+                    and digital copies of your important stuff in an increasingly digital world. They provide a secure and
+                    centralized location for storing documents, passwords, and other sensitive information, protecting
+                    against data breaches and compliance violations.
+                    
+                    Our digital vault solution, W Vault is designed to simplify your life. In addition to storing important
+                    information, there is also a dashboard that will allow you to see, track and assess your important
+                    information and notify the necessary people at the right time.
+                </p>
+                <br>
+                <br><br>
+                <h4 class="text-black">What is the difference between notifier and access list?</h4><br><br>
+                <p class="text-black text-center text-lg-start"> This is an added value feature of W
+                    Vault where we have differentiated between the two. Who can be a notifier? A notifier is
+                    anyone you have identified as the person who will get in touch with us should a trigger
+                    event happen such as death, disability, mental incapacity and so on. She or he could be
+                    your lawyer, a family member, your best friend or any other trusted person. When we have
+                    verified the notifier and the trigger event, we will then provide access of all the information
+                    you have stored on W Vault to the people on your access list. Your access list individuals
+                    will most likely be your loved ones.
+                </p>
+                <br>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <!-- Question 3 & 4 --> 
+    <div class="container-fluid mb-5 Bg-Primary Section9 mb-lg-0"  id="whatiswvault">
+        <div class="row align-items-center Relative-P ">
+            <div class="col-6 col-lg-2 d-none d-lg-block" style="margin-left: -100px"><img
+                src="https://wahine.s3.amazonaws.com/static/Vector_Irregular-Navy.png" alt="" style="filter:invert(100%)"></div>
+
+            <div class="col-lg-10 text-center text-lg-start mt-5 ">
+                
+                <h4 class="text-white">Is W Vault only for women?</h4><br><br>
+                <p class="text-white text-center text-lg-start"> Definitely not! Our focus is women. For the simple reason that women are more financially
+                    made vulnerable during unplanned life events such as divorce, illness, death. Women are
+                    generally less financially literate, women are less likely to own the family assets and so on.
+                    So, we believe it is crucial women are made aware of risks they face if they don’t plan ahead
+                    and think about their long term financial security. BUT of course, it is important that we
+                    have the men on board. Because they are our partners, our fathers, our sons, our brothers
+                    and very much a part of our lives. So, we welcome both men and women, young and old to
+                    subscribe to W Vault.
+                </p>
+                <br>
+                <br><br>
+                <h4 class="text-white">How safe is my information in W Vault?</h4><br><br>
+                <p class="text-white text-center text-lg-start">We know that privacy and data security is something that all of us are very concerned
+                    about. And rightly so. We completely understand that sharing of your personal information
+                    is difficult. Which is why we have ensured, even at the earliest stage of our product
+                    development, that all information is SSL encrypted and that regular penetration testing is
+                    conducted to ensure that your data is as safe as it can be, based on the best practices that is
+                    technologically available at this time.
+                </p>
+                <br><br>
+            </div>
+
+            
+        </div>
+
+    </div>
+
+     <!-- Security   -->
+     <div class="container-fluid bg-light pt-5 pb-5 px-5" id="security">
+        <div class="row">
+            <div class="col-lg-8 pt-5" style="">
+                <h3 class="border-0 p-0">W Vault Security</h3>
+                <br>
+                <p class="text-black">We take security and your data privacy seriously. We are working towards
+                    ensuring that we meet
+                    banking standard security. We will be conducting periodic penetration testing to ensure that our
+                    security levels are always on guard, because your security concern is ours too.
+                </p>
+                <a class="btn Btn-Secondary" href="{% url 'signup' %}" role="button">Begin For Free</a>
+                
+            </div>
+            <div class="col-lg-4">
+                <img src="https://wahine.s3.amazonaws.com/static/css/Img-Security.png" alt=""
+                    style="max-height:350px ;">
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+{% endblock %}
