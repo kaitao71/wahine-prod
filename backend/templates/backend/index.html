@@ -7,16 +7,17 @@
 <div class="HeroBanner">
   <div class="cont">
     <div class="row flex w-75 mx-auto">
-      <div class="col-lg-7 col-sm-12">
+      <div class="col-lg-10 col-sm-12">
         <hr class="d-none d-lg-block" style="height:30pt; visibility:hidden;" />
         <hr class="d-lg-none" style="height:50pt; visibility:hidden;" />
-        <h2 class="lh-sm text-white">Meet W, the only digital vault designed for women by
-women</h2>
+        <h2 class="lh-sm text-white">Meet W Vault, your personal digital life manager designed for women by women</h2>
         <br>
+          
+        <a class="text-white p-0 pb-3 z-3" href="{% url 'joinnow' %}">
+          <span style="text-transform: capitalize;"><small>Click here to find out more about W Vault.</small></span> 
+        </a>
 
-        <p class="text-white"><small>So, you can start creating that secure future you want
-for yourself and your family.</small> </p>
-        <a class="btn Btn-Primary" href="{% url 'signup' %}" role="button">Begin For Free</a>
+        <a class="btn Btn-Primary position-relative z-3" href="{% url 'joinnow' %}" role="button">Begin For Free</a>
 
       </div>
 
@@ -36,7 +37,7 @@ for yourself and your family.</small> </p>
   <div class="row">
     <div class="BG-Blue flex pb-4">
       {% load static %}
-      <img class="Image-Centered img-fluid" src="https://wahine.s3.amazonaws.com/static/Img-Screenshot-Desktop3.svg"
+      <img class="Image-Centered img-fluid" src="https://wahine.s3.amazonaws.com/static/Img-Screenshot-Desktop4.svg"
         alt="">
     </div>
 
@@ -53,7 +54,7 @@ for yourself and your family.</small> </p>
 <div class="Section6">
   <div class="Text-Center Width-50P">
     <h4>The Right Team</h4>
-    <p class="text-center text-white" style="margin-top: 15px;">Over 50 collective years of experience in capital
+    <p class="text-center text-white" style="margin-top: 15px;">Average of 25 years of experience in capital
       markets,
       regulatory and human
       rights activism.
@@ -105,8 +106,70 @@ for yourself and your family.</small> </p>
       <p class="text-center text-black">And Many More To Come..</p>
     </div>
   </div>
-
 </div>
+
+<!-- Our Collaborations -->
+<section id="partners" class="bg-white">
+  <div class="container Section8">
+    <div class="row">
+      <div class="col text-center">
+        <h4 class="mb-4 text-black">Our Achievements</h4>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-md-3 col-12">
+        <div class="d-flex align-items-center justify-content-center">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-1337.png" class="col-lg-6 col-6" alt="Partner Logo">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-FWD.png" class="col-lg-6 col-6" alt="Partner Logo">
+        </div>
+        <div class="mt-2">
+          <p class="text-center">FWD x 1337 – <span class="fw-bold">Top 10 Finalist – Jan 2023</span> </p>
+        </div>
+      </div>
+ 
+      <div class="col-md-3 col-12">
+        <div class="d-flex align-items-center justify-content-center">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-RHB.png" class="col-lg-6 col-6" alt="Partner Logo">
+        </div>
+        <div class="mt-2">
+          <p class="text-center">RHB Xcelerator 2023 – <span class="fw-bold">Top 28 for RHB Xcelerator Program – Jan 2023</span></p>
+        </div>
+      </div>
+ 
+      <div class="col-md-3 col-12">
+        <div class="d-flex align-items-center justify-content-center">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-AWS.png" class="col-lg-6 col-6" alt="Partner Logo">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-Tigerhall.png" class="col-lg-6 col-6" alt="Partner Logo">
+        </div>
+        <div class="mt-2">
+          <p class="text-center">AWS x Tigerhall Womens ASEAN Program – <span class="fw-bold">Jan 2023</span></p>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-12">
+        <div class="d-flex align-items-center justify-content-center">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-Students-Not-Brides.png" class="col-lg-6 col-6" alt="Partner Logo">
+          <img src="https://wahine.s3.amazonaws.com/static/Logo-Wahine.png" class="col-lg-6 col-6" alt="Partner Logo">
+        </div>
+        <div class="mt-2">
+          <p class="text-center">Supported the fight against child marriage with <a href="https://www.instagram.com/students_not_brides/" class="p-0" style="text-transform: none;"><span class="fw-bold">#MyArt2EndChildMarriage</span></a></p>
+        </div>
+      </div>
+
+
+    </div>
+    
+    
+
+    
+
+  </div>
+</section>
+
+
+
+
 
 <!-- Our Women Network -->
 <!-- Page Content-->
@@ -116,10 +179,12 @@ for yourself and your family.</small> </p>
     <div class="pt-5 pb-5 rounded-3 text-center">
       <div class="m-4 m-lg-5 text-white">
         <h3 class="fw-bold border-0 p-0 text-white">Our Women Network</h3>
-        <p class="text-center text-white">Get in touch with our panel of experts. 1st 10 mins is free, you may arrange
+        <p class="text-center text-white">Get in touch with our panel of experts. 1st 10 mins is free*, you may arrange
           for further
           consultations directly with them.</p>
         <a class="btn Btn-Secondary" href="{% url 'contactus' %}">Get In Touch</a>
+        <br><br>
+        <p class="text-center text-white" style="font-size: 0.75rem!important;">*Also available for V Wault users</p>
       </div>
     </div>
   </div>
@@ -319,13 +384,13 @@ for yourself and your family.</small> </p>
       <h4 class="Color-Primary">Option 1</h4>
       <h2 style="color:#F3CD03">RM 19.90</h2>
       <p class="text-white">per month</p>
-      <a class="btn Btn-Primary" href="{% url 'signup' %}" role="button">Get Started</a>
+      <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
     </div>
     <div class="col-lg-6 mt-5 mt-lg-0 ">
       <h4 class="Color-Primary">Option 2</h4>
       <h2 style="color:#F3CD03">RM 199.00</h2>
       <p class="text-white">per annum</p>
-      <a class="btn Btn-Primary" href="{% url 'signup' %}" role="button">Get Started</a>
+      <a class="btn Btn-Primary" href="{% url 'joinnow' %}" role="button">Get Started</a>
     </div>
   </div>
 </div>

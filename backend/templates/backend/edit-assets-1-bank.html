@@ -38,7 +38,7 @@
 								<div class="form-row Btn-Radio justify-content-be">
 
 									<div class="col-6">
-										<input type="radio" name="account_type" id="control_01" value="Saving Account" {% if account_type == 'Saving Account' %} checked {% endif %}>
+										<input type="radio" name="account_type" id="control_01" value="Saving Account" {% if account_type == 'Savings' %} checked {% endif %}>
 										<label for="control_01"><svg xmlns="http://www.w3.org/2000/svg" width="24"
 												height="24" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16">
 												<path
@@ -161,8 +161,10 @@
 
 						<!-- Button -->
 						<div class="mt-5">
-							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}"
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard-new' %}"
 								role="button">Back</a>
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'assets-bank-deleteform' instance.uuid %}"
+								role="button">Delete</a>
 							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
 
 						</div>

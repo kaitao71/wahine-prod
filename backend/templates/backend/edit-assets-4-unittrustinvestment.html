@@ -1,0 +1,110 @@
+{% extends "backend/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+
+{% block content %}
+<!-- Start Wrapper -->
+<div class="wrapper BG-Blue pb-5">
+	<!-- Start Container -->
+	<div class="inner col-12 col-lg-10 m-auto">
+		<!-- Column 1 -->
+		<div class="form-content col-12 col-lg-9 px-lg-0 pb-5 mx-auto">
+			<div class="form-header">
+				<h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+				<h2 class="mb-1 Color-Secondary">Edit Assets</h2>
+				<p>Please fill the form below to record your personal assets information. Feel free to add
+					as much detail as needed. </p>
+			</div>
+
+
+
+			<!-- Left Column Inner Column -->
+			<div class="inner pb-5">
+				<!-- Form Div -->
+				<div class="form-content w-100 pb-3">
+					<!--  -->
+					<!-- Form -->
+					<form method="post" class="Assets">
+						{% csrf_token %}
+						<!-- Start Investment -->
+						<div class="mb-5">
+
+							<h4 class="text-black">Investment Details</h4>
+							<p class="text-start">Fill in your investment information.</p><br>
+							<!-- Information -->
+							<!-- Core Investment #1 -->
+							<div>
+								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
+									<div class="answer col-lg-6 col-12 mb-5 mb-lg-0">
+										<h5 class="Color-Primary">Name</h5><br>
+										<select name="unittrust_name" id="" class="px-4">
+											<option value="TabungHaji">Tabung Haji</option>
+											<option value="PNB">PNB</option>
+										</select>
+									</div>
+									<div class="answer mx-1 col-12 col-lg-6 mt-lg-0 mt-5">
+										<h5>Account Number</h5><br>
+										<input type="text" name="account_no" id="" value="{{account_no}}" placeholder="{{account_no}}" class="px-4">
+									</div>
+								</div>
+								<br><br><br>
+								<div class="answer form-row row Btn-Radio">
+								<div class="col-lg-6 col-12">
+										<h5>Agent Name</h5><br>
+										<input type="text" name="agent_name" id="" value="{{agent_name}}" placeholder="{{agent_name}}"
+											class="px-4">
+									</div>
+<div class="col-lg-6 col-12">
+										<h5>Agent Contact No</h5><br>
+										<input type="text" name="agent_contact_no" id="" value="{{agent_contact_no}}" placeholder="{{agent_contact_no}}"
+											class="px-4">
+									</div>
+									
+								</div>
+<div class="answer form-row row Btn-Radio">
+								<div class="col-lg-6 pt-4 mt-4 col-12">
+										<h5>Account Value</h5><br>
+										<input type="number" name="account_value" id="" value="{{account_value}}" placeholder="{{account_value}}"
+											class="px-4 form-control">
+									</div>
+								</div>
+							</div>
+							<!-- Billing Cycle Toggle -->
+							<br><br><br>
+							<!-- Investment 2 -->
+
+						</div>
+						<!-- End Investment -->
+
+
+
+						<!-- Button -->
+						<div class="mt-5">
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard-new' %}" role="button">Back</a>
+	<a class="btn Btn-Secondary-2 mt-5" href="{% url 'assets-unittrustinvestment-deleteform' instance.uuid %}"
+								role="button">Delete</a>
+							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
+
+						</div>
+					</form>
+					<!-- End Form -->
+				</div>
+				<!-- End Form Div-->
+			</div>
+			<!-- End Left Column Inner Column -->
+		</div>
+		<!-- End Column 1 -->
+		<!-- Start Column 2 -->
+		{% include 'backend/onboarding-assets-sidebar.html' %}
+	</div>
+	<!-- End Container -->
+</div>
+<!-- End Wrapper -->
+<script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+{% endblock %}

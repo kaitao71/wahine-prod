@@ -1,0 +1,102 @@
+{% extends "backend/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+
+<head>
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+</head>
+
+<body>
+	<div class="wrapper container" style="padding-bottom:50px">
+		<form method="post">
+			<!-- SECTION 1 -->
+			{% csrf_token %}
+			<section>
+				<div class="inner row">
+					<div class="col-lg-4 px-0 image-holder overflow-Hidden d-none d-lg-block">
+						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_SmilingGirl3.png" alt="">
+					</div>
+					<div class="col-lg-12 form-content">
+						<div class="form-header">
+							<h3 class="border-0">Registration</h3>
+						</div>
+						<p>Please fill in your details</p>
+						<div class="form-row">
+							<div class="form-holder">
+
+								{% render_field form.last_name class+="form-control" placeholder="Full Name" %}
+								<div class="px-4" style="color:red">{{form.last_name.errors}}</div>
+							</div>
+							<div class="form-holder">
+
+								{% render_field form.email class+="form-control" placeholder="Email" %}
+								<div class="px-4" style="color:red">{{form.email.errors}}</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+
+								{% render_field form.age class+="form-control" placeholder="Age" %}
+								<div class="px-4" style="color:red">{{form.age.errors}}</div>
+							</div>
+							<div class="form-holder">
+
+								{% render_field form.gender class+="form-control" placeholder="Gender" %}
+								<div class="px-4" style="color:red">{{form.gender.errors}}</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+
+								{% render_field form.referral_code class+="form-control" placeholder="Referral Code" %}
+								<div class="px-4" style="color:red">{{form.referral_code.errors}}</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder">
+
+								{% render_field form.password1 class+="form-control" placeholder="Password" %}
+								<div class="px-4" style="color:red">{{form.password1.errors}}</div>
+							</div>
+							<div class="form-holder">
+
+								{% render_field form.password2 class+="form-control" placeholder="Confirm Password" %}
+								<div class="px-4" style="color:red">{{form.password2.errors}}</div>
+							</div>
+						</div>
+						<br>
+						<div class="form-check TermsLink">
+							<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+							<label class="form-check-label" for="flexCheckDefault">I have read and agree to the
+								<a href="{% url 'terms-of-service' %}">Terms Of Service</a>, <a
+									href="{% url 'privacy-policy' %}">Privacy Policy</a> and <a href="{% url 'return-refund-policy' %}">Refund and Cancellation Policy</a>.</label>
+						</div>
+						<div class="mt-4">
+							<button class="signup-next-button Btn-Primary" type="submit">Next</button>
+						</div>
+
+					</div>
+
+			</section>
+		</form>
+	</div>
+
+	<!-- JQUERY -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery-3.3.1.min.js"></script>
+
+	<!-- JQUERY STEP -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery.steps.js"></script>
+	<script src="https://wahine.s3.amazonaws.com/static/js/main.js"></script>
+	<!-- Template created and distributed by Colorlib -->
+
+	<script>
+		function clickNext() {
+			var a = document.querySelectorAll('[role="tab"]');
+			a.className = "testCurrent";
+		}</script>
+</body>
+{% endblock %}

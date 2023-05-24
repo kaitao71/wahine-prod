@@ -1,0 +1,868 @@
+
+{% extends "backend/base.html" %}
+{% load humanize %}
+{% load static %}
+
+{% block extrahead %}
+<!-- STYLE CSS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- Steps CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
+{% endblock %}
+{% block content %}
+<div class="bg-white pb-5">
+	<form action="" id="wizard" class="Assets">
+
+		<h2></h2>
+		<section>
+			<div class="m-auto">
+				<!-- Column 1 -->
+				<div class="form-content w-100 pb-5 mx-auto">
+					<div class="inner pb-5">
+						<div class="form-content w-100 pb-3">
+							<h4 class="text-black">Assets & Liabilities</h4>
+							<p class="text-start mb-0">Overview of all your logged assets and liabilities.</p><br>
+							<!-- SECTION 1 -->
+							<!-- Pill Shape Filter Assets, Liabilities & All -->
+							<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+								<li class="nav-item mx-2" role="presentation">
+									<button class="nav-link shadow active" id="pills-profile-tab" data-bs-toggle="pill"
+										data-bs-target="#pills-profile" type="button" role="tab"
+										aria-controls="pills-profile" aria-selected="true">Assets</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link shadow" id="pills-contact-tab" data-bs-toggle="pill"
+										data-bs-target="#pills-contact" type="button" role="tab"
+										aria-controls="pills-contact" aria-selected="false">Liabilities</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<a style="text-transform:capitalize;margin-left:8px;font-size:15px;" class="nav-link shadow" href="{% url 'notifier_list_form' %}">Trigger Events</a>
+								</li> 
+							</ul>
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="pills-profile" role="tabpanel"
+									aria-labelledby="pills-profile-tab">
+									<!-- Doughnut Chart -->
+									<section class="pt-5">
+									<div class="container px-lg-5 mt-4">
+									<!-- Page Features-->
+									<div><canvas class="" id="AssetChart"></canvas></div>
+									<div class="row">
+										<!-- Bank -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">1/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Bank Account</h5>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-bank-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Bank Asset #1 -->
+													{% for x in banks %}
+													{% if not x.nodata %}
+													<div>
+														<small class="">{{forloop.counter}}</small><br>
+														<small>Bank Type: {{x.account_type}}</small><br>
+														<small>Bank Name: {{x.bank_name}}</small><br>
+														<small>Account Number: {{x.account_no}}</small><br>
+														<small>Account Value: RM{{x.account_value|floatformat:2|intcomma}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-bank-editform' uuid=x.uuid %}" role="button">Edit</a>
+										</div>
+													<br>
+
+{% endif %}
+													{% endfor %}
+
+
+													
+													<!-- Upload Documents -->
+												</div>
+
+
+
+
+											</div>
+										</div>
+										<!-- EPF/SOCSO -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">2/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">EPF/SOCSO</h5>
+
+
+													<br>
+													<!-- EPF #1 -->
+													{% for x in epf %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">EPF</small><br>
+														<small>Membership Number: {{x.account_no}}</small><br>
+														<small>Nominee Details: {{x.nominee_name}}</small><br>
+														<small>Account Value: RM{{x.account_value|floatformat:2|intcomma}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-epf-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div>
+													<br>
+													{% endif %}
+													{% endfor %}
+													{% for x in socso %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">SOCSO</small><br>
+														<small>Membership Number: {{x.account_no}}</small><br>
+														<small>Nominee Details: {{x.nominee_name}}</small><br>
+														<small>Account Value: RM{{x.account_value|floatformat:2|intcomma}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-socso-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div>
+													<br>
+													{% endif %}
+													{% endfor %}
+
+
+													<!-- SOCSO #2 -->
+													
+
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+										<!-- Insurance -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">3/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Insurance</h5>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-insurance-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Life Insurance #1 -->
+													{% for x in insurances %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>{{x.insurance_type}}</small><br>
+														<small>Policy Number: {{x.policy_no}}</small><br>
+														<small>Nominee Details: {{x.nominee_name}}</small><br>
+														<small>Sum Insured: RM{{x.sum_insured|floatformat:2|intcomma}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+
+													</div>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-insurance-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+												
+													<!-- Upload Documents -->
+
+												</div>
+											</div>
+										</div>
+
+										<!-- Investment -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">4/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Investment</h5>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-securities-investment-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Public Investment #1 -->
+													{% for x in security_investments %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Securities</small><br>
+														<small>Account Type: {{x.account_type}} </small><br>
+														<small>Account Number: {{x.account_no}}</small><br>
+														<small>Account Value: RM{{x.account_value|floatformat:2|intcomma}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-securityinvestment-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+													<!-- Private Investment #2 -->
+				<!-- Public Investment #1 -->
+													{% for x in unittrust_investments %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Unit Trusts</small><br>
+														<small>Investment Type: {{x.fund_name}} </small><br>
+														<small>Account Number: {{x.account_no}}</small><br>
+														<small>Account Value: RM{{x.account_value|floatformat:2|intcomma}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-unittrustinvestment-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+													<!-- Private Investment #2 -->
+
+													
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+
+										<!-- Property -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">5/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Property</h5>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-property-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Property #1 -->
+													{% for x in properties %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Property Type:{{x.property_type}}</small><br>
+														<small>Residential Type: {{x.residential_type}}
+														</small><br>
+														<small>Address: {{x.address}}</small><br>
+														<small>Postcode: {{x.postcode}}</small><br>
+														<small>State: {{x.state}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-property-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+
+										<!-- Vehicles -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">6/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Vehicles</h5>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-vehicle-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Vehicles #1 -->
+													{% for x in vehicles %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Vehicle Type: {{x.vehicle_type}}</small><br>
+														<small>Vehicle Registration Number: {{x.registration_no}}
+														</small><br>
+														<small>Vehicle Make & Model: {{x.make_model}} </small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-vehicle-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+
+													
+													<!-- Upload Documents -->
+
+												</div>
+											</div>
+										</div>
+
+										<!-- Others -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">7/8 Assets</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Others</h5>
+													<br>
+<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-other-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Others #1 -->
+													{% for x in other_assets %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Asset Type: {{x.name}}</small><br>
+														<small>Asset Value: RM{{x.value}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-other-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+
+<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">8/8 Crypto</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Crypto</h5>
+													<br>
+
+<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-crypto-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Others #1 -->
+													{% for x in cryptos %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Asset Type: {{x.name}}</small><br>
+														<small>Asset Value: RM{{x.value}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'assets-crypto-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+									</section>
+								</div>
+								<div class="tab-pane fade" id="pills-contact" role="tabpanel"
+									aria-labelledby="pills-contact-tab"><div class="container px-lg-5 mt-4">
+									<!-- Page Features-->
+
+									<section class="pt-5">
+									<div class="container px-lg-5 mt-4">
+										<div><canvas class="" id="LiabilityChart"></canvas></div>
+									<div class="row">
+										<!-- Bank -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">1/7 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Credit Card</h5>
+													<br>
+
+<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-creditcard-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Bank Asset #1 -->
+													{% for x in creditcard %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Name: {{x.bank_name}}</small><br>
+														<small>Account Number: {{x.account_no}}</small><br>
+														<small>Amount Outstanding: RM{{x.amount_outstanding}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+
+													</div><br>
+												
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-creditcard-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+
+{% endif %}
+													{% endfor %}
+													<!-- Upload Documents -->
+												</div>
+
+
+
+
+											</div>
+										</div>
+										<!-- EPF/SOCSO -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">2/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Personal Loan</h5>
+<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-personalloan-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+
+													<br>
+													<!-- EPF #1 -->
+													{% for x in personalloan %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">Personal Loan</small><br>
+														<small>Bank Name: {{x.bank_name}}</small><br>
+														<small>Account No: {{x.account_no}}</small><br>
+														<small>Loan Amount: RM{{x.amount_outstanding}}</small><br>
+														<small>Loan Tenure: {{x.loan_tenure}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-personalloan-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+										<!-- Insurance -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">3/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Vehicle Loan</h5>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-vehicleloan-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Life Insurance #1 -->
+													{% for x in vehicleloan %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Name: {{x.bank_name}}</small><br>
+														<small>Account No: {{x.account_no}}</small><br>
+														<small>Loan Amount: RM{{x.amount_outstanding}}</small><br>
+														<small>Loan Tenure: {{x.loan_tenure}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+
+													</div>
+													<br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-vehicleloan-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+													<!-- Upload Documents -->
+
+												</div>
+											</div>
+										</div>
+
+										<!-- Investment -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">4/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Property Loan</h5>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-propertyloan-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+													<!-- Public Investment #1 -->
+													{% for x in propertyloan %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Bank Name: {{x.bank_name}}</small><br>
+														<small>Account No: {{x.account_no}}</small><br>
+														<small>Loan Amount: {{x.amount_outstanding}}</small><br>
+														<small>Loan Tenure: {{x.loan_tenure}}</small><br>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div>
+													<br>
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-propertyloan-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+													<!-- Upload Documents -->
+												</div>
+											</div>
+										</div>
+
+										<!-- Property -->
+										<div class="col-lg-4 mb-5">
+											<div class="card bg-light border-0 h-100">
+												<div class="card-body text-start p-4 p-lg-4 pt-0 pt-lg-0">
+													<div class="row align-items-center pt-4 ">
+														<small class="col Color-Primary">5/5 Liabilities</small>
+													</div>
+													<br>
+													<h5 class="Color-Secondary">Other Liabilities</h5>
+													<br>
+<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-other-createform' %}" role="button">Add New</a>
+										</div>
+										<br>
+
+													<!-- Property #1 -->
+													{% for x in other_liabilities %}
+													{% if not x.nodata %}
+													<div>
+														<small class="Color-Secondary">{{forloop.counter}}</small><br>
+													<small class="Color-Secondary">{{forloop.counter}}</small><br>
+														<small>Liability Type: {{x.sset_type}}</small><br>
+														<small>Liability Value: RM{{x.asset_value}}</small>
+														<small>Last Updated: {{x.created_at}}</small>
+													</div><br>
+
+													<div class="mt-3">
+														<a class="btn Btn-Secondary-2" href="{% url 'liabilities-other-editform' uuid=x.uuid %}" role="button">Edit</a>
+													</div><br>
+													{% endif %}
+													{% endfor %}
+
+												</div>
+											</div>
+										</div>
+										</div>
+
+
+</div>
+									
+
+
+
+
+
+
+
+
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+	</form>
+</div>
+
+<!-- ChartJS Libray -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- ChartJS DataLabel -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.1.0/chartjs-plugin-datalabels.min.js"
+	integrity="sha512-Tfw6etYMUhL4RTki37niav99C6OHwMDB2iBT5S5piyHO+ltK2YX8Hjy9TXxhE1Gm/TmAV0uaykSpnHKFIAif/A=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Asset Chart Setting -->
+<script>
+	// setup 
+	const data = {
+		labels: ['Insurance','EPF','Socso','Properties','Investment','Bank','Crypto','Other Assets'],
+		datasets: [{
+			label: 'Asset Value',
+			data: [{{insurance_total}},{{epf_total}},{{socso_total}},{{properties_total}}, {{investment_total}},{{bank_total}},{{crypto_total}},{{other_asset_total}}],
+			backgroundColor: [
+				'#e63a54',
+				'#d8f4ff',
+				"#110f48",
+				"gray",
+				"#55BCB9",
+				"#8f1346",
+				"#ffba00",
+				"black",
+			],
+			borderColor: [
+				'#e63a54',
+				'#d8f4ff',
+				"#110f48",
+				"gray",
+				"#55BCB9",
+				"#8f1346",
+				"#ffba00",
+				"black",
+			],
+			borderWidth: 1,
+			cutout: '85%',
+			borderRadius: 10,
+			offset: 5,
+		}]
+	};
+
+	// doughnutLabelsLine plugin
+	const doughnutLabelsLine = {
+		id: 'doughnutLabelsLine',
+		afterDraw(chart, args, options) {
+			const { ctx, chartArea: { top, bottom, left, right, width, height } } = chart;
+			chart.data.datasets.forEach((dataset, i) => {
+
+				chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
+					// console.log(chart.data.labels)
+					const { x, y } = datapoint.tooltipPosition();
+					// ctx.fillStyle = dataset.borderColor[index];
+					// ctx.fill();
+					// // ctx.fillRect(x, y, 2, 2);
+					// console.log(x)
+
+					//draw line
+					const halfwidth = width / 2;
+					const halfheight = height / 2;
+
+					const xLine = x >= halfwidth ? x + 15 : x - 15;
+					const yLine = y >= halfheight ? y + 15 : y - 15;
+					const extraLine = x >= halfwidth ? 15 : -15;
+
+					// Sum of datasets
+					datasum = chart.data.datasets[0].data.reduce((partialSum, a) => partialSum + a, 0)
+					//line	
+					if (chart.data.datasets[0].data[index]/datasum * 100 > 2){
+					ctx.beginPath();
+					ctx.moveTo(x, y);
+					ctx.lineTo(xLine, yLine);
+					ctx.lineTo(xLine + extraLine, yLine);
+					ctx.strokeStyle = dataset.borderColor[index];
+					ctx.stroke();
+					}
+					//text
+					const textWidth = ctx.measureText(chart.data.labels[index]).width;
+					console.log(textWidth)
+					ctx.font = '14px Arial';
+
+					//control position
+					const textXPosition = x >= halfwidth ? 'left' : 'right';
+					const plusFifteenPx = x >= halfwidth ? 5 : -5;
+					ctx.textAlign = textXPosition;
+					ctx.textBaseline = 'middle';
+					ctx.fillStyle = dataset.borderColor[index];
+
+
+					//Convert
+					if (chart.data.datasets[0].data[index]/datasum * 100 > 2){
+						data_percentage = (chart.data.datasets[0].data[index] / datasum * 100).toFixed(2) + '%'
+						ctx.fillText(data_percentage, xLine + extraLine + plusFifteenPx, yLine);
+					}else{
+
+					}
+
+
+				})
+			})
+		}
+	}
+
+
+
+	// config 
+	const config = {
+		type: 'doughnut',
+		data,
+		options: {
+			layout: {
+				padding: 15
+			},
+			maintainAspectRatio: false,
+			plugins: {
+				legend: {
+					display: true,
+					position: 'bottom'
+				},
+
+			}
+		},
+		plugins: [doughnutLabelsLine],
+
+	};
+
+	// render init block
+	const AssetChart = new Chart(
+		document.getElementById('AssetChart'),
+		config
+	);
+</script>
+
+<script>
+	// setup 
+	const data2 = {
+		labels: ['Personal Loan', 'Credit Card','Vehicle Loan','Other Liabilities','Property Loan'],
+		datasets: [{
+			label: 'Liabilities Value',
+			data: [{{personalloan_total}}, {{creditcard_total}},{{vehicleloan_total}},{{other_liabilities_total}},{{propertyloan_total}}],
+			backgroundColor: [
+				'#e63a54',
+				'#d8f4ff',
+				"#110f48",
+				// "gray",
+				"#55BCB9",
+				"#8f1346",
+				// "#ffba00"
+			],
+			borderColor: [
+				'#e63a54',
+				'#d8f4ff',
+				"#110f48",
+				// "gray",
+				"#55BCB9",
+				"#8f1346",
+				// "#ffba00"
+			],
+			borderWidth: 1,
+			cutout: '89%',
+			borderRadius: 3,
+			offset: 5,
+		}]
+	};
+
+	// doughnutLabelsLine plugin
+	const doughnutLabelsLine2 = {
+		id: 'doughnutLabelsLine',
+		afterDraw(chart, args, options) {
+			const { ctx, chartArea: { top, bottom, left, right, width, height } } = chart;
+			chart.data.datasets.forEach((dataset, i) => {
+
+				chart.getDatasetMeta(i).data.forEach((datapoint, index) => {
+					// console.log(chart.data.labels)
+					const { x, y } = datapoint.tooltipPosition();
+					// ctx.fillStyle = dataset.borderColor[index];
+					// ctx.fill();
+					// // ctx.fillRect(x, y, 2, 2);
+					// console.log(x)
+
+					//draw line
+					const halfwidth = width / 2;
+					const halfheight = height / 2;
+
+					const xLine = x >= halfwidth ? x + 15 : x - 15;
+					const yLine = y >= halfheight ? y + 15 : y - 15;
+					const extraLine = x >= halfwidth ? 15 : -15;
+					//line	
+					ctx.beginPath();
+					ctx.moveTo(x, y);
+					ctx.lineTo(xLine, yLine);
+					ctx.lineTo(xLine + extraLine, yLine);
+					ctx.strokeStyle = dataset.borderColor[index];
+					ctx.stroke();
+
+					//text
+					const textWidth = ctx.measureText(chart.data.labels[index]).width;
+					console.log(textWidth)
+					ctx.font = '14px Arial';
+
+					//control position
+					const textXPosition = x >= halfwidth ? 'left' : 'right';
+					const plusFifteenPx = x >= halfwidth ? 5 : -5;
+					ctx.textAlign = textXPosition;
+					ctx.textBaseline = 'middle';
+					ctx.fillStyle = dataset.borderColor[index];
+
+					// Sum of datasets
+					datasum = chart.data.datasets[0].data.reduce((partialSum, a) => partialSum + a, 0)
+
+					//Convert
+					data_percentage = (chart.data.datasets[0].data[index] / datasum * 100).toFixed(2) + '%'
+					ctx.fillText(data_percentage, xLine + extraLine + plusFifteenPx, yLine);
+
+				})
+			})
+		}
+	}
+
+
+
+	// config 
+	const config2 = {
+		type: 'doughnut',
+		data:data2,
+		options: {
+			layout: {
+				padding: 20
+			},
+			maintainAspectRatio: false,
+			plugins: {
+				legend: {
+					display: true,
+					position: 'bottom',
+				},
+			}
+		},
+
+		plugins: [doughnutLabelsLine2],
+
+	};
+
+	// render init block
+	const LiabilityChart = new Chart(
+		document.getElementById('LiabilityChart'),
+		config2
+	);
+</script>
+
+{% endblock %}

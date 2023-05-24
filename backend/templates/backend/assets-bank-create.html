@@ -7,14 +7,35 @@
 {% endblock %}
 {% block extrastyle %}
 {% endblock %}
-{% block content %}
+{% block content %}s
 <div class="container bg-white my-50 container-shadow">
   <div class="row">
     <!-- First Column -->
     <div class="col-md-8 col-lg-8">
+      
+      <!-- Pop Up Welcome Message -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Welcome!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Now that you understand the What and the Why, below is a brief explanation of the process that you will be going through on W Vault.  </p>
+              <p>We advise that you prepare your information such as account details in advance.  If you wish to store documents, have them on hand so you can easily upload them when prompted.  You can choose to do this in one sitting or visit your account as many times as you wish and fill it up bit by bit.  We understand this can be a tedious process.  We also know that it is a crucial, necessary, and responsible process to ensure your personal financial security and the financial security of your loved ones.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
   <div class="row">
     <div class="col-md-12 col-lg-12 col-12 mx-auto pt-5">
-        <h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+        <h2 class="Color-Secondary mb-2 d-lg-none text-center">Step 2/4:</h2>
         <h2 class="mb-1 Color-Secondary text-center">Assets</h2>
         <p class="text-center">Please fill the form below to record your personal assets information. Feel free to add
           as much detail as needed. </p>
@@ -69,9 +90,20 @@
       </div>
 
       <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
-        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}</label>
+        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}<i class="fas fa-info-circle px-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Only numerical value; No Symbols or Special Characters Allowed"></i>
+        </label>
         {{form.account_value}}
         <small class="text-danger">{{ form.account_value.errors }}</small>
+      </div>
+
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile" />
+      </div>
+
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile2">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile2" />
       </div>
         <!-- End process each form fields manually -->
 
@@ -90,7 +122,7 @@
     <!-- Submit Button -->
     <div class="row spacer">
         <div class="col-4">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
         </div>
     </div>
     <!-- Submit Button -->
@@ -109,4 +141,5 @@
 </div>
 </div>
 <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
+
 {% endblock %}

@@ -5,22 +5,39 @@ from django.contrib.auth.forms import UserCreationForm
 from django.forms import modelformset_factory, inlineformset_factory
 # from dal import autocomplete
 from django.contrib.auth import get_user_model
-
+import re
 """ Beginning of V2 Forms """
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
-def validate_ic_length(value):
-    if value.length != 12:
-        raise ValidationError(
-            _('%(value)s is not of length 12'),
-            params={'value': value},
-        )
+from django_registration.forms import RegistrationForm
+
+from backend.models import *
+
+
+class MyCustomUserForm(RegistrationForm):
+    gender = forms.ChoiceField(choices=GENDER_CHOICES, initial='Female')
+    class Meta(RegistrationForm.Meta):
+        model = User
+        fields = [
+            "last_name",
+            "email",
+            "gender",
+            "age",
+            "referral_code",
+            "password1",
+        ]
+
 
 ACCOUNT_TYPE_CHOICES = [
-        ('Saving Account', 'Saving Account'),
+        ('Saving Account', 'Savings Account'),
         ('Current Account', 'Current Account'),
         ('Fixed Deposit', 'Fixed Deposit'),
+    ]
+
+OVERSEAS_OR_LOCAL = [
+        ('Local', 'Local'),
+        ('Oversea', 'Oversea'),
     ]
 
 BANK_NAME_CHOICES = [
@@ -73,7 +90,6 @@ INSURANCE_PROVIDER_CHOICES = [
         ('AXA Affin Life Insurance Berhad','AXA Affin Life Insurance Berhad'),
         ('Berjaya Sompo Insurance Berhad','Berjaya Sompo Insurance Berhad'),
         ('Chubb Insurance Malaysia Berhad','Chubb Insurance Malaysia Berhad'),
-        ('Danajamin Nasional Berhad','Danajamin Nasional Berhad'),
         ('Etiqa Family Takaful Berhad','Etiqa Family Takaful Berhad'),
         ('Etiqa General Insurance Berhad','Etiqa General Insurance Berhad'),
         ('Etiqa General Takaful Berhad','Etiqa General Takaful Berhad'),
@@ -113,6 +129,86 @@ INSURANCE_PROVIDER_CHOICES = [
         ('Zurich Takaful Malaysia Berhad','Zurich Takaful Malaysia Berhad'),
     ]
 
+UNIT_TRUST_CHOICES = [
+('Abrdn Islamic Malaysia Sdn Bhd','Abrdn Islamic Malaysia Sdn Bhd'),
+('Affin Bank Berhad','Affin Bank Berhad'),
+('Affin Islamic Bank Berhad','Affin Islamic Bank Berhad'),
+('Aham Asset Management Berhad (Formerly Known As Affin Hwang Asset Management Berhad)','Aham Asset Management Berhad (Formerly Known As Affin Hwang Asset Management Berhad)'),
+('Aiiman Asset Management Sdn Bhd','Aiiman Asset Management Sdn Bhd'),
+('Al Rajhi Banking & Investment Corporation (Malaysia) Berhad','Al Rajhi Banking & Investment Corporation (Malaysia) Berhad'),
+('Alliance Bank (Malaysia) Berhad','Alliance Bank (Malaysia) Berhad'),
+('Alliance Islamic Bank Berhad','Alliance Islamic Bank Berhad'),
+('Amanah Saham Nasional Berhad','Amanah Saham Nasional Berhad'),
+('Amanah Saham Sarawak Berhad','Amanah Saham Sarawak Berhad'),
+('Amanahraya Investment Management Sdn Bhd','Amanahraya Investment Management Sdn Bhd'),
+('Ambank Berhad','Ambank Berhad'),
+('Ambank Islamic Berhad','Ambank Islamic Berhad'),
+('Amfunds Management Berhad','Amfunds Management Berhad'),
+('Aminvestment Bank Berhad','Aminvestment Bank Berhad'),
+('Areca Capital Sdn Bhd','Areca Capital Sdn Bhd'),
+('Astute Fund Management Berhad','Astute Fund Management Berhad'),
+('Bank Islam Malaysia Berhad','Bank Islam Malaysia Berhad'),
+('Bank Kerjasama Rakyat Malaysia Berhad','Bank Kerjasama Rakyat Malaysia Berhad'),
+('Bank Muamalat Malaysia Berhad','Bank Muamalat Malaysia Berhad'),
+('Bank Of China Malaysia Berhad','Bank Of China Malaysia Berhad'),
+('Bank Simpanan Nasional','Bank Simpanan Nasional'),
+('Bimb Investment Management Berhad','Bimb Investment Management Berhad'),
+('Bos Wealth Management Malaysia Berhad','Bos Wealth Management Malaysia Berhad'),
+('Cimb Bank Berhad','Cimb Bank Berhad'),
+('Cimb Investment Bank Berhad','Cimb Investment Bank Berhad'),
+('Cimb Islamic Bank Berhad','Cimb Islamic Bank Berhad'),
+('Eastspring Investments Berhad','Eastspring Investments Berhad'),
+('Franklin Templeton Gsc Asset Management Sdn. Bhd.','Franklin Templeton Gsc Asset Management Sdn. Bhd.'),
+('Hong Leong Asset Management Bhd','Hong Leong Asset Management Bhd'),
+('Hong Leong Bank Berhad','Hong Leong Bank Berhad'),
+('Hong Leong Islamic Bank Berhad','Hong Leong Islamic Bank Berhad'),
+('Hsbc Amanah Malaysia Berhad','Hsbc Amanah Malaysia Berhad'),
+('Hsbc Bank (Malaysia) Berhad','Hsbc Bank (Malaysia) Berhad'),
+('Ifast Capital Sdn Bhd','Ifast Capital Sdn Bhd'),
+('Industrial And Commercial Bank Of China (Malaysia) Berhad','Industrial And Commercial Bank Of China (Malaysia) Berhad'),
+('Inter-Pacific Asset Management Sdn Bhd','Inter-Pacific Asset Management Sdn Bhd'),
+('Kaf Investment Funds Berhad','Kaf Investment Funds Berhad'),
+('Kedah Islamic Asset Management Berhad','Kedah Islamic Asset Management Berhad'),
+('Kenanga Investment Bank Berhad','Kenanga Investment Bank Berhad'),
+('Kenanga Investors Berhad','Kenanga Investors Berhad'),
+('Kuwait Finance House (M) Berhad','Kuwait Finance House (M) Berhad'),
+('Malayan Banking Berhad','Malayan Banking Berhad'),
+('Manulife Investment Management (M) Berhad','Manulife Investment Management (M) Berhad'),
+('Maybank Asset Management Sdn Bhd','Maybank Asset Management Sdn Bhd'),
+('Maybank Islamic Berhad','Maybank Islamic Berhad'),
+('Mbsb Bank Berhad','Mbsb Bank Berhad'),
+('Midf Amanah Asset Management Berhad','Midf Amanah Asset Management Berhad'),
+('Muamalat Invest Sdn Bhd','Muamalat Invest Sdn Bhd'),
+('Nomura Asset Management Malaysia Sdn. Bhd.','Nomura Asset Management Malaysia Sdn. Bhd.'),
+('Nomura Islamic Asset Management Sdn. Bhd.','Nomura Islamic Asset Management Sdn. Bhd.'),
+('Ocbc Al-Amin Berhad','Ocbc Al-Amin Berhad'),
+('Ocbc Bank (Malaysia) Berhad','Ocbc Bank (Malaysia) Berhad'),
+('Opus Asset Management Sdn Bhd','Opus Asset Management Sdn Bhd'),
+('Pengurusan Kumipa Berhad','Pengurusan Kumipa Berhad'),
+('Permodalan Bsn Berhad','Permodalan Bsn Berhad'),
+('Pheim Unit Trusts Berhad','Pheim Unit Trusts Berhad'),
+('Phillip Mutual Berhad','Phillip Mutual Berhad'),
+('Pmb Investment Berhad','Pmb Investment Berhad'),
+('Principal Asset Management Berhad','Principal Asset Management Berhad'),
+('Ptb Unit Trust Berhad','Ptb Unit Trust Berhad'),
+('Public Bank Berhad','Public Bank Berhad'),
+('Public Mutual Berhad','Public Mutual Berhad'),
+('Rhb Asset Management Sdn Bhd','Rhb Asset Management Sdn Bhd'),
+('Rhb Bank Berhad','Rhb Bank Berhad'),
+('Rhb Investment Bank Berhad','Rhb Investment Bank Berhad'),
+('Rhb Islamic Bank Berhad','Rhb Islamic Bank Berhad'),
+('Rhb Islamic International Asset Management Berhad','Rhb Islamic International Asset Management Berhad'),
+('Saham Sabah Berhad','Saham Sabah Berhad'),
+('Saturna Sdn Bhd','Saturna Sdn Bhd'),
+('Standard Chartered Bank (Malaysia) Berhad','Standard Chartered Bank (Malaysia) Berhad'),
+('Standard Chartered Saadiq Berhad','Standard Chartered Saadiq Berhad'),
+('Ta Investment Management Berhad','Ta Investment Management Berhad'),
+('Taurus Investment Management Berhad','Taurus Investment Management Berhad'),
+('United Overseas Bank (Malaysia) Berhad','United Overseas Bank (Malaysia) Berhad'),
+('Uob Asset Management (Malaysia) Berhad','Uob Asset Management (Malaysia) Berhad'),
+('Uob Kay Hian Securities (M) Sdn Bhd','Uob Kay Hian Securities (M) Sdn Bhd'),
+    ]
+    
 RESIDENTIAL_TYPE_CHOICES = [
         ('Landed','Landed'),
         ('Condominium','Condominium'),
@@ -130,13 +226,46 @@ INSURANCE_TYPE_CHOICES = [
 
 
 GENDER_CHOICES = [
-        ('Male', 'Male'),
         ('Female', 'Female'),
+        ('Male', 'Male'),        
         ('Prefer not to respond', 'Prefer not to respond'),
     ]
 
+class BankForm(forms.ModelForm):
+    def clean_account_no(self):
+        account_no = str(self.cleaned_data.get('account_no', False))
+        if re.search('[a-zA-Z]', account_no):
+            raise ValidationError(
+                _('Account no should not contain any characters'),
+                params={'account_no': account_no},
+            )
+
+        return account_no
+
+class SecuritiesInvestmentForm(forms.ModelForm):
+    class Meta:
+        model = SecuritiesInvestment
+        fields = ('account_type',
+                  'account_no',
+                  'broker_name',
+                  'account_value',
+                )
+
+class UnitTrustInvestmentForm(forms.ModelForm):
+    class Meta:
+        model = UnitTrustInvestment
+        fields = ('unittrust_name',
+                  'account_no',
+                  'agent_name',
+                  'agent_contact_no',
+                  'account_value',
+                )
+
+
+
 BankModelFormset = modelformset_factory(
     Bank,
+    form=BankForm,
     fields=('account_type',
             'bank_name',
             'account_no',
@@ -163,8 +292,19 @@ BankModelFormset = modelformset_factory(
     }
 )
 
+class InsuranceForm(forms.ModelForm):
+    def clean_nominee_name(self):
+        nominee_name = str(self.cleaned_data.get('nominee_name', False))
+        if re.search('[0-9]', nominee_name):
+            raise ValidationError(
+                _('Nominee name should not contain any numbers'),
+                params={'nominee_name': nominee_name},
+            )
+        return nominee_name
+
 InsuranceModelFormset = modelformset_factory(
     Insurance,
+    form=InsuranceForm,
     fields=('insurance_type',
             'provider',
             'policy_no',
@@ -195,36 +335,67 @@ InsuranceModelFormset = modelformset_factory(
     }
 )
 
-# InvestmentModelFormset = modelformset_factory(
-#     Investment,
-#     fields=('insurance_type',
-#             'provider',
-#             'policy_no',
-#             'nominee_name',
-#             'sum_insured',
-#             ),
-#     extra=1,
-#     widgets={
-#         'insurance_type': forms.RadioSelect(choices=INSURANCE_TYPE_CHOICES,attrs={
-#         }),
-#         'provider': forms.TextInput(attrs={
-#             'class': 'form-control',
-#             'placeholder': 'Enter provider name here'
-#         }),
-#         'policy_no': forms.TextInput(attrs={
-#             'class': 'form-control',
-#             'placeholder': 'Enter policy no. here'
-#         }),
-#         'nominee_name': forms.TextInput(attrs={
-#             'class': 'form-control',
-#             'placeholder': 'Enter nominee name here'
-#         }),
-#         'sum_insured': forms.TextInput(attrs={
-#             'class': 'form-control',
-#             'placeholder': 'Enter sum insured here'
-#         }),
-#     }
-# )
+
+SecuritiesInvestmentModelFormset = modelformset_factory(
+    SecuritiesInvestment,
+    fields=('broker_name',
+            'account_type',
+            'account_no',
+            'account_value',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'account_type': forms.RadioSelect(choices=OVERSEAS_OR_LOCAL,attrs={
+        }),
+        'broker_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter broker name here'
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'account_value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+    }
+)
+
+UnitTrustInvestmentModelFormset = modelformset_factory(
+    UnitTrustInvestment,
+    fields=('unittrust_name',
+            'account_no',
+            'account_value',
+            'agent_name',
+            'agent_contact_no',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'unittrust_name': forms.Select(choices=UNIT_TRUST_CHOICES,attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter unit trust name here'
+        }),
+        'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account no. here'
+        }),
+        'agent_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter agent no. here'
+        }),
+        'agent_contact_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter contact no. here'
+        }),
+        'account_value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+    }
+)
 
 from django.forms import BaseModelFormSet
 
@@ -243,22 +414,22 @@ class PropertyForm(forms.ModelForm):
             'state',
             'postcode',
             'titleno',
-            'user']
+            'spa_price',
+            ]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # self.fields['residential_type'].widget = forms.Select(choices=PROPERTY_TYPE_CHOICES)
-        self.fields['residential_type'].widget.attrs['class'] = 'form-control'
-        self.fields['residential_type'].queryset = ResidentialType.objects.none()
-
-        if 'property_type' in self.data:
-            try:
-                property_type_id = int(self.data.get('property_type'))
-                self.fields['residential_type'].queryset = PropertyType.objects.filter(property_type_id=property_type_id).order_by('name')
-            except (ValueError, TypeError):
-                pass  # invalid input from the client; ignore and fallback to empty City queryset
-        elif self.instance.pk:
-            self.fields['residential_type'].queryset = self.instance.property_type.residential_type_set.order_by('name')
+    def clean_postcode(self):
+        postcode = str(self.cleaned_data.get('postcode', False))
+        if re.search('[a-zA-Z]', postcode):
+            raise ValidationError(
+                _('Postcode should not contain any characters'),
+                params={'postcode': postcode},
+            )
+        if len(postcode) != 5:
+            raise ValidationError(
+                _('Only 5 digits allowed'),
+                params={'postcode': postcode},
+            )
+        return postcode
 
 PropertyModelFormset = modelformset_factory(
     Property,form=PropertyForm,
@@ -314,6 +485,7 @@ VehicleModelFormset = modelformset_factory(
         'vehicle_type': forms.Select(choices=VEHICLE_TYPE_CHOICES,attrs={
             'class': 'form-control',
             'placeholder': 'Select a vehicle type',
+            'default': 'Car',
         }),
         'registration_no': forms.TextInput(attrs={
             'class': 'form-control',
@@ -346,6 +518,30 @@ OtherAssetModelFormset = modelformset_factory(
     }
 )
 
+CryptoModelFormset = modelformset_factory(
+    Crypto,
+    fields=('crypto_type',
+            'wallet_name',
+            'value',
+            'user',
+            ),
+    extra=1,
+    widgets={
+        'crypto_type': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter crypto type here'
+        }),
+        'wallet_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter wallet name here'
+        }),
+        'value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter asset value here'
+        }),
+    }
+)
+
 class EpfForm(forms.ModelForm):
     class Meta:
         model = Epf
@@ -364,6 +560,45 @@ class EpfForm(forms.ModelForm):
             'placeholder': 'Enter nominee name here'
         }),
         }
+
+    def clean_account_no(self):
+        account_no = str(self.cleaned_data.get('account_no', False))
+        if len(account_no) !=8:
+            raise ValidationError(
+                _('Account no should be 8 characters long'),
+                params={'account_no': account_no},
+            )
+
+        return account_no
+
+class EpfEditForm(forms.ModelForm):
+    class Meta:
+        model = Epf
+        fields = ['account_no','account_value','nominee_name',]
+        widgets={
+            'account_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+            'account_value': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter account value here'
+        }),
+            'nominee_name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter nominee name here'
+        }),
+        }
+
+    def clean_account_no(self):
+        account_no = str(self.cleaned_data.get('account_no', False))
+        if len(account_no) !=8:
+            raise ValidationError(
+                _('Account no should be 8 characters long'),
+                params={'account_no': account_no},
+            )
+
+        return account_no
 
 class SocsoForm(forms.ModelForm):
     class Meta:
@@ -387,7 +622,9 @@ class SocsoForm(forms.ModelForm):
                 _('Account no should be 12 characters long'),
                 params={'account_no': account_no},
             )
+
         return account_no
+
 
 CreditCardModelFormset = modelformset_factory(
     CreditCard,
@@ -543,15 +780,48 @@ class InvestmentForm(forms.ModelForm):
 #         model = Property
 #         fields = ['account_type','bank_name','account_no','account_value',]
 
-# class VehicleForm(forms.ModelForm):
-#     class Meta:
-#         model = Vehicle
-#         fields = ['account_type','bank_name','account_no','account_value',]
+class VehicleForm(forms.ModelForm):
+    class Meta:
+        model = Vehicle
+        fields = ['vehicle_type','make_model','registration_no',]
 
-# class OtherAssetForm(forms.ModelForm):
-#     class Meta:
-#         model = OtherAsset
-#         fields = ['name','value',]
+class CryptoForm(forms.ModelForm):
+    class Meta:
+        model = Crypto
+        fields = ['crypto_type','wallet_name','value',]
+
+class OtherAssetForm(forms.ModelForm):
+    class Meta:
+        model = OtherAsset
+        fields = ['name','value',]
+
+class CreditCardForm(forms.ModelForm):
+    class Meta:
+        model = CreditCard
+        fields = ['bank_name','account_no','amount_outstanding',]
+
+
+class PersonalLoanForm(forms.ModelForm):
+    class Meta:
+        model = PersonalLoan
+        fields = ['bank_name','account_no','amount_outstanding','loan_tenure',]
+
+
+class VehicleLoanForm(forms.ModelForm):
+    class Meta:
+        model = VehicleLoan
+        fields = ['bank_name','account_no','amount_outstanding','loan_tenure',]
+
+
+class PropertyLoanForm(forms.ModelForm):
+    class Meta:
+        model = PropertyLoan
+        fields = ['bank_name','account_no','amount_outstanding','loan_tenure',]
+
+class OtherLiabilityForm(forms.ModelForm):
+    class Meta:
+        model = OtherLiability
+        fields = ['name','value',]
 
 class EditItemModelForm(forms.ModelForm):
 
@@ -672,160 +942,121 @@ class EditItemModelForm(forms.ModelForm):
         model = Item
         fields = ['item_type']
 
-class BankAccountForm(forms.Form):
-    account_type = forms.CharField()
-    bank_name = forms.CharField()
-    account_no = forms.CharField()
-    account_type_2 = forms.CharField(required=False)
-    bank_name_2 = forms.CharField(required=False)
-    account_no_2 = forms.CharField(required=False)
-    account_value_2 = forms.CharField(required=False)
-    account_value = forms.IntegerField(required = False)
-    yesno = forms.CharField(required = False)
+class NotifierForm(forms.ModelForm):
+    class Meta:
+        model = Notifier
+        fields = [
+            "name",
+            "email",
+            "ic",
+            "contact_no",
+            "relationship",
+            "event",
+        ]
 
-class EpfSocsoForm(forms.Form):
-    is_epf_member = forms.CharField(required = False)
-    is_socso_member = forms.CharField(required = False)
-    epf_member_no = forms.CharField()
-    socso_member_no = forms.CharField()
-    epf_nominee_name = forms.CharField(required = False)
-    socso_nominee_name = forms.CharField(required = False)
-    epf_account_value = forms.IntegerField(required = False)
-    yesno = forms.CharField(required = False)
+class AccessListForm(forms.ModelForm):
+    class Meta:
+        model = Notifier
+        fields = [
+            "name",
+            "email",
+            "ic",
+            "contact_no",
+            "relationship",
+            "event",
+        ]
 
-class InsuranceForm(forms.Form):
-    insurance_type = forms.CharField()
-    provider_name = forms.CharField()
-    provider_name_custom = forms.CharField(required = False)
-    policy_no = forms.CharField()
-    nominee_name = forms.CharField(required = False)
-    sum_insured = forms.IntegerField(required = False)
-    insurance_type_2 = forms.CharField(required=False)
-    provider_name_2 = forms.CharField(required=False)
-    provider_name_custom_2 = forms.CharField(required=False)
-    policy_no_2 = forms.CharField(required=False)
-    nominee_name_2 = forms.CharField(required = False)
-    sum_insured_2 = forms.IntegerField(required = False)
-    yesno = forms.CharField(required = False)
+NotifierModelFormset = modelformset_factory(
+    Notifier,
+    fields=(
+            "name",
+            "email",
+            "ic",
+            "contact_no",
+            "relationship",
+            "event",
+            "user",
+            ),
+    extra=1,
+    widgets={
+        'name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter name here'
+        }),
+        'email': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter email here'
+        }),
+        'ic': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter IC here'
+        }),
+        'contact_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter contact number here'
+        }),
+        'relationship': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter relationship here'
+        }),
+        'event': forms.CheckboxSelectMultiple(choices=EVENT_CHOICES,attrs={
+            'placeholder': 'Enter event here'
+        }),
+    }
+)
 
-#Pending
-class InvestmentForm(forms.Form):
-    investment_type = forms.CharField()
-    account_no = forms.CharField()
-    fund_name = forms.CharField(required = False)
-    account_value = forms.IntegerField(required = False)
-    investment_type_2 = forms.CharField(required = False)
-    account_no_2 = forms.CharField(required = False)
-    fund_name_2 = forms.CharField(required = False)
-    account_value_2 = forms.IntegerField(required = False)
-    investment_type_3 = forms.CharField(required = False)
-    account_no_3 = forms.CharField(required = False)
-    fund_name_3 = forms.CharField(required = False)
-    account_value_3 = forms.IntegerField(required = False)
-    yesno = forms.CharField(required = False)
-
-
-class PropertyForm(forms.Form):
-    property_type = forms.CharField(required = False)
-    residential_type = forms.CharField(required = False)
-    address = forms.CharField()
-    state = forms.CharField(required = False)
-    postcode = forms.CharField(required = False)
-    titleno = forms.CharField(required = False)
-    property_type_2 = forms.CharField(required = False)
-    residential_type_2 = forms.CharField(required = False)
-    address_2 = forms.CharField(required = False)
-    state_2= forms.CharField(required = False)
-    postcode_2 = forms.CharField(required = False)
-    titleno_2 = forms.CharField(required = False)
-    ## Removed spa_price field  5/12/2022
-    yesno = forms.CharField(required = False)
-
-class VehicleForm(forms.Form):
-    vehicle_type = forms.CharField(required = False)
-    make_model = forms.CharField()
-    registration_no = forms.CharField()
-    vehicle_type_2 = forms.CharField(required = False)
-    make_model_2 = forms.CharField(required = False)
-    registration_no_2 = forms.CharField(required = False)
-    yesno = forms.CharField(required = False)
-
-class AssetOthersForm(forms.Form):
-    asset_name = forms.CharField(required = False)
-    asset_value = forms.CharField(required = False)
-    asset_name_2 = forms.CharField(required = False)
-    asset_value_2 = forms.CharField(required = False)
-    asset_name_3 = forms.CharField(required = False)
-    asset_value_3 = forms.CharField(required = False)
-    yesno = forms.CharField(required = False)
-
-class CreditCardForm(forms.Form):
-    bank_name = forms.CharField()
-    account_no = forms.CharField(required = False)
-    amount_outstanding = forms.CharField(required = False)
-    bank_name_2 = forms.CharField(required = False)
-    account_no_2 = forms.CharField(required = False)
-    amount_outstanding_2 = forms.CharField(required = False)
-    yesno = forms.CharField(required = False)
-
-class PersonalLoanForm(forms.Form):
-    bank_name = forms.CharField()
-    account_no = forms.CharField()
-    loan_amount = forms.IntegerField()
-    loan_tenure = forms.CharField()
-    bank_name_2 = forms.CharField(required=False)
-    account_no_2 = forms.CharField(required=False)
-    loan_amount_2 = forms.IntegerField(required=False)
-    loan_tenure_2 = forms.CharField(required=False)
-    loan_interest = forms.CharField(required = False)
-    yesno = forms.CharField(required = False)
-
-class PropertyLoanForm(forms.Form):
-    bank_name = forms.CharField()
-    account_no = forms.CharField()
-    loan_amount = forms.IntegerField()
-    loan_tenure = forms.CharField()
-    bank_name_2 = forms.CharField(required=False)
-    account_no_2 = forms.CharField(required=False)
-    loan_amount_2 = forms.IntegerField(required=False)
-    loan_tenure_2 = forms.CharField(required=False)
-    yesno = forms.CharField(required = False)
-
-class VehicleLoanForm(forms.Form):
-    bank_name = forms.CharField()
-    account_no = forms.CharField()
-    loan_amount = forms.IntegerField()
-    loan_tenure = forms.CharField()
-    bank_name_2 = forms.CharField(required=False)
-    account_no_2 = forms.CharField(required=False)
-    loan_amount_2 = forms.IntegerField(required=False)
-    loan_tenure_2 = forms.CharField(required=False)
-    loan_interest = forms.CharField(required = False)
-    yesno = forms.CharField(required = False)
-
-class LiabilitiesOthersForm(forms.Form):
-    liability_name = forms.CharField(required = False)
-    liability_value = forms.IntegerField(required = False)
-    liability_name_2 = forms.CharField(required = False)
-    liability_value_2 = forms.IntegerField(required = False)
-    liability_name_3 = forms.CharField(required = False)
-    liability_value_3 = forms.IntegerField(required = False)
-    yesno = forms.CharField(required = False)
-
-class NotifierForm(forms.Form):
-    notifier_name = forms.CharField()
-    notifier_email = forms.CharField()
-    notifier_ic = forms.CharField(required = False)
-    notifier_contactno = forms.CharField(required = False)
-    notifier_relationship = forms.CharField(required = False)
-    notifier_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
-    notifier_name_2 = forms.CharField(required = False)
-    notifier_email_2 = forms.CharField(required = False)
-    notifier_ic_2 = forms.CharField(required = False)
-    notifier_contactno_2 = forms.CharField(required = False)
-    notifier_relationship_2 = forms.CharField(required = False)
-    notifier_event_2 = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
-    yesno = forms.CharField(required = False)
+AccesslistModelFormset = modelformset_factory(
+    AccessList,
+    fields=(
+            "name",
+            "email",
+            "ic",
+            "contact_no",
+            "relationship",
+            "event",
+            "user",
+            ),
+    extra=1,
+    widgets={
+        'name': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter name here'
+        }),
+        'email': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter email here'
+        }),
+        'ic': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter IC here'
+        }),
+        'contact_no': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter contact number here'
+        }),
+        'relationship': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter relationship here'
+        }),
+        'event': forms.CheckboxSelectMultiple(choices=EVENT_CHOICES,attrs={
+            'placeholder': 'Enter event here'
+        }),
+    }
+)
+# class NotifierForm(forms.Form):
+#     notifier_name = forms.CharField()
+#     notifier_email = forms.CharField()
+#     notifier_ic = forms.CharField(required = False)
+#     notifier_contactno = forms.CharField(required = False)
+#     notifier_relationship = forms.CharField(required = False)
+#     notifier_event = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
+#     notifier_name_2 = forms.CharField(required = False)
+#     notifier_email_2 = forms.CharField(required = False)
+#     notifier_ic_2 = forms.CharField(required = False)
+#     notifier_contactno_2 = forms.CharField(required = False)
+#     notifier_relationship_2 = forms.CharField(required = False)
+#     notifier_event_2 = forms.MultipleChoiceField(choices=EVENT_CHOICES,required = False)
+#     yesno = forms.CharField(required = False)
 
 class AccessListForm(forms.Form):
     accesslist_name = forms.CharField()

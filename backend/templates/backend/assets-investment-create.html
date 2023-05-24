@@ -38,9 +38,18 @@
       </div>
 
       <div class="col-4">
-        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}</label>
+        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}<i class="fas fa-info-circle px-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Only numerical value; No Symbols or Special Characters Allowed"></i></label>
         {{form.account_value}}
         <small class="text-danger">{{ form.account_value.errors }}</small>
+      </div>
+
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile">Upload File</label>
+<input type="file" class="" id="customFile" />
+      </div>
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile2">Upload File</label>
+<input type="file" class="" id="customFile2" />
       </div>
         <!-- Process each form fields manually -->
         <!-- Add/remove additional forms-->
@@ -58,7 +67,7 @@
     <!-- Submit Button -->
     <div class="row spacer">
         <div class="col-4 offset-2">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
         </div>
     </div>
     <!-- Submit Button -->

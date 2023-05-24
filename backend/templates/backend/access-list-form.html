@@ -1,134 +1,124 @@
-{% extends "backend/base.html" %}
-{% load static %}
-
+{% extends 'backend/base.html' %}
 {% block extrahead %}
 <!-- STYLE CSS -->
 <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
 <!-- Steps CSS and JS -->
 <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/steps.css">
 {% endblock %}
+{% block extrastyle %}
+{% endblock %}
+{% block content %}s
+<div class="container bg-white my-50 container-shadow">
+  <div class="row">
+    <!-- First Column -->
+    <div class="col-md-8 col-lg-8">
 
-{% block content %}
-<!-- Start Wrapper -->
-<div class="wrapper BG-Blue pb-5">
-	<!-- Start Container -->
-	<div class="inner col-12 col-lg-10 m-auto">
-		<!-- Column 1 -->
-		<div class="form-content colsdafads-12 col-lg-9 px-lg-0 pb-5 mx-auto">
-			<div class="form-header">
-				<h2 class="Color-Secondary mb-2 d-lg-none">Step 4/4:</h2>
-				<h2 class="mb-1 Color-Secondary">Triggers</h2>
-				<p>Please fill the form below to include your notifier and access list. </p>
-			</div>
+  <div class="row">
+    <div class="col-md-12 col-lg-12 col-12 mx-auto pt-5">
+        <h2 class="Color-Secondary mb-2 d-lg-none text-center">Step 4/4:</h2>
+        <h2 class="mb-1 Color-Secondary text-center pb-2">Trigger Events</h2>
+        <p class="text-center">Access List are most likely your loved ones. They will have access to all information stored in W Vault upon verification of their identity.</p>
+    </div>
+  </div>
+  <div class="row">
+  <div class="container">
+<div class="row container-shadow p-4 m-4">
+      {% include 'backend/onboarding-trigger-breadcrumbs.html' %}
+  <div class="row">
+    <div class="col-12">
+        <h4 class="text-black">Access List</h4>
+            </div>
+    <!-- Yes no label -->
+  
+                                    <!-- Start Input -->
+                                    </div>
+                                    <!-- End Input -->
+      <!-- Yes no label -->
 
+  <form class="form-horizontal form-block" method="POST" action="">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+    <div class="row form-row">
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+        <label for="{{ form.name.id_for_label }}">{{form.name.label}}</label>
+        {{form.name}}
+        <small class="text-danger">{{ form.name.errors }}</small>
+      </div>
 
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+        <label for="{{ form.email.id_for_label }}">{{form.email.label}}<i class="fas fa-info-circle px-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="The person in the access list will only receive an email upon trigger event"></i></label>
+        {{form.email}}
+        <small class="text-danger">{{ form.email.errors }}</small>
+      </div>
 
-			<!-- Left Column Inner Column -->
-			<div class="inner pb-5">
-				<!-- Form Div -->
-				<div class="form-content w-100 pb-3">
-					{% include 'backend/onboarding-trigger-breadcrumbs.html' %}
-					<!-- Form -->
-					<form method="post" class="Assets needs-validation" novalidate>
-						{% csrf_token %}
-						<!-- Start EPF Div-->
-						<!-- Information -->
-						<!-- Access List -->
-						<!-- Access List -->
-						<DIV class="mb-5">
-							<h4 class="text-black">Access List</h4>
-							<br>
-							<!-- Access List 1 #1 -->
-							<div>
-								<h5 class="answer text-black">Access List #1</h5>
-								<br>
-								<br>
-								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
-										<h5>Name</h5><br>
-										<input type="text" name="accesslist_name" id="" placeholder="Name" class="px-4">
-									</div>
-									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
-										<h5>Email</h5><br>
-										<input type="text" name="accesslist_email" id="" placeholder="Email"
-											class="px-4">
-									</div>
-								</div>
-								<br><br><br>
-								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
-										<h5>IC</h5><br>
-										<input type="text" name="accesslist_ic" id="" placeholder="IC" class="px-4">
-									</div>
-									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
-										<h5>Contact No</h5><br>
-										<input type="text" name="accesslist_contactno" id="" placeholder="+6016656366"
-											class="px-4">
-									</div>
-								</div>
-								<br><br><br>
-								<div class="form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
-									<div class="answer mt-5 mt-lg-0 col-lg-6 col-12 mx-1">
-										<h5>Relationship</h5><br>
-										<input type="text" name="notifier_relationship" id="" placeholder="Father"
-											class="px-4" style="max-height: 71px;">
-									</div>
-									<div class="answer mb-5 mb-lg-0 col-lg-6 col-12">
-										<h5>Events</h5>
-										<div class="px-3 mt-3">
-											<input type="checkbox" name="Events" value="Critical_Illness">Critical
-											Illness<br>
-											<input type="checkbox" name="Events" value="Death">Death<br>
-											<input type="checkbox" name="Events" value="Dementia">Dementia<br>
-											<input type="checkbox" name="Events" value="Permanent Disability">Permanent
-											Disability<br>
-										</div>
-									</div>
-								</div>
-								<br>
-							</div>
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+        <label for="{{ form.ic.id_for_label }}">{{form.ic.label}}</label>
+        {{form.ic}}
+        <small class="text-danger">{{ form.ic.errors }}</small>
+      </div>
 
-							<!-- End Information -->
-							<div class="answer mb-5">
-								<!-- Billing Cycle Toggle -->
-								<div class="text-center">
-									<div class="form-check form-switch flex-row d-flex align-items-center">
-										<input class="hide_answer_2 form-check-input" type="checkbox"
-											id="flexSwitchCheckDefault">
-										<label class="form-check-label ms-2" for="flexSwitchCheckDefault">Add More
-											Access List</label>
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+        <label for="{{ form.contact_no.id_for_label }}">{{form.contact_no.label}}</label>
+        {{form.contact_no}}
+        <small class="text-danger">{{form.contact_no.errors }}</small>
+      </div>
 
-									</div>
-								</div>
-							</div>
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+        <label for="{{ form.relationship.id_for_label }}">{{form.relationship.label}}</label>
+        {{form.relationship}}
+        <small class="text-danger">{{ form.relationship.errors }}</small>
+      </div>
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+        <label for="{{ form.event.id_for_label }}">{{form.event.label}}</label>
+        {{form.event}}
+        <small class="text-danger">{{ form.event.errors }}</small>
+      </div>
 
 
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile" />
+      </div>
 
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile2">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile2" />
+      </div>
+        <!-- End process each form fields manually -->
 
+        <!-- Add/remove additional forms-->
+      <div class="col-12 d-flex py-2">
+        {% if forloop.last %}
+          <button class="btn btn-success add-form-row mt-auto">Add</button>
+        {% else %}
+          <button class="btn btn-danger remove-form-row mt-auto">Delete</button>
+        {% endif %}
+      </div>
+      <!-- End Add/remove additional forms-->
 
-
-
-
-							<!-- Button -->
-							<div class="mt-5">
-								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'liabilities_others_form' %}"
-									role="button">Back</a>
-								<button class="btn Btn-Primary mt-5 float-end" type="submit">NEXT</button>
-							</div>
-					</form>
-					<!-- End Form -->
-				</div>
-				<!-- End Form Div-->
-			</div>
-			<!-- End Left Column Inner Column -->
-		</div>
-		<!-- End Column 1 -->
-	</div>
-	<!-- Start Column 2 -->
-	{% include 'backend/onboarding-trigger-sidebar.html' %}
+    </div>
+    {% endfor %}
+    <!-- Submit Button -->
+    <div class="row spacer">
+        <div class="col-4">
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
+        </div>
+    </div>
+    <!-- Submit Button -->
+  </form>
 </div>
-<!-- End Container -->
 </div>
-<!-- End Wrapper -->
+  </div>
+</div>
+<!-- End First Column -->
+
+<!-- Start Second Column -->
+<div class="col-md-4 col-lg-4 BG-Gray">
+{% include 'backend/onboarding-trigger-sidebar.html' %}
+  </div>
+  <!-- End Second Column -->
+</div>
+</div>
 <script src="https://npmcdn.com/flickity@2/dist/flickity.pkgd.js"></script>
 {% endblock %}

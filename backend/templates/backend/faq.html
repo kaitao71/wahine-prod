@@ -1,120 +1,273 @@
 {% extends "backend/base.html" %}
 {% load static %}
 
+{% block extrahead %}
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- Flickity CSS and JS -->
+<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/flickity.css">
+<!-- JavaScript -->
+<script src="https://wahine.s3.amazonaws.com/static/js/flickity.js"></script>
+{% endblock %}
+
 
 {% block content %}
-
 <body>
-   
-    <!-- Hero Banner -->
+   <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"></script>
 
-    <!-- Section 2 -->
+   <!-- Section 2 -->
     <div class="container mt-5 pb-3">
-
         <br>
         <div class="row">
             <div class="col-10 text-center mx-auto p-5">
                 <h4 class="Color-Secondary">WAHINE COMMON FAQS</h4><br>
-                <h2 class="text-black">What We Need To Know
+                <h2 class="text-black">What You Need To Know
                 </h2><br>
-                <p class="text-center text-black">Frequently Asked Questions</p><br>
+                <p class="text-center text-black">We advice you to read carefully the information below prior to starting your journey towards a more financially secure future.</p><br>
+            </div>
+            <div class="col-10 text-center mx-auto">
+              <p class="text-center text-black">Frequently Asked Questions</p><br>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accordion Drop Down -->
+    <div class="container-fluid pb-5">
+    <div class="accordion accordion-flush row px-5" id="accordionFlushExample">
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                What is a Digital Vault?
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Digital vaults are simply a digital safebox. It is a great way to secure and manage your digital assets
+                and digital copies of your important stuff in an increasingly digital world. They provide a secure and
+                centralized location for storing documents, passwords, and other sensitive information, protecting
+                against data breaches and compliance violations.
+                
+                Our digital vault solution, W Vault is designed to simplify your life. In addition to storing important
+                information, there is also a dashboard that will allow you to see, track and assess your important
+                information and notify the necessary people at the right time.</div>
+          </div>
+        </div>
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              What is W Vault?
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">W Vault is a digital vault.  It is a secure space online for which only you have access using your log in details and password.  You can consider W Vault as an online security vault or a digital safebox where you can safely keep your important information and documents.  It is an easy way to manage, organize and secure your important information in an increasingly digital world. We understand that this is sensitive and private information.  For this reason, we have added security measures so the information is safe from corruption, theft and hacking.
+
+              <br><br> W Vault provides an easy-to-use platform where you can organize information and documents on your assets and liabilities.  Several categories have been pre-prepared which prompts the essential information required to enable your loved ones/ next of kin to locate, access or administer your assets and liabilities.  The “Others” category allows you to add other assets and liabilities that have not been pre-prepared by W Vault.  Your art, jewelry, handbags, carpets and other treasured items can be included in this category.
               
-            </div>
+              <br><br> In short, W Vault is designed to simplify your life. 
+              </div>
+          </div>
+        </div>  
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseOne">
+              Why use W Vault?
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">W Vault allows you to manage information on your assets and liabilities on the go.  For example, if you have made a new investment you can immediately access your account, fill up the necessary details such as bank/institution name, account number, agent number and contact details and so on.  You can even upload the investment contract document.  If you reflect the value of your investment, it will enhance your dashboard.  You can then rest in peace that this information has been captured for your future reference.  Just delete or amend the information should you sell or change the investment at a later date.
+
+              <br><br> We often store information on our assets and liabilities in different locations.  Some may be on an app on our phones, some may be on an excel sheet on a laptop, titles and receipts may be in our safety deposit box at home or in a bank.  W Vault allows you to store all this information in one place for ease of your reference.  If anything unexpected should happen to you, we undertake to pass this information to the person(s) you have identified, so they can have that information at hand (see explanation on notifier and access list).
+              
+              <br><br> If you have any further questions you can contact us at hellowahine@wcapital.asia
+              
+              </div>
+          </div>
+        </div>  
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseTwo">
+              What can you do with W Vault and what documents can you upload?
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              Now that you understand the What and the Why, below is a brief explanation of the process that you will be going through on W Vault. <br><br>We advise that you prepare your information such as account details in advance.  If you wish to store documents, have them on hand so you can easily upload them when prompted.  You can choose to do this in one sitting or visit your account as many times as you wish and fill it up bit by bit.  We understand this can be a tedious process.  We also know that it is a crucial, necessary, and responsible process to ensure your personal financial security and the financial security of your loved ones. <br><br>W Vault has provided for the following categories.  For each category, you are able to upload documents in PDF form and image file types such as JPN, PNG (to validate the info).  For example, in the category of property you may wish to upload the first page of the title, and the page with signatures.  Alternatively, you may wish to upload a word document where you have indicated where the titles are kept, information on the mortgage, any joint ownership, inheritance and wills related to the property; etc. <br><br> Assets Categories <br> <img src="https://wahine.s3.amazonaws.com/static/Img-Breadcrumb-Assets.png
+              " alt=""><br><br>Liabilities Categories <br><img src="https://wahine.s3.amazonaws.com/static/Img-Breadcrumb-Liabilities.png" alt="" width="600px">
+              
+              </div>
+          </div>
         </div>
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseTwo">
+              What is a Dashboard?
+            </button>
+          </h2>
+          <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">
+              <img src="https://wahine.s3.amazonaws.com/static/Img-Dashboard.png" alt="" width="400px"><br> If you provide information regarding the values of your assets and liabilities, the dashboard will reflect this at the end.  You will be able to see in simple form the distribution of your assets and liabilities.  We have provided this so may start thinking about the appropriate allocations you may wish to make depending on your financial circumstances and objectives.  For example, the dashboard may show you that you are over reliant on EPF savings, or that you are over insured, or that you have sufficient liquid assets to reduce your liabilities and so on.  
+
+              Note that the dashboard will only be meaningful is you input values.
+              
+              
+              </div>
+          </div>
+        </div>
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseTwo">
+              How do I edit or amend the information already saved?
+            </button>
+          </h2>
+          <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">All amendments and edits can be done by clicking on the category on your dashboard page.  Make your amendements and then click save.              
+              </div>
+          </div>
+        </div>
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingSeven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseTwo">
+              What happens upon cancellation, refund or default in payment?
+            </button>
+          </h2>
+          <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Please contact Wahine Capital immediately upon occurrence of any of hese events.  We have a grace period of a month within which you can save your information (albeit not in the format provided in W Vault).  After a month, the information and your account will be deleted.             
+              </div>
+          </div>
+        </div>
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingEight">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseTwo">
+              What happens if Wahine Capital is no longer in operation?
+            </button>
+          </h2>
+          <div id="flush-collapseEight" class="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Wahine Capital will ensure that there is a sufficient transition time to enable the information you have on W Vault is securely transferred to you for your safekeeping.               
+              </div>
+          </div>
+        </div>
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingNine">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseTwo">
+                What is the difference between notifier and access list?
+            </button>
+          </h2>
+          <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">This is an added value feature of W
+                Vault where we have differentiated between the two. Who can be a notifier? A notifier is
+                anyone you have identified as the person who will get in touch with us should a trigger
+                event happen such as death, disability, mental incapacity and so on. She or he could be
+                your lawyer, a family member, your best friend or any other trusted person. When we have
+                verified the notifier and the trigger event, we will then provide access of all the information
+                you have stored on W Vault to the people on your access list. Your access list individuals
+                will most likely be your loved ones.</div>
+          </div>
+        </div>
+
+
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingTen">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseThree">
+                Is W Vault only for women?
+            </button>
+          </h2>
+          <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Definitely not! Our focus is women. For the simple reason that women are more financially
+                made vulnerable during unplanned life events such as divorce, illness, death. Women are
+                generally less financially literate, women are less likely to own the family assets and so on.
+                So, we believe it is crucial women are made aware of risks they face if they don’t plan ahead
+                and think about their long term financial security. BUT of course, it is important that we
+                have the men on board. Because they are our partners, our fathers, our sons, our brothers
+                and very much a part of our lives. So, we welcome both men and women, young and old to
+                subscribe to W Vault.</div>
+          </div>
+        </div>
+        <div class="accordion-item p-0">
+          <h2 class="accordion-header" id="flush-headingEleven">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseFour">
+                How safe is my information in W Vault?
+            </button>
+          </h2>
+          <div id="flush-collapseEleven" class="accordion-collapse collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">We know that privacy and data security is something that all of us are very concerned
+                about. And rightly so. We completely understand that sharing of your personal information
+                is difficult. Which is why we have ensured, even at the earliest stage of our product
+                development, that all information is SSL encrypted and that regular penetration testing is
+                conducted to ensure that your data is as safe as it can be, based on the best practices that is
+                technologically available at this time.</div>
+          </div>
+        </div>
+
+    </div>
     </div>
 
-    <!-- Question 1 & 2 -->
-    <div class="container-fluid Bg-Primary Section" id="whatiswvault">
-        <div class="row align-items-center Relative-P ">
-            <div class="col-6 col-lg-2 d-none d-lg-block"  style="margin-left: -100px"><img
-                    src="https://wahine.s3.amazonaws.com/static/Vector_Irregular-Navy.png" alt=""></div>
+    <!-- Sign Up Button -->
+    <div class="text-center">
+    <a class="btn Btn-Secondary" href="{% url 'django_registration_register' %}" role="button">Sign Up Now</a></div>
 
-            <div class="col-lg-10 text-center text-lg-start mt-5">
-                <h4 class="text-black">What is a Digital Vault?</h4><br><br>
-                <p class="text-black text-center text-lg-start"> Digital vaults are simply a digital safebox. It is a great way to secure and manage your digital assets
-                    and digital copies of your important stuff in an increasingly digital world. They provide a secure and
-                    centralized location for storing documents, passwords, and other sensitive information, protecting
-                    against data breaches and compliance violations.
-                    
-                    Our digital vault solution, W Vault is designed to simplify your life. In addition to storing important
-                    information, there is also a dashboard that will allow you to see, track and assess your important
-                    information and notify the necessary people at the right time.
-                </p>
-                <br>
-                <br><br>
-                <h4 class="text-black">What is the difference between notifier and access list?</h4><br><br>
-                <p class="text-black text-center text-lg-start"> This is an added value feature of W
-                    Vault where we have differentiated between the two. Who can be a notifier? A notifier is
-                    anyone you have identified as the person who will get in touch with us should a trigger
-                    event happen such as death, disability, mental incapacity and so on. She or he could be
-                    your lawyer, a family member, your best friend or any other trusted person. When we have
-                    verified the notifier and the trigger event, we will then provide access of all the information
-                    you have stored on W Vault to the people on your access list. Your access list individuals
-                    will most likely be your loved ones.
-                </p>
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
-    </div>
-    <!-- Question 3 & 4 --> 
-    <div class="container-fluid mb-5 Bg-Primary Section9 mb-lg-0"  id="whatiswvault">
-        <div class="row align-items-center Relative-P ">
-            <div class="col-6 col-lg-2 d-none d-lg-block" style="margin-left: -100px"><img
-                src="https://wahine.s3.amazonaws.com/static/Vector_Irregular-Navy.png" alt="" style="filter:invert(100%)"></div>
 
-            <div class="col-lg-10 text-center text-lg-start mt-5 ">
-                
-                <h4 class="text-white">Is W Vault only for women?</h4><br><br>
-                <p class="text-white text-center text-lg-start"> Definitely not! Our focus is women. For the simple reason that women are more financially
-                    made vulnerable during unplanned life events such as divorce, illness, death. Women are
-                    generally less financially literate, women are less likely to own the family assets and so on.
-                    So, we believe it is crucial women are made aware of risks they face if they don’t plan ahead
-                    and think about their long term financial security. BUT of course, it is important that we
-                    have the men on board. Because they are our partners, our fathers, our sons, our brothers
-                    and very much a part of our lives. So, we welcome both men and women, young and old to
-                    subscribe to W Vault.
-                </p>
-                <br>
-                <br><br>
-                <h4 class="text-white">How safe is my information in W Vault?</h4><br><br>
-                <p class="text-white text-center text-lg-start">We know that privacy and data security is something that all of us are very concerned
-                    about. And rightly so. We completely understand that sharing of your personal information
-                    is difficult. Which is why we have ensured, even at the earliest stage of our product
-                    development, that all information is SSL encrypted and that regular penetration testing is
-                    conducted to ensure that your data is as safe as it can be, based on the best practices that is
-                    technologically available at this time.
-                </p>
-                <br><br>
-            </div>
-
+    <!-- Medium.com Feed -->
+    <div class="container mt-5 pb-3">
+      <br>
+      <div class="row">
+          <div class="col-10 text-center mx-auto p-5">
+              <h4 class="Color-Secondary">STAY UP TO DATE</h4><br>
+              <h2 class="text-black">LATEST ARTICLES
+              </h2><br>
+              <p class="text-center text-black">Coming Soon</p><br>
             
-        </div>
-
+          </div>
+      </div>
     </div>
-
-     <!-- Security   -->
-     <div class="container-fluid bg-light pt-5 pb-5 px-5" id="security">
-        <div class="row">
-            <div class="col-lg-8 pt-5" style="">
-                <h3 class="border-0 p-0">W Vault Security</h3>
-                <br>
-                <p class="text-black">We take security and your data privacy seriously. We are working towards
-                    ensuring that we meet
-                    banking standard security. We will be conducting periodic penetration testing to ensure that our
-                    security levels are always on guard, because your security concern is ours too.
-                </p>
-                <a class="btn Btn-Secondary" href="{% url 'signup' %}" role="button">Begin For Free</a>
-                
+    <div class="container-fluid pb-5">
+      <div class="row pb-5">
+        <div class="col-12 text-center">
+          <!-- Your embedded video player code -->
+            <div class="fb-video" data-href="https://www.facebook.com/100087563592086/videos/935562087477068/" data-width="500" data-show-text="true" data-allowfullscreen="true">
+              <div class="fb-xfbml-parse-ignore">
+                <blockquote cite="https://www.facebook.com/100087563592086/videos/935562087477068/">
+                  <a href="https://www.facebook.com/100087563592086/videos/935562087477068/">Women's Financial and Mental Well-being: Breaking Taboos and Taking Charge, with Azreen Pharmy and Jessica Wee's Inspiring Conversations.</a>
+                </blockquote>
+              </div>
             </div>
-            <div class="col-lg-4">
-                <img src="https://wahine.s3.amazonaws.com/static/css/Img-Security.png" alt=""
-                    style="max-height:350px ;">
-
-            </div>
+          </div>    
         </div>
+      </div>
     </div>
+    <!-- <div class="container-fluid pb-5">
+       <div class="row pb-5">
+        <div class="col-12">
+          <div class="slider">
+            <div class="carousel" data-flickity='{ "contain": true}'>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+              <div class="carousel-cell medium-articles"></div>
+            </div>
+            </div>  
+          </div>
+        </div>
+    </div> -->
+
+
+
 
 
 </body>

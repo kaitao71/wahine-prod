@@ -1,0 +1,33 @@
+{% extends "backend/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+	<div class="wrapper container" style="padding-bottom:50px;min-height:40vh">
+
+<!-- Pop Up Welcome Message -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Welcome!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Congratulations! You now have 3 months free access to W Vault to explore and start on simplifying your life. Prior to the end of the 3 months, we will send you a reminder to pay to continue benefiting from W Vault. If you decide to not continue with us, any data and information kept with W Vault will be destroyed within 7 days of non receipt of payment.</p>
+        
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+<p>You have activated your account. You can proceed to login now.</p>
+</div>
+
+{% endblock %}

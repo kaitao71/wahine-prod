@@ -1,0 +1,77 @@
+{% extends "backend/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+
+<head>
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style-SignUp.css">
+</head>
+
+<body>
+	<div class="wrapper container" style="padding-bottom:50px">
+		<form method="post">
+			<!-- SECTION 1 -->
+			{% csrf_token %}
+			<section>
+				<div class="inner row">
+					<div class="col-lg-4 px-0 image-holder overflow-Hidden d-none d-lg-block">
+						<img src="https://wahine.s3.amazonaws.com/static/Images/Img_SmilingGirl3.png" alt=""
+							style="max-width:325px;">
+					</div>
+					<div class="col-lg-12 form-content">
+						<div class="form-header">
+							<h3 class="border-0">Login</h3>
+						</div>
+						<p>Please fill in your details</p>
+
+						<div class="form-row">
+							<div class="form-holder w-100">
+
+								{% render_field form.username class+="form-control" placeholder="Email" %}
+								{{form.email.errors}}
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="form-holder w-100">
+
+								{% render_field form.password class+="form-control" placeholder="Password" %}
+								{{form.password.errors}}
+							</div>
+						</div>
+						<div class="form-row">
+							<small><a href="" class="Unset">Forgot Password?</a></small>
+						</div>
+						<hr>
+
+						<div class="form-row">
+							<small>Don't have an account? <a href="{% url 'django_registration_register' %}" class="Unset">Sign Up
+									Here.</a></small>
+						</div>
+						<div class="mt-4 mb-4">
+							<button class="signup-next-button Btn-Primary" type="submit">Next</button>
+						</div>
+
+					</div>
+
+			</section>
+		</form>
+	</div>
+
+	<!-- JQUERY -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery-3.3.1.min.js"></script>
+
+	<!-- JQUERY STEP -->
+	<script src="https://wahine.s3.amazonaws.com/static/js/jquery.steps.js"></script>
+	<script src="https://wahine.s3.amazonaws.com/static/js/main.js"></script>
+	<!-- Template created and distributed by Colorlib -->
+
+	<script>
+		function clickNext() {
+			var a = document.querySelectorAll('[role="tab"]');
+			a.className = "testCurrent";
+		}</script>
+</body>
+{% endblock %}

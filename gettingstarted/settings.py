@@ -28,10 +28,28 @@ IS_HEROKU = "DYNO" in os.environ
 # SECURITY WARNING: keep the secret key used in production secret!
 ## Use environment variable
 SECRET_KEY = "fjd12489hHFG*$&H9h4r78TG08hyfO$*Ghy"
-
+ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
 if 'SECRET_KEY' in os.environ:
     SECRET_KEY = os.environ["SECRET_KEY"]
 
+## X-Frame-Options
+X_FRAME_OPTIONS = 'DENY'
+#X-Content-Type-Options
+SECURE_CONTENT_TYPE_NOSNIFF = True
+## Strict-Transport-Security
+SECURE_HSTS_SECONDS = 15768000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+### SMTP Sendinblue
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-relay.sendinblue.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'rejina@Wcapital.asia'
+EMAIL_HOST_PASSWORD = 'xTNzYdXD4kLInGmq'
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 if IS_HEROKU:
@@ -44,6 +62,8 @@ DEBUG = False
 if not IS_HEROKU:
     DEBUG = True
 
+LOGOUT_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'assets-bank-createform'
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,17 +75,40 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.humanize",
     "backend",
     # "django_htmx",
     'widget_tweaks',
+    'import_export',
     # 'compressor',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/','https://wahine.wcapital.asia']
 
+if IS_HEROKU:
+    CSP_DEFAULT_SRC = ("'self'")
+    CSP_CONNECT_SRC = ("'self'",'https://csmetrics.hotjar.com/','https://www.google-analytics.com/g/collect','https://ka-f.fontawesome.com/releases/v6.4.0/css/free.min.css','https://ka-f.fontawesome.com/releases/v6.4.0/css/free-v4-shims.min.css','https://ka-f.fontawesome.com/releases/v6.4.0/css/free-v5-font-face.min.css','https://ka-f.fontawesome.com/releases/v6.4.0/css/free-v4-font-face.min.css',)
+    CSP_IMG_SRC = ("'self'",'https://wahine.s3.amazonaws.com/')
+    CSP_STYLE_SRC = ("'unsafe-inline'",'https://fonts.googleapis.com/','https://cdn.jsdelivr.net/','https://wahine.s3.amazonaws.com/','https://cdnjs.cloudflare.com/','https://ka-f.fontawesome.com/')
+    CSP_SCRIPT_SRC = ("'self'",)
+    CSP_SCRIPT_SRC_ELEM = ("'unsafe-inline'",'https://code.jquery.com/jquery-3.3.1.min.js','https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js','https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js','https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js','https://www.googletagmanager.com/','https://static.hotjar.com/c/hotjar-3298355.js','https://kit.fontawesome.com/c616ac1eb5.js',)
+
+    CSP_FONT_SRC = ("'self'",
+    'https://fonts.gstatic.com/',
+    'https://cdnjs.cloudflare.com/',
+    'https://fonts.googleapis.com/',
+    'https://ka-f.fontawesome.com/',
+    'https://cdn.jsdelivr.net/',
+     )
+
+# CSP_INCLUDE_NONCE_IN = ['script-src',]
+CLOUD_STORAGE_SECURITY_KEY = '89hHFG*$&H9h4r78TG08hyfO$*G'
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
+    "django_permissions_policy.PermissionsPolicyMiddleware",
+    # 'csp.middleware.CSPMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -76,6 +119,24 @@ MIDDLEWARE = [
     # "django_htmx.middleware.HtmxMiddleware",
 ]
 
+PERMISSIONS_POLICY = {
+    "accelerometer": [],
+    "ambient-light-sensor": [],
+    "autoplay": [],
+    "camera": [],
+    "display-capture": [],
+    "document-domain": [],
+    "encrypted-media": [],
+    "fullscreen": [],
+    "geolocation": [],
+    "gyroscope": [],
+    "interest-cohort": [],
+    "magnetometer": [],
+    "microphone": [],
+    "midi": [],
+    "payment": [],
+    "usb": [],
+}
 AUTH_USER_MODEL="backend.User"
 ROOT_URLCONF = "gettingstarted.urls"
 
@@ -159,7 +220,7 @@ STATICFILES_DIRS = (
 )
 # Enable WhiteNoise's GZip compression of static assets.
 # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 # Test Runner Config
 class HerokuDiscoverRunner(DiscoverRunner):
@@ -186,3 +247,27 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # COMPRESS_ENABLED = True
 
 # STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+
+## AWS S3 Settings
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_LOCATION = 'static'
+AWS_ACCESS_KEY_ID ='AKIAQCR227DLH242C34W' 
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME ='taosolutions'
+AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {    
+     'CacheControl': 'max-age=86400',
+}
+
+DEFAULT_FILE_STORAGE = 'gettingstarted.storages.MediaStorage'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+] 
+
+STATIC_URL='https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_FINDERS = ('django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+AWS_DEFAULT_ACL = None
+AWS_S3_FILE_OVERWRITE = False

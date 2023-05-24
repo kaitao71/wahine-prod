@@ -14,7 +14,7 @@
     <div class="col-md-8 col-lg-8">
   <div class="row">
     <div class="col-md-12 col-lg-12 col-12 mx-auto pt-5">
-        <h2 class="Color-Secondary mb-2 d-lg-none">Step 2/4:</h2>
+        <h2 class="Color-Secondary mb-2 d-lg-none text-center">Step 2/4:</h2>
         <h2 class="mb-1 Color-Secondary text-center">Assets</h2>
         <p class="text-center">Please fill the form below to record your personal assets information. Feel free to add
           as much detail as needed. </p>
@@ -95,9 +95,18 @@
         <small class="text-danger">{{ form.postcode.errors }}</small>
       </div>
       <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
-        <label for="{{ form.titleno.id_for_label }}">{{form.titleno.label}}</label>
+        <label for="{{ form.titleno.id_for_label }}">Title No</label>
         {{form.titleno}}
         <small class="text-danger">{{ form.postcode.titleno.errors }}</small>
+      </div>
+
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile" />
+      </div>
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile2">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile2" />
       </div>
         <!-- End process each form fields manually -->
 
@@ -116,7 +125,7 @@
     <!-- Submit Button -->
     <div class="row spacer">
         <div class="col-12">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
         </div>
     </div>
     <!-- Submit Button -->
@@ -179,4 +188,5 @@
 
     });
   </script>
+
 {% endblock %}

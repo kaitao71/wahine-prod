@@ -1,0 +1,18 @@
+{% extends "backend/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+
+{% block content %}
+<div class="wrapper container">
+	<form method="post" class="">
+		{% csrf_token %}
+		<p>Are you sure that you want to delete "{{bank}}"?</p>
+		<p class="form-buttons">
+			<input type="submit" class="btn Btn-Secondary-2" value="Delete">
+			<a href="{% url 'dashboard-new' %}" class="btn btn-outline">Cancel</a>
+		</p>
+	</form>
+</div>
+
+{% endblock %}

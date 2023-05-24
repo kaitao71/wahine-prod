@@ -1,6 +1,8 @@
+{% load humanize %}
 <!DOCTYPE html>
 
 <head>
+
   {% load static %}
 
   <!-- Bootstrap CSS -->
@@ -15,6 +17,8 @@
   <!-- Sign Up Form Template CSS -->
   <!-- Custom CSS -->
   <link rel="stylesheet" href="https://wahine.s3.amazonaws.com/static/css/style.css">
+  
+  <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -27,11 +31,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
     integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Include Font Awesome CSS -->
+  <script src="https://kit.fontawesome.com/c616ac1eb5.js" crossorigin="anonymous"></script>
   {% block extrahead %}
   {% endblock %}
 
   <!-- Hotjar Tracking Code -->
-<script>
+<script nonce="{{request.csp_nonce}}">
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:3298355,hjsv:6};
@@ -76,9 +83,9 @@
     position: relative;
     color: black;
 }
-.bg-gray {
-  background:;
-}
+/* .bg-gray {
+  background:
+} */
 .btn-radio select,
 .btn-radio input[type="text"],
 input[type="select"] {
@@ -90,6 +97,15 @@ input[type="select"] {
 }
 </style>
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5J5ZS5EZS"></script>
+<script nonce="{{request.csp_nonce}}">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Q5J5ZS5EZS');
+</script>
 
 <header>
 
@@ -130,9 +146,9 @@ input[type="select"] {
               <li><a class="dropdown-item" href="{% url 'joinnow' %}#security">Security</a></li>
             </ul>
           </li>
-
-
-
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'faq' %}">What You Need To Know</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'contactus' %}">Contact Us</a>
           </li>
@@ -141,10 +157,10 @@ input[type="select"] {
       <!-- Button -->
       <div class="order-lg-3 order-3">
         {% if request.user.is_authenticated %}
-        <a class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'dashboard' %}">Dashboard</a> <a
+        <a class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'dashboard-new' %}">Dashboard</a> <a
           class="btn Btn-Primary px-2 mx-1" role="button" href="{% url 'logout' %}">Log out</a>
         {% else %}
-        <a class="btn Btn-Primary px-2 mx-1" href="{% url 'signup' %}" role="button" style="margin:0">Sign Up</a>
+        <a class="btn Btn-Primary px-2 mx-1" href="{% url 'faq' %}" role="button" style="margin:0">Sign Up</a>
         <a class="btn Btn-Primary px-2 mx-1" href="{% url 'login' %}" role="button" style="margin:0">Log In</a>
 
         {% endif %}
@@ -159,7 +175,8 @@ input[type="select"] {
   {% block content %}
   {% endblock %}
 
-  <!-- <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+  <!-- <script nonce=
+"{{request.csp_nonce}}" src="https://code.jquery.com/jquery-1.12.4.min.js"></script> -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
     integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
@@ -174,7 +191,7 @@ input[type="select"] {
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-  <script type="text/javascript">
+  <script nonce="{{request.csp_nonce}}" type="text/javascript">
     $(".hidden-form-block").hide();
     $(document).ready(function () {
       $('.hide-form-block').click(function () {
@@ -257,7 +274,7 @@ input[type="select"] {
   {% if messages %}
   {% for message in messages %}
 
-  <script>
+  <script nonce="{{request.csp_nonce}}">
     toastr.options = {
       "closeButton": true,
       "debug": true,
@@ -314,6 +331,17 @@ function cloneMore(selector, prefix) {
             count++;
         }
     });
+    newElement.find(':input([type=file])').each(function() {
+        var name = $(this).attr('name')
+        var id = $(this).attr('id')
+        var count = 0
+        if(name) {
+            name = name.replace('-' + (total-1) + '-', '-' + total + '-');
+            id = id.replace('-' + (total-1) + '-', '-' + total + '-');
+            // $(this).attr({'name': name, 'id': id}).removeAttr('checked').prop('checked', false);
+            count++;
+        }
+    });
     newElement.find('label').each(function() {
         var forValue = $(this).attr('for');
         if (forValue) {
@@ -351,15 +379,45 @@ function deleteForm(prefix, btn) {
 
 $(document).on('click', '.add-form-row', function(e){
     e.preventDefault();
-    cloneMore('.form-row:last', 'form');
+    var newRow = cloneMore('.form-row:last', 'form');
+    $('[data-bs-toggle="tooltip"]', newRow).tooltip(); // Initialize tooltips for the new row
     return false;
 });
+
 $(document).on('click', '.remove-form-row', function(e){
     e.preventDefault();
     deleteForm('form', $(this));
     return false;
 });
+
+// <!-- Pop Up Message Before Bank Asset -->
+$(document).ready(function() {
+    // Show popup message
+    $('#exampleModal').modal('show');
+  }); 
 </script>
+    <script nonce="{{request.csp_nonce}}">
+ function validateSize(input) {
+  const fileSize = input.files[0].size / 1024 / 1024; // in MiB
+  if (fileSize > 5) {
+    alert('File size exceeds 5 MiB');
+    input.value = ''; //for clearing with Jquery
+  } else {
+    // Proceed further
+  }
+}</script>
+
+<!-- Javascript for Tooltip Library -->
+<script nonce="{{request.csp_nonce}}">
+  document.addEventListener("DOMContentLoaded", function() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    });
+  });
+</script>
+
+
 <!-- Formset Logic -->
 </body>
 
@@ -374,7 +432,7 @@ $(document).on('click', '.remove-form-row', function(e){
               <br /></span><span style="font-weight: 400;">2 </span><span style="font-weight: 400;">Jalan Kiara, Mont
               Kiara, <br />50480 Kuala Lumpur, <br />Wilayah Persekutuan Kuala Lumpur</span></span></p>
         <p><span style="font-size: 85%;">Email:
-            hello@wcapital.asia</span></p>
+          hellowahine@wcapital.asia</span></p>
       </div>
       <div class="col-lg-7">
         <h5>Disclaimer</h5>
@@ -401,7 +459,7 @@ $(document).on('click', '.remove-form-row', function(e){
           </a>
         </div>
         <div><a href="{% url 'return-refund-policy' %}" class="p-0">
-            <p>REFUND POLICY</p>
+            <p>CANCELLATION & REFUND POLICY</p>
           </a>
         </div>
       </div>

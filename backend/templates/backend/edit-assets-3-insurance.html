@@ -78,7 +78,7 @@
 								<div class="answer form-row Btn-Radio flex-row flex-wrap flex-lg-nowrap">
 									<div class="col-lg-6 col-12 mb-5 mb-lg-0">
 										<h5>Insurance Provider</h5><br>
-										<select name="provider_name" id="provider_name" class="px-4">
+										<select name="provider" id="provider" class="px-4">
 											<option value="">Select A Provider</option>
 											<option selected value="AIA Berhad">AIA Berhad</option>
 											<option value="AIA General Berhad">AIA General Berhad</option>
@@ -174,7 +174,7 @@
 
 <div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12 mb-5 mb-lg-0">
 										<h5>Policy Number</h5><br>
-										<input type="text" name="policy_no" id="" placeholder="{{policy_no}}" class="px-4">
+										<input type="text" name="policy_no" id="" placeholder="{{policy_no}}" class="px-4" value="{{policy_no}}">
 										{% if form.errors %}
 										<div class="px-4" style="color:red">{{ form.policy_no.errors }}</div>
 										{% endif %}
@@ -192,12 +192,12 @@
 
 									<div class="col-lg-6 col-12 mt-5 mt-lg-0">
 										<h5>Nominee Details</h5><br>
-										<input type="text" name="nominee_name" id="" placeholder="{{nominee_name}}" class="px-4">
+										<input type="text" name="nominee_name" id="" placeholder="{{nominee_name}}" class="px-4"value="{{nominee_name}}">
 									</div>
 									<div class="mx-1 mt-5 mt-lg-0 col-lg-6 col-12">
 										<h5>Sum Insured</h5><br>
 										<input type="number" name="sum_insured" id="" placeholder="{{sum_insured}}"
-											class="px-4 form-control">
+											class="px-4 form-control" value="{{sum_insured}}">
 									</div>
 
 
@@ -212,7 +212,9 @@
 
 						<!-- Button -->
 						<div class="mt-5">
-							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}" role="button">Back</a>
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard-new' %}" role="button">Back</a>
+	<a class="btn Btn-Secondary-2 mt-5" href="{% url 'assets-insurance-deleteform' instance.uuid %}"
+								role="button">Delete</a>
 							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
 
 						</div>

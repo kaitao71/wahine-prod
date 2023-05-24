@@ -1,0 +1,89 @@
+/* /* external css: flickity.css */
+
+  .slider {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .flickity-viewport {
+    height: 600px !important;
+  }
+  
+  div.is-selected {
+    background: #111;
+    transition: 1s;
+  }
+  
+  .carousel-cell {
+    width: 33%;
+    height: 600px;
+    margin-right: 10px;
+    background: #666;
+    border-radius: 5px;
+    transition: 1s;
+    overflow: hidden;
+  }
+  
+  .medium-articles-mobile {
+    width: 80% !important;
+  }
+  
+  .medium-post {
+    display: grid;
+    place-items: center;
+    padding: 15px;
+  }
+  
+  .medium-img {
+    width: 300px;
+    height: 169px;
+  }
+  
+  .medium-title {
+    margin: 0px;
+    padding-top: 10px;
+    text-align:center;
+    display: grid !important;
+    place-items: center;
+    font-size: 1.2rem!important;
+    line-height: 1.5em;
+    height: 7em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+  /*   display: -webkit-box; */
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    
+  }
+  
+  .medium-intro {
+    font-size: 16px;
+    padding: 15px;
+      line-height: 1.6em;
+    height: 7em;
+      text-align:left;
+      overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    margin: 0px;
+    color: white;
+  }
+  
+  .medium-info {
+    display: grid;
+    place-items: center;
+  } 
+
+  .carousel a {
+    color: white!important;
+  }
+
+  @media screen and (max-width: 550px) {
+    .carousel-cell {
+      width: 100%;
+    }
+
+  }

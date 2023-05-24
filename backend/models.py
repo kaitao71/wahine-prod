@@ -105,12 +105,25 @@ class Epf(TimeStampedModel):
     account_value = models.FloatField(max_length=128,null=True,blank=True)
     nominee_name = models.CharField(max_length=128,null=True,blank=True)
 
+    def __str__(self):
+        return self.account_no
+
+    class Meta:
+        verbose_name_plural = "EPF"
+
 class Socso(TimeStampedModel): 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_socso')
     created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
     account_no = models.CharField(max_length=128)
     nominee_name = models.CharField(max_length=128,null=True,blank=True)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.account_no
+
+    class Meta:
+        verbose_name_plural = "Socso"
 
 class Bank(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -121,15 +134,21 @@ class Bank(TimeStampedModel):
     account_no = models.CharField(max_length=128)
     account_value = models.FloatField(max_length=128,null=True,blank=True)
 
+    def __str__(self):
+        return self.bank_name
+
 class Insurance(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_insurance')
     created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
-    insurance_type = models.CharField(max_length=128,null=True,blank=True)
-    provider = models.CharField(max_length=128,null=True,blank=True)
-    policy_no = models.CharField(max_length=128,null=True,blank=True)
+    insurance_type = models.CharField(max_length=128)
+    provider = models.CharField(max_length=128)
+    policy_no = models.CharField(max_length=128)
     nominee_name = models.CharField(max_length=128,null=True,blank=True)
     sum_insured = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.provider
 
 class Investment(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -139,6 +158,34 @@ class Investment(TimeStampedModel):
     bank_name = models.CharField(max_length=128)
     account_no = models.CharField(max_length=128)
     account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.bank_name
+
+class SecuritiesInvestment(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_securities_investment')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    account_type = models.CharField(max_length=128)
+    broker_name = models.CharField(max_length=128)
+    account_no = models.CharField(max_length=128)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.account_type
+
+class UnitTrustInvestment(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_unittrust_investment',null=True)
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    unittrust_name = models.CharField(max_length=128)
+    account_no = models.CharField(max_length=128)
+    agent_name = models.CharField(max_length=128,null=True,blank=True)
+    agent_contact_no = models.CharField(max_length=128,null=True,blank=True)
+    account_value = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.unittrust_name
 
 class Property(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -150,6 +197,13 @@ class Property(TimeStampedModel):
     state = models.CharField(max_length=128,null=True,blank=True)
     postcode = models.CharField(max_length=128,null=True,blank=True)
     titleno = models.CharField(max_length=128,null=True,blank=True)
+    spa_price = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.property_type
+
+    class Meta:
+        verbose_name_plural = "Properties"
 
 class Vehicle(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -159,12 +213,29 @@ class Vehicle(TimeStampedModel):
     make_model = models.CharField(max_length=128,null=True,blank=True)
     registration_no = models.CharField(max_length=128,null=True,blank=True)
 
+    def __str__(self):
+        return self.vehicle_type
+
 class OtherAsset(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_otherassets')
     created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=128)
     value = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+
+class Crypto(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_crypto')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    crypto_type = models.CharField(max_length=128)
+    wallet_name = models.CharField(max_length=128)
+    value = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.crypto_type
 
 class CreditCard(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -173,6 +244,9 @@ class CreditCard(TimeStampedModel):
     bank_name = models.CharField(max_length=128)
     account_no = models.CharField(max_length=128,null=True,blank=True)
     amount_outstanding = models.FloatField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.bank_name
 
 class PersonalLoan(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -183,6 +257,9 @@ class PersonalLoan(TimeStampedModel):
     amount_outstanding = models.FloatField(max_length=128,null=True,blank=True)
     loan_tenure = models.CharField(max_length=128,null=True,blank=True)
 
+    def __str__(self):
+        return self.bank_name
+
 class VehicleLoan(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_vehicleloan')
@@ -191,6 +268,9 @@ class VehicleLoan(TimeStampedModel):
     account_no = models.CharField(max_length=128,null=True,blank=True)
     amount_outstanding = models.FloatField(max_length=128,null=True,blank=True)
     loan_tenure = models.CharField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.bank_name
 
 class PropertyLoan(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -201,6 +281,9 @@ class PropertyLoan(TimeStampedModel):
     amount_outstanding = models.FloatField(max_length=128,null=True,blank=True)
     loan_tenure = models.CharField(max_length=128,null=True,blank=True)
 
+    def __str__(self):
+        return self.bank_name
+
 class OtherLiability(TimeStampedModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_otherliabilities')
@@ -208,6 +291,39 @@ class OtherLiability(TimeStampedModel):
     name = models.CharField(max_length=128)
     value = models.FloatField(max_length=128,null=True,blank=True)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Other Liabilities"
+
+class Notifier(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=128)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_notifier')
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    email = models.CharField(max_length=128,null=True,blank=True)
+    ic = models.CharField(max_length=128,null=True,blank=True)
+    contact_no = models.CharField(max_length=128,null=True,blank=True)
+    relationship = models.CharField(max_length=128,null=True,blank=True)
+    event = models.CharField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+
+class AccessList(TimeStampedModel):
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
+    user = models.ForeignKey('backend.User',on_delete=models.CASCADE,related_name='user_accesslist')
+    name = models.CharField(max_length=128)
+    created_by = models.ForeignKey('backend.User',on_delete=models.CASCADE,null=True)
+    email = models.CharField(max_length=128,null=True,blank=True)
+    ic = models.CharField(max_length=128,null=True,blank=True)
+    contact_no = models.CharField(max_length=128,null=True,blank=True)
+    relationship = models.CharField(max_length=128,null=True,blank=True)
+    event = models.CharField(max_length=128,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
 
 ## Property 
 class PropertyType(TimeStampedModel):

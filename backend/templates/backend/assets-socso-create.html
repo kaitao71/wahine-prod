@@ -66,13 +66,21 @@
         {{form.nominee_name}}
         <small class="text-danger">{{ form.nominee_name.errors }}</small>
       </div>
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile" />
+      </div>
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile2">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile2" />
+      </div>
         <!-- End process each form fields manually -->
 
     </div>
     <!-- Submit Button -->
     <div class="row spacer">
         <div class="col-12">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
         </div>
     </div>
     <!-- Submit Button -->

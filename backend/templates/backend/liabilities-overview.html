@@ -62,9 +62,9 @@
 												<tr>
 													<th scope="row">1</th>
 													<td>{% if not creditcard %}
-														<a href="{% url 'credit_card_form' %}">Credit Card</a>
+														<a href="{% url 'liabilities-creditcard-createform' %}">Credit Card</a>
 														{% else %}
-														<a href="{% url 'dashboard' %}">Credit Card</a>
+														<a href="{% url 'dashboard-new' %}">Credit Card</a>
 														{% endif %}
 													</td>
 													<td>{{creditcard.created_at}}</td>
@@ -78,9 +78,9 @@
 												<tr>
 													<th scope="row">2</th>
 													<td>{% if not personalloan %}
-														<a href="{% url 'personal_loan_form' %}">Personal Loan</a>
+														<a href="{% url 'liabilities-personalloan-createform' %}">Personal Loan</a>
 														{% else %}
-														<a href="{% url 'dashboard' %}">Personal Loan</a>
+														<a href="{% url 'dashboard-new' %}">Personal Loan</a>
 														{% endif %}
 													</td>
 													<td>{{personalloan.created_at}}</td>
@@ -94,9 +94,9 @@
 												<tr>
 													<th scope="row">3</th>
 													<td>{% if not vehicleloan %}
-														<a href="{% url 'vehicles_loan_form' %}">Vehicle Loan</a>
+														<a href="{% url 'liabilities-vehicleloan-createform' %}">Vehicle Loan</a>
 														{% else %}
-														<a href="{% url 'dashboard' %}">Vehicle Loan</a>
+														<a href="{% url 'dashboard-new' %}">Vehicle Loan</a>
 														{% endif %}
 													</td>
 													<td>{{vehicleloan.created_at}}</td>
@@ -110,9 +110,9 @@
 												<tr>
 													<th scope="row">4</th>
 													<td>{% if not propertyloan %}
-														<a href="{% url 'property_loan_form' %}">Property Loan</a>
+														<a href="{% url 'liabilities-propertyloan-createform' %}">Property Loan</a>
 														{% else %}
-														<a href="{% url 'dashboard' %}">Property Loan</a>
+														<a href="{% url 'dashboard-new' %}">Property Loan</a>
 														{% endif %}
 													</td>
 													<td>{{propertyloan.created_at}}</td>
@@ -127,10 +127,10 @@
 												<tr>
 													<th scope="row">5</th>
 													<td>{% if not others %}
-														<a href="{% url 'liabilities_others_form' %}">Other
+														<a href="{% url 'liabilities-other-createform' %}">Other
 															Liabilities</a>
 														{% else %}
-														<a href="{% url 'dashboard' %}">Other Liabilities</a>{% endif %}
+														<a href="{% url 'dashboard-new' %}">Other Liabilities</a>{% endif %}
 
 													</td>
 													<td>{{others.created_at}}</td>
@@ -161,7 +161,7 @@
 
 							<!-- Button -->
 							<div class="mt-5">
-								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'liabilities_others_form' %}"
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'liabilities-other-createform' %}"
 									role="button">Back</a>
 									<a class="btn Btn-Primary float-end mt-5" href="{% url 'notifier_list_form' %}"
 									role="button">Next</a>

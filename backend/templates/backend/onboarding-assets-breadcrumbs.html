@@ -12,7 +12,7 @@
 			</a>
 		</li>
 		<!-- Step 2 -->
-		<li class="text-center form-stepper-list {% if request.resolver_match.url_name == 'epf_socso_form' %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
+		<li class="text-center form-stepper-list {% if request.resolver_match.url_name == 'epf_socso_form' or request.resolver_match.url_name == 'epf_socso_form'  %} form-stepper-active {% else %} form-stepper-unfinished {% endif %}"
 			step="2">
 			<a class="mx-2" href="{% url 'epf_socso_form' %}">
 				<span class="form-stepper-circle text-muted">

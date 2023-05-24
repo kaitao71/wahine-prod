@@ -276,7 +276,7 @@ a {
 
 
 .HeroBanner {
-    background: url('https://wahine.s3.amazonaws.com/static/Img_Banner3.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://wahine.s3.amazonaws.com/static/Img_Banner3.png');
     min-height: 100vh;
     background-size: cover;
 
@@ -293,6 +293,10 @@ a {
 .Section2 {
     background-color: #747474;
     max-height: 300px;
+}
+
+.Section3 {
+    margin-top: -100px;
 }
 
 .flex {
@@ -409,7 +413,7 @@ a {
 .Section8 {
     color: black;
     padding-top: 80px;
-    padding-bottom: 180px;
+    padding-bottom: 100px;
 }
 
 .Testimonial {
@@ -575,7 +579,7 @@ a {
 
 /* Terms Of Service */
 .HeroBannerTOS {
-    background: url('https://wahine.s3.amazonaws.com/static/Img_Banner3.png');
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url('https://wahine.s3.amazonaws.com/static/Img_Banner3.png');
     min-height: 70vh;
     background-size: cover;
     background-repeat: no-repeat;

@@ -14,7 +14,7 @@
     <div class="col-md-8 col-lg-8">
   <div class="row">
     <div class="col-md-12 col-lg-12 col-12 mx-auto pt-5">
-        <h2 class="Color-Secondary mb-2 d-lg-none">Step 3/4:</h2>
+        <h2 class="Color-Secondary mb-2 d-lg-none text-center">Step 3/4:</h2>
         <h2 class="mb-1 Color-Secondary text-center">Liabilities</h2>
         <p class="text-center">Please fill the form below to record your personal liabilities information. Feel free to add as much detail as needed. </p>
     </div>
@@ -69,9 +69,18 @@
       </div>
 
       <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
-        <label for="{{ form.amount_outstanding.id_for_label }}">{{form.amount_outstanding.label}}</label>
+        <label for="{{ form.amount_outstanding.id_for_label }}">{{form.amount_outstanding.label}}<i class="fas fa-info-circle px-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Only numerical value; No Symbols or Special Characters Allowed"></i></label>
         {{form.amount_outstanding}}
         <small class="text-danger">{{ form.amount_outstanding.errors }}</small>
+      </div>
+
+      <div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile" />
+      </div>
+<div class="col-12 col-lg-4 col-md-4 col-sm-6 py-2">
+<label class="form-label" for="customFile2">Upload File</label>
+<input onchange="validateSize(this)" type="file" class="" id="customFile2" />
       </div>
         <!-- End process each form fields manually -->
 
@@ -90,7 +99,7 @@
     <!-- Submit Button -->
     <div class="row spacer">
         <div class="col-12">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
         </div>
     </div>
     <!-- Submit Button -->

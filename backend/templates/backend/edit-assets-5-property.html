@@ -44,7 +44,7 @@
 								</div>
 								<div class="answer form-row Btn-Radio">
 									<div class="col-lg-6 col-6">
-										<input type="radio" id="residential" name="property_type" value="residential" {% if property_type == "residential" %} checked {% endif %}>
+										<input type="radio" id="residential" name="property_type" value="residential" {% if property_type == "Residential" %} checked {% endif %}>
 										<label for="residential">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 												fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16">
@@ -57,7 +57,7 @@
 										</label>
 									</div>
 									<div class="answer mx-2 col-lg-6 col-6">
-										<input type="radio" id="commercial" name="property_type" value="commercial" {% if property_type == "commercial" %} checked {% endif %}>
+										<input type="radio" id="commercial" name="property_type" value="commercial" {% if property_type == "Commercial" %} checked {% endif %}>
 										<label for="commercial">
 
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -71,7 +71,7 @@
 								</div>
 								<div class="answer form-row Btn-Radio mb-5">
 									<div class="col-lg-6 col-6">
-										<input type="radio" id="land" name="property_type" value="land" {% if property_type == "land" %} checked {% endif %}>
+										<input type="radio" id="land" name="property_type" value="land" {% if property_type == "Land" %} checked {% endif %}>
 										<label for="land">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 												fill="currentColor" class="bi bi-image-alt" viewBox="0 0 16 16">
@@ -124,7 +124,7 @@
 									</div>
 <div class="mx-1 col-12 col-lg-6 mt-5 mt-lg-0">
 										<h5>SPA Price</h5><br>
-										<input type="number" name="spa_price" id="" value="{{spa_price}}" placeholder="605000" class="px-4 form-control">
+										<input type="text" name="spa_price" id="" value="{{spa_price}}" placeholder="605000" class="px-4 form-control">
 									</div>
 
 								</div>
@@ -174,8 +174,10 @@
 
 						<!-- Button -->
 						<div class="mt-5">
-							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}"
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard-new' %}"
 								role="button">Back</a>
+	<a class="btn Btn-Secondary-2 mt-5" href="{% url 'assets-property-deleteform' instance.uuid %}"
+								role="button">Delete</a>
 							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
 
 						</div>

@@ -42,7 +42,7 @@
 								</div>
 								<div class="answer form-row Btn-Radio">
 									<div class="col-lg-6 col-6">
-										<input type="radio" id="car" name="vehicle_type" value="car" {% if vehicle_type == 'car' %} checked {% endif %}>
+										<input type="radio" id="car" name="vehicle_type" value="car" {% if vehicle_type == 'Car' %} checked {% endif %}>
 										<label for="car">
 											<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 												fill="currentColor" class="bi bi-car-front-fill" viewBox="0 0 16 16">
@@ -53,7 +53,7 @@
 										</label>
 									</div>
 									<div class="answer mx-2 col-lg-6 col-6">
-										<input type="radio" id="motor" name="vehicle_type" value="motor" {% if vehicle_type == 'motor' %} checked {% endif %}>
+										<input type="radio" id="motor" name="vehicle_type" value="motor" {% if vehicle_type == 'Motorcycle' %} checked {% endif %}>
 										<label for="motor">
 
 											<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +136,9 @@
 
 						<!-- Button -->
 						<div class="mt-5">
-							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard' %}" role="button">Back</a>
+							<a class="btn Btn-Secondary-2 mt-5" href="{% url 'dashboard-new' %}" role="button">Back</a>
+								<a class="btn Btn-Secondary-2 mt-5" href="{% url 'assets-vehicle-deleteform' instance.uuid %}"
+								role="button">Delete</a>
 							<button class="btn Btn-Primary mt-5 float-end"type="submit">SAVE</button>
 
 						</div>

@@ -71,7 +71,7 @@
       </div>
         
       <div class="col-4">
-        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}</label>
+        <label for="{{ form.account_value.id_for_label }}">{{form.account_value.label}}<i class="fas fa-info-circle px-1" title="Only numerical value; No Symbols or Special Characters Allowed"></i></label>
         {{form.account_value}}
         <small class="text-danger">{{ form.account_value.errors }}</small>
       </div>
@@ -87,7 +87,7 @@
     <!-- Submit Button -->
     <div class="row spacer">
         <div class="col-4">
-            <button type="submit" class="btn btn-block btn-primary">Create</button>
+            <button type="submit" class="btn btn-block btn-primary">Save</button>
         </div>
     </div>
     <!-- Submit Button -->
