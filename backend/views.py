@@ -897,9 +897,10 @@ def notifier_list_form(request):
             formset.save()
             for i in formset: 
                 email = i.cleaned_data.get('email')
+                triggers = i.cleaned_data.get('event')[1:-1].replace("'","")
                 send_mail(
                     "Wahine - You have been added as a notifier",
-                    "You have been added as a notifier by " + str(request.user),
+                    "You have been added as a notifier by " + str(request.user.last_name) + " with the trigger events of " + triggers +". Please contact us at hellowahine if any of these trigger events happens",
                     "wahine@wcapital.asia",
                     [email],
                     fail_silently=False,
