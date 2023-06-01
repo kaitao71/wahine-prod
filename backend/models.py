@@ -10,6 +10,9 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from django_cryptography.fields import encrypt
 
+# class Document(models.Model):
+#     file = models.FileField(upload_to='taosolutions/wahine/' + str(case_upload_location), null = True, blank = True)
+
 # from ckeditor.fields import RichTextField
 class UserManager(BaseUserManager):
     """Define a model manager for User model with no username field."""
