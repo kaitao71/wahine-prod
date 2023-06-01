@@ -27,11 +27,12 @@ IS_HEROKU = "DYNO" in os.environ
 
 # SECURITY WARNING: keep the secret key used in production secret!
 ## Use environment variable
-SECRET_KEY = "fjd12489hHFG*$&H9h4r78TG08hyfO$*Ghy"
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
-if 'SECRET_KEY' in os.environ:
-    SECRET_KEY = os.environ["SECRET_KEY"]
-
+SECRET_KEY = os.environ.get("SECRET_KEY")
+if not IS_HEROKU:
+    SECRET_KEY="1341"
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 15 * 60
 ## X-Frame-Options
 X_FRAME_OPTIONS = 'DENY'
 #X-Content-Type-Options
@@ -48,8 +49,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-relay.sendinblue.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'rejina@Wcapital.asia'
-EMAIL_HOST_PASSWORD = 'xTNzYdXD4kLInGmq'
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 # Generally avoid wildcards(*). However since Heroku router provides hostname validation it is ok
 if IS_HEROKU:
@@ -77,10 +78,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     "backend",
-    # "django_htmx",
     'widget_tweaks',
     'import_export',
-    # 'compressor',
 ]
 
 CSRF_TRUSTED_ORIGINS = ['https://wahine.wcapital.asia/','https://wahine.wcapital.asia']
@@ -102,7 +101,6 @@ if IS_HEROKU:
      )
 
 # CSP_INCLUDE_NONCE_IN = ['script-src',]
-CLOUD_STORAGE_SECURITY_KEY = '89hHFG*$&H9h4r78TG08hyfO$*G'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -251,8 +249,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ## AWS S3 Settings
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_LOCATION = 'static'
-AWS_ACCESS_KEY_ID ='AKIAQCR227DLH242C34W' 
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID =os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_STORAGE_BUCKET_NAME ='taosolutions'
 AWS_S3_CUSTOM_DOMAIN='%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {    
